@@ -1,5 +1,11 @@
 # gin-scaffold
-gin 脚手架 分层清晰 集成 gorm、zap等.... 完善中
+gin 脚手架 分层清晰 集成 
+    gorm  持久层
+    zap   日志
+    job   定时任务
+
+
+    等 .... 完善中
 
 # 结构
     1. 项目结构

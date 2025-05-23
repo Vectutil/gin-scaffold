@@ -1,9 +1,10 @@
 package config
 
 type Config struct {
-	Mysql   Mysql   `json:"mysql"`
-	System  System  `json:"system"`
-	WXRobot WXRobot `json:"wxRobot"`
+	Mysql   Mysql         `json:"mysql"`
+	System  System        `json:"system"`
+	WXRobot WXRobot       `json:"wxRobot"`
+	Job     CronJobConfig `json:"job"`
 }
 
 type WXRobot struct {
@@ -22,4 +23,9 @@ type System struct {
 	Env       string `json:"env"`
 	Port      string `json:"port"`
 	Migration bool   `json:"migration"`
+}
+
+type CronJobConfig struct {
+	JobStatus map[string]bool   `json:"jobStatus"`
+	JobCron   map[string]string `json:"jobCron"`
 }

@@ -18,13 +18,6 @@ import (
 )
 
 func main() {
-	
-	migration()
-
-	if config.Cfg.System.Migration {
-		mysql.Migration()
-	}
-
 	// 1.创建路由
 	r := gin.Default()
 	router.InitRouter(r)
@@ -62,10 +55,12 @@ func main() {
 }
 
 func init() {
-	config.InitConfig()
+	config.InitConfig("")
+	logger.InitLogger()
 	mysql.InitMysql()
 
-	logger.InitLogger()
+	migration()
+
 	defer zap.L().Sync()
 	logger.Logger.Info("日志初始化完成")
 }

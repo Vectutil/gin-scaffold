@@ -2,23 +2,29 @@ package config
 
 import (
 	"fmt"
-	"gopkg.in/yaml.v3"
-	"os"
+	"github.com/spf13/viper"
 )
 
 var Cfg = &Config{}
 
-func InitConfig() {
+func InitConfig(filePath string) {
 	// 读取配置文件
-	file, err := os.ReadFile("config.yaml")
-	if err != nil {
-		panic(err)
+	if filePath == "" {
+		viper.SetConfigFile("config.yaml")
+	} else {
+		viper.SetConfigFile(filePath)
 	}
 
-	// 解析 YAML 数据
-	err = yaml.Unmarshal(file, Cfg)
+	err := viper.ReadInConfig()
 	if err != nil {
-		panic(err)
+		fmt.Printf("Error reading config file: %v\n", err)
+		return
+	}
+
+	err = viper.Unmarshal(Cfg)
+	if err != nil {
+		fmt.Printf("Error unmarshaling config: %v\n", err)
+		return
 	}
 	fmt.Println(Cfg)
 }
