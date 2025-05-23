@@ -1,0 +1,18 @@
+mysql:
+  host: "127.0.0.1"
+  port: 3306
+  user: "root"
+  password: "123456"
+  database: "gin-scaffold"
+
+
+qwRobot:
+  errorRobot: "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=021f5843-7177-4097-a0e7-xxxxxxxxxxxxxxxxxxx"
+
+system:
+  # 应用名称
+  name: "woorho-scaffold"
+  # 应用版本
+  version: "1.0.0"
+  port: 8399
+  migration: true
