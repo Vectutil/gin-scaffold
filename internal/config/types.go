@@ -5,7 +5,14 @@ type Config struct {
 	System  System        `json:"system"`
 	WXRobot WXRobot       `json:"wxRobot"`
 	Job     CronJobConfig `json:"job"`
-	Redis   Redis         `json:"redis"`
+	Qny     Qny           `json:"qny"`
+}
+
+type Qny struct {
+	AccessKey string `json:"accessKey"`
+	SecretKey string `json:"secretKey"`
+	Bucket    string `json:"bucket"`
+	QnyServer string `json:"qnyServer"`
 }
 
 type Redis struct {

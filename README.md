@@ -7,6 +7,9 @@ gin 脚手架 旨在开箱即用 分层清晰 按需使用-- (逐步完善)
         job   定时任务
         redis 缓存      (github.com/redis/go-redis/v9)
 
+        qny   七牛云
+        
+
     等 .... 完善中
 
 # 定时任务
@@ -41,6 +44,7 @@ gin-scaffold/
 ├── pkg/                  # 可复用工具库（非业务相关，独立通用）
 │   ├── http_call/        # HTTP 通用封装
 │   ├── logger/           # 日志封装
+│   ├── qny/              # qny 封装
 │   ├── redis/            # redis 连接/使用
 │   └── mysql/            # 数据库连接/初始化
 ├── cache/                # 缓存文件(日志等)

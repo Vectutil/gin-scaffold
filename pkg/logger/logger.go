@@ -17,7 +17,7 @@ func InitLogger() {
 
 	// app.log: 记录所有日志
 	appWriter := zapcore.AddSync(&lumberjack.Logger{
-		Filename:   "./cache/logs/app_" + time.Now().Format("2006-01-02") + ".log",
+		Filename:   "./cache/logs/info/app_" + time.Now().Format("2006-01-02") + ".log",
 		MaxSize:    20,
 		MaxAge:     30,
 		MaxBackups: 5,
@@ -25,7 +25,7 @@ func InitLogger() {
 	})
 	// 错误日志单独输出
 	errorWriter := zapcore.AddSync(&lumberjack.Logger{
-		Filename:   "./cache/logs/error_" + time.Now().Format("2006-01-02") + ".log",
+		Filename:   "./cache/logs/error/error_" + time.Now().Format("2006-01-02") + ".log",
 		MaxSize:    10,
 		MaxAge:     30,
 		MaxBackups: 5,
@@ -34,7 +34,7 @@ func InitLogger() {
 
 	// 慢日志单独输出
 	slowWriter := zapcore.AddSync(&lumberjack.Logger{
-		Filename:   "./cache/logs/slow_" + time.Now().Format("2006-01-02") + ".log",
+		Filename:   "./cache/logs/slow/slow_" + time.Now().Format("2006-01-02") + ".log",
 		MaxSize:    10,
 		MaxAge:     30,
 		MaxBackups: 5,

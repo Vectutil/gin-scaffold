@@ -14,6 +14,12 @@ redis:
 qwRobot:
   errorRobot: "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=021f5843-7177-4097-a0e7-xxxxxxxxxxxxxxxxxxx"
 
+qny:
+  accessKey: "ciIHqTlKU1AjyJK6kb4LCXlLzxxxxxxxxxx"
+  secretKey: "7iomzYL4h2ytAZxCTStNPDvY4xxxxxxxxx"
+  bucket: "woorho"
+  qnyServer: "https://xxxxxxx.fun"
+
 system:
   # 应用名称
   name: "woorho-scaffold"
