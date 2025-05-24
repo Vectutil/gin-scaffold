@@ -5,6 +5,11 @@ mysql:
   password: "123456"
   database: "gin-scaffold"
 
+redis:
+  host: "127.0.0.1"
+  port: 6379
+  password: "123456"
+  db: 8
 
 qwRobot:
   errorRobot: "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=021f5843-7177-4097-a0e7-xxxxxxxxxxxxxxxxxxx"
@@ -19,7 +24,7 @@ system:
 
 job:
   jobStatus:
-    ajob: true
+    examplejob: true
 
   jobCron:
-    ajob: "*/10 * * * * *"
+    examplejob: "*/10 * * * * *"

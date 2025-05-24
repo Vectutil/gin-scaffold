@@ -2,7 +2,6 @@ package logger
 
 import (
 	"context"
-	"fmt"
 	"time"
 
 	"go.uber.org/zap"
@@ -42,8 +41,6 @@ func (l *ZapGormLogger) Error(ctx context.Context, msg string, data ...interface
 func (l *ZapGormLogger) Trace(ctx context.Context, begin time.Time, fc func() (string, int64), err error) {
 	elapsed := time.Since(begin)
 	sql, rows := fc()
-
-	fmt.Println("ddfadfsadfsdfsdf")
 
 	fields := []zap.Field{
 		zap.String("file", utils.FileWithLineNum()),

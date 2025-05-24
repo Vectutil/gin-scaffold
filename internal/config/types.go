@@ -5,6 +5,14 @@ type Config struct {
 	System  System        `json:"system"`
 	WXRobot WXRobot       `json:"wxRobot"`
 	Job     CronJobConfig `json:"job"`
+	Redis   Redis         `json:"redis"`
+}
+
+type Redis struct {
+	Host     string `json:"host"`
+	Port     string `json:"port"`
+	Password string `json:"password"`
+	DB       int    `json:"db"`
 }
 
 type WXRobot struct {

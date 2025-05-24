@@ -7,6 +7,7 @@ import (
 	"gin-scaffold/internal/router"
 	"gin-scaffold/pkg/logger"
 	"gin-scaffold/pkg/mysql"
+	"gin-scaffold/pkg/redis"
 	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
 	"log"
@@ -55,14 +56,22 @@ func main() {
 }
 
 func init() {
-	config.InitConfig("")
-	logger.InitLogger()
-	mysql.InitMysql()
 
+	// 初始化配置
+	config.InitConfig("")
+
+	// 初始化日志
+	logger.InitLogger()
+	logger.Logger.Info("日志初始化完成")
+
+	// 初始化数据库
+	mysql.InitMysql()
 	migration()
 
+	// 初始化redis
+	redis.Init()
+
 	defer zap.L().Sync()
-	logger.Logger.Info("日志初始化完成")
 }
 
 func migration() {
