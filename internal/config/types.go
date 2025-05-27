@@ -2,6 +2,7 @@ package config
 
 type Config struct {
 	Mysql   Mysql         `json:"mysql"`
+	Redis   Redis         `json:"redis"`
 	System  System        `json:"system"`
 	WXRobot WXRobot       `json:"wxRobot"`
 	Job     CronJobConfig `json:"job"`

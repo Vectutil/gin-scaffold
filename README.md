@@ -12,6 +12,17 @@ gin 脚手架 旨在开箱即用 分层清晰 按需使用-- (逐步完善)
 
     等 .... 完善中
 
+# 权限管理
+
+    权限模型设计要素
+    用户（users）
+    角色（roles）
+    菜单/页面模块（menus） — 包含按钮操作
+    权限（permissions） — 功能点级别（如按钮）
+    角色-权限映射（role_permissions）
+    用户-角色映射（user_roles）
+    数据权限（data_scope） — 控制某个用户或角色可以访问哪些数据（如部门、区域等）
+
 # 定时任务
     1. 引入
         go get github.com/robfig/cron/v3

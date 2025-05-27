@@ -1,0 +1,18 @@
+CREATE TABLE IF NOT EXISTS `menu` (
+    `id`              BIGINT(20)     NOT NULL AUTO_INCREMENT COMMENT '主键',
+    `parent_id`       BIGINT(20)     NOT NULL DEFAULT 0 COMMENT '父ID',
+    `name`            VARCHAR(100)   NOT NULL DEFAULT '' COMMENT '名称',
+    `type`            tinyint(1)    NOT NULL DEFAULT 1 COMMENT '类型: 1MENU, 2BUTTON',
+    `path`            VARCHAR(255)   DEFAULT NULL COMMENT '前端路由地址',
+    `permission_key`  VARCHAR(100)   DEFAULT NULL COMMENT '权限标识 如 user:add',
+    `order_num`       INT            DEFAULT 0 COMMENT '排序',
+    `visible`         TINYINT(1)     DEFAULT 1 COMMENT '是否可见 1是 0否',
+    `created_at`      DATETIME       NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    `created_by`      BIGINT(20)     DEFAULT NULL COMMENT '创建人',
+    `updated_at`      DATETIME       DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+    `updated_by`      BIGINT(20)     DEFAULT NULL COMMENT '更新人',
+    `deleted_at`      DATETIME       DEFAULT NULL COMMENT '删除时间',
+    `deleted_by`      BIGINT(20)     DEFAULT NULL COMMENT '删除人',
+    PRIMARY KEY (`id`),
+    KEY `parent_id` (`parent_id`)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='菜单/按钮表';

@@ -36,15 +36,15 @@ func main() {
 	}
 
 	go func() {
-		zap.L().Info("项目启动")
+		zap.L().Info("------------------项目开启------------------")
 		if err := srv.ListenAndServe(); err != nil && err != http.ErrServerClosed {
+			zap.L().Info("------------------启动失败------------------")
 			log.Fatalf("listen: %s\n", err)
 		}
 	}()
 
-	job.StartCronJob()
 	<-stop
-	zap.L().Info("项目启动失败")
+	zap.L().Info("------------------项目关闭------------------")
 
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 	defer cancel()
@@ -70,6 +70,8 @@ func init() {
 
 	// 初始化redis
 	redis.Init()
+
+	job.StartCronJob()
 
 	defer zap.L().Sync()
 }

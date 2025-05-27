@@ -1,0 +1,17 @@
+CREATE TABLE IF NOT EXISTS `user` (
+    `id` BIGINT(20) NOT NULL AUTO_INCREMENT COMMENT '主键',
+    `username` VARCHAR(50) NOT NULL DEFAULT '' COMMENT '用户名',
+    `password` VARCHAR(255) NOT NULL DEFAULT '' COMMENT '密码',
+    `full_name` VARCHAR(255) NOT NULL DEFAULT '' COMMENT '全名',
+    `dept_id` BIGINT(20) NOT NULL DEFAULT 0 COMMENT '所属部门ID',
+    `status` TINYINT(1) NOT NULL DEFAULT 1 COMMENT '状态：1启用 0禁用',
+    `created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    `created_by` BIGINT(20) DEFAULT NULL COMMENT '创建人ID',
+    `updated_at` DATETIME DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+    `updated_by` BIGINT(20) DEFAULT NULL COMMENT '更新人ID',
+    `deleted_at` DATETIME DEFAULT NULL COMMENT '删除时间',
+    `deleted_by` BIGINT(20) DEFAULT NULL COMMENT '删除人ID',
+    PRIMARY KEY (`id`),
+    KEY `idx_dept_id` (`dept_id`)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='用户表';
+
