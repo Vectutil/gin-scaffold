@@ -16,6 +16,7 @@ func InitRouter(r *gin.Engine) {
 
 	// 使用慢日志中间件，阈值设置为 2 秒
 	r.Use(middleware.SlowLogMiddleware(2 * time.Second))
+	r.Use(middleware.CorsMiddleware())
 
 	// 其他路由配置...
 	r.GET("/ping", func(c *gin.Context) {
