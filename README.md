@@ -8,6 +8,8 @@ gin 脚手架 旨在开箱即用 分层清晰 按需使用-- (逐步完善)
         redis 缓存      (github.com/redis/go-redis/v9)
 
         qny   七牛云
+
+        swag  swagger文档
         
 
     等 .... 完善中
@@ -36,6 +38,15 @@ gin 脚手架 旨在开箱即用 分层清晰 按需使用-- (逐步完善)
     3. 前往./internal/app/job目录下编写定时任务
         
 
+# 运行方式
+    window用户：
+        第一次运行需要在 .bat 中增加命令代码
+            ```
+            go install github.com/swaggo/swag/cmd/swag@latest
+            go mod tidy
+            ```
+    控制台执行 .bat
+
 # 结构
     1. 项目结构
 
@@ -59,6 +70,7 @@ gin-scaffold/
 │   ├── redis/            # redis 连接/使用
 │   └── mysql/            # 数据库连接/初始化
 ├── cache/                # 缓存文件(日志等)
+├── docs/                 # swagger文档
 ├── go.mod
 ├── go.sum
 └── README.md

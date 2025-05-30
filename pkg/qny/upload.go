@@ -4,12 +4,12 @@ import (
 	"bytes"
 	"context"
 	"fmt"
+	"gin-scaffold/internal/config"
+	"gin-scaffold/pkg/http_call"
+	"gin-scaffold/pkg/logger"
 	"github.com/qiniu/go-sdk/v7/auth/qbox"
 	"github.com/qiniu/go-sdk/v7/storage"
 	"io"
-	"jz-scraw/internal/config"
-	"jz-scraw/pkg/http_call"
-	"jz-scraw/pkg/logger"
 	"mime"
 	"mime/multipart"
 	"net/http"
@@ -35,7 +35,7 @@ func NewQny() *Qny {
 	}
 }
 
-// 封装上传图片到七牛云然后返回状态和图片的url
+// UploadToQiNiuWithKey 封装上传图片到七牛云然后返回状态和图片的url
 func (q *Qny) UploadToQiNiuWithKey(ctx context.Context, file multipart.File, fileSize int64) (int, string) {
 	putPlicy := storage.PutPolicy{
 		Scope: q.Bucket,
@@ -91,28 +91,18 @@ func (q *Qny) UploadToQiNiu(ctx context.Context, path string, fileName string) (
 }
 
 // UploadToQiNiuByUrl 通过URL上传文件到七牛云
-// @param ctx context.Context 上下文
-// @param path string 存储路径
-// @param oldUrl string 源文件URL
-// @param ext string 文件扩展名
-// @return int 状态码
-// @return string 上传后的文件URL
 func (q *Qny) UploadToQiNiuByUrl(ctx context.Context, path, oldUrl, ext string) (int, string) {
 	body, err := http_call.HttpGet(oldUrl, nil)
 	if err != nil {
-		logger.ErrorLog(err, "通过URL上传文件到七牛云 失败")
+		logger.ErrorLogger.Error("通过URL上传文件到七牛云 失败")
+		return 400, ""
 	}
-	reader := bytes.NewReader(body)
+	reader := bytes.NewReader([]byte(body))
 	key := path + MustEncryptString(oldUrl) + ext
 	return q.UploadBinaryToQiNiu(ctx, reader, key)
 }
 
 // UploadBinaryToQiNiu 上传二进制数据到七牛云
-// @param ctx context.Context 上下文
-// @param reader io.Reader 二进制数据读取器
-// @param key string 存储路径
-// @return int 状态码
-// @return string 上传后的文件URL
 func (q *Qny) UploadBinaryToQiNiu(ctx context.Context, reader io.Reader, key string) (int, string) {
 	if reader == nil {
 		return 400, ""
@@ -146,9 +136,6 @@ func (q *Qny) UploadBinaryToQiNiu(ctx context.Context, reader io.Reader, key str
 }
 
 // GetUploadToken 获取七牛云上传凭证
-// @param ctx context.Context 上下文
-// @return string 上传凭证
-// @return string 图片访问域名
 func (q *Qny) GetUploadToken(ctx context.Context) (token string, imgUrl string) {
 	putPolicy := storage.PutPolicy{
 		Scope:   q.Bucket,
@@ -160,12 +147,6 @@ func (q *Qny) GetUploadToken(ctx context.Context) (token string, imgUrl string) 
 }
 
 // ExcelUploadToQiNiu 上传Excel文件到七牛云存储
-// @param ctx context.Context 上下文
-// @param path string 存储路径
-// @param pathAndFile string 本地文件路径
-// @param fileName string 文件名
-// @return int 状态码
-// @return string 文件访问URL
 func (q *Qny) ExcelUploadToQiNiu(ctx context.Context, path string, pathAndFile string, fileName string) (int, string) {
 
 	putPolicy := storage.PutPolicy{
@@ -196,13 +177,6 @@ func (q *Qny) ExcelUploadToQiNiu(ctx context.Context, path string, pathAndFile s
 }
 
 // DownloadInChunks 分片下载文件并确定文件类型
-// @param url string 文件URL地址
-// @param fileName string 文件名
-// @param filePath string 文件保存路径
-// @param chunkSize int 分片大小
-// @return string 完整文件路径
-// @return string 完整文件名
-// @return error 错误信息
 func (q *Qny) DownloadInChunks(url, fileName, filePath string, chunkSize int) (string, string, error) {
 	// 发送 HEAD 请求获取文件大小和内容类型
 	resp, err := http.Head(url)
@@ -305,14 +279,12 @@ func (q *Qny) GetQnyUrlIgnoreErr(ctx context.Context, strUrl, filePath string) (
 		return nil, ""
 	}
 
-	reader := bytes.NewReader(resp)
+	reader := bytes.NewReader([]byte(resp))
 	_, url := q.UploadBinaryToQiNiu(ctx, reader, filePath)
 	return reader, url
 }
 
 // determineFileExtension 根据内容类型确定文件扩展名
-// @param contentType string 文件的内容类型
-// @return string 对应的文件扩展名
 func (q *Qny) determineFileExtension(contentType string) string {
 	switch contentType {
 	case "image/jpeg", "image/jpg":

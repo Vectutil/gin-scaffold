@@ -1,0 +1,117 @@
+definitions:
+  handler.Req:
+    properties:
+      name:
+        type: string
+    type: object
+info:
+  contact: {}
+paths:
+  /test:
+    get:
+      consumes:
+      - application/json
+      description: 这是一个测试接口，用于演示 Swagger 注释 get
+      parameters:
+      - description: 用户名
+        in: query
+        name: name
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 成功返回
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: 内部错误
+          schema:
+            additionalProperties: true
+            type: object
+      summary: 测试接口 get
+      tags:
+      - test
+    post:
+      consumes:
+      - application/json
+      description: 这是一个测试接口，用于演示 Swagger 注释
+      parameters:
+      - description: 请求参数
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/handler.Req'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 成功返回
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: 内部错误
+          schema:
+            additionalProperties: true
+            type: object
+      summary: 测试接口
+      tags:
+      - test post
+  /users/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: 这是一个测试接口，用于演示 Swagger 注释 delete
+      parameters:
+      - description: 用户ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 成功返回
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: 内部错误
+          schema:
+            additionalProperties: true
+            type: object
+      summary: 测试接口 delete
+      tags:
+      - test
+    put:
+      consumes:
+      - application/json
+      description: 这是一个测试接口，用于演示 Swagger 注释 put
+      parameters:
+      - description: 请求参数
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/handler.Req'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 成功返回
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: 内部错误
+          schema:
+            additionalProperties: true
+            type: object
+      summary: 测试接口 put
+      tags:
+      - test post
+swagger: "2.0"
