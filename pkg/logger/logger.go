@@ -17,8 +17,9 @@ const (
 )
 
 var Logger *zap.Logger
-var SlowLogger *zap.Logger
-var ErrorLogger *zap.Logger
+
+//var SlowLogger *zap.Logger
+//var ErrorLogger *zap.Logger
 
 func InitLogger() {
 
@@ -52,18 +53,26 @@ func InitLogger() {
 
 	fileEncoder := getFileEncoder()
 	consoleEncoder := getConsoleEncoder()
+
+	warnOnly := zap.LevelEnablerFunc(func(lvl zapcore.Level) bool {
+		return lvl == zapcore.WarnLevel
+	})
 	// 核心组合
 	core := zapcore.NewTee(
-		zapcore.NewCore(fileEncoder, appWriter, zapcore.DebugLevel),        // 文件用 JSON 格式
-		zapcore.NewCore(consoleEncoder, consoleWriter, zapcore.DebugLevel), // 控制台用 ConsoleEncoder
-		zapcore.NewCore(fileEncoder, errorWriter, zapcore.ErrorLevel),
+		// 文件输出：JSON 格式
+		zapcore.NewCore(fileEncoder, appWriter, zapcore.DebugLevel),   // app.log 记录所有日志
+		zapcore.NewCore(fileEncoder, errorWriter, zapcore.ErrorLevel), // error.log 记录错误日志
+		zapcore.NewCore(fileEncoder, slowWriter, warnOnly),            // slow.log 慢日志
+
+		// 控制台输出（只对 consoleWriter 使用 consoleEncoder）
+		zapcore.NewCore(consoleEncoder, consoleWriter, zapcore.DebugLevel),
 	)
 
 	Logger = zap.New(core, zap.AddCaller())
 	zap.ReplaceGlobals(Logger)
 
-	ErrorLogger = zap.New(zapcore.NewCore(fileEncoder, errorWriter, zapcore.ErrorLevel))
-	SlowLogger = zap.New(zapcore.NewCore(fileEncoder, slowWriter, zapcore.InfoLevel)) // 慢日志你手动打点
+	//ErrorLogger = zap.New(zapcore.NewCore(fileEncoder, errorWriter, zapcore.ErrorLevel))
+	//SlowLogger = zap.New(zapcore.NewCore(fileEncoder, slowWriter, zapcore.InfoLevel)) // 慢日志你手动打点
 
 }
 

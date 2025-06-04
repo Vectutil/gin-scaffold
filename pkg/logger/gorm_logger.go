@@ -35,7 +35,7 @@ func (l *ZapGormLogger) Warn(ctx context.Context, msg string, data ...interface{
 }
 
 func (l *ZapGormLogger) Error(ctx context.Context, msg string, data ...interface{}) {
-	ErrorLogger.Sugar().Errorf(msg, data...)
+	Logger.Sugar().Errorf(msg, data...)
 }
 
 func (l *ZapGormLogger) Trace(ctx context.Context, begin time.Time, fc func() (string, int64), err error) {
@@ -51,12 +51,12 @@ func (l *ZapGormLogger) Trace(ctx context.Context, begin time.Time, fc func() (s
 
 	// 错误 SQL -> error.log
 	if err != nil && l.LogLevel >= logger.Error {
-		ErrorLogger.Error("SQL 错误", append(fields, zap.Error(err))...)
+		Logger.Error("SQL 错误", append(fields, zap.Error(err))...)
 	}
 
 	// 慢 SQL -> slow.log
 	if elapsed > l.SlowThreshold {
-		SlowLogger.Warn("慢 SQL", fields...)
+		Logger.Warn("慢 SQL", fields...)
 	}
 
 	// 所有 SQL -> app.log

@@ -26,13 +26,13 @@ system:
   # 应用版本
   version: "1.0.0"
   port: 8399
-  migration: false
-  env: "dev"
-#  env: "release"
+  migration: true
+#  env: "dev"
+  env: "release"
 
 job:
   jobStatus:
-    examplejob: false
+    examplejob: true
 
   jobCron:
     examplejob: "*/10 * * * * *"

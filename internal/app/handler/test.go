@@ -34,7 +34,9 @@ func (h *test) TestHandle(c *gin.Context) {
 			"message": err.Error(),
 		})
 	}
+	// 为了写入warn文件 故意制造延迟
 	time.Sleep(3 * time.Second)
+
 	c.JSON(200, gin.H{
 		"message": req.Name,
 	})

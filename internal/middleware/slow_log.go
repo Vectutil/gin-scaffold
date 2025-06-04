@@ -18,7 +18,7 @@ func SlowLogMiddleware(threshold time.Duration) gin.HandlerFunc {
 
 		// 如果超过阈值就记录慢日志
 		if duration > threshold {
-			logger.SlowLogger.Warn("慢请求",
+			logger.Logger.Warn("慢请求",
 				zap.String("method", c.Request.Method),
 				zap.String("path", c.Request.URL.Path),
 				zap.Duration("duration", duration),
