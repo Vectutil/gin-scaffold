@@ -46,7 +46,9 @@ gin 脚手架 旨在开箱即用 分层清晰 按需使用-- (逐步完善)
             go mod tidy
             ```
     控制台执行 .bat
-
+    
+    go env -w GOOS=linux
+    go env -w GOOS=windows
 # 结构
     1. 项目结构
 

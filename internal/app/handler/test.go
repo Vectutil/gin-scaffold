@@ -17,7 +17,7 @@ func NewTest() *test {
 // @title 测试接口Title
 // @Summary 测试接口
 // @Description 这是一个测试接口，用于演示 Swagger 注释
-// @Tags test post
+// @Tags test
 // @Accept json
 // @Produce json
 // @Param request body Req true "请求参数"
@@ -69,13 +69,13 @@ func (h *test) TestHandleGet(c *gin.Context) {
 // TestHandlePut 测试接口 put
 // @Summary 测试接口 put
 // @Description 这是一个测试接口，用于演示 Swagger 注释 put
-// @Tags test post
+// @Tags test
 // @Accept json
 // @Produce json
 // @Param request body Req true "请求参数"
 // @Success 200 {object} map[string]interface{} "成功返回"
 // @Failure 500 {object} map[string]interface{} "内部错误"
-// @Router /users/{id} [put]
+// @Router /test [put]
 func (h *test) TestHandlePut(c *gin.Context) {
 	var (
 		req = &Req{}
@@ -101,7 +101,7 @@ func (h *test) TestHandlePut(c *gin.Context) {
 // @Param id path int true "用户ID"
 // @Success 200 {object} map[string]interface{} "成功返回"
 // @Failure 500 {object} map[string]interface{} "内部错误"
-// @Router /users/{id} [delete]
+// @Router /test/{id} [delete]
 func (h *test) TestHandleDelete(c *gin.Context) {
 	// 1. 获取路径参数 id
 	id := c.Param("id")
