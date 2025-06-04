@@ -1,7 +1,7 @@
 package job
 
 import (
-	"fmt"
+	"gin-scaffold/pkg/logger"
 	"github.com/robfig/cron/v3"
 )
 
@@ -25,14 +25,13 @@ func StartCronJob() {
 
 	for _, job := range JobList {
 		if job.Status {
-			fmt.Println("添加定时任务", job.Name+" "+job.Cron)
+			logger.Logger.Info("添加定时任务" + job.Name + " " + job.Cron)
 			cronScheduler.AddFunc(job.Cron, job.Func)
 		}
 	}
 
 	// 启动 cron 调度器
 	cronScheduler.Start()
-	fmt.Println("定时任务启动")
 }
 
 // StopCronJob 停止定时任务
@@ -42,6 +41,5 @@ func StopCronJob() {
 		stop := cronScheduler.Stop()
 		// 等待所有任务完成
 		<-stop.Done()
-		fmt.Println("定时任务已停止")
 	}
 }

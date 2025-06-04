@@ -1,7 +1,9 @@
 package config
 
 import (
+	"encoding/json"
 	"fmt"
+	"gin-scaffold/pkg/logger"
 	"github.com/spf13/viper"
 )
 
@@ -17,14 +19,17 @@ func InitConfig(filePath string) {
 
 	err := viper.ReadInConfig()
 	if err != nil {
-		fmt.Printf("Error reading config file: %v\n", err)
+		logger.Logger.Error(fmt.Sprintf("Error reading config file: %v\n", err))
 		return
 	}
 
 	err = viper.Unmarshal(Cfg)
 	if err != nil {
-		fmt.Printf("Error unmarshaling config: %v\n", err)
+		logger.Logger.Error(fmt.Sprintf("Error unmarshaling config: %v\n", err))
 		return
 	}
-	fmt.Println(Cfg)
+	if Cfg.System.Env == "dev" {
+		indent, _ := json.MarshalIndent(Cfg, "", "  ")
+		fmt.Println(string(indent))
+	}
 }
