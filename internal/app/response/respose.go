@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"gin-scaffold/internal/app/types/common"
 	"gin-scaffold/pkg/http_call"
 	"gin-scaffold/pkg/logger"
 	"github.com/gin-gonic/gin"
@@ -56,7 +57,6 @@ func Error(ctx *gin.Context, err *error, code int, msg interface{}) {
 	qerr.Msg = fmt.Sprintf("%+v", *err)
 
 	marshal, _ := json.Marshal(qerr)
-	logger.ErrorLogger.Error(string(marshal))
 	logger.Logger.Error(string(marshal))
 
 	markdown := fmt.Sprintf(`
@@ -89,6 +89,22 @@ func HandleDefault(ctx *gin.Context, res interface{}) func(*error) {
 			Error(ctx, err, 500, res)
 			return
 		}
+		Success(ctx, res)
+	}
+
+	return handler
+}
+func HandleListDefault(ctx *gin.Context, res common.IBaseListResp) func(*error) {
+	// 定义延迟处理函数
+	handler := func(err *error) {
+		if r := recover(); r != nil {
+			*err = errors.New(fmt.Sprintf("%v", r))
+		}
+		if *err != nil {
+			Error(ctx, err, 500, res)
+			return
+		}
+		res.Adjust()
 		Success(ctx, res)
 	}
 

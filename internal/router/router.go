@@ -25,6 +25,8 @@ func InitRouter(r *gin.Engine) {
 	r.Use(middleware.CorsMiddleware())
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
+	initSystemRout(r)
+
 	// 其他路由配置...
 	testGroup := r.Group("test")
 	{
