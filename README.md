@@ -1,6 +1,7 @@
 # gin-scaffold
 gin 脚手架 旨在开箱即用 分层清晰 按需使用-- (逐步完善)
-    
+更多说明在语雀文档：https://www.yuque.com/juz652/ow4qcx?# 《程序项目》
+
     中间件：
         gorm  持久层
         zap   日志      (github.com/robfig/cron/v3)
