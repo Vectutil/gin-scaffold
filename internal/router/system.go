@@ -10,7 +10,7 @@ func initSystemRout(r *gin.Engine) {
 	{
 
 		userHandler := system.NewUserHandler()
-		userGroup := systemRoute.Group("/users")
+		userGroup := systemRoute.Group("/user")
 		{
 			userGroup.POST("", userHandler.Create)
 			userGroup.PUT("/:id", userHandler.Update)

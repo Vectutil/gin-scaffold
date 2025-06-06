@@ -10,9 +10,11 @@ import (
 )
 
 // UserDao 用户数据访问对象
-type UserDao struct {
-	db *gorm.DB
-}
+type (
+	UserDao struct {
+		db *gorm.DB
+	}
+)
 
 // NewUserDao 创建用户DAO实例
 func NewUserDao(db *gorm.DB) *UserDao {
@@ -64,7 +66,7 @@ func (d *UserDao) List(ctx context.Context, req *systype.UserQueryReq) ([]*sysmo
 	var users []*sysmodel.User
 	var total int64
 
-	query := d.db.WithContext(ctx).Model(&sysmodel.User{}).Where("deleted_at IS NULL")
+	query := d.db.WithContext(ctx).Model(&sysmodel.User{})
 
 	if req.Username != "" {
 		query = query.Where("username LIKE ?", "%"+req.Username+"%")

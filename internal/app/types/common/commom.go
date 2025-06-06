@@ -3,7 +3,7 @@ package common
 type ListReq struct {
 	BaseListParam
 	Page     int `json:"page" form:"page"`
-	PageSize int `json:"pageSize" form:"page"`
+	PageSize int `json:"pageSize" form:"pageSize"`
 }
 
 func (l *ListReq) Adjust() {

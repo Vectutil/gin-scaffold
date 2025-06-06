@@ -7,16 +7,23 @@ import (
 	sysmodel "gin-scaffold/internal/app/model/system"
 	"gin-scaffold/internal/app/types/common"
 	systype "gin-scaffold/internal/app/types/system"
+	"golang.org/x/crypto/bcrypt"
 	"gorm.io/gorm"
 	"time"
-
-	"golang.org/x/crypto/bcrypt"
 )
 
 // userLogic 用户业务逻辑
 type (
 	userLogic struct {
 		userDao *sysdao.UserDao
+	}
+	IUserLogic interface {
+		Create(ctx context.Context, req *systype.UserCreateReq, operatorID int64) error
+		Update(ctx context.Context, req *systype.UserUpdateReq, operatorID int64) error
+		Delete(ctx context.Context, id int64, operatorID int64) error
+		GetByID(ctx context.Context, id int64) (*systype.UserDataResp, error)
+		UpdateLoginInfo(ctx context.Context, id int64, ip string) error
+		GetList(ctx context.Context, req *systype.UserQueryReq) (*systype.UserDataListResp, error)
 	}
 )
 
@@ -73,6 +80,20 @@ func (l *userLogic) Update(ctx context.Context, req *systype.UserUpdateReq, oper
 	return l.userDao.Update(ctx, user)
 }
 
+// UpdateLoginInfo 更新登录信息
+func (l *userLogic) UpdateLoginInfo(ctx context.Context, id int64, ip string) error {
+	user, err := l.userDao.GetByID(ctx, id)
+	if err != nil {
+		return err
+	}
+
+	user.LoginCount++
+	user.LastLoginAt = time.Now().Unix()
+	user.LastLoginIP = ip
+
+	return l.userDao.Update(ctx, user)
+}
+
 // Delete 删除用户
 func (l *userLogic) Delete(ctx context.Context, id int64, operatorID int64) error {
 	user, err := l.userDao.GetByID(ctx, id)
@@ -110,25 +131,6 @@ func (l *userLogic) GetByID(ctx context.Context, id int64) (*systype.UserDataRes
 		UpdatedAt:   user.UpdatedAt,
 		UpdatedBy:   user.UpdatedBy,
 	}, nil
-}
-
-// List 查询用户列表
-func (l *userLogic) List(ctx context.Context, req *systype.UserQueryReq) ([]*sysmodel.User, int64, error) {
-	return l.userDao.List(ctx, req)
-}
-
-// UpdateLoginInfo 更新登录信息
-func (l *userLogic) UpdateLoginInfo(ctx context.Context, id int64, ip string) error {
-	user, err := l.userDao.GetByID(ctx, id)
-	if err != nil {
-		return err
-	}
-
-	user.LoginCount++
-	user.LastLoginAt = time.Now().Unix()
-	user.LastLoginIP = ip
-
-	return l.userDao.Update(ctx, user)
 }
 
 // GetList 查询用户列表
