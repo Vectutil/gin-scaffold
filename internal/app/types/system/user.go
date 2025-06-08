@@ -85,6 +85,7 @@ type UserQueryReq struct {
 type UserDataResp struct {
 	ID          int64     `json:"id"`          // 主键
 	Username    string    `json:"username"`    // 用户名
+	Password    string    `json:"-"`           // 密码
 	FullName    string    `json:"fullName"`    // 全名
 	Avatar      string    `json:"avatar"`      // 头像URL
 	Email       string    `json:"email"`       // 邮箱

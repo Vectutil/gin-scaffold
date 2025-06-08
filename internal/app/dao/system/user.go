@@ -61,6 +61,16 @@ func (d *UserDao) GetByUsername(ctx context.Context, username string) (*sysmodel
 	return &user, nil
 }
 
+// GetByPhone 根据手机号获取用户
+func (d *UserDao) GetByPhone(ctx context.Context, phone string) (*sysmodel.User, error) {
+	var user sysmodel.User
+	err := d.db.WithContext(ctx).Where("phone = ? AND deleted_at IS NULL", phone).First(&user).Error
+	if err != nil {
+		return nil, err
+	}
+	return &user, nil
+}
+
 // List 查询用户列表
 func (d *UserDao) List(ctx context.Context, req *systype.UserQueryReq) ([]*sysmodel.User, int64, error) {
 	var users []*sysmodel.User

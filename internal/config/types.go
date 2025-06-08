@@ -36,6 +36,7 @@ type Mysql struct {
 }
 
 type System struct {
+	Name      string `json:"name"`
 	Env       string `json:"env"`
 	Port      string `json:"port"`
 	Migration bool   `json:"migration"`

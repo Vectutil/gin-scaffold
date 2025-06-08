@@ -6,6 +6,7 @@ import (
 	"gin-scaffold/internal/app/response"
 	systype "gin-scaffold/internal/app/types/system"
 	"gin-scaffold/pkg/mysql"
+	"gin-scaffold/pkg/utils"
 	"strconv"
 	"strings"
 
@@ -28,6 +29,7 @@ func NewUserHandler() *UserHandler {
 // @Tags 用户管理
 // @Accept json
 // @Produce json
+// @Param Authorization header string true "Bearer 用户令牌"
 // @Param request body systype.UserCreateReq true "用户创建请求参数"
 // @Success 200 {object} systype.UserCreateResp "成功返回"
 // @Failure 500 {object} response.Response "内部错误"
@@ -51,10 +53,14 @@ func (h *UserHandler) Create(c *gin.Context) {
 
 	if strings.TrimSpace(req.Password) == "" {
 		err = errors.New("密码不能为空")
+		return
 	}
 
-	// TODO: 从上下文中获取操作者ID
-	operatorID := int64(1)
+	// 从上下文中获取操作者ID
+	operatorID, err := utils.GetUserIDFromContext(c)
+	if err != nil {
+		return
+	}
 
 	if err = userLogic.Create(c.Request.Context(), &req, operatorID); err != nil {
 		return
@@ -68,6 +74,7 @@ func (h *UserHandler) Create(c *gin.Context) {
 // @Tags 用户管理
 // @Accept json
 // @Produce json
+// @Param Authorization header string true "Bearer 用户令牌"
 // @Param id path int true "用户ID"
 // @Param request body systype.UserUpdateReq true "用户更新请求参数"
 // @Success 200 {object} systype.UserUpdateResp "成功返回"
@@ -97,8 +104,11 @@ func (h *UserHandler) Update(c *gin.Context) {
 
 	req.ID = id
 
-	// TODO: 从上下文中获取操作者ID
-	operatorID := int64(1)
+	// 从上下文中获取操作者ID
+	operatorID, err := utils.GetUserIDFromContext(c)
+	if err != nil {
+		return
+	}
 
 	if err = userLogic.Update(c.Request.Context(), &req, operatorID); err != nil {
 		return
@@ -112,6 +122,7 @@ func (h *UserHandler) Update(c *gin.Context) {
 // @Tags 用户管理
 // @Accept json
 // @Produce json
+// @Param Authorization header string true "Bearer 用户令牌"
 // @Param id path int true "用户ID"
 // @Success 200 {object} systype.UserDeleteResp "成功返回"
 // @Failure 500 {object} response.Response "内部错误"
@@ -133,8 +144,11 @@ func (h *UserHandler) Delete(c *gin.Context) {
 		return
 	}
 
-	// TODO: 从上下文中获取操作者ID
-	operatorID := int64(1)
+	// 从上下文中获取操作者ID
+	operatorID, err := utils.GetUserIDFromContext(c)
+	if err != nil {
+		return
+	}
 
 	if err = userLogic.Delete(c.Request.Context(), id, operatorID); err != nil {
 		return
@@ -148,6 +162,7 @@ func (h *UserHandler) Delete(c *gin.Context) {
 // @Tags 用户管理
 // @Accept json
 // @Produce json
+// @Param Authorization header string true "Bearer 用户令牌"
 // @Param id path int true "用户ID"
 // @Success 200 {object} systype.UserDataResp "成功返回"
 // @Failure 500 {object} response.Response "内部错误"
@@ -169,6 +184,9 @@ func (h *UserHandler) GetByID(c *gin.Context) {
 		return
 	}
 	res, err = userLogic.GetByID(c.Request.Context(), id)
+	if err != nil {
+		return
+	}
 }
 
 // List 查询用户列表
@@ -178,6 +196,7 @@ func (h *UserHandler) GetByID(c *gin.Context) {
 // @Tags 用户管理
 // @Accept json
 // @Produce json
+// @Param Authorization header string true "Bearer 用户令牌"
 // @Param page query int false "页码" default(1)
 // @Param page_size query int false "每页数量" default(10)
 // @Success 200 {object} systype.UserDataListResp "成功返回"
@@ -195,10 +214,6 @@ func (h *UserHandler) List(c *gin.Context) {
 	defer func() {
 		response.HandleListDefault(c, res)(&err)
 	}()
-
-	if err = c.ShouldBindQuery(&req); err != nil {
-		return
-	}
 
 	err = response.ShouldBindForList(c, &req)
 	if err != nil {

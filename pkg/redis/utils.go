@@ -17,10 +17,10 @@ func (c *redisClient) Set(ctx context.Context, key string, value interface{}, ex
 }
 
 // Get 获取redis
-func (c *redisClient) Get(ctx context.Context, key string) (interface{}, error) {
+func (c *redisClient) Get(ctx context.Context, key string) (string, error) {
 	val, err := c.client.Get(ctx, key).Result()
 	if err != nil {
-		return nil, err
+		return "", err
 	}
 	return val, nil
 }

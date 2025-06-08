@@ -30,6 +30,23 @@ type qwError struct {
 	Request   interface{} `json:"request"`
 }
 
+func NewError(code int, msg string) error {
+	return &appError{code: code, msg: msg}
+}
+
+// appError 在项目中定义统一错误类型
+type appError struct {
+	code int
+	msg  string
+}
+
+func (e *appError) Code() int {
+	return e.code
+}
+func (e *appError) Error() string {
+	return e.msg
+}
+
 // Success 成功返回
 func Success(ctx *gin.Context, data interface{}) {
 	ctx.JSON(http.StatusOK, Response{
@@ -79,14 +96,23 @@ func Error(ctx *gin.Context, err *error, code int, msg interface{}) {
 }
 
 // HandleDefault ，返回延迟处理函数
-func HandleDefault(ctx *gin.Context, res interface{}) func(*error, *int) {
+func HandleDefault(ctx *gin.Context, res interface{}) func(*error) {
 	// 定义延迟处理函数
-	handler := func(err *error, errCode *int) {
+	handler := func(err *error) {
 		if r := recover(); r != nil {
 			*err = errors.New(fmt.Sprintf("%v", r))
 		}
 		if *err != nil {
-			Error(ctx, err, *errCode, res)
+			resValue := fmt.Sprintf("%v", res)
+			code := http.StatusInternalServerError
+			var e *appError
+			if errors.As(*err, &e) {
+				code = e.Code()
+				if e.Error() != "" {
+					resValue = e.Error()
+				}
+			}
+			Error(ctx, err, code, resValue)
 			return
 		}
 		Success(ctx, res)
@@ -101,7 +127,16 @@ func HandleListDefault(ctx *gin.Context, res common.IBaseListResp) func(*error) 
 			*err = errors.New(fmt.Sprintf("%v", r))
 		}
 		if *err != nil {
-			Error(ctx, err, 500, res)
+			resValue := fmt.Sprintf("%v", res)
+			code := http.StatusInternalServerError
+			var e *appError
+			if errors.As(*err, &e) {
+				code = e.Code()
+				if e.Error() != "" {
+					resValue = e.Error()
+				}
+			}
+			Error(ctx, err, code, resValue)
 			return
 		}
 		res.Adjust()

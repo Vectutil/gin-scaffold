@@ -5,10 +5,13 @@ import (
 	"errors"
 	sysdao "gin-scaffold/internal/app/dao/system"
 	sysmodel "gin-scaffold/internal/app/model/system"
+	"gin-scaffold/internal/app/response"
 	"gin-scaffold/internal/app/types/common"
 	systype "gin-scaffold/internal/app/types/system"
 	"gin-scaffold/pkg/utils"
+	"golang.org/x/crypto/bcrypt"
 	"gorm.io/gorm"
+	"net/http"
 	"time"
 )
 
@@ -24,6 +27,8 @@ type (
 		GetByID(ctx context.Context, id int64) (*systype.UserDataResp, error)
 		UpdateLoginInfo(ctx context.Context, id int64, ip string) error
 		GetList(ctx context.Context, req *systype.UserQueryReq) (*systype.UserDataListResp, error)
+		GetByPhone(ctx context.Context, phone string) (*systype.UserDataResp, error)
+		CheckForLogin(ctx context.Context, phone string, password string) (*systype.UserDataResp, error)
 	}
 )
 
@@ -173,4 +178,53 @@ func (l *userLogic) GetList(ctx context.Context, req *systype.UserQueryReq) (*sy
 	}
 	res.TotalPage = res.GetTotalPage()
 	return res, nil
+}
+
+// GetByPhone 根据手机号获取用户
+func (l *userLogic) GetByPhone(ctx context.Context, phone string) (*systype.UserDataResp, error) {
+	user, err := l.userDao.GetByPhone(ctx, phone)
+	if err != nil {
+		return nil, err
+	}
+
+	if user.ID == 0 {
+		err = response.NewError(http.StatusInternalServerError, "用户不存在")
+		return nil, err
+	}
+
+	return &systype.UserDataResp{
+		ID:          user.ID,
+		Username:    user.Username,
+		Password:    user.Password,
+		FullName:    user.FullName,
+		Avatar:      user.Avatar,
+		Email:       user.Email,
+		Phone:       user.Phone,
+		DeptID:      user.DeptID,
+		Status:      user.Status,
+		LoginCount:  user.LoginCount,
+		LastLoginAt: user.LastLoginAt,
+		LastLoginIP: user.LastLoginIP,
+		TenantID:    user.TenantID,
+		OrgID:       user.OrgID,
+		Remark:      user.Remark,
+		CreatedAt:   user.CreatedAt,
+		CreatedBy:   user.CreatedBy,
+		UpdatedAt:   user.UpdatedAt,
+		UpdatedBy:   user.UpdatedBy,
+	}, nil
+}
+
+func (l *userLogic) CheckForLogin(ctx context.Context, phone string, password string) (*systype.UserDataResp, error) {
+	userInfo, err := l.GetByPhone(ctx, phone)
+	if err != nil {
+		return nil, err
+	}
+
+	// 校验密码是否争取
+	if err = bcrypt.CompareHashAndPassword([]byte(userInfo.Password), []byte(password)); err != nil {
+		return nil, response.NewError(http.StatusInternalServerError, "密码错误")
+	}
+	userInfo.Password = ""
+	return userInfo, nil
 }
