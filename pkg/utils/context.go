@@ -1,8 +1,15 @@
 package utils
 
 import (
-	"gin-scaffold/internal/app/types/system"
+	systype "gin-scaffold/internal/app/types/system"
 	"github.com/gin-gonic/gin"
+	"context"
+	"errors"
+)
+
+const (
+	UserIDKey   = "userID"
+	TenantIDKey = "tenantID"
 )
 
 // GetUserFromContext 从上下文中获取用户信息
@@ -21,10 +28,33 @@ func GetUserFromContext(c *gin.Context) (*systype.UserDataResp, error) {
 }
 
 // GetUserIDFromContext 从上下文中获取用户ID
-func GetUserIDFromContext(c *gin.Context) (int64, error) {
-	userInfo, err := GetUserFromContext(c)
-	if err != nil {
-		return 0, err
+func GetUserIDFromContext(ctx context.Context) (int64, error) {
+	if ctx == nil {
+		return 0, errors.New("context is nil")
 	}
-	return userInfo.ID, nil
-} 
+	if userID, ok := ctx.Value(UserIDKey).(int64); ok {
+		return userID, nil
+	}
+	return 0, errors.New("userID not found in context")
+}
+
+// GetTenantIDFromContext 从上下文中获取租户ID
+func GetTenantIDFromContext(ctx context.Context) (int64, error) {
+	if ctx == nil {
+		return 0, errors.New("context is nil")
+	}
+	if tenantID, ok := ctx.Value(TenantIDKey).(int64); ok {
+		return tenantID, nil
+	}
+	return 0, errors.New("tenantID not found in context")
+}
+
+// WithUserID 将用户ID添加到上下文
+func WithUserID(ctx context.Context, userID int64) context.Context {
+	return context.WithValue(ctx, UserIDKey, userID)
+}
+
+// WithTenantID 将租户ID添加到上下文
+func WithTenantID(ctx context.Context, tenantID int64) context.Context {
+	return context.WithValue(ctx, TenantIDKey, tenantID)
+}

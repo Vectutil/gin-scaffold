@@ -44,6 +44,11 @@ func AuthMiddleware() gin.HandlerFunc {
 		}
 		// 3. 设置到 Gin 上下文中
 		c.Set("user", userInfo)
+
+		// 将用户ID和租户ID添加到请求上下文
+		c.Request = c.Request.WithContext(utils.WithUserID(c.Request.Context(), userInfo.ID))
+		c.Request = c.Request.WithContext(utils.WithTenantID(c.Request.Context(), userInfo.TenantID))
+
 		c.Next()
 	}
 }

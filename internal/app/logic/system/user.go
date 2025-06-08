@@ -106,7 +106,7 @@ func (l *userLogic) Delete(ctx context.Context, id int64, operatorID int64) erro
 		return err
 	}
 
-	return l.userDao.Delete(ctx, user.ID, operatorID)
+	return l.userDao.Delete(ctx, user.ID)
 }
 
 // GetByID 根据ID获取用户

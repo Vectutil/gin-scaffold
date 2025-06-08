@@ -11,21 +11,29 @@ func initSystemRout(r *gin.Engine) {
 	authRouter := systemRoute
 	authRouter.Use(middleware.AuthMiddleware())
 
+	userHandler := system.NewUserHandler()
+
 	{
+		systemRoute.POST("/login", system.NewAuthHandler().Login)
+	}
 
-		userHandler := system.NewUserHandler()
+	userGroup := authRouter.Group("/user")
+	{
+		userGroup.POST("", userHandler.Create)
+		userGroup.PUT("/:id", userHandler.Update)
+		userGroup.DELETE("/:id", userHandler.Delete)
+		userGroup.GET("/:id", userHandler.GetByID)
+		userGroup.GET("", userHandler.List)
+	}
 
-		{
-			systemRoute.POST("/login", system.NewAuthHandler().Login)
-		}
-
-		userGroup := authRouter.Group("/user")
-		{
-			userGroup.POST("", userHandler.Create)
-			userGroup.PUT("/:id", userHandler.Update)
-			userGroup.DELETE("/:id", userHandler.Delete)
-			userGroup.GET("/:id", userHandler.GetByID)
-			userGroup.GET("", userHandler.List)
-		}
+	department := authRouter.Group("/department")
+	{
+		h := system.NewDepartmentHandler()
+		department.POST("", h.Create)
+		department.PUT("/:id", h.Update)
+		department.DELETE("/:id", h.Delete)
+		department.GET("/:id", h.GetByID)
+		department.GET("", h.List)
+		department.GET("/tree", h.GetTree)
 	}
 }

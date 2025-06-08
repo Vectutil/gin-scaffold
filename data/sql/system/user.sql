@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS `user`
     `last_login_at`         INT(11)     NOT NULL DEFAULT 0 COMMENT '最后登录时间',
     `last_login_ip`         VARCHAR(45)  NOT NULL DEFAULT '' COMMENT '最后登录IP地址',
     `tenant_id`             BIGINT(20)   NOT NULL DEFAULT 0 COMMENT '租户ID',
-    `org_id`                BIGINT(20)   NOT NULL DEFAULT 0 COMMENT '组织ID',
+    `org_id`                BIGINT(20)   NOT NULL DEFAULT 0 COMMENT '组织ID(暂时没能力构建)',
     `remark`                TEXT         NOT NULL COMMENT '备注信息',
     `created_at`            DATETIME     NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
     `created_by`            BIGINT(20)   NOT NULL DEFAULT 0 COMMENT '创建人ID',
