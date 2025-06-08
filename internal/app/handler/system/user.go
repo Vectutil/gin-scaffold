@@ -204,14 +204,15 @@ func (h *UserHandler) GetByID(c *gin.Context) {
 // @Router /user [get]
 func (h *UserHandler) List(c *gin.Context) {
 	var (
-		err       error
-		db        = mysql.GetDB()
-		req       systype.UserQueryReq
-		res       = &systype.UserDataListResp{}
-		userLogic = syslogic.NewUserLogic(db)
+		err        error
+		db, commit = mysql.GetTrans()
+		req        systype.UserQueryReq
+		res        = &systype.UserDataListResp{}
+		userLogic  = syslogic.NewUserLogic(db)
 	)
 
 	defer func() {
+		commit()
 		response.HandleListDefault(c, res)(&err)
 	}()
 

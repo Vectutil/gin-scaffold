@@ -35,7 +35,7 @@ func NewDepartmentHandler() *DepartmentHandler {
 func (h *DepartmentHandler) Create(c *gin.Context) {
 	var (
 		err       error
-		db        = mysql.GetDB()
+		db        = mysql.GetDB().Begin()
 		req       systype.DepartmentCreateReq
 		res       = &systype.DepartmentCreateResp{}
 		deptLogic = system.NewDepartmentLogic(db)

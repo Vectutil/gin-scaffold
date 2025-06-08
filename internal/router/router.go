@@ -1,7 +1,6 @@
 package router
 
 import (
-	"gin-scaffold/internal/app/handler"
 	"gin-scaffold/internal/middleware"
 	"github.com/gin-gonic/gin"
 	"time"
@@ -26,15 +25,5 @@ func InitRouter(r *gin.Engine) {
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
 	initSystemRout(r)
-
-	// 其他路由配置...
-	testGroup := r.Group("test")
-	{
-		test := handler.NewTest()
-		testGroup.POST("", test.TestHandle)
-		testGroup.GET("", test.TestHandleGet)
-		testGroup.PUT("", test.TestHandlePut)
-		testGroup.DELETE(":id", test.TestHandleDelete)
-	}
 
 }

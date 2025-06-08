@@ -36,4 +36,14 @@ func initSystemRout(r *gin.Engine) {
 		department.GET("", h.List)
 		department.GET("/tree", h.GetTree)
 	}
+
+	role := authRouter.Group("/role")
+	{
+		h := system.NewRoleHandler()
+		role.POST("", h.Create)
+		role.PUT("/:id", h.Update)
+		role.DELETE("/:id", h.Delete)
+		role.GET("/:id", h.GetByID)
+		role.GET("", h.List)
+	}
 }

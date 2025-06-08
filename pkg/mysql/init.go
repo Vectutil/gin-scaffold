@@ -63,12 +63,30 @@ func InitMysql() {
 	sqlDB.SetConnMaxLifetime(5 * time.Minute)
 	//db.Logger = logger.Default.LogMode(logger.Silent)
 
-	dbMap["jt"] = db
+	dbMap["lb"] = db
 }
 
 func GetDB(key ...string) *gorm.DB {
 	if len(key) == 0 {
-		return dbMap["jt"]
+		return dbMap["lb"]
 	}
 	return dbMap[key[0]]
+}
+
+// GetTrans 开启事务并返回事务句柄和提交函数
+func GetTrans() (*gorm.DB, func()) {
+	tx := dbMap["jt"].Begin()
+	commit := func() {
+		if r := recover(); r != nil {
+			tx.Rollback()
+			panic(r)
+		}
+
+		if err := tx.Error; err != nil {
+			tx.Rollback()
+		} else {
+			tx.Commit()
+		}
+	}
+	return tx, commit
 }

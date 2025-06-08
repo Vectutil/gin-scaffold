@@ -1,20 +1,15 @@
 package job
 
 import (
-	"jz-scraw/internal/config"
-	"jz-scraw/pkg/logger"
-	"jz-scraw/pkg/mysql"
+	"gin-scaffold/internal/config"
+	"gin-scaffold/pkg/logger"
+	"gin-scaffold/pkg/mysql"
 	"testing"
 )
 
 func Test(t *testing.T) {
 	xxxinit()
-	addRunStartSync()
-}
-
-func Test2(t *testing.T) {
-	xxxinit()
-	searchJobMqOne()
+	addExampleJob()
 }
 
 func xxxinit() {
