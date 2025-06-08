@@ -1,11 +1,13 @@
 package system
 
 import (
+	"errors"
 	syslogic "gin-scaffold/internal/app/logic/system"
 	"gin-scaffold/internal/app/response"
 	systype "gin-scaffold/internal/app/types/system"
 	"gin-scaffold/pkg/mysql"
 	"strconv"
+	"strings"
 
 	"github.com/gin-gonic/gin"
 )
@@ -45,6 +47,10 @@ func (h *UserHandler) Create(c *gin.Context) {
 
 	if err = c.ShouldBindJSON(&req); err != nil {
 		return
+	}
+
+	if strings.TrimSpace(req.Password) == "" {
+		err = errors.New("密码不能为空")
 	}
 
 	// TODO: 从上下文中获取操作者ID

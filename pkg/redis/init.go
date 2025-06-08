@@ -27,6 +27,6 @@ func Init() {
 	}
 }
 
-func GetRedisClient() *redisClient {
+func GetClient() *redisClient {
 	return rdb
 }

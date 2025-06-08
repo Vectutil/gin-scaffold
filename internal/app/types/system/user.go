@@ -1,7 +1,9 @@
 package system
 
 import (
+	"fmt"
 	"gin-scaffold/internal/app/types/common"
+	"strings"
 	"time"
 )
 
@@ -32,6 +34,7 @@ type User struct {
 
 // UserCreateReq 创建用户请求
 type UserCreateReq struct {
+	common.BaseParam
 	Username string `json:"username" binding:"required"` // 用户名
 	Password string `json:"password" binding:"required"` // 密码
 	FullName string `json:"fullName"`                    // 全名
@@ -40,6 +43,12 @@ type UserCreateReq struct {
 	DeptID   int64  `json:"deptId"`                      // 所属主部门ID
 	Status   int    `json:"status"`                      // 状态
 	Remark   string `json:"remark"`                      // 备注信息
+}
+
+func (u *UserCreateReq) Adjust() {
+	if strings.TrimSpace(u.Username) == "" {
+		u.Username = fmt.Sprintf("游客%d", time.Now().Unix())
+	}
 }
 
 type UserCreateResp struct {

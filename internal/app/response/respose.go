@@ -79,14 +79,14 @@ func Error(ctx *gin.Context, err *error, code int, msg interface{}) {
 }
 
 // HandleDefault ，返回延迟处理函数
-func HandleDefault(ctx *gin.Context, res interface{}) func(*error) {
+func HandleDefault(ctx *gin.Context, res interface{}) func(*error, *int) {
 	// 定义延迟处理函数
-	handler := func(err *error) {
+	handler := func(err *error, errCode *int) {
 		if r := recover(); r != nil {
 			*err = errors.New(fmt.Sprintf("%v", r))
 		}
 		if *err != nil {
-			Error(ctx, err, 500, res)
+			Error(ctx, err, *errCode, res)
 			return
 		}
 		Success(ctx, res)

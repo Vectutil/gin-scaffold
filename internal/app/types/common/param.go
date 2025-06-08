@@ -21,3 +21,25 @@ type BaseListResp struct {
 func (s *BaseListResp) Adjust() {
 
 }
+
+type IBaseParam interface {
+	Adjust()
+}
+
+type IBaseResp interface {
+	Adjust()
+}
+
+type BaseParam struct {
+}
+
+func (s *BaseParam) Adjust() {
+
+}
+
+type BaseResp struct {
+}
+
+func (s *BaseResp) Adjust() {
+
+}

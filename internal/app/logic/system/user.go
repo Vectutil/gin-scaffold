@@ -7,7 +7,7 @@ import (
 	sysmodel "gin-scaffold/internal/app/model/system"
 	"gin-scaffold/internal/app/types/common"
 	systype "gin-scaffold/internal/app/types/system"
-	"golang.org/x/crypto/bcrypt"
+	"gin-scaffold/pkg/utils"
 	"gorm.io/gorm"
 	"time"
 )
@@ -41,23 +41,23 @@ func (l *userLogic) Create(ctx context.Context, req *systype.UserCreateReq, oper
 	}
 
 	// 密码加密
-	hashedPassword, err := bcrypt.GenerateFromPassword([]byte(req.Password), bcrypt.DefaultCost)
+	hashedPassword, err := utils.GetHashStr(req.Password)
 	if err != nil {
 		return err
 	}
 
 	user := &sysmodel.User{
-		Username:  req.Username,
-		Password:  string(hashedPassword),
-		FullName:  req.FullName,
-		Email:     req.Email,
-		Phone:     req.Phone,
-		DeptID:    req.DeptID,
-		Status:    req.Status,
-		Remark:    req.Remark,
-		CreatedBy: operatorID,
-		UpdatedBy: operatorID,
+		Username: req.Username,
+		Password: string(hashedPassword),
+		FullName: req.FullName,
+		Email:    req.Email,
+		Phone:    req.Phone,
+		DeptID:   req.DeptID,
+		Status:   req.Status,
+		Remark:   req.Remark,
 	}
+	user.UpdatedBy = operatorID
+	user.CreatedBy = operatorID
 
 	return l.userDao.Create(ctx, user)
 }
