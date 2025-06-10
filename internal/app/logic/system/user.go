@@ -18,12 +18,14 @@ import (
 // userLogic 用户业务逻辑
 type (
 	userLogic struct {
-		userDao *sysdao.UserDao
+		userDao     *sysdao.UserDao
+		roleDao     *sysdao.RoleDao
+		roleUserDao *sysdao.UserRoleRelDao
 	}
 	IUserLogic interface {
-		Create(ctx context.Context, req *systype.UserCreateReq, operatorID int64) error
-		Update(ctx context.Context, req *systype.UserUpdateReq, operatorID int64) error
-		Delete(ctx context.Context, id int64, operatorID int64) error
+		Create(ctx context.Context, req *systype.UserCreateReq) error
+		Update(ctx context.Context, req *systype.UserUpdateReq) error
+		Delete(ctx context.Context, id int64) error
 		GetByID(ctx context.Context, id int64) (*systype.UserDataResp, error)
 		UpdateLoginInfo(ctx context.Context, id int64, ip string) error
 		GetList(ctx context.Context, req *systype.UserQueryReq) (*systype.UserDataListResp, error)
@@ -34,11 +36,15 @@ type (
 
 // NewUserLogic 创建用户Logic实例
 func NewUserLogic(db *gorm.DB) *userLogic {
-	return &userLogic{userDao: sysdao.NewUserDao(db)}
+	return &userLogic{
+		userDao:     sysdao.NewUserDao(db),
+		roleDao:     sysdao.NewRoleDao(db),
+		roleUserDao: sysdao.NewUserRoleRelDao(db),
+	}
 }
 
 // Create 创建用户
-func (l *userLogic) Create(ctx context.Context, req *systype.UserCreateReq, operatorID int64) error {
+func (l *userLogic) Create(ctx context.Context, req *systype.UserCreateReq) error {
 	// 检查用户名是否已存在
 	existUser, err := l.userDao.GetByUsername(ctx, req.Username)
 	if err == nil && existUser != nil {
@@ -61,17 +67,38 @@ func (l *userLogic) Create(ctx context.Context, req *systype.UserCreateReq, oper
 		Status:   req.Status,
 		Remark:   req.Remark,
 	}
-	user.UpdatedBy = operatorID
-	user.CreatedBy = operatorID
 
-	return l.userDao.Create(ctx, user)
+	tenantID, err := utils.GetTenantIDFromContext(ctx)
+	if err != nil {
+		return err
+	}
+
+	err = l.userDao.Create(ctx, user)
+
+	urList := make([]sysmodel.UserRoleRel, 0)
+
+	for _, id := range req.RoleIds {
+		urList = append(urList, sysmodel.UserRoleRel{
+			UserID:   user.ID,
+			RoleID:   id,
+			TenantID: tenantID,
+		})
+	}
+
+	return l.roleUserDao.CreateList(ctx, urList)
 }
 
 // Update 更新用户
-func (l *userLogic) Update(ctx context.Context, req *systype.UserUpdateReq, operatorID int64) error {
+func (l *userLogic) Update(ctx context.Context, req *systype.UserUpdateReq) error {
 	user, err := l.userDao.GetByID(ctx, req.ID)
 	if err != nil {
 		return err
+	}
+	if user.Phone != req.Phone {
+		existUser, _err := l.userDao.GetByPhone(ctx, req.Phone)
+		if _err == nil && existUser != nil {
+			return errors.New("用户名已存在")
+		}
 	}
 
 	user.FullName = req.FullName
@@ -80,9 +107,33 @@ func (l *userLogic) Update(ctx context.Context, req *systype.UserUpdateReq, oper
 	user.DeptID = req.DeptID
 	user.Status = req.Status
 	user.Remark = req.Remark
-	user.UpdatedBy = operatorID
 
-	return l.userDao.Update(ctx, user)
+	err = l.userDao.Update(ctx, user)
+	if err != nil {
+		return err
+	}
+
+	// 删除用户与角色的旧关系
+	tenantID, err := utils.GetTenantIDFromContext(ctx)
+	if err != nil {
+		return err
+	}
+	err = l.roleUserDao.DeleteByUserID(ctx, req.ID)
+	if err != nil {
+		return err
+	}
+
+	// 插入用户与角色的新关系
+	urList := make([]sysmodel.UserRoleRel, 0)
+	for _, id := range req.RoleIds {
+		urList = append(urList, sysmodel.UserRoleRel{
+			UserID:   req.ID,
+			RoleID:   id,
+			TenantID: tenantID,
+		})
+	}
+	return l.roleUserDao.CreateList(ctx, urList)
+
 }
 
 // UpdateLoginInfo 更新登录信息
@@ -100,8 +151,23 @@ func (l *userLogic) UpdateLoginInfo(ctx context.Context, id int64, ip string) er
 }
 
 // Delete 删除用户
-func (l *userLogic) Delete(ctx context.Context, id int64, operatorID int64) error {
+func (l *userLogic) Delete(ctx context.Context, id int64) error {
 	user, err := l.userDao.GetByID(ctx, id)
+	if err != nil {
+		return err
+	}
+
+	opID, err := utils.GetUserIDFromContext(ctx)
+	if err != nil {
+		return err
+	}
+
+	if user.ID == opID {
+		return errors.New("不能删除自己")
+	}
+
+	// 删除用户与角色的关系
+	err = l.roleUserDao.DeleteByUserID(ctx, id)
 	if err != nil {
 		return err
 	}

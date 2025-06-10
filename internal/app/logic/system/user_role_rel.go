@@ -103,4 +103,4 @@ func (l *UserRoleRelLogic) GetList(ctx context.Context, req *systype.UserRoleRel
 	}
 
 	return resp, nil
-} 
+}

@@ -35,14 +35,15 @@ type User struct {
 // UserCreateReq 创建用户请求
 type UserCreateReq struct {
 	common.BaseParam
-	Username string `json:"username" binding:"required"` // 用户名
-	Password string `json:"password" binding:"required"` // 密码
-	FullName string `json:"fullName"`                    // 全名
-	Email    string `json:"email"`                       // 邮箱
-	Phone    string `json:"phone"`                       // 手机号
-	DeptID   int64  `json:"deptId"`                      // 所属主部门ID
-	Status   int    `json:"status"`                      // 状态
-	Remark   string `json:"remark"`                      // 备注信息
+	Username string  `json:"username" binding:"required"` // 用户名
+	Password string  `json:"password" binding:"required"` // 密码
+	FullName string  `json:"fullName"`                    // 全名
+	Email    string  `json:"email"`                       // 邮箱
+	Phone    string  `json:"phone"`                       // 手机号
+	DeptID   int64   `json:"deptId"`                      // 所属主部门ID
+	Status   int     `json:"status"`                      // 状态
+	Remark   string  `json:"remark"`                      // 备注信息
+	RoleIds  []int64 `json:"roleIds"`                     // 角色ID
 }
 
 func (u *UserCreateReq) Adjust() {
@@ -57,13 +58,15 @@ type UserCreateResp struct {
 
 // UserUpdateReq 更新用户请求
 type UserUpdateReq struct {
-	ID       int64  `json:"id" binding:"required"` // 主键
-	FullName string `json:"fullName"`              // 全名
-	Email    string `json:"email"`                 // 邮箱
-	Phone    string `json:"phone"`                 // 手机号
-	DeptID   int64  `json:"deptId"`                // 所属主部门ID
-	Status   int    `json:"status"`                // 状态
-	Remark   string `json:"remark"`                // 备注信息
+	ID       int64   `json:"id" binding:"required"`           // 主键
+	Username string  `gorm:"column:username" json:"username"` // 用户名
+	FullName string  `json:"fullName"`                        // 全名
+	Email    string  `json:"email"`                           // 邮箱
+	Phone    string  `json:"phone"`                           // 手机号
+	DeptID   int64   `json:"deptId"`                          // 所属主部门ID
+	Status   int     `json:"status"`                          // 状态
+	Remark   string  `json:"remark"`                          // 备注信息
+	RoleIds  []int64 `json:"roleIds"`                         // 角色ID
 }
 type UserUpdateResp struct {
 	ID int64 `json:"id"` // 主键

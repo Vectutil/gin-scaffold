@@ -79,7 +79,7 @@ func GetTrans() (*gorm.DB, func()) {
 	commit := func() {
 		if r := recover(); r != nil {
 			tx.Rollback()
-			panic(r)
+			return
 		}
 
 		if err := tx.Error; err != nil {

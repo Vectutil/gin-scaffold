@@ -6,7 +6,6 @@ import (
 	"gin-scaffold/internal/app/response"
 	systype "gin-scaffold/internal/app/types/system"
 	"gin-scaffold/pkg/mysql"
-	"gin-scaffold/pkg/utils"
 	"strconv"
 	"strings"
 
@@ -36,14 +35,14 @@ func NewUserHandler() *UserHandler {
 // @Router /user [post]
 func (h *UserHandler) Create(c *gin.Context) {
 	var (
-		err       error
-		db        = mysql.GetDB()
-		req       systype.UserCreateReq
-		res       = &systype.UserCreateResp{}
-		userLogic = syslogic.NewUserLogic(db)
+		err        error
+		db, commit = mysql.GetTrans()
+		req        systype.UserCreateReq
+		res        = &systype.UserCreateResp{}
 	)
 
 	defer func() {
+		commit()
 		response.HandleDefault(c, res)(&err)
 	}()
 
@@ -56,13 +55,8 @@ func (h *UserHandler) Create(c *gin.Context) {
 		return
 	}
 
-	// 从上下文中获取操作者ID
-	operatorID, err := utils.GetUserIDFromContext(c)
-	if err != nil {
-		return
-	}
-
-	if err = userLogic.Create(c.Request.Context(), &req, operatorID); err != nil {
+	userLogic := syslogic.NewUserLogic(db)
+	if err = userLogic.Create(c.Request.Context(), &req); err != nil {
 		return
 	}
 }
@@ -82,35 +76,23 @@ func (h *UserHandler) Create(c *gin.Context) {
 // @Router /user/{id} [put]
 func (h *UserHandler) Update(c *gin.Context) {
 	var (
-		err       error
-		db        = mysql.GetDB()
-		req       systype.UserUpdateReq
-		res       = &systype.UserUpdateResp{}
-		userLogic = syslogic.NewUserLogic(db)
+		err        error
+		db, commit = mysql.GetTrans()
+		req        systype.UserUpdateReq
+		res        = &systype.UserUpdateResp{}
 	)
 
 	defer func() {
+		commit()
 		response.HandleDefault(c, res)(&err)
 	}()
-
-	id, err := strconv.ParseInt(c.Param("id"), 10, 64)
-	if err != nil {
-		return
-	}
 
 	if err = c.ShouldBindJSON(&req); err != nil {
 		return
 	}
 
-	req.ID = id
-
-	// 从上下文中获取操作者ID
-	operatorID, err := utils.GetUserIDFromContext(c)
-	if err != nil {
-		return
-	}
-
-	if err = userLogic.Update(c.Request.Context(), &req, operatorID); err != nil {
+	userLogic := syslogic.NewUserLogic(db)
+	if err = userLogic.Update(c.Request.Context(), &req); err != nil {
 		return
 	}
 }
@@ -129,13 +111,14 @@ func (h *UserHandler) Update(c *gin.Context) {
 // @Router /user/{id} [delete]
 func (h *UserHandler) Delete(c *gin.Context) {
 	var (
-		err       error
-		db        = mysql.GetDB()
-		res       = &systype.UserDeleteResp{}
-		userLogic = syslogic.NewUserLogic(db)
+		err        error
+		db, commit = mysql.GetTrans()
+		res        = &systype.UserDeleteResp{}
+		userLogic  = syslogic.NewUserLogic(db)
 	)
 
 	defer func() {
+		commit()
 		response.HandleDefault(c, res)(&err)
 	}()
 
@@ -144,13 +127,7 @@ func (h *UserHandler) Delete(c *gin.Context) {
 		return
 	}
 
-	// 从上下文中获取操作者ID
-	operatorID, err := utils.GetUserIDFromContext(c)
-	if err != nil {
-		return
-	}
-
-	if err = userLogic.Delete(c.Request.Context(), id, operatorID); err != nil {
+	if err = userLogic.Delete(c.Request.Context(), id); err != nil {
 		return
 	}
 }

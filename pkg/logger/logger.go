@@ -70,10 +70,6 @@ func InitLogger() {
 
 	Logger = zap.New(core, zap.AddCaller())
 	zap.ReplaceGlobals(Logger)
-
-	//ErrorLogger = zap.New(zapcore.NewCore(fileEncoder, errorWriter, zapcore.ErrorLevel))
-	//SlowLogger = zap.New(zapcore.NewCore(fileEncoder, slowWriter, zapcore.InfoLevel)) // 慢日志你手动打点
-
 }
 
 func getFileEncoder() zapcore.Encoder {

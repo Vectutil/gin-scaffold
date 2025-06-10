@@ -21,6 +21,11 @@ func (d *UserRoleRelDao) Create(ctx context.Context, rel *system.UserRoleRel) er
 	return d.db.WithContext(ctx).Create(rel).Error
 }
 
+// CreateList 批量创建用户角色关系
+func (d *UserRoleRelDao) CreateList(ctx context.Context, urList []system.UserRoleRel) error {
+	return d.db.WithContext(ctx).Scopes(common.TenantScope(ctx)).Create(&urList).Error
+}
+
 // Delete 删除用户角色关系
 func (d *UserRoleRelDao) Delete(ctx context.Context, userID, roleID int64) error {
 	return d.db.WithContext(ctx).Scopes(common.TenantScope(ctx)).
@@ -86,4 +91,4 @@ func (d *UserRoleRelDao) List(ctx context.Context, req *systype.UserRoleRelQuery
 	}
 
 	return rels, total, nil
-} 
+}
