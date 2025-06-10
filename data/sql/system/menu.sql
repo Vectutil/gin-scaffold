@@ -2,7 +2,8 @@ CREATE TABLE IF NOT EXISTS `menu` (
     `id`              BIGINT(20)     NOT NULL AUTO_INCREMENT COMMENT '主键',
     `parent_id`       BIGINT(20)     NOT NULL DEFAULT 0 COMMENT '父ID',
     `name`            VARCHAR(100)   NOT NULL DEFAULT '' COMMENT '名称',
-    `type`            tinyint(1)    NOT NULL DEFAULT 1 COMMENT '类型: 1MENU, 2BUTTON',
+    `level`           tinyint(1)     NOT NULL DEFAULT 1 COMMENT '层级',
+    `type`            tinyint(1)     NOT NULL DEFAULT 1 COMMENT '类型: 1MENU, 2BUTTON',
     `path`            VARCHAR(255)   DEFAULT NULL COMMENT '前端路由地址',
     `permission_key`  VARCHAR(100)   DEFAULT NULL COMMENT '权限标识 如 user:add',
     `order_num`       INT            DEFAULT 0 COMMENT '排序',
@@ -14,5 +15,6 @@ CREATE TABLE IF NOT EXISTS `menu` (
     `deleted_at`      DATETIME       DEFAULT NULL COMMENT '删除时间',
     `deleted_by`      BIGINT(20)     DEFAULT NULL COMMENT '删除人',
     PRIMARY KEY (`id`),
+    KEY `permission_key` (`permission_key`),
     KEY `parent_id` (`parent_id`)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='菜单/按钮表';
