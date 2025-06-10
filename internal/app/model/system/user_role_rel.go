@@ -7,9 +7,9 @@ import (
 // UserRoleRel 用户角色关系模型
 type UserRoleRel struct {
 	common.BaseModel
-	TenantID int64 `json:"tenantId"`
-	UserID   int64 `json:"userId"`
-	RoleID   int64 `json:"roleId"`
+	TenantID int64 `json:"tenantId"` // 租户ID
+	UserID   int64 `json:"userId"`   // 用户ID
+	RoleID   int64 `json:"roleId"` // 角色ID
 }
 
 // TableName 设置表名

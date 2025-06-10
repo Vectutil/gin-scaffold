@@ -65,7 +65,7 @@ type DepartmentTreeResp struct {
 	ID       int64                `json:"id"`                 // 部门ID
 	DeptName string               `json:"deptName"`           // 部门名称
 	TenantID int64                `json:"tenantId"`           // 租户ID
-	ParentID *int64               `json:"parentId"`           // 上级部门ID
+	ParentID int64                `json:"parentId"`           // 上级部门ID
 	Status   int8                 `json:"status"`             // 状态：1启用 0禁用
 	Children []DepartmentTreeResp `json:"children,omitempty"` // 子部门
 }

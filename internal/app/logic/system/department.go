@@ -22,8 +22,8 @@ func NewDepartmentLogic(db *gorm.DB) *DepartmentLogic {
 // Create 创建部门
 func (l *DepartmentLogic) Create(ctx context.Context, req *systype.DepartmentCreateReq, operatorID int64) error {
 	dept := &sysmodel.Department{
-		DeptName: req.DeptName,
-		ParentID: req.ParentID,
+		Name:     req.DeptName,
+		ParentID: *req.ParentID,
 		Status:   req.Status,
 	}
 
@@ -32,25 +32,28 @@ func (l *DepartmentLogic) Create(ctx context.Context, req *systype.DepartmentCre
 
 // Update 更新部门
 func (l *DepartmentLogic) Update(ctx context.Context, req *systype.DepartmentUpdateReq, operatorID int64) error {
-	dept := &sysmodel.Department{
-		DeptName: req.DeptName,
-		ParentID: req.ParentID,
-		Status:   req.Status,
+	// 检查部门是否存在
+	dept, err := l.dao.GetByID(ctx, req.ID)
+	if err != nil {
+		return err
 	}
-	dept.ID = req.ID
+
+	dept.Name = req.DeptName
+	dept.ParentID = *req.ParentID
+	dept.Status = req.Status
 
 	return l.dao.Update(ctx, dept)
 }
 
 // Delete 删除部门
 func (l *DepartmentLogic) Delete(ctx context.Context, id int64, operatorID int64) error {
-	// 检查是否有子部门
+	// 检查是否存在子部门
 	count, err := l.dao.CountByParentID(ctx, id)
 	if err != nil {
 		return err
 	}
 	if count > 0 {
-		return errors.New("部门下存在子部门，无法删除")
+		return errors.New("存在子部门，无法删除")
 	}
 
 	return l.dao.Delete(ctx, id)
@@ -65,16 +68,14 @@ func (l *DepartmentLogic) GetByID(ctx context.Context, id int64) (*systype.Depar
 
 	return &systype.DepartmentDataResp{
 		ID:        dept.ID,
-		DeptName:  dept.DeptName,
+		DeptName:  dept.Name,
 		TenantID:  dept.TenantID,
-		ParentID:  dept.ParentID,
+		ParentID:  &dept.ParentID,
 		Status:    dept.Status,
 		CreatedAt: dept.CreatedAt,
 		CreatedBy: dept.CreatedBy,
 		UpdatedAt: dept.UpdatedAt,
 		UpdatedBy: dept.UpdatedBy,
-		DeletedAt: dept.DeletedAt,
-		DeletedBy: dept.DeletedBy,
 	}, nil
 }
 
@@ -94,16 +95,14 @@ func (l *DepartmentLogic) GetList(ctx context.Context, req *systype.DepartmentQu
 	for _, dept := range depts {
 		resp.List = append(resp.List, systype.DepartmentDataResp{
 			ID:        dept.ID,
-			DeptName:  dept.DeptName,
+			DeptName:  dept.Name,
 			TenantID:  dept.TenantID,
-			ParentID:  dept.ParentID,
+			ParentID:  &dept.ParentID,
 			Status:    dept.Status,
 			CreatedAt: dept.CreatedAt,
 			CreatedBy: dept.CreatedBy,
 			UpdatedAt: dept.UpdatedAt,
 			UpdatedBy: dept.UpdatedBy,
-			DeletedAt: dept.DeletedAt,
-			DeletedBy: dept.DeletedBy,
 		})
 	}
 
@@ -112,38 +111,37 @@ func (l *DepartmentLogic) GetList(ctx context.Context, req *systype.DepartmentQu
 
 // GetTree 获取部门树
 func (l *DepartmentLogic) GetTree(ctx context.Context, tenantID int64) ([]systype.DepartmentTreeResp, error) {
-	depts, err := l.dao.GetAll(ctx)
+	trees, err := l.dao.GetTree(ctx, tenantID)
 	if err != nil {
 		return nil, err
 	}
 
-	// 构建部门树
-	deptMap := make(map[int64]*systype.DepartmentTreeResp)
-	var roots []systype.DepartmentTreeResp
-
-	// 先将所有部门转换为树节点
-	for _, dept := range depts {
-		tree := systype.DepartmentTreeResp{
-			ID:       dept.ID,
-			DeptName: dept.DeptName,
-			TenantID: dept.TenantID,
-			ParentID: dept.ParentID,
-			Status:   dept.Status,
-		}
-		deptMap[dept.ID] = &tree
+	resp := make([]systype.DepartmentTreeResp, 0, len(trees))
+	for _, tree := range trees {
+		resp = append(resp, systype.DepartmentTreeResp{
+			ID:       tree.ID,
+			DeptName: tree.Name,
+			TenantID: tree.TenantID,
+			ParentID: tree.ParentID,
+			Status:   tree.Status,
+			Children: convertTreeToResp(tree.Children),
+		})
 	}
 
-	// 构建树结构
-	for _, dept := range depts {
-		if dept.ParentID == nil {
-			// 根节点
-			roots = append(roots, *deptMap[dept.ID])
-		} else {
-			// 子节点
-			parent := deptMap[*dept.ParentID]
-			parent.Children = append(parent.Children, *deptMap[dept.ID])
-		}
-	}
+	return resp, nil
+}
 
-	return roots, nil
+func convertTreeToResp(trees []sysmodel.DepartmentTree) []systype.DepartmentTreeResp {
+	resp := make([]systype.DepartmentTreeResp, 0, len(trees))
+	for _, tree := range trees {
+		resp = append(resp, systype.DepartmentTreeResp{
+			ID:       tree.ID,
+			DeptName: tree.Name,
+			TenantID: tree.TenantID,
+			ParentID: tree.ParentID,
+			Status:   tree.Status,
+			Children: convertTreeToResp(tree.Children),
+		})
+	}
+	return resp
 }
