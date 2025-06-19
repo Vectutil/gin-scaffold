@@ -2,7 +2,7 @@ package common
 
 import (
 	"context"
-	"gin-scaffold/pkg/utils"
+	"gin-scaffold/internal/middleware/metadata"
 	"gorm.io/gorm"
 	"time"
 )
@@ -18,34 +18,17 @@ type BaseModel struct {
 	DeletedBy int64          `gorm:"column:deleted_by" json:"deletedBy"` // 删除人ID
 }
 
-// TenantScope 租户作用域
-func TenantScope(ctx context.Context) func(db *gorm.DB) *gorm.DB {
-	return func(db *gorm.DB) *gorm.DB {
-		if tenantID, err := utils.GetTenantIDFromContext(ctx); err == nil {
-			return db.Where("tenant_id = ?", tenantID)
-		}
-		return db
-	}
-}
-
-// NotDeletedScope 未删除作用域
-func NotDeletedScope() func(db *gorm.DB) *gorm.DB {
-	return func(db *gorm.DB) *gorm.DB {
-		return db.Where("deleted_at IS NULL")
-	}
-}
-
 // BeforeCreate 创建前钩子
 func (m *BaseModel) BeforeCreate(tx *gorm.DB) error {
 	// 从上下文中获取租户ID和用户ID
 	if ctx, ok := tx.Statement.Context.(context.Context); ok {
-		if tenantID, err := utils.GetTenantIDFromContext(ctx); err == nil {
-			m.TenantID = tenantID
-		}
-		if userID, err := utils.GetUserIDFromContext(ctx); err == nil {
-			m.CreatedBy = userID
-			m.UpdatedBy = userID
-		}
+		//if tenantID, err := utils.GetTenantIDFromContext(ctx); err == nil {
+		m.TenantID = metadata.GetTenantID(ctx)
+		//}
+		//if userID, err := utils.GetUserIDFromContext(ctx); err == nil {
+		m.CreatedBy = metadata.GetUserID(ctx)
+		m.UpdatedBy = metadata.GetUserID(ctx)
+		//}
 	}
 	return nil
 }
@@ -54,9 +37,9 @@ func (m *BaseModel) BeforeCreate(tx *gorm.DB) error {
 func (m *BaseModel) BeforeUpdate(tx *gorm.DB) error {
 	// 从上下文中获取用户ID
 	if ctx, ok := tx.Statement.Context.(context.Context); ok {
-		if userID, err := utils.GetUserIDFromContext(ctx); err == nil {
-			m.UpdatedBy = userID
-		}
+		//if userID, err := utils.GetUserIDFromContext(ctx); err == nil {
+		m.UpdatedBy = metadata.GetUserID(ctx)
+		//}
 	}
 	return nil
 }
@@ -65,9 +48,9 @@ func (m *BaseModel) BeforeUpdate(tx *gorm.DB) error {
 func (m *BaseModel) BeforeDelete(tx *gorm.DB) error {
 	// 从上下文中获取用户ID
 	if ctx, ok := tx.Statement.Context.(context.Context); ok {
-		if userID, err := utils.GetUserIDFromContext(ctx); err == nil {
-			m.DeletedBy = userID
-		}
+		//if userID, err := utils.GetUserIDFromContext(ctx); err == nil {
+		m.DeletedBy = metadata.GetUserID(ctx)
+		//}
 	}
 	return nil
 }

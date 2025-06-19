@@ -23,20 +23,20 @@ func (d *DepartmentDao) Create(ctx context.Context, dept *sysmodel.Department) e
 
 // Update 更新部门
 func (d *DepartmentDao) Update(ctx context.Context, dept *sysmodel.Department) error {
-	return d.db.WithContext(ctx).Scopes(common.TenantScope(ctx), common.NotDeletedScope()).
+	return d.db.WithContext(ctx).Scopes(common.TenantScope(ctx)).
 		Model(&sysmodel.Department{}).Where("id = ?", dept.ID).Updates(dept).Error
 }
 
 // Delete 删除部门
 func (d *DepartmentDao) Delete(ctx context.Context, id int64) error {
-	return d.db.WithContext(ctx).Scopes(common.TenantScope(ctx), common.NotDeletedScope()).
+	return d.db.WithContext(ctx).Scopes(common.TenantScope(ctx)).
 		Model(&sysmodel.Department{}).Where("id = ?", id).Update("deleted_at", gorm.Expr("NOW()")).Error
 }
 
 // GetByID 根据ID获取部门
 func (d *DepartmentDao) GetByID(ctx context.Context, id int64) (*sysmodel.Department, error) {
 	var dept sysmodel.Department
-	err := d.db.WithContext(ctx).Scopes(common.TenantScope(ctx), common.NotDeletedScope()).
+	err := d.db.WithContext(ctx).Scopes(common.TenantScope(ctx)).
 		First(&dept, id).Error
 	if err != nil {
 		return nil, err
@@ -47,7 +47,7 @@ func (d *DepartmentDao) GetByID(ctx context.Context, id int64) (*sysmodel.Depart
 // CountByParentID 统计子部门数量
 func (d *DepartmentDao) CountByParentID(ctx context.Context, parentID int64) (int64, error) {
 	var count int64
-	err := d.db.WithContext(ctx).Scopes(common.TenantScope(ctx), common.NotDeletedScope()).
+	err := d.db.WithContext(ctx).Scopes(common.TenantScope(ctx)).
 		Model(&sysmodel.Department{}).Where("parent_id = ?", parentID).Count(&count).Error
 	return count, err
 }
@@ -59,7 +59,7 @@ func (d *DepartmentDao) List(ctx context.Context, req *systype.DepartmentQueryRe
 		total int64
 	)
 
-	query := d.db.WithContext(ctx).Scopes(common.TenantScope(ctx), common.NotDeletedScope()).
+	query := d.db.WithContext(ctx).Scopes(common.TenantScope(ctx)).
 		Model(&sysmodel.Department{})
 
 	if req.DeptName != "" {
@@ -85,7 +85,7 @@ func (d *DepartmentDao) List(ctx context.Context, req *systype.DepartmentQueryRe
 // GetAll 获取所有部门
 func (d *DepartmentDao) GetAll(ctx context.Context) ([]*sysmodel.Department, error) {
 	var depts []*sysmodel.Department
-	err := d.db.WithContext(ctx).Scopes(common.TenantScope(ctx), common.NotDeletedScope()).
+	err := d.db.WithContext(ctx).Scopes(common.TenantScope(ctx)).
 		Find(&depts).Error
 	return depts, err
 }

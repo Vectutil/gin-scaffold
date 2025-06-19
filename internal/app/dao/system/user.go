@@ -28,20 +28,20 @@ func (d *UserDao) Create(ctx context.Context, user *sysmodel.User) error {
 
 // Update 更新用户
 func (d *UserDao) Update(ctx context.Context, user *sysmodel.User) error {
-	return d.db.WithContext(ctx).Scopes(common.TenantScope(ctx), common.NotDeletedScope()).
+	return d.db.WithContext(ctx).Scopes(common.TenantScope(ctx)).
 		Model(&sysmodel.User{}).Where("id = ?", user.ID).Updates(user).Error
 }
 
 // Delete 删除用户
 func (d *UserDao) Delete(ctx context.Context, id int64) error {
-	return d.db.WithContext(ctx).Scopes(common.TenantScope(ctx), common.NotDeletedScope()).
+	return d.db.WithContext(ctx).Scopes(common.TenantScope(ctx)).
 		Model(&sysmodel.User{}).Where("id = ?", id).Update("deleted_at", gorm.Expr("NOW()")).Error
 }
 
 // GetByID 根据ID获取用户
 func (d *UserDao) GetByID(ctx context.Context, id int64) (*sysmodel.User, error) {
 	var user sysmodel.User
-	err := d.db.WithContext(ctx).Scopes(common.TenantScope(ctx), common.NotDeletedScope()).
+	err := d.db.WithContext(ctx).Scopes(common.TenantScope(ctx)).
 		First(&user, id).Error
 	if err != nil {
 		return nil, err
@@ -52,7 +52,7 @@ func (d *UserDao) GetByID(ctx context.Context, id int64) (*sysmodel.User, error)
 // GetByUsername 根据用户名获取用户
 func (d *UserDao) GetByUsername(ctx context.Context, username string) (*sysmodel.User, error) {
 	var user sysmodel.User
-	err := d.db.WithContext(ctx).Scopes(common.TenantScope(ctx), common.NotDeletedScope()).
+	err := d.db.WithContext(ctx).Scopes(common.TenantScope(ctx)).
 		Where("username = ?", username).First(&user).Error
 	if err != nil {
 		return nil, err
@@ -77,7 +77,7 @@ func (d *UserDao) List(ctx context.Context, req *systype.UserQueryReq) ([]*sysmo
 		total int64
 	)
 
-	query := d.db.WithContext(ctx).Scopes(common.TenantScope(ctx), common.NotDeletedScope()).
+	query := d.db.WithContext(ctx).Scopes(common.TenantScope(ctx)).
 		Model(&sysmodel.User{})
 
 	// 添加查询条件
@@ -106,26 +106,26 @@ func (d *UserDao) List(ctx context.Context, req *systype.UserQueryReq) ([]*sysmo
 
 // UpdatePassword 更新密码
 func (d *UserDao) UpdatePassword(ctx context.Context, id int64, password string) error {
-	return d.db.WithContext(ctx).Scopes(common.TenantScope(ctx), common.NotDeletedScope()).
+	return d.db.WithContext(ctx).Scopes(common.TenantScope(ctx)).
 		Model(&sysmodel.User{}).Where("id = ?", id).Update("password", password).Error
 }
 
 // UpdateStatus 更新状态
 func (d *UserDao) UpdateStatus(ctx context.Context, id int64, status int) error {
-	return d.db.WithContext(ctx).Scopes(common.TenantScope(ctx), common.NotDeletedScope()).
+	return d.db.WithContext(ctx).Scopes(common.TenantScope(ctx)).
 		Model(&sysmodel.User{}).Where("id = ?", id).Update("status", status).Error
 }
 
 // UpdateDept 更新部门
 func (d *UserDao) UpdateDept(ctx context.Context, id int64, deptID int64) error {
-	return d.db.WithContext(ctx).Scopes(common.TenantScope(ctx), common.NotDeletedScope()).
+	return d.db.WithContext(ctx).Scopes(common.TenantScope(ctx)).
 		Model(&sysmodel.User{}).Where("id = ?", id).Update("dept_id", deptID).Error
 }
 
 // CountByDeptID 统计部门下的用户数量
 func (d *UserDao) CountByDeptID(ctx context.Context, deptID int64) (int64, error) {
 	var count int64
-	err := d.db.WithContext(ctx).Scopes(common.TenantScope(ctx), common.NotDeletedScope()).
+	err := d.db.WithContext(ctx).Scopes(common.TenantScope(ctx)).
 		Model(&sysmodel.User{}).Where("dept_id = ?", deptID).Count(&count).Error
 	return count, err
 }

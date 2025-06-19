@@ -1,15 +1,16 @@
 package utils
 
 import (
-	systype "gin-scaffold/internal/app/types/system"
-	"github.com/gin-gonic/gin"
 	"context"
 	"errors"
+	systype "gin-scaffold/internal/app/types/system"
+	"github.com/gin-gonic/gin"
 )
 
 const (
 	UserIDKey   = "userID"
 	TenantIDKey = "tenantID"
+	DeptIdKey   = "deptId"
 )
 
 // GetUserFromContext 从上下文中获取用户信息
