@@ -1,7 +1,7 @@
 CREATE TABLE IF NOT EXISTS `role`
 (
     `id`          BIGINT(20)  NOT NULL AUTO_INCREMENT COMMENT '主键',
-    `tenant_id`   BIGINT(20)  NOT NULL DEFAULT 0 COMMENT '租户ID',
+    `tenant_id`   BIGINT(20)  NOT NULL DEFAULT 0 COMMENT '租户Id',
     `name`        VARCHAR(50) NOT NULL DEFAULT '' COMMENT '角色名称',
     `code`        VARCHAR(50) NOT NULL DEFAULT '' COMMENT '角色编码',
     `description` VARCHAR(255)         DEFAULT '' COMMENT '描述',

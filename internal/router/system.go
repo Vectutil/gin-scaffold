@@ -22,7 +22,7 @@ func initSystemRout(r *gin.Engine) {
 		userGroup.POST("", userHandler.Create)
 		userGroup.PUT("/:id", userHandler.Update)
 		userGroup.DELETE("/:id", userHandler.Delete)
-		userGroup.GET("/:id", userHandler.GetByID)
+		userGroup.GET("/:id", userHandler.GetById)
 		userGroup.GET("", userHandler.List)
 	}
 
@@ -32,7 +32,7 @@ func initSystemRout(r *gin.Engine) {
 		department.POST("", h.Create)
 		department.PUT("/:id", h.Update)
 		department.DELETE("/:id", h.Delete)
-		department.GET("/:id", h.GetByID)
+		department.GET("/:id", h.GetById)
 		department.GET("", h.List)
 		department.GET("/tree", h.GetTree)
 	}
@@ -43,7 +43,7 @@ func initSystemRout(r *gin.Engine) {
 		role.POST("", h.Create)
 		role.PUT("/:id", h.Update)
 		role.DELETE("/:id", h.Delete)
-		role.GET("/:id", h.GetByID)
+		role.GET("/:id", h.GetById)
 		role.GET("", h.List)
 	}
 }

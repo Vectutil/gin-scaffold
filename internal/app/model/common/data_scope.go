@@ -9,9 +9,9 @@ import (
 // TenantScope 租户作用域
 func TenantScope(ctx context.Context) func(db *gorm.DB) *gorm.DB {
 	return func(db *gorm.DB) *gorm.DB {
-		//if tenantID, err := utils.GetTenantIDFromContext(ctx); err == nil {
-		if metadata.GetTenantID(ctx) != 0 {
-			return db.Where("tenant_id = ?", metadata.GetTenantID(ctx))
+		//if tenantId, err := utils.GetTenantIdFromContext(ctx); err == nil {
+		if metadata.GetTenantId(ctx) != 0 {
+			return db.Where("tenant_id = ?", metadata.GetTenantId(ctx))
 		}
 		//}
 		return db
@@ -20,10 +20,10 @@ func TenantScope(ctx context.Context) func(db *gorm.DB) *gorm.DB {
 
 func UserScope(ctx context.Context) func(db *gorm.DB) *gorm.DB {
 	return func(db *gorm.DB) *gorm.DB {
-		//if userId, err := utils.GetUserIDFromContext(ctx); err == nil {
+		//if userId, err := utils.GetUserIdFromContext(ctx); err == nil {
 		//}
-		if metadata.GetUserID(ctx) != 0 {
-			return db.Where("created_by = ?", metadata.GetUserID(ctx))
+		if metadata.GetUserId(ctx) != 0 {
+			return db.Where("created_by = ?", metadata.GetUserId(ctx))
 		}
 		return db
 	}

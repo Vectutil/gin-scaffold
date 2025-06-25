@@ -14,8 +14,8 @@ func RunInfo() {
 	goUrl := fmt.Sprintf("http://%s:%s", ip, port)
 	swaggerURL := fmt.Sprintf("http://%s:%s/swagger/index.html#/", ip, port)
 	logger.Logger.Info("项目启动成功")
-	logger.Logger.Info(fmt.Sprintf("项目启动成功，go  地 址: %s", goUrl))
-	logger.Logger.Info(fmt.Sprintf("项目启动成功，swag地址为: %s", swaggerURL))
+	logger.Logger.Info(fmt.Sprintf("项目启动成功，后台地址   : %s", goUrl))
+	logger.Logger.Info(fmt.Sprintf("项目启动成功，swag地址为 : %s", swaggerURL))
 
 }
 

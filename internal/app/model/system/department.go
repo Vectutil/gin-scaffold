@@ -8,7 +8,7 @@ import (
 type Department struct {
 	common.BaseModel
 	Name     string `json:"name"`      // 部门名称
-	ParentID int64  `json:"parent_id"` // 上级部门ID，NULL 表示顶级
+	ParentId int64  `json:"parent_id"` // 上级部门Id，NULL 表示顶级
 	Level    int8   `json:"level"`     // 深度
 	Status   int8   `json:"status"`    // 状态：1启用 0禁用
 }
@@ -21,7 +21,7 @@ func (Department) TableName() string {
 type DepartmentTree struct {
 	common.BaseModel
 	Name     string           `json:"name"`      // 部门名称
-	ParentID int64            `json:"parent_id"` // 上级部门ID，NULL 表示顶级
+	ParentId int64            `json:"parent_id"` // 上级部门Id，NULL 表示顶级
 	Level    int8             `json:"level"`     // 深度
 	Status   int8             `json:"status"`    // 状态：1启用 0禁用
 	Children []DepartmentTree `json:"children,omitempty"`

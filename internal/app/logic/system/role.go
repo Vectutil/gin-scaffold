@@ -20,7 +20,7 @@ func NewRoleLogic(db *gorm.DB) *RoleLogic {
 }
 
 // Create 创建角色
-func (l *RoleLogic) Create(ctx context.Context, req *systype.RoleCreateReq, operatorID int64) error {
+func (l *RoleLogic) Create(ctx context.Context, req *systype.RoleCreateReq, operatorId int64) error {
 	// 检查角色编码是否已存在
 	_, err := l.dao.GetByCode(ctx, req.Code)
 	if err == nil {
@@ -42,9 +42,9 @@ func (l *RoleLogic) Create(ctx context.Context, req *systype.RoleCreateReq, oper
 }
 
 // Update 更新角色
-func (l *RoleLogic) Update(ctx context.Context, req *systype.RoleUpdateReq, operatorID int64) error {
+func (l *RoleLogic) Update(ctx context.Context, req *systype.RoleUpdateReq, operatorId int64) error {
 	// 检查角色是否存在
-	role, err := l.dao.GetByID(ctx, req.ID)
+	role, err := l.dao.GetById(ctx, req.Id)
 	if err != nil {
 		return err
 	}
@@ -52,7 +52,7 @@ func (l *RoleLogic) Update(ctx context.Context, req *systype.RoleUpdateReq, oper
 	// 检查角色编码是否已被其他角色使用
 	if role.Code != req.Code {
 		existingRole, err := l.dao.GetByCode(ctx, req.Code)
-		if err == nil && existingRole.ID != req.ID {
+		if err == nil && existingRole.Id != req.Id {
 			return errors.New("角色编码已被其他角色使用")
 		}
 		if err != nil && err != gorm.ErrRecordNotFound {
@@ -70,19 +70,19 @@ func (l *RoleLogic) Update(ctx context.Context, req *systype.RoleUpdateReq, oper
 }
 
 // Delete 删除角色
-func (l *RoleLogic) Delete(ctx context.Context, id int64, operatorID int64) error {
+func (l *RoleLogic) Delete(ctx context.Context, id int64, operatorId int64) error {
 	return l.dao.Delete(ctx, id)
 }
 
-// GetByID 根据ID获取角色
-func (l *RoleLogic) GetByID(ctx context.Context, id int64) (*systype.RoleDataResp, error) {
-	role, err := l.dao.GetByID(ctx, id)
+// GetById 根据Id获取角色
+func (l *RoleLogic) GetById(ctx context.Context, id int64) (*systype.RoleDataResp, error) {
+	role, err := l.dao.GetById(ctx, id)
 	if err != nil {
 		return nil, err
 	}
 
 	return &systype.RoleDataResp{
-		ID:          role.ID,
+		Id:          role.Id,
 		Name:        role.Name,
 		Code:        role.Code,
 		Description: role.Description,
@@ -110,7 +110,7 @@ func (l *RoleLogic) GetList(ctx context.Context, req *systype.RoleQueryReq) (*sy
 
 	for _, role := range roles {
 		resp.List = append(resp.List, systype.RoleDataResp{
-			ID:          role.ID,
+			Id:          role.Id,
 			Name:        role.Name,
 			Code:        role.Code,
 			Description: role.Description,

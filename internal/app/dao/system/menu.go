@@ -23,7 +23,7 @@ func (d *MenuDao) Create(ctx context.Context, menu *system.Menu) error {
 // Update 更新菜单
 func (d *MenuDao) Update(ctx context.Context, menu *system.Menu) error {
 	return d.db.WithContext(ctx).Scopes(common.TenantScope(ctx)).
-		Model(&system.Menu{}).Where("id = ?", menu.ID).Updates(menu).Error
+		Model(&system.Menu{}).Where("id = ?", menu.Id).Updates(menu).Error
 }
 
 // Delete 删除菜单
@@ -32,8 +32,8 @@ func (d *MenuDao) Delete(ctx context.Context, id int64) error {
 		Model(&system.Menu{}).Where("id = ?", id).Update("deleted_at", gorm.Expr("NOW()")).Error
 }
 
-// GetByID 根据ID获取菜单
-func (d *MenuDao) GetByID(ctx context.Context, id int64) (*system.Menu, error) {
+// GetById 根据Id获取菜单
+func (d *MenuDao) GetById(ctx context.Context, id int64) (*system.Menu, error) {
 	var menu system.Menu
 	err := d.db.WithContext(ctx).Scopes(common.TenantScope(ctx)).
 		First(&menu, id).Error

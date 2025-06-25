@@ -17,14 +17,14 @@ var jwtSecret = []byte("github.com/linbe-ff") // 你自己的密钥
 
 // Claims 自定义 Claims 结构体（可按需添加字段）
 type Claims struct {
-	UserID int64  `json:"user_id"`
+	UserId int64  `json:"user_id"`
 	Role   string `json:"role"`
 	jwt.RegisteredClaims
 }
 
-func GenerateAccessToken(userID int64, role string) (string, error) {
+func GenerateAccessToken(userId int64, role string) (string, error) {
 	claims := Claims{
-		UserID: userID,
+		UserId: userId,
 		Role:   role,
 		RegisteredClaims: jwt.RegisteredClaims{
 			ExpiresAt: jwt.NewNumericDate(time.Now().Add(2 * time.Hour)),
@@ -36,9 +36,9 @@ func GenerateAccessToken(userID int64, role string) (string, error) {
 	return token.SignedString(jwtSecret)
 }
 
-func GenerateRefreshToken(userID int64) (string, error) {
+func GenerateRefreshToken(userId int64) (string, error) {
 	claims := Claims{
-		UserID: userID,
+		UserId: userId,
 		RegisteredClaims: jwt.RegisteredClaims{
 			ExpiresAt: jwt.NewNumericDate(time.Now().Add(30 * 24 * time.Hour)),
 			IssuedAt:  jwt.NewNumericDate(time.Now()),

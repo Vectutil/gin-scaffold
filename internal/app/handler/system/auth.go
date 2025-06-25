@@ -57,8 +57,8 @@ func (h *AuthHandler) Login(c *gin.Context) {
 	}
 
 	// 生成随机token
-	accToken, _ := utils.GenerateAccessToken(userInfo.ID, utils.RoleUser)
-	refToken, _ := utils.GenerateRefreshToken(userInfo.ID)
+	accToken, _ := utils.GenerateAccessToken(userInfo.Id, utils.RoleUser)
+	refToken, _ := utils.GenerateRefreshToken(userInfo.Id)
 
 	userData, _ := json.Marshal(userInfo)
 	// 将token存储在Redis中，设置过期时间为7*24小时
@@ -104,7 +104,7 @@ func RefreshToken(c *gin.Context) {
 	}
 
 	// 生成新的 access token
-	newAccessToken, _ := utils.GenerateAccessToken(claims.UserID, claims.Role)
+	newAccessToken, _ := utils.GenerateAccessToken(claims.UserId, claims.Role)
 
 	// 在响应头中添加 Authorization
 	c.Header("Authorization", "Bearer "+newAccessToken)

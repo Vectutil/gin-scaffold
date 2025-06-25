@@ -64,12 +64,12 @@ func (h *UserHandler) Create(c *gin.Context) {
 // Update 更新用户
 // @title 更新用户
 // @Summary 更新用户信息
-// @Description 根据用户ID更新用户信息
+// @Description 根据用户Id更新用户信息
 // @Tags 用户管理
 // @Accept json
 // @Produce json
 // @Param Authorization header string true "Bearer 用户令牌"
-// @Param id path int true "用户ID"
+// @Param id path int true "用户Id"
 // @Param request body systype.UserUpdateReq true "用户更新请求参数"
 // @Success 200 {object} systype.UserUpdateResp "成功返回"
 // @Failure 500 {object} response.Response "内部错误"
@@ -100,12 +100,12 @@ func (h *UserHandler) Update(c *gin.Context) {
 // Delete 删除用户
 // @title 删除用户
 // @Summary 删除指定用户
-// @Description 根据用户ID删除用户
+// @Description 根据用户Id删除用户
 // @Tags 用户管理
 // @Accept json
 // @Produce json
 // @Param Authorization header string true "Bearer 用户令牌"
-// @Param id path int true "用户ID"
+// @Param id path int true "用户Id"
 // @Success 200 {object} systype.UserDeleteResp "成功返回"
 // @Failure 500 {object} response.Response "内部错误"
 // @Router /user/{id} [delete]
@@ -132,19 +132,19 @@ func (h *UserHandler) Delete(c *gin.Context) {
 	}
 }
 
-// GetByID 根据ID获取用户
+// GetById 根据Id获取用户
 // @title 获取用户详情
 // @Summary 获取指定用户详情
-// @Description 根据用户ID获取用户详细信息
+// @Description 根据用户Id获取用户详细信息
 // @Tags 用户管理
 // @Accept json
 // @Produce json
 // @Param Authorization header string true "Bearer 用户令牌"
-// @Param id path int true "用户ID"
+// @Param id path int true "用户Id"
 // @Success 200 {object} systype.UserDataResp "成功返回"
 // @Failure 500 {object} response.Response "内部错误"
 // @Router /user/{id} [get]
-func (h *UserHandler) GetByID(c *gin.Context) {
+func (h *UserHandler) GetById(c *gin.Context) {
 	var (
 		err       error
 		db        = mysql.GetDB()
@@ -160,7 +160,7 @@ func (h *UserHandler) GetByID(c *gin.Context) {
 	if err != nil {
 		return
 	}
-	res, err = userLogic.GetByID(c.Request.Context(), id)
+	res, err = userLogic.GetById(c.Request.Context(), id)
 	if err != nil {
 		return
 	}

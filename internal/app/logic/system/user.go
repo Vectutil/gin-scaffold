@@ -26,7 +26,7 @@ type (
 		Create(ctx context.Context, req *systype.UserCreateReq) error
 		Update(ctx context.Context, req *systype.UserUpdateReq) error
 		Delete(ctx context.Context, id int64) error
-		GetByID(ctx context.Context, id int64) (*systype.UserDataResp, error)
+		GetById(ctx context.Context, id int64) (*systype.UserDataResp, error)
 		UpdateLoginInfo(ctx context.Context, id int64, ip string) error
 		GetList(ctx context.Context, req *systype.UserQueryReq) (*systype.UserDataListResp, error)
 		GetByPhone(ctx context.Context, phone string) (*systype.UserDataResp, error)
@@ -63,12 +63,12 @@ func (l *userLogic) Create(ctx context.Context, req *systype.UserCreateReq) erro
 		FullName: req.FullName,
 		Email:    req.Email,
 		Phone:    req.Phone,
-		DeptID:   req.DeptID,
+		DeptId:   req.DeptId,
 		Status:   req.Status,
 		Remark:   req.Remark,
 	}
 
-	tenantID, err := utils.GetTenantIDFromContext(ctx)
+	tenantId, err := utils.GetTenantIdFromContext(ctx)
 	if err != nil {
 		return err
 	}
@@ -78,11 +78,12 @@ func (l *userLogic) Create(ctx context.Context, req *systype.UserCreateReq) erro
 	urList := make([]sysmodel.UserRoleRel, 0)
 
 	for _, id := range req.RoleIds {
-		urList = append(urList, sysmodel.UserRoleRel{
-			UserID:   user.ID,
-			RoleID:   id,
-			TenantID: tenantID,
-		})
+		rel := sysmodel.UserRoleRel{
+			UserId: user.Id,
+			RoleId: id,
+		}
+		rel.TenantId = tenantId
+		urList = append(urList, rel)
 	}
 
 	return l.roleUserDao.CreateList(ctx, urList)
@@ -90,7 +91,7 @@ func (l *userLogic) Create(ctx context.Context, req *systype.UserCreateReq) erro
 
 // Update 更新用户
 func (l *userLogic) Update(ctx context.Context, req *systype.UserUpdateReq) error {
-	user, err := l.userDao.GetByID(ctx, req.ID)
+	user, err := l.userDao.GetById(ctx, req.Id)
 	if err != nil {
 		return err
 	}
@@ -104,7 +105,7 @@ func (l *userLogic) Update(ctx context.Context, req *systype.UserUpdateReq) erro
 	user.FullName = req.FullName
 	user.Email = req.Email
 	user.Phone = req.Phone
-	user.DeptID = req.DeptID
+	user.DeptId = req.DeptId
 	user.Status = req.Status
 	user.Remark = req.Remark
 
@@ -114,11 +115,11 @@ func (l *userLogic) Update(ctx context.Context, req *systype.UserUpdateReq) erro
 	}
 
 	// 删除用户与角色的旧关系
-	tenantID, err := utils.GetTenantIDFromContext(ctx)
+	tenantId, err := utils.GetTenantIdFromContext(ctx)
 	if err != nil {
 		return err
 	}
-	err = l.roleUserDao.DeleteByUserID(ctx, req.ID)
+	err = l.roleUserDao.DeleteByUserId(ctx, req.Id)
 	if err != nil {
 		return err
 	}
@@ -126,11 +127,12 @@ func (l *userLogic) Update(ctx context.Context, req *systype.UserUpdateReq) erro
 	// 插入用户与角色的新关系
 	urList := make([]sysmodel.UserRoleRel, 0)
 	for _, id := range req.RoleIds {
-		urList = append(urList, sysmodel.UserRoleRel{
-			UserID:   req.ID,
-			RoleID:   id,
-			TenantID: tenantID,
-		})
+		rel := sysmodel.UserRoleRel{
+			UserId: user.Id,
+			RoleId: id,
+		}
+		rel.TenantId = tenantId
+		urList = append(urList, rel)
 	}
 	return l.roleUserDao.CreateList(ctx, urList)
 
@@ -138,7 +140,7 @@ func (l *userLogic) Update(ctx context.Context, req *systype.UserUpdateReq) erro
 
 // UpdateLoginInfo 更新登录信息
 func (l *userLogic) UpdateLoginInfo(ctx context.Context, id int64, ip string) error {
-	user, err := l.userDao.GetByID(ctx, id)
+	user, err := l.userDao.GetById(ctx, id)
 	if err != nil {
 		return err
 	}
@@ -152,50 +154,50 @@ func (l *userLogic) UpdateLoginInfo(ctx context.Context, id int64, ip string) er
 
 // Delete 删除用户
 func (l *userLogic) Delete(ctx context.Context, id int64) error {
-	user, err := l.userDao.GetByID(ctx, id)
+	user, err := l.userDao.GetById(ctx, id)
 	if err != nil {
 		return err
 	}
 
-	opID, err := utils.GetUserIDFromContext(ctx)
+	opId, err := utils.GetUserIdFromContext(ctx)
 	if err != nil {
 		return err
 	}
 
-	if user.ID == opID {
+	if user.Id == opId {
 		return errors.New("不能删除自己")
 	}
 
 	// 删除用户与角色的关系
-	err = l.roleUserDao.DeleteByUserID(ctx, id)
+	err = l.roleUserDao.DeleteByUserId(ctx, id)
 	if err != nil {
 		return err
 	}
 
-	return l.userDao.Delete(ctx, user.ID)
+	return l.userDao.Delete(ctx, user.Id)
 }
 
-// GetByID 根据ID获取用户
-func (l *userLogic) GetByID(ctx context.Context, id int64) (*systype.UserDataResp, error) {
-	user, err := l.userDao.GetByID(ctx, id)
+// GetById 根据Id获取用户
+func (l *userLogic) GetById(ctx context.Context, id int64) (*systype.UserDataResp, error) {
+	user, err := l.userDao.GetById(ctx, id)
 	if err != nil {
 		return nil, err
 	}
 
 	return &systype.UserDataResp{
-		ID:          user.ID,
+		Id:          user.Id,
 		Username:    user.Username,
 		FullName:    user.FullName,
 		Avatar:      user.Avatar,
 		Email:       user.Email,
 		Phone:       user.Phone,
-		DeptID:      user.DeptID,
+		DeptId:      user.DeptId,
 		Status:      user.Status,
 		LoginCount:  user.LoginCount,
 		LastLoginAt: user.LastLoginAt,
 		LastLoginIP: user.LastLoginIP,
-		TenantID:    user.TenantID,
-		OrgID:       user.OrgID,
+		TenantId:    user.TenantId,
+		OrgId:       user.OrgId,
 		Remark:      user.Remark,
 		CreatedAt:   user.CreatedAt,
 		CreatedBy:   user.CreatedBy,
@@ -214,19 +216,19 @@ func (l *userLogic) GetList(ctx context.Context, req *systype.UserQueryReq) (*sy
 	list := make([]*systype.UserDataResp, 0, len(users))
 	for _, user := range users {
 		list = append(list, &systype.UserDataResp{
-			ID:          user.ID,
+			Id:          user.Id,
 			Username:    user.Username,
 			FullName:    user.FullName,
 			Avatar:      user.Avatar,
 			Email:       user.Email,
 			Phone:       user.Phone,
-			DeptID:      user.DeptID,
+			DeptId:      user.DeptId,
 			Status:      user.Status,
 			LoginCount:  user.LoginCount,
 			LastLoginAt: user.LastLoginAt,
 			LastLoginIP: user.LastLoginIP,
-			TenantID:    user.TenantID,
-			OrgID:       user.OrgID,
+			TenantId:    user.TenantId,
+			OrgId:       user.OrgId,
 			Remark:      user.Remark,
 			CreatedAt:   user.CreatedAt,
 			CreatedBy:   user.CreatedBy,
@@ -253,26 +255,26 @@ func (l *userLogic) GetByPhone(ctx context.Context, phone string) (*systype.User
 		return nil, err
 	}
 
-	if user.ID == 0 {
+	if user.Id == 0 {
 		err = response.NewError(http.StatusInternalServerError, "用户不存在")
 		return nil, err
 	}
 
 	return &systype.UserDataResp{
-		ID:          user.ID,
+		Id:          user.Id,
 		Username:    user.Username,
 		Password:    user.Password,
 		FullName:    user.FullName,
 		Avatar:      user.Avatar,
 		Email:       user.Email,
 		Phone:       user.Phone,
-		DeptID:      user.DeptID,
+		DeptId:      user.DeptId,
 		Status:      user.Status,
 		LoginCount:  user.LoginCount,
 		LastLoginAt: user.LastLoginAt,
 		LastLoginIP: user.LastLoginIP,
-		TenantID:    user.TenantID,
-		OrgID:       user.OrgID,
+		TenantId:    user.TenantId,
+		OrgId:       user.OrgId,
 		Remark:      user.Remark,
 		CreatedAt:   user.CreatedAt,
 		CreatedBy:   user.CreatedBy,

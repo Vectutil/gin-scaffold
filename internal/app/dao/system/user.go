@@ -29,7 +29,7 @@ func (d *UserDao) Create(ctx context.Context, user *sysmodel.User) error {
 // Update 更新用户
 func (d *UserDao) Update(ctx context.Context, user *sysmodel.User) error {
 	return d.db.WithContext(ctx).Scopes(common.TenantScope(ctx)).
-		Model(&sysmodel.User{}).Where("id = ?", user.ID).Updates(user).Error
+		Model(&sysmodel.User{}).Where("id = ?", user.Id).Updates(user).Error
 }
 
 // Delete 删除用户
@@ -38,8 +38,8 @@ func (d *UserDao) Delete(ctx context.Context, id int64) error {
 		Model(&sysmodel.User{}).Where("id = ?", id).Update("deleted_at", gorm.Expr("NOW()")).Error
 }
 
-// GetByID 根据ID获取用户
-func (d *UserDao) GetByID(ctx context.Context, id int64) (*sysmodel.User, error) {
+// GetById 根据Id获取用户
+func (d *UserDao) GetById(ctx context.Context, id int64) (*sysmodel.User, error) {
 	var user sysmodel.User
 	err := d.db.WithContext(ctx).Scopes(common.TenantScope(ctx)).
 		First(&user, id).Error
@@ -87,8 +87,8 @@ func (d *UserDao) List(ctx context.Context, req *systype.UserQueryReq) ([]*sysmo
 	if req.Status != 0 {
 		query = query.Where("status = ?", req.Status)
 	}
-	if req.DeptID != 0 {
-		query = query.Where("dept_id = ?", req.DeptID)
+	if req.DeptId != 0 {
+		query = query.Where("dept_id = ?", req.DeptId)
 	}
 
 	// 获取总数
@@ -117,15 +117,15 @@ func (d *UserDao) UpdateStatus(ctx context.Context, id int64, status int) error 
 }
 
 // UpdateDept 更新部门
-func (d *UserDao) UpdateDept(ctx context.Context, id int64, deptID int64) error {
+func (d *UserDao) UpdateDept(ctx context.Context, id int64, deptId int64) error {
 	return d.db.WithContext(ctx).Scopes(common.TenantScope(ctx)).
-		Model(&sysmodel.User{}).Where("id = ?", id).Update("dept_id", deptID).Error
+		Model(&sysmodel.User{}).Where("id = ?", id).Update("dept_id", deptId).Error
 }
 
-// CountByDeptID 统计部门下的用户数量
-func (d *UserDao) CountByDeptID(ctx context.Context, deptID int64) (int64, error) {
+// CountByDeptId 统计部门下的用户数量
+func (d *UserDao) CountByDeptId(ctx context.Context, deptId int64) (int64, error) {
 	var count int64
 	err := d.db.WithContext(ctx).Scopes(common.TenantScope(ctx)).
-		Model(&sysmodel.User{}).Where("dept_id = ?", deptID).Count(&count).Error
+		Model(&sysmodel.User{}).Where("dept_id = ?", deptId).Count(&count).Error
 	return count, err
 }

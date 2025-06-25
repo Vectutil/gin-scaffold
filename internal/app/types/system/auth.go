@@ -29,14 +29,14 @@ type RegisterReq struct {
 	Username        string `json:"username" binding:"required"`         // 用户名
 	Password        string `json:"password" binding:"required"`         // 密码
 	ConfirmPassword string `json:"confirm_password" binding:"required"` // 确认密码
-	Phone           string `json:"phone" binding:"required"`           // 手机号
-	Email           string `json:"email"`                              // 邮箱
-	FullName        string `json:"full_name"`                          // 姓名
+	Phone           string `json:"phone" binding:"required"`            // 手机号
+	Email           string `json:"email"`                               // 邮箱
+	FullName        string `json:"full_name"`                           // 姓名
 }
 
 // RegisterResp 注册响应
 type RegisterResp struct {
-	ID          int64  `json:"id"`           // 用户ID
+	Id          int64  `json:"id"`           // 用户Id
 	Username    string `json:"username"`     // 用户名
 	Phone       string `json:"phone"`        // 手机号
 	Email       string `json:"email"`        // 邮箱

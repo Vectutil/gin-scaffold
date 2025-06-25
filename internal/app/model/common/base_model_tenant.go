@@ -7,15 +7,16 @@ import (
 )
 
 type BaseModelOnlyTenant struct {
-	TenantID int64 `json:"tenantId" gorm:"not null;default:0;comment:租户ID"`
+	Id       int64 `json:"id"`
+	TenantId int64 `json:"tenantId"`
 }
 
 // BeforeCreate 创建前钩子
 func (m *BaseModelOnlyTenant) BeforeCreate(tx *gorm.DB) error {
-	// 从上下文中获取用户ID
+	// 从上下文中获取用户Id
 	if ctx, ok := tx.Statement.Context.(context.Context); ok {
-		//if tenantID, err := metadata.GetTenantID(ctx); err == nil {
-		m.TenantID = metadata.GetTenantID(ctx)
+		//if tenantId, err := metadata.GetTenantId(ctx); err == nil {
+		m.TenantId = metadata.GetTenantId(ctx)
 	}
 	return nil
 }

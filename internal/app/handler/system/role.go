@@ -49,13 +49,13 @@ func (h *RoleHandler) Create(c *gin.Context) {
 		return
 	}
 
-	// 从上下文中获取操作者ID
-	operatorID, err := utils.GetUserIDFromContext(c)
+	// 从上下文中获取操作者Id
+	operatorId, err := utils.GetUserIdFromContext(c)
 	if err != nil {
 		return
 	}
 
-	if err = roleLogic.Create(c.Request.Context(), &req, operatorID); err != nil {
+	if err = roleLogic.Create(c.Request.Context(), &req, operatorId); err != nil {
 		return
 	}
 }
@@ -63,12 +63,12 @@ func (h *RoleHandler) Create(c *gin.Context) {
 // Update 更新角色
 // @title 更新角色
 // @Summary 更新角色信息
-// @Description 根据角色ID更新角色信息
+// @Description 根据角色Id更新角色信息
 // @Tags 角色管理
 // @Accept json
 // @Produce json
 // @Param Authorization header string true "Bearer 用户令牌"
-// @Param id path int true "角色ID"
+// @Param id path int true "角色Id"
 // @Param request body systype.RoleUpdateReq true "角色更新请求参数"
 // @Success 200 {object} systype.RoleUpdateResp "成功返回"
 // @Failure 500 {object} response.Response "内部错误"
@@ -95,15 +95,15 @@ func (h *RoleHandler) Update(c *gin.Context) {
 		return
 	}
 
-	req.ID = id
+	req.Id = id
 
-	// 从上下文中获取操作者ID
-	operatorID, err := utils.GetUserIDFromContext(c)
+	// 从上下文中获取操作者Id
+	operatorId, err := utils.GetUserIdFromContext(c)
 	if err != nil {
 		return
 	}
 
-	if err = roleLogic.Update(c.Request.Context(), &req, operatorID); err != nil {
+	if err = roleLogic.Update(c.Request.Context(), &req, operatorId); err != nil {
 		return
 	}
 }
@@ -111,12 +111,12 @@ func (h *RoleHandler) Update(c *gin.Context) {
 // Delete 删除角色
 // @title 删除角色
 // @Summary 删除指定角色
-// @Description 根据角色ID删除角色
+// @Description 根据角色Id删除角色
 // @Tags 角色管理
 // @Accept json
 // @Produce json
 // @Param Authorization header string true "Bearer 用户令牌"
-// @Param id path int true "角色ID"
+// @Param id path int true "角色Id"
 // @Success 200 {object} systype.RoleDeleteResp "成功返回"
 // @Failure 500 {object} response.Response "内部错误"
 // @Router /role/{id} [delete]
@@ -137,30 +137,30 @@ func (h *RoleHandler) Delete(c *gin.Context) {
 		return
 	}
 
-	// 从上下文中获取操作者ID
-	operatorID, err := utils.GetUserIDFromContext(c)
+	// 从上下文中获取操作者Id
+	operatorId, err := utils.GetUserIdFromContext(c)
 	if err != nil {
 		return
 	}
 
-	if err = roleLogic.Delete(c.Request.Context(), id, operatorID); err != nil {
+	if err = roleLogic.Delete(c.Request.Context(), id, operatorId); err != nil {
 		return
 	}
 }
 
-// GetByID 根据ID获取角色
+// GetById 根据Id获取角色
 // @title 获取角色详情
 // @Summary 获取指定角色详情
-// @Description 根据角色ID获取角色详细信息
+// @Description 根据角色Id获取角色详细信息
 // @Tags 角色管理
 // @Accept json
 // @Produce json
 // @Param Authorization header string true "Bearer 用户令牌"
-// @Param id path int true "角色ID"
+// @Param id path int true "角色Id"
 // @Success 200 {object} systype.RoleDataResp "成功返回"
 // @Failure 500 {object} response.Response "内部错误"
 // @Router /role/{id} [get]
-func (h *RoleHandler) GetByID(c *gin.Context) {
+func (h *RoleHandler) GetById(c *gin.Context) {
 	var (
 		err       error
 		db        = mysql.GetDB()
@@ -176,7 +176,7 @@ func (h *RoleHandler) GetByID(c *gin.Context) {
 	if err != nil {
 		return
 	}
-	res, err = roleLogic.GetByID(c.Request.Context(), id)
+	res, err = roleLogic.GetById(c.Request.Context(), id)
 	if err != nil {
 		return
 	}
@@ -217,4 +217,4 @@ func (h *RoleHandler) List(c *gin.Context) {
 	if err != nil {
 		return
 	}
-} 
+}

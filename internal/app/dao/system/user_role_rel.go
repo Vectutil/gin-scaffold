@@ -27,39 +27,39 @@ func (d *UserRoleRelDao) CreateList(ctx context.Context, urList []system.UserRol
 }
 
 // Delete 删除用户角色关系
-func (d *UserRoleRelDao) Delete(ctx context.Context, userID, roleID int64) error {
+func (d *UserRoleRelDao) Delete(ctx context.Context, userId, roleId int64) error {
 	return d.db.WithContext(ctx).Scopes(common.TenantScope(ctx)).
-		Where("user_id = ? AND role_id = ?", userID, roleID).
+		Where("user_id = ? AND role_id = ?", userId, roleId).
 		Delete(&system.UserRoleRel{}).Error
 }
 
-// GetByUserID 根据用户ID获取角色关系
-func (d *UserRoleRelDao) GetByUserID(ctx context.Context, userID int64) ([]*system.UserRoleRel, error) {
+// GetByUserId 根据用户Id获取角色关系
+func (d *UserRoleRelDao) GetByUserId(ctx context.Context, userId int64) ([]*system.UserRoleRel, error) {
 	var rels []*system.UserRoleRel
 	err := d.db.WithContext(ctx).Scopes(common.TenantScope(ctx)).
-		Where("user_id = ?", userID).Find(&rels).Error
+		Where("user_id = ?", userId).Find(&rels).Error
 	return rels, err
 }
 
-// GetByRoleID 根据角色ID获取用户关系
-func (d *UserRoleRelDao) GetByRoleID(ctx context.Context, roleID int64) ([]*system.UserRoleRel, error) {
+// GetByRoleId 根据角色Id获取用户关系
+func (d *UserRoleRelDao) GetByRoleId(ctx context.Context, roleId int64) ([]*system.UserRoleRel, error) {
 	var rels []*system.UserRoleRel
 	err := d.db.WithContext(ctx).Scopes(common.TenantScope(ctx)).
-		Where("role_id = ?", roleID).Find(&rels).Error
+		Where("role_id = ?", roleId).Find(&rels).Error
 	return rels, err
 }
 
-// DeleteByUserID 删除用户的所有角色关系
-func (d *UserRoleRelDao) DeleteByUserID(ctx context.Context, userID int64) error {
+// DeleteByUserId 删除用户的所有角色关系
+func (d *UserRoleRelDao) DeleteByUserId(ctx context.Context, userId int64) error {
 	return d.db.WithContext(ctx).Scopes(common.TenantScope(ctx)).
-		Where("user_id = ?", userID).
+		Where("user_id = ?", userId).
 		Delete(&system.UserRoleRel{}).Error
 }
 
-// DeleteByRoleID 删除角色的所有用户关系
-func (d *UserRoleRelDao) DeleteByRoleID(ctx context.Context, roleID int64) error {
+// DeleteByRoleId 删除角色的所有用户关系
+func (d *UserRoleRelDao) DeleteByRoleId(ctx context.Context, roleId int64) error {
 	return d.db.WithContext(ctx).Scopes(common.TenantScope(ctx)).
-		Where("role_id = ?", roleID).
+		Where("role_id = ?", roleId).
 		Delete(&system.UserRoleRel{}).Error
 }
 
@@ -73,11 +73,11 @@ func (d *UserRoleRelDao) List(ctx context.Context, req *systype.UserRoleRelQuery
 	query := d.db.WithContext(ctx).Scopes(common.TenantScope(ctx)).
 		Model(&system.UserRoleRel{})
 
-	if req.UserID != 0 {
-		query = query.Where("user_id = ?", req.UserID)
+	if req.UserId != 0 {
+		query = query.Where("user_id = ?", req.UserId)
 	}
-	if req.RoleID != 0 {
-		query = query.Where("role_id = ?", req.RoleID)
+	if req.RoleId != 0 {
+		query = query.Where("role_id = ?", req.RoleId)
 	}
 
 	// 获取总数

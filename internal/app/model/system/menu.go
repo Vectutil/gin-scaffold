@@ -7,7 +7,7 @@ import (
 // Menu 菜单/按钮模型
 type Menu struct {
 	common.BaseModel
-	ParentID      int64   `json:"parentId"`                    // 父ID
+	ParentId      int64   `json:"parentId"`                    // 父Id
 	Name          string  `json:"name"`                        // 名称
 	Level         int8    `json:"level"`                       // 层级
 	Type          int8    `json:"type"`                        // 类型: 1MENU, 2BUTTON

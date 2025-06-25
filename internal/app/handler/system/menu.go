@@ -50,14 +50,14 @@ func (h *MenuHandler) Create(c *gin.Context) {
 		return
 	}
 
-	// 从上下文中获取操作者ID
-	operatorID, err := utils.GetUserIDFromContext(c)
+	// 从上下文中获取操作者Id
+	operatorId, err := utils.GetUserIdFromContext(c)
 	if err != nil {
 		return
 	}
 
-	req.CreatedBy = operatorID
-	req.UpdatedBy = operatorID
+	req.CreatedBy = operatorId
+	req.UpdatedBy = operatorId
 
 	if err = menuLogic.Create(c.Request.Context(), &req); err != nil {
 		return
@@ -67,12 +67,12 @@ func (h *MenuHandler) Create(c *gin.Context) {
 // Update 更新菜单
 // @title 更新菜单
 // @Summary 更新菜单信息
-// @Description 根据菜单ID更新菜单信息
+// @Description 根据菜单Id更新菜单信息
 // @Tags 菜单管理
 // @Accept json
 // @Produce json
 // @Param Authorization header string true "Bearer 用户令牌"
-// @Param id path int true "菜单ID"
+// @Param id path int true "菜单Id"
 // @Param request body sysmodel.system.Menu true "菜单更新请求参数"
 // @Success 200 {object} sysmodel.system.Menu "成功返回"
 // @Failure 500 {object} response.Response "内部错误"
@@ -99,15 +99,15 @@ func (h *MenuHandler) Update(c *gin.Context) {
 		return
 	}
 
-	req.ID = id
+	req.Id = id
 
-	// 从上下文中获取操作者ID
-	operatorID, err := utils.GetUserIDFromContext(c)
+	// 从上下文中获取操作者Id
+	operatorId, err := utils.GetUserIdFromContext(c)
 	if err != nil {
 		return
 	}
 
-	req.UpdatedBy = operatorID
+	req.UpdatedBy = operatorId
 
 	if err = menuLogic.Update(c.Request.Context(), &req); err != nil {
 		return
@@ -117,12 +117,12 @@ func (h *MenuHandler) Update(c *gin.Context) {
 // Delete 删除菜单
 // @title 删除菜单
 // @Summary 删除指定菜单
-// @Description 根据菜单ID删除菜单
+// @Description 根据菜单Id删除菜单
 // @Tags 菜单管理
 // @Accept json
 // @Produce json
 // @Param Authorization header string true "Bearer 用户令牌"
-// @Param id path int true "菜单ID"
+// @Param id path int true "菜单Id"
 // @Success 200 {object} sysmodel.system.Menu "成功返回"
 // @Failure 500 {object} response.Response "内部错误"
 // @Router /menu/{id} [delete]
@@ -148,19 +148,19 @@ func (h *MenuHandler) Delete(c *gin.Context) {
 	}
 }
 
-// GetByID 根据ID获取菜单
+// GetById 根据Id获取菜单
 // @title 获取菜单详情
 // @Summary 获取指定菜单详情
-// @Description 根据菜单ID获取菜单详细信息
+// @Description 根据菜单Id获取菜单详细信息
 // @Tags 菜单管理
 // @Accept json
 // @Produce json
 // @Param Authorization header string true "Bearer 用户令牌"
-// @Param id path int true "菜单ID"
+// @Param id path int true "菜单Id"
 // @Success 200 {object} sysmodel.system.Menu "成功返回"
 // @Failure 500 {object} response.Response "内部错误"
 // @Router /menu/{id} [get]
-func (h *MenuHandler) GetByID(c *gin.Context) {
+func (h *MenuHandler) GetById(c *gin.Context) {
 	var (
 		err       error
 		db        = mysql.GetDB()
@@ -176,7 +176,7 @@ func (h *MenuHandler) GetByID(c *gin.Context) {
 	if err != nil {
 		return
 	}
-	res, err = menuLogic.GetByID(c.Request.Context(), id)
+	res, err = menuLogic.GetById(c.Request.Context(), id)
 	if err != nil {
 		return
 	}

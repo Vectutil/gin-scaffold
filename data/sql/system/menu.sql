@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS `menu` (
     `id`              BIGINT(20)     NOT NULL AUTO_INCREMENT COMMENT '主键',
-    `parent_id`       BIGINT(20)     NOT NULL DEFAULT 0 COMMENT '父ID',
+    `parent_id`       BIGINT(20)     NOT NULL DEFAULT 0 COMMENT '父Id',
     `name`            VARCHAR(100)   NOT NULL DEFAULT '' COMMENT '名称',
     `level`           tinyint(1)     NOT NULL DEFAULT 1 COMMENT '层级',
     `type`            tinyint(1)     NOT NULL DEFAULT 1 COMMENT '类型: 1MENU, 2BUTTON',

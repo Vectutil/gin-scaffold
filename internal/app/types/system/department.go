@@ -8,20 +8,20 @@ import (
 // DepartmentCreateReq 创建部门请求
 type DepartmentCreateReq struct {
 	DeptName string `json:"deptName" binding:"required"` // 部门名称
-	ParentID *int64 `json:"parentId"`                    // 上级部门ID
+	ParentId *int64 `json:"parentId"`                    // 上级部门Id
 	Status   int8   `json:"status" binding:"required"`   // 状态：1启用 0禁用
 }
 
 // DepartmentCreateResp 创建部门响应
 type DepartmentCreateResp struct {
-	ID int64 `json:"id"` // 部门ID
+	Id int64 `json:"id"` // 部门Id
 }
 
 // DepartmentUpdateReq 更新部门请求
 type DepartmentUpdateReq struct {
-	ID       int64  `json:"id" binding:"required"`       // 部门ID
+	Id       int64  `json:"id" binding:"required"`       // 部门Id
 	DeptName string `json:"deptName" binding:"required"` // 部门名称
-	ParentID *int64 `json:"parentId"`                    // 上级部门ID
+	ParentId *int64 `json:"parentId"`                    // 上级部门Id
 	Status   int8   `json:"status" binding:"required"`   // 状态：1启用 0禁用
 }
 
@@ -33,17 +33,17 @@ type DepartmentDeleteResp struct{}
 
 // DepartmentDataResp 部门数据响应
 type DepartmentDataResp struct {
-	ID        int64      `json:"id"`        // 部门ID
+	Id        int64      `json:"id"`        // 部门Id
 	DeptName  string     `json:"deptName"`  // 部门名称
-	TenantID  int64      `json:"tenantId"`  // 租户ID
-	ParentID  *int64     `json:"parentId"`  // 上级部门ID
+	TenantId  int64      `json:"tenantId"`  // 租户Id
+	ParentId  *int64     `json:"parentId"`  // 上级部门Id
 	Status    int8       `json:"status"`    // 状态：1启用 0禁用
 	CreatedAt time.Time  `json:"createdAt"` // 创建时间
-	CreatedBy int64      `json:"createdBy"` // 创建人ID
+	CreatedBy int64      `json:"createdBy"` // 创建人Id
 	UpdatedAt time.Time  `json:"updatedAt"` // 更新时间
-	UpdatedBy int64      `json:"updatedBy"` // 更新人ID
+	UpdatedBy int64      `json:"updatedBy"` // 更新人Id
 	DeletedAt *time.Time `json:"deletedAt"` // 删除时间
-	DeletedBy int64      `json:"deletedBy"` // 删除人ID
+	DeletedBy int64      `json:"deletedBy"` // 删除人Id
 }
 
 // DepartmentDataListResp 部门列表响应
@@ -62,10 +62,10 @@ type DepartmentQueryReq struct {
 
 // DepartmentTreeResp 部门树响应
 type DepartmentTreeResp struct {
-	ID       int64                `json:"id"`                 // 部门ID
+	Id       int64                `json:"id"`                 // 部门Id
 	DeptName string               `json:"deptName"`           // 部门名称
-	TenantID int64                `json:"tenantId"`           // 租户ID
-	ParentID int64                `json:"parentId"`           // 上级部门ID
+	TenantId int64                `json:"tenantId"`           // 租户Id
+	ParentId int64                `json:"parentId"`           // 上级部门Id
 	Status   int8                 `json:"status"`             // 状态：1启用 0禁用
 	Children []DepartmentTreeResp `json:"children,omitempty"` // 子部门
 }

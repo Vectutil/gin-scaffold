@@ -24,7 +24,7 @@ func (d *RoleDao) Create(ctx context.Context, role *system.Role) error {
 // Update 更新角色
 func (d *RoleDao) Update(ctx context.Context, role *system.Role) error {
 	return d.db.WithContext(ctx).Scopes(common.TenantScope(ctx)).
-		Model(&system.Role{}).Where("id = ?", role.ID).Updates(role).Error
+		Model(&system.Role{}).Where("id = ?", role.Id).Updates(role).Error
 }
 
 // Delete 删除角色
@@ -33,8 +33,8 @@ func (d *RoleDao) Delete(ctx context.Context, id int64) error {
 		Model(&system.Role{}).Where("id = ?", id).Update("deleted_at", gorm.Expr("NOW()")).Error
 }
 
-// GetByID 根据ID获取角色
-func (d *RoleDao) GetByID(ctx context.Context, id int64) (*system.Role, error) {
+// GetById 根据Id获取角色
+func (d *RoleDao) GetById(ctx context.Context, id int64) (*system.Role, error) {
 	var role system.Role
 	err := d.db.WithContext(ctx).Scopes(common.TenantScope(ctx)).
 		First(&role, id).Error

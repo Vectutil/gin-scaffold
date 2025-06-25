@@ -37,7 +37,7 @@ func AuthMiddleware() gin.HandlerFunc {
 
 		var userInfo metadata.MetaData
 		_ = json.Unmarshal([]byte(data), &userInfo)
-		if userInfo.ID != claims.UserID {
+		if userInfo.Id != claims.UserId {
 			c.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{"error": "token mismatch"})
 			return
 		}

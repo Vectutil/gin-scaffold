@@ -19,23 +19,23 @@ func NewUserRoleRelLogic(db *gorm.DB) *UserRoleRelLogic {
 }
 
 // Create 创建用户角色关系
-func (l *UserRoleRelLogic) Create(ctx context.Context, req *systype.UserRoleRelCreateReq, tenantID int64) error {
+func (l *UserRoleRelLogic) Create(ctx context.Context, req *systype.UserRoleRelCreateReq, tenantId int64) error {
 	rel := &sysmodel.UserRoleRel{
-		TenantID: tenantID,
-		UserID:   req.UserID,
-		RoleID:   req.RoleID,
+		UserId: req.UserId,
+		RoleId: req.RoleId,
 	}
+	rel.TenantId = tenantId
 	return l.dao.Create(ctx, rel)
 }
 
 // Delete 删除用户角色关系
-func (l *UserRoleRelLogic) Delete(ctx context.Context, userID, roleID int64) error {
-	return l.dao.Delete(ctx, userID, roleID)
+func (l *UserRoleRelLogic) Delete(ctx context.Context, userId, roleId int64) error {
+	return l.dao.Delete(ctx, userId, roleId)
 }
 
-// GetByUserID 根据用户ID获取角色关系
-func (l *UserRoleRelLogic) GetByUserID(ctx context.Context, userID int64) ([]*systype.UserRoleRelDataResp, error) {
-	rels, err := l.dao.GetByUserID(ctx, userID)
+// GetByUserId 根据用户Id获取角色关系
+func (l *UserRoleRelLogic) GetByUserId(ctx context.Context, userId int64) ([]*systype.UserRoleRelDataResp, error) {
+	rels, err := l.dao.GetByUserId(ctx, userId)
 	if err != nil {
 		return nil, err
 	}
@@ -43,18 +43,18 @@ func (l *UserRoleRelLogic) GetByUserID(ctx context.Context, userID int64) ([]*sy
 	resp := make([]*systype.UserRoleRelDataResp, 0, len(rels))
 	for _, rel := range rels {
 		resp = append(resp, &systype.UserRoleRelDataResp{
-			ID:       rel.ID,
-			TenantID: rel.TenantID,
-			UserID:   rel.UserID,
-			RoleID:   rel.RoleID,
+			Id:       rel.Id,
+			TenantId: rel.TenantId,
+			UserId:   rel.UserId,
+			RoleId:   rel.RoleId,
 		})
 	}
 	return resp, nil
 }
 
-// GetByRoleID 根据角色ID获取用户关系
-func (l *UserRoleRelLogic) GetByRoleID(ctx context.Context, roleID int64) ([]*systype.UserRoleRelDataResp, error) {
-	rels, err := l.dao.GetByRoleID(ctx, roleID)
+// GetByRoleId 根据角色Id获取用户关系
+func (l *UserRoleRelLogic) GetByRoleId(ctx context.Context, roleId int64) ([]*systype.UserRoleRelDataResp, error) {
+	rels, err := l.dao.GetByRoleId(ctx, roleId)
 	if err != nil {
 		return nil, err
 	}
@@ -62,23 +62,23 @@ func (l *UserRoleRelLogic) GetByRoleID(ctx context.Context, roleID int64) ([]*sy
 	resp := make([]*systype.UserRoleRelDataResp, 0, len(rels))
 	for _, rel := range rels {
 		resp = append(resp, &systype.UserRoleRelDataResp{
-			ID:       rel.ID,
-			TenantID: rel.TenantID,
-			UserID:   rel.UserID,
-			RoleID:   rel.RoleID,
+			Id:       rel.Id,
+			TenantId: rel.TenantId,
+			UserId:   rel.UserId,
+			RoleId:   rel.RoleId,
 		})
 	}
 	return resp, nil
 }
 
-// DeleteByUserID 删除用户的所有角色关系
-func (l *UserRoleRelLogic) DeleteByUserID(ctx context.Context, userID int64) error {
-	return l.dao.DeleteByUserID(ctx, userID)
+// DeleteByUserId 删除用户的所有角色关系
+func (l *UserRoleRelLogic) DeleteByUserId(ctx context.Context, userId int64) error {
+	return l.dao.DeleteByUserId(ctx, userId)
 }
 
-// DeleteByRoleID 删除角色的所有用户关系
-func (l *UserRoleRelLogic) DeleteByRoleID(ctx context.Context, roleID int64) error {
-	return l.dao.DeleteByRoleID(ctx, roleID)
+// DeleteByRoleId 删除角色的所有用户关系
+func (l *UserRoleRelLogic) DeleteByRoleId(ctx context.Context, roleId int64) error {
+	return l.dao.DeleteByRoleId(ctx, roleId)
 }
 
 // GetList 获取用户角色关系列表
@@ -95,10 +95,10 @@ func (l *UserRoleRelLogic) GetList(ctx context.Context, req *systype.UserRoleRel
 
 	for _, rel := range rels {
 		resp.List = append(resp.List, systype.UserRoleRelDataResp{
-			ID:       rel.ID,
-			TenantID: rel.TenantID,
-			UserID:   rel.UserID,
-			RoleID:   rel.RoleID,
+			Id:       rel.Id,
+			TenantId: rel.TenantId,
+			UserId:   rel.UserId,
+			RoleId:   rel.RoleId,
 		})
 	}
 

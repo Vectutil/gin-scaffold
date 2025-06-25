@@ -49,13 +49,13 @@ func (h *DepartmentHandler) Create(c *gin.Context) {
 		return
 	}
 
-	// 从上下文中获取操作者ID
-	operatorID, err := utils.GetUserIDFromContext(c)
+	// 从上下文中获取操作者Id
+	operatorId, err := utils.GetUserIdFromContext(c)
 	if err != nil {
 		return
 	}
 
-	if err = deptLogic.Create(c.Request.Context(), &req, operatorID); err != nil {
+	if err = deptLogic.Create(c.Request.Context(), &req, operatorId); err != nil {
 		return
 	}
 }
@@ -63,12 +63,12 @@ func (h *DepartmentHandler) Create(c *gin.Context) {
 // Update 更新部门
 // @title 更新部门
 // @Summary 更新部门信息
-// @Description 根据部门ID更新部门信息
+// @Description 根据部门Id更新部门信息
 // @Tags 部门管理
 // @Accept json
 // @Produce json
 // @Param Authorization header string true "Bearer 用户令牌"
-// @Param id path int true "部门ID"
+// @Param id path int true "部门Id"
 // @Param request body systype.DepartmentUpdateReq true "部门更新请求参数"
 // @Success 200 {object} systype.DepartmentUpdateResp "成功返回"
 // @Failure 500 {object} response.Response "内部错误"
@@ -95,15 +95,15 @@ func (h *DepartmentHandler) Update(c *gin.Context) {
 		return
 	}
 
-	req.ID = id
+	req.Id = id
 
-	// 从上下文中获取操作者ID
-	operatorID, err := utils.GetUserIDFromContext(c)
+	// 从上下文中获取操作者Id
+	operatorId, err := utils.GetUserIdFromContext(c)
 	if err != nil {
 		return
 	}
 
-	if err = deptLogic.Update(c.Request.Context(), &req, operatorID); err != nil {
+	if err = deptLogic.Update(c.Request.Context(), &req, operatorId); err != nil {
 		return
 	}
 }
@@ -111,12 +111,12 @@ func (h *DepartmentHandler) Update(c *gin.Context) {
 // Delete 删除部门
 // @title 删除部门
 // @Summary 删除指定部门
-// @Description 根据部门ID删除部门
+// @Description 根据部门Id删除部门
 // @Tags 部门管理
 // @Accept json
 // @Produce json
 // @Param Authorization header string true "Bearer 用户令牌"
-// @Param id path int true "部门ID"
+// @Param id path int true "部门Id"
 // @Success 200 {object} systype.DepartmentDeleteResp "成功返回"
 // @Failure 500 {object} response.Response "内部错误"
 // @Router /department/{id} [delete]
@@ -137,30 +137,30 @@ func (h *DepartmentHandler) Delete(c *gin.Context) {
 		return
 	}
 
-	// 从上下文中获取操作者ID
-	operatorID, err := utils.GetUserIDFromContext(c)
+	// 从上下文中获取操作者Id
+	operatorId, err := utils.GetUserIdFromContext(c)
 	if err != nil {
 		return
 	}
 
-	if err = deptLogic.Delete(c.Request.Context(), id, operatorID); err != nil {
+	if err = deptLogic.Delete(c.Request.Context(), id, operatorId); err != nil {
 		return
 	}
 }
 
-// GetByID 根据ID获取部门
+// GetById 根据Id获取部门
 // @title 获取部门详情
 // @Summary 获取指定部门详情
-// @Description 根据部门ID获取部门详细信息
+// @Description 根据部门Id获取部门详细信息
 // @Tags 部门管理
 // @Accept json
 // @Produce json
 // @Param Authorization header string true "Bearer 用户令牌"
-// @Param id path int true "部门ID"
+// @Param id path int true "部门Id"
 // @Success 200 {object} systype.DepartmentDataResp "成功返回"
 // @Failure 500 {object} response.Response "内部错误"
 // @Router /department/{id} [get]
-func (h *DepartmentHandler) GetByID(c *gin.Context) {
+func (h *DepartmentHandler) GetById(c *gin.Context) {
 	var (
 		err       error
 		db        = mysql.GetDB()
@@ -176,7 +176,7 @@ func (h *DepartmentHandler) GetByID(c *gin.Context) {
 	if err != nil {
 		return
 	}
-	res, err = deptLogic.GetByID(c.Request.Context(), id)
+	res, err = deptLogic.GetById(c.Request.Context(), id)
 	if err != nil {
 		return
 	}
@@ -242,13 +242,13 @@ func (h *DepartmentHandler) GetTree(c *gin.Context) {
 		response.HandleDefault(c, res)(&err)
 	}()
 
-	// 从上下文中获取租户ID
-	tenantID, err := utils.GetTenantIDFromContext(c)
+	// 从上下文中获取租户Id
+	tenantId, err := utils.GetTenantIdFromContext(c)
 	if err != nil {
 		return
 	}
 
-	res, err = deptLogic.GetTree(c.Request.Context(), tenantID)
+	res, err = deptLogic.GetTree(c.Request.Context(), tenantId)
 	if err != nil {
 		return
 	}

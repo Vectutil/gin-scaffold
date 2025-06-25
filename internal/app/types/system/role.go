@@ -10,23 +10,23 @@ type RoleCreateReq struct {
 	Name        string `json:"name" binding:"required"` // 角色名称
 	Code        string `json:"code" binding:"required"` // 角色编码
 	Description string `json:"description"`             // 描述
-	DataScope   int8   `json:"dataScope"`              // 数据范围
-	Status      int8   `json:"status"`                 // 状态
+	DataScope   int8   `json:"dataScope"`               // 数据范围
+	Status      int8   `json:"status"`                  // 状态
 }
 
 // RoleCreateResp 创建角色响应
 type RoleCreateResp struct {
-	ID int64 `json:"id"` // 角色ID
+	Id int64 `json:"id"` // 角色Id
 }
 
 // RoleUpdateReq 更新角色请求
 type RoleUpdateReq struct {
-	ID          int64  `json:"id" binding:"required"` // 角色ID
+	Id          int64  `json:"id" binding:"required"`   // 角色Id
 	Name        string `json:"name" binding:"required"` // 角色名称
 	Code        string `json:"code" binding:"required"` // 角色编码
 	Description string `json:"description"`             // 描述
-	DataScope   int8   `json:"dataScope"`              // 数据范围
-	Status      int8   `json:"status"`                 // 状态
+	DataScope   int8   `json:"dataScope"`               // 数据范围
+	Status      int8   `json:"status"`                  // 状态
 }
 
 // RoleUpdateResp 更新角色响应
@@ -37,7 +37,7 @@ type RoleDeleteResp struct{}
 
 // RoleDataResp 角色数据响应
 type RoleDataResp struct {
-	ID          int64      `json:"id"`          // 角色ID
+	Id          int64      `json:"id"`          // 角色Id
 	Name        string     `json:"name"`        // 角色名称
 	Code        string     `json:"code"`        // 角色编码
 	Description string     `json:"description"` // 描述
@@ -54,8 +54,8 @@ type RoleDataResp struct {
 // RoleDataListResp 角色列表响应
 type RoleDataListResp struct {
 	common.ListResp
-	Total int64           `json:"total"` // 总数
-	List  []RoleDataResp  `json:"list"`  // 列表
+	Total int64          `json:"total"` // 总数
+	List  []RoleDataResp `json:"list"`  // 列表
 }
 
 // RoleQueryReq 角色查询请求
@@ -64,4 +64,4 @@ type RoleQueryReq struct {
 	Name   string `form:"name"`   // 角色名称
 	Code   string `form:"code"`   // 角色编码
 	Status *int8  `form:"status"` // 状态
-} 
+}

@@ -7,12 +7,12 @@ import (
 
 const (
 	UserName     = "user_name"
-	UserID       = "user_id"
-	CompanyID    = "company_id"
-	DepartmentID = "department_id"
-	BizUnitID    = "biz_unit_id"
-	SaleSystemID = "sale_system_id"
-	TenantID     = "tenant_id"
+	UserId       = "user_id"
+	CompanyId    = "company_id"
+	DepartmentId = "department_id"
+	BizUnitId    = "biz_unit_id"
+	SaleSystemId = "sale_system_id"
+	TenantId     = "tenant_id"
 
 	LoginInfo          = "login_info"
 	DataSeparate       = "data_separate"
@@ -25,48 +25,48 @@ func GetUserName(ctx context.Context) string {
 	return GetMD(ctx, UserName)
 }
 
-func GetUserID(ctx context.Context) int64 {
-	str := GetMD(ctx, UserID)
+func GetUserId(ctx context.Context) int64 {
+	str := GetMD(ctx, UserId)
 	if str == "" {
 		return 0
 	}
 	return utils.String2int64(str)
 }
 
-func GetCompanyID(ctx context.Context) uint64 {
-	str := GetMD(ctx, CompanyID)
+func GetCompanyId(ctx context.Context) uint64 {
+	str := GetMD(ctx, CompanyId)
 	if str == "" {
 		return 0
 	}
 	return utils.String2Uint64(str)
 }
 
-func GetDepartmentID(ctx context.Context) uint64 {
-	str := GetMD(ctx, DepartmentID)
+func GetDepartmentId(ctx context.Context) uint64 {
+	str := GetMD(ctx, DepartmentId)
 	if str == "" {
 		return 0
 	}
 	return utils.String2Uint64(str)
 }
 
-func GetBizUnitID(ctx context.Context) uint64 {
-	str := GetMD(ctx, BizUnitID)
+func GetBizUnitId(ctx context.Context) uint64 {
+	str := GetMD(ctx, BizUnitId)
 	if str == "" {
 		return 0
 	}
 	return utils.String2Uint64(str)
 }
 
-func GetSaleSystemID(ctx context.Context) uint64 {
-	str := GetMD(ctx, SaleSystemID)
+func GetSaleSystemId(ctx context.Context) uint64 {
+	str := GetMD(ctx, SaleSystemId)
 	if str == "" {
 		return 0
 	}
 	return utils.String2Uint64(str)
 }
 
-func GetTenantID(ctx context.Context) int64 {
-	str := GetMD(ctx, TenantID)
+func GetTenantId(ctx context.Context) int64 {
+	str := GetMD(ctx, TenantId)
 	if str == "" {
 		return 0
 	}
