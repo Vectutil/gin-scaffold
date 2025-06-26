@@ -1,9 +1,9 @@
 package logger
 
 import (
+	"github.com/lestrrat-go/file-rotatelogs"
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
-	"gopkg.in/natefinch/lumberjack.v2"
 	"os"
 	"time"
 )
@@ -24,30 +24,31 @@ var Logger *zap.Logger
 func InitLogger() {
 
 	// app.log: 记录所有日志
-	appWriter := zapcore.AddSync(&lumberjack.Logger{
-		Filename:   "./cache/logs/info/app_" + time.Now().Format("2006-01-02") + ".log",
-		MaxSize:    20,
-		MaxAge:     30,
-		MaxBackups: 5,
-		Compress:   true,
-	})
+	writer, _ := rotatelogs.New(
+		"./cache/logs/info/app_%Y-%m-%d.log", // 自动按天分割
+		//rotatelogs.WithLinkName("./cache/logs/info/app_current.log"), // 软链接最新日志
+		rotatelogs.WithMaxAge(30*24*time.Hour),    // 最大保留30天
+		rotatelogs.WithRotationTime(24*time.Hour), // 每天滚动一次
+	)
+	appWriter := zapcore.AddSync(writer)
+
 	// 错误日志单独输出
-	errorWriter := zapcore.AddSync(&lumberjack.Logger{
-		Filename:   "./cache/logs/error/error_" + time.Now().Format("2006-01-02") + ".log",
-		MaxSize:    10,
-		MaxAge:     30,
-		MaxBackups: 5,
-		Compress:   true,
-	})
+	ewriter, _ := rotatelogs.New(
+		"./cache/logs/err/err_%Y-%m-%d.log", // 自动按天分割
+		//rotatelogs.WithLinkName("./cache/logs/err/err_current.log"), // 软链接最新日志
+		rotatelogs.WithMaxAge(30*24*time.Hour),    // 最大保留30天
+		rotatelogs.WithRotationTime(24*time.Hour), // 每天滚动一次
+	)
+	errorWriter := zapcore.AddSync(ewriter)
 
 	// 慢日志单独输出
-	slowWriter := zapcore.AddSync(&lumberjack.Logger{
-		Filename:   "./cache/logs/slow/slow_" + time.Now().Format("2006-01-02") + ".log",
-		MaxSize:    10,
-		MaxAge:     30,
-		MaxBackups: 5,
-		Compress:   true,
-	})
+	swriter, _ := rotatelogs.New(
+		"./cache/logs/info/slow_%Y-%m-%d.log", // 自动按天分割
+		//rotatelogs.WithLinkName("./cache/logs/slow/slow_current.log"), // 软链接最新日志
+		rotatelogs.WithMaxAge(30*24*time.Hour),    // 最大保留30天
+		rotatelogs.WithRotationTime(24*time.Hour), // 每天滚动一次
+	)
+	slowWriter := zapcore.AddSync(swriter)
 
 	consoleWriter := zapcore.AddSync(os.Stdout)
 
