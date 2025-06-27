@@ -11,8 +11,16 @@ redis:
   password: "123456"
   db: 8
 
-qwRobot:
-  errorRobot: "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=021f5843-7177-4097-a0e7-xxxxxxxxxxxxxxxxxxx"
+rabbitmq:
+  host: "47.112.109.63"
+  port: 5672
+  user: "admin"
+  password: "breelk"
+  name:
+    delayTest: "delay.test"
+
+wxRobot:
+  errorRobot: "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=63c5491c-84fd-4b27-bc66-xxxxxxxxxx"
 
 qny:
   accessKey: "ciIHqTlKU1AjyJK6kb4LCXlLzxxxxxxxxxx"

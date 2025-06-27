@@ -1,12 +1,13 @@
 package config
 
 type Config struct {
-	Mysql   Mysql         `json:"mysql"`
-	Redis   Redis         `json:"redis"`
-	System  System        `json:"system"`
-	WXRobot WXRobot       `json:"wxRobot"`
-	Job     CronJobConfig `json:"job"`
-	Qny     Qny           `json:"qny"`
+	Mysql    Mysql         `json:"mysql"`
+	Redis    Redis         `json:"redis"`
+	System   System        `json:"system"`
+	WXRobot  WXRobot       `json:"wxRobot"`
+	Job      CronJobConfig `json:"job"`
+	Qny      Qny           `json:"qny"`
+	RabbitMQ RabbitMQ      `json:"rabbitmq"`
 }
 
 type Qny struct {
@@ -21,6 +22,18 @@ type Redis struct {
 	Port     string `json:"port"`
 	Password string `json:"password"`
 	DB       int    `json:"db"`
+}
+
+type RabbitMQ struct {
+	Host     string `json:"host"`
+	Port     string `json:"port"`
+	User     string `json:"user"`
+	Password string `json:"password"`
+	MQName   MQName `json:"name"`
+}
+
+type MQName struct {
+	DelayTest string `json:"delayTest"`
 }
 
 type WXRobot struct {

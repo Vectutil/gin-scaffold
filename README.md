@@ -3,14 +3,14 @@
     更多说明在语雀文档：https://www.yuque.com/juz652/ow4qcx?# 《程序项目》
 
     中间件：
-        gorm  持久层
-        zap   日志      (github.com/robfig/cron/v3)
-        job   定时任务
-        redis 缓存      (github.com/redis/go-redis/v9)
+        gorm        持久层
+        zap         日志      (github.com/robfig/cron/v3)
+        job         定时任务
+        redis       缓存      (github.com/redis/go-redis/v9)
+        RabbitMQ    消息队列
 
-        qny   七牛云
-
-        swag  swagger文档
+        qny         七牛云
+        swag        swagger文档
         
 
     等 .... 完善中
@@ -82,6 +82,7 @@ gin-scaffold/
 │   ├── logger/           # 日志封装
 │   ├── mysql/            # 数据库连接/初始化
 │   ├── qny/              # qny 封装
+│   ├── rabbitmq/         # rabbitmq 封装 （延迟队列丨普通队列）
 │   ├── redis/            # redis 连接/使用
 │   └── utils             # 工具包
 ├── cache/                # 缓存文件(日志等)
@@ -95,4 +96,3 @@ gin-scaffold/
 ```
 
 # 日志 zap
-    
