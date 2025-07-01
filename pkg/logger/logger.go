@@ -18,15 +18,11 @@ const (
 
 var Logger *zap.Logger
 
-//var SlowLogger *zap.Logger
-//var ErrorLogger *zap.Logger
-
 func InitLogger() {
 
 	// app.log: 记录所有日志
 	writer, _ := rotatelogs.New(
-		"./cache/logs/info/app_%Y-%m-%d.log", // 自动按天分割
-		//rotatelogs.WithLinkName("./cache/logs/info/app_current.log"), // 软链接最新日志
+		"./cache/logs/info/app_%Y-%m-%d.log",      // 自动按天分割
 		rotatelogs.WithMaxAge(30*24*time.Hour),    // 最大保留30天
 		rotatelogs.WithRotationTime(24*time.Hour), // 每天滚动一次
 	)
@@ -34,8 +30,7 @@ func InitLogger() {
 
 	// 错误日志单独输出
 	ewriter, _ := rotatelogs.New(
-		"./cache/logs/err/err_%Y-%m-%d.log", // 自动按天分割
-		//rotatelogs.WithLinkName("./cache/logs/err/err_current.log"), // 软链接最新日志
+		"./cache/logs/err/err_%Y-%m-%d.log",       // 自动按天分割
 		rotatelogs.WithMaxAge(30*24*time.Hour),    // 最大保留30天
 		rotatelogs.WithRotationTime(24*time.Hour), // 每天滚动一次
 	)
@@ -43,8 +38,7 @@ func InitLogger() {
 
 	// 慢日志单独输出
 	swriter, _ := rotatelogs.New(
-		"./cache/logs/info/slow_%Y-%m-%d.log", // 自动按天分割
-		//rotatelogs.WithLinkName("./cache/logs/slow/slow_current.log"), // 软链接最新日志
+		"./cache/logs/slow/slow_%Y-%m-%d.log",     // 自动按天分割
 		rotatelogs.WithMaxAge(30*24*time.Hour),    // 最大保留30天
 		rotatelogs.WithRotationTime(24*time.Hour), // 每天滚动一次
 	)

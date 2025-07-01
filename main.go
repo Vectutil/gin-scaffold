@@ -8,6 +8,7 @@ import (
 	"gin-scaffold/internal/router"
 	"gin-scaffold/pkg/logger"
 	"gin-scaffold/pkg/mysql"
+	"gin-scaffold/pkg/rabbitmq"
 	"gin-scaffold/pkg/redis"
 	"gin-scaffold/pkg/utils"
 	"github.com/gin-gonic/gin"
@@ -29,6 +30,7 @@ func main() {
 	// 6. 创建 Gin 路由引擎
 	r := gin.New()
 	r.Use(gin.Recovery()) // 可选：防止 panic 导致服务崩溃
+
 	router.InitRouter(r)
 
 	// 7. 构建 HTTP Server 实例
@@ -81,5 +83,8 @@ func init() {
 	// 5. 启动定时任务
 	job.StartCronJob()
 
-	//defer zap.L().Sync()
+	// 6. 启动 RabbitMQ
+	rabbitmq.InitRabbitMQ()
+	defer rabbitmq.RabbitMQClient.DeferClose()
+
 }

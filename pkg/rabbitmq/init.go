@@ -14,7 +14,7 @@ type RabbitMQ struct {
 
 var RabbitMQClient *RabbitMQ
 
-func NewRabbitMQ() {
+func InitRabbitMQ() {
 	once := sync.Once{}
 	once.Do(func() {
 		RabbitMQClient = &RabbitMQ{}

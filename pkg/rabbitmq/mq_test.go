@@ -15,7 +15,7 @@ func TestDelay(t *testing.T) {
 	// 初始化配置和日志
 	config.InitConfig("E:\\workspace\\src\\gin-scaffold\\config.yaml")
 	logger.InitLogger()
-	NewRabbitMQ()
+	InitRabbitMQ()
 
 	rabbitMQ := RabbitMQClient
 	queueName := "order_delay_queue"
@@ -69,7 +69,7 @@ func TestSimple(t *testing.T) {
 	// 初始化配置和日志
 	config.InitConfig("E:\\workspace\\src\\gin-scaffold\\config.yaml")
 	logger.InitLogger()
-	NewRabbitMQ()
+	InitRabbitMQ()
 	rabbitMQ := RabbitMQClient
 	rabbitMQ.CreateQueue(queueName)
 	rabbitMQ.Consumer(queueName, abcd)
