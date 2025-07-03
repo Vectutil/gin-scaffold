@@ -84,6 +84,7 @@ gin-scaffold/
 │   ├── qny/              # qny 封装
 │   ├── rabbitmq/         # rabbitmq 封装 （延迟队列丨普通队列）
 │   ├── redis/            # redis 连接/使用
+│   ├── sensitive_word/   # DFA 敏感词过滤
 │   └── utils             # 工具包
 ├── cache/                # 缓存文件(日志等)
 ├── docs/                 # swagger文档
