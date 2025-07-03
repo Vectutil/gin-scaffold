@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"errors"
+	"fmt"
 	"gin-scaffold/internal/app/job"
 	"gin-scaffold/internal/config"
 	"gin-scaffold/internal/router"
@@ -30,6 +31,11 @@ func main() {
 	// 6. 创建 Gin 路由引擎
 	r := gin.New()
 	r.Use(gin.Recovery()) // 可选：防止 panic 导致服务崩溃
+
+	defer func() {
+		fmt.Println("fk")
+	}()
+	return
 
 	router.InitRouter(r)
 

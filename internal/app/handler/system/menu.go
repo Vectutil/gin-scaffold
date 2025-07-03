@@ -29,8 +29,8 @@ func NewMenuHandler() *MenuHandler {
 // @Accept json
 // @Produce json
 // @Param Authorization header string true "Bearer 用户令牌"
-// @Param request body systypes.system.Menu true "菜单创建请求参数"
-// @Success 200 {object} systypes.system.Menu "成功返回"
+// @Param request body  sysmodel.Menu true "菜单创建请求参数"
+// @Success 200 {object}  sysmodel.Menu "成功返回"
 // @Failure 500 {object} response.Response "内部错误"
 // @Router /menu [post]
 func (h *MenuHandler) Create(c *gin.Context) {
@@ -73,8 +73,8 @@ func (h *MenuHandler) Create(c *gin.Context) {
 // @Produce json
 // @Param Authorization header string true "Bearer 用户令牌"
 // @Param id path int true "菜单Id"
-// @Param request body sysmodel.system.Menu true "菜单更新请求参数"
-// @Success 200 {object} sysmodel.system.Menu "成功返回"
+// @Param request body sysmodel.Menu true "菜单更新请求参数"
+// @Success 200 {object} sysmodel.Menu "成功返回"
 // @Failure 500 {object} response.Response "内部错误"
 // @Router /menu/{id} [put]
 func (h *MenuHandler) Update(c *gin.Context) {
@@ -123,7 +123,7 @@ func (h *MenuHandler) Update(c *gin.Context) {
 // @Produce json
 // @Param Authorization header string true "Bearer 用户令牌"
 // @Param id path int true "菜单Id"
-// @Success 200 {object} sysmodel.system.Menu "成功返回"
+// @Success 200 {object} sysmodel.Menu "成功返回"
 // @Failure 500 {object} response.Response "内部错误"
 // @Router /menu/{id} [delete]
 func (h *MenuHandler) Delete(c *gin.Context) {
@@ -157,7 +157,7 @@ func (h *MenuHandler) Delete(c *gin.Context) {
 // @Produce json
 // @Param Authorization header string true "Bearer 用户令牌"
 // @Param id path int true "菜单Id"
-// @Success 200 {object} sysmodel.system.Menu "成功返回"
+// @Success 200 {object} sysmodel.Menu "成功返回"
 // @Failure 500 {object} response.Response "内部错误"
 // @Router /menu/{id} [get]
 func (h *MenuHandler) GetById(c *gin.Context) {
@@ -192,7 +192,7 @@ func (h *MenuHandler) GetById(c *gin.Context) {
 // @Param Authorization header string true "Bearer 用户令牌"
 // @Param page query int false "页码" default(1)
 // @Param page_size query int false "每页数量" default(10)
-// @Success 200 {object} sysmodel.system.Menu "成功返回"
+// @Success 200 {object} sysmodel.Menu "成功返回"
 // @Failure 500 {object} response.Response "内部错误"
 // @Router /menu [get]
 func (h *MenuHandler) List(c *gin.Context) {

@@ -12,7 +12,8 @@
         qny         七牛云
         swag        swagger文档
         
-
+    工具：
+        携程池化： pkg/utils/g_pool_xxx
     等 .... 完善中
 
 # 权限管理
