@@ -7,7 +7,7 @@ import (
 	"time"
 )
 
-// Set 设置redis
+// Set 根据Key 设置redis
 func (c *redisClient) Set(ctx context.Context, key string, value interface{}, expiration time.Duration) error {
 	err := c.client.Set(ctx, key, value, expiration).Err()
 	if err != nil {
@@ -16,7 +16,7 @@ func (c *redisClient) Set(ctx context.Context, key string, value interface{}, ex
 	return nil
 }
 
-// Get 获取redis
+// Get 根据Key 获取redis
 func (c *redisClient) Get(ctx context.Context, key string) (string, error) {
 	val, err := c.client.Get(ctx, key).Result()
 	if err != nil {
@@ -25,7 +25,7 @@ func (c *redisClient) Get(ctx context.Context, key string) (string, error) {
 	return val, nil
 }
 
-// Delete 删除redis
+// Delete 根据Key 删除redis
 func (c *redisClient) Delete(ctx context.Context, key string) error {
 	err := c.client.Del(ctx, key).Err()
 	if err != nil {
@@ -40,12 +40,8 @@ func (c *redisClient) Close() error {
 }
 
 // Lock 分布式锁
-func (c *redisClient) Lock(ctx context.Context, key string, expiration time.Duration) error {
-	err := c.client.SetNX(ctx, key, expiration, expiration).Err()
-	if err != nil {
-		return err
-	}
-	return nil
+func (c *redisClient) Lock(ctx context.Context, key, value string, expiration time.Duration) (bool, error) {
+	return c.client.SetNX(ctx, key, value, expiration).Result()
 }
 
 // UnLock 解锁

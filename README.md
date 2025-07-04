@@ -13,8 +13,8 @@
         swag        swagger文档
         
     工具：
-        缓   存： pkg/utils/g_cache
-        携程池化： pkg/utils/g_pool
+        pkg/utils/g_cache   缓存
+        pkg/utils/g_pool    携程池化
     等 .... 完善中
 
 # 权限管理
