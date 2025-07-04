@@ -13,7 +13,8 @@
         swag        swagger文档
         
     工具：
-        携程池化： pkg/utils/g_pool_xxx
+        缓   存： pkg/utils/g_cache
+        携程池化： pkg/utils/g_pool
     等 .... 完善中
 
 # 权限管理
@@ -87,6 +88,8 @@ gin-scaffold/
 │   ├── redis/            # redis 连接/使用
 │   ├── sensitive_word/   # DFA 敏感词过滤
 │   └── utils             # 工具包
+│       ├── g_cache       # 内存缓存
+│       └── g_pool        # 协程池
 ├── cache/                # 缓存文件(日志等)
 ├── docs/                 # swagger文档
 ├── .bat                  # 启动脚本(window)
