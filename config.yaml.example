@@ -12,7 +12,7 @@ redis:
   db: 0
 
 rabbitmq:
-  host: "47.112.109.63"
+  host: "127.0.0.1"
   port: 5672
   user: "admin"
   password: "xxxxxx"

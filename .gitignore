@@ -4,3 +4,4 @@ go_build_jz_scaffold.exe
 cache
 docs
 nul
+config.yaml
