@@ -15,7 +15,7 @@ rabbitmq:
   host: "47.112.109.63"
   port: 5672
   user: "admin"
-  password: "breelk"
+  password: "xxxxxx"
   name:
     delayTest: "delay.test"
 
