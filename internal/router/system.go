@@ -8,13 +8,14 @@ import (
 
 func initSystemRout(r *gin.Engine) {
 	systemRoute := r.Group("")
-	authRouter := systemRoute
+	authRouter := systemRoute.Group("")
 	authRouter.Use(middleware.AuthMiddleware())
 
 	userHandler := system.NewUserHandler()
 
 	{
 		systemRoute.POST("/login", system.NewAuthHandler().Login)
+		systemRoute.POST("/register", system.NewAuthHandler().Register)
 	}
 
 	userGroup := authRouter.Group("/user")
