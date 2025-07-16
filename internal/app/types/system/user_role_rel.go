@@ -22,10 +22,10 @@ type UserRoleRelQueryReq struct {
 
 // UserRoleRelDataResp 用户角色关系数据响应
 type UserRoleRelDataResp struct {
-	Id       int64 `json:"id"`       // 主键
-	TenantId int64 `json:"tenantId"` // 租户Id
-	UserId   int64 `json:"userId"`   // 用户Id
-	RoleId   int64 `json:"roleId"`   // 角色Id
+	Id int64 `json:"id"` // 主键
+	//TenantId int64 `json:"tenantId"` // 租户Id
+	UserId int64 `json:"userId"` // 用户Id
+	RoleId int64 `json:"roleId"` // 角色Id
 }
 
 // UserRoleRelDataListResp 用户角色关系列表响应

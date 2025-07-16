@@ -40,15 +40,15 @@ func GetUserIdFromContext(ctx context.Context) (int64, error) {
 }
 
 // GetTenantIdFromContext 从上下文中获取租户Id
-func GetTenantIdFromContext(ctx context.Context) (int64, error) {
-	if ctx == nil {
-		return 0, errors.New("context is nil")
-	}
-	if tenantId, ok := ctx.Value(TenantIdKey).(int64); ok {
-		return tenantId, nil
-	}
-	return 0, errors.New("tenantId not found in context")
-}
+//func GetTenantIdFromContext(ctx context.Context) (int64, error) {
+//	if ctx == nil {
+//		return 0, errors.New("context is nil")
+//	}
+//	if tenantId, ok := ctx.Value(TenantIdKey).(int64); ok {
+//		return tenantId, nil
+//	}
+//	return 0, errors.New("tenantId not found in context")
+//}
 
 // WithUserId 将用户Id添加到上下文
 func WithUserId(ctx context.Context, userId int64) context.Context {

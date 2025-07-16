@@ -2,7 +2,6 @@ package system
 
 import (
 	"context"
-	"gin-scaffold/internal/app/model/common"
 	"gin-scaffold/internal/app/model/system"
 	systype "gin-scaffold/internal/app/types/system"
 	"gorm.io/gorm"
@@ -23,20 +22,20 @@ func (d *RoleDao) Create(ctx context.Context, role *system.Role) error {
 
 // Update 更新角色
 func (d *RoleDao) Update(ctx context.Context, role *system.Role) error {
-	return d.db.WithContext(ctx).Scopes(common.TenantScope(ctx)).
+	return d.db.WithContext(ctx).
 		Model(&system.Role{}).Where("id = ?", role.Id).Updates(role).Error
 }
 
 // Delete 删除角色
 func (d *RoleDao) Delete(ctx context.Context, id int64) error {
-	return d.db.WithContext(ctx).Scopes(common.TenantScope(ctx)).
+	return d.db.WithContext(ctx).
 		Model(&system.Role{}).Where("id = ?", id).Update("deleted_at", gorm.Expr("NOW()")).Error
 }
 
 // GetById 根据Id获取角色
 func (d *RoleDao) GetById(ctx context.Context, id int64) (*system.Role, error) {
 	var role system.Role
-	err := d.db.WithContext(ctx).Scopes(common.TenantScope(ctx)).
+	err := d.db.WithContext(ctx).
 		First(&role, id).Error
 	if err != nil {
 		return nil, err
@@ -47,7 +46,7 @@ func (d *RoleDao) GetById(ctx context.Context, id int64) (*system.Role, error) {
 // GetByCode 根据编码获取角色
 func (d *RoleDao) GetByCode(ctx context.Context, code string) (*system.Role, error) {
 	var role system.Role
-	err := d.db.WithContext(ctx).Scopes(common.TenantScope(ctx)).
+	err := d.db.WithContext(ctx).
 		Where("code = ?", code).First(&role).Error
 	if err != nil {
 		return nil, err
@@ -62,7 +61,7 @@ func (d *RoleDao) List(ctx context.Context, req *systype.RoleQueryReq) ([]*syste
 		total int64
 	)
 
-	query := d.db.WithContext(ctx).Scopes(common.TenantScope(ctx)).
+	query := d.db.WithContext(ctx).
 		Model(&system.Role{})
 
 	if req.Name != "" {
@@ -91,7 +90,7 @@ func (d *RoleDao) List(ctx context.Context, req *systype.RoleQueryReq) ([]*syste
 // GetAll 获取所有角色
 func (d *RoleDao) GetAll(ctx context.Context) ([]*system.Role, error) {
 	var roles []*system.Role
-	err := d.db.WithContext(ctx).Scopes(common.TenantScope(ctx)).
+	err := d.db.WithContext(ctx).
 		Find(&roles).Error
 	return roles, err
 }

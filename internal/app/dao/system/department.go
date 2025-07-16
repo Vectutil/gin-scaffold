@@ -2,7 +2,6 @@ package system
 
 import (
 	"context"
-	"gin-scaffold/internal/app/model/common"
 	sysmodel "gin-scaffold/internal/app/model/system"
 	systype "gin-scaffold/internal/app/types/system"
 	"gorm.io/gorm"
@@ -23,20 +22,20 @@ func (d *DepartmentDao) Create(ctx context.Context, dept *sysmodel.Department) e
 
 // Update 更新部门
 func (d *DepartmentDao) Update(ctx context.Context, dept *sysmodel.Department) error {
-	return d.db.WithContext(ctx).Scopes(common.TenantScope(ctx)).
+	return d.db.WithContext(ctx).
 		Model(&sysmodel.Department{}).Where("id = ?", dept.Id).Updates(dept).Error
 }
 
 // Delete 删除部门
 func (d *DepartmentDao) Delete(ctx context.Context, id int64) error {
-	return d.db.WithContext(ctx).Scopes(common.TenantScope(ctx)).
+	return d.db.WithContext(ctx).
 		Model(&sysmodel.Department{}).Where("id = ?", id).Update("deleted_at", gorm.Expr("NOW()")).Error
 }
 
 // GetById 根据Id获取部门
 func (d *DepartmentDao) GetById(ctx context.Context, id int64) (*sysmodel.Department, error) {
 	var dept sysmodel.Department
-	err := d.db.WithContext(ctx).Scopes(common.TenantScope(ctx)).
+	err := d.db.WithContext(ctx).
 		First(&dept, id).Error
 	if err != nil {
 		return nil, err
@@ -47,7 +46,7 @@ func (d *DepartmentDao) GetById(ctx context.Context, id int64) (*sysmodel.Depart
 // CountByParentId 统计子部门数量
 func (d *DepartmentDao) CountByParentId(ctx context.Context, parentId int64) (int64, error) {
 	var count int64
-	err := d.db.WithContext(ctx).Scopes(common.TenantScope(ctx)).
+	err := d.db.WithContext(ctx).
 		Model(&sysmodel.Department{}).Where("parent_id = ?", parentId).Count(&count).Error
 	return count, err
 }
@@ -59,7 +58,7 @@ func (d *DepartmentDao) List(ctx context.Context, req *systype.DepartmentQueryRe
 		total int64
 	)
 
-	query := d.db.WithContext(ctx).Scopes(common.TenantScope(ctx)).
+	query := d.db.WithContext(ctx).
 		Model(&sysmodel.Department{})
 
 	if req.DeptName != "" {
@@ -85,7 +84,7 @@ func (d *DepartmentDao) List(ctx context.Context, req *systype.DepartmentQueryRe
 // GetAll 获取所有部门
 func (d *DepartmentDao) GetAll(ctx context.Context) ([]*sysmodel.Department, error) {
 	var depts []*sysmodel.Department
-	err := d.db.WithContext(ctx).Scopes(common.TenantScope(ctx)).
+	err := d.db.WithContext(ctx).
 		Find(&depts).Error
 	return depts, err
 }
@@ -101,9 +100,9 @@ func (d *DepartmentDao) GetChildren(ctx context.Context, parentId int64) ([]*sys
 }
 
 // GetTree 获取部门树
-func (d *DepartmentDao) GetTree(ctx context.Context, tenantId int64) ([]sysmodel.DepartmentTree, error) {
+func (d *DepartmentDao) GetTree(ctx context.Context) ([]sysmodel.DepartmentTree, error) {
 	var depts []*sysmodel.Department
-	err := d.db.WithContext(ctx).Where("tenant_id = ?", tenantId).Find(&depts).Error
+	err := d.db.WithContext(ctx).Find(&depts).Error
 	if err != nil {
 		return nil, err
 	}
@@ -120,7 +119,7 @@ func (d *DepartmentDao) GetTree(ctx context.Context, tenantId int64) ([]sysmodel
 			Status:   dept.Status,
 		}
 		tree.Id = dept.Id
-		tree.TenantId = dept.TenantId
+		//tree.TenantId = dept.TenantId
 		deptMap[dept.Id] = &tree
 	}
 

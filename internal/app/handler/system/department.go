@@ -243,12 +243,12 @@ func (h *DepartmentHandler) GetTree(c *gin.Context) {
 	}()
 
 	// 从上下文中获取租户Id
-	tenantId, err := utils.GetTenantIdFromContext(c)
-	if err != nil {
-		return
-	}
+	//tenantId, err := utils.GetTenantIdFromContext(c)
+	//if err != nil {
+	//	return
+	//}
 
-	res, err = deptLogic.GetTree(c.Request.Context(), tenantId)
+	res, err = deptLogic.GetTree(c.Request.Context())
 	if err != nil {
 		return
 	}

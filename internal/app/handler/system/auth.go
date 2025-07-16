@@ -158,7 +158,7 @@ func (h *AuthHandler) Register(c *gin.Context) {
 		Status:   1, // 默认启用状态
 	}
 
-	if err = userLogic.Create(c.Request.Context(), createReq); err != nil {
+	if err = userLogic.CreateForRegister(c.Request.Context(), createReq); err != nil {
 		return
 	}
 }

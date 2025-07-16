@@ -24,6 +24,7 @@ type (
 	}
 	IUserLogic interface {
 		Create(ctx context.Context, req *systype.UserCreateReq) error
+		CreateForRegister(ctx context.Context, req *systype.UserCreateReq) error
 		Update(ctx context.Context, req *systype.UserUpdateReq) error
 		Delete(ctx context.Context, id int64) error
 		GetById(ctx context.Context, id int64) (*systype.UserDataResp, error)
@@ -68,10 +69,10 @@ func (l *userLogic) Create(ctx context.Context, req *systype.UserCreateReq) erro
 		Remark:   req.Remark,
 	}
 
-	tenantId, err := utils.GetTenantIdFromContext(ctx)
-	if err != nil {
-		return err
-	}
+	//tenantId, err := utils.GetTenantIdFromContext(ctx)
+	//if err != nil {
+	//	return err
+	//}
 
 	err = l.userDao.Create(ctx, user)
 
@@ -82,7 +83,54 @@ func (l *userLogic) Create(ctx context.Context, req *systype.UserCreateReq) erro
 			UserId: user.Id,
 			RoleId: id,
 		}
-		rel.TenantId = tenantId
+		//rel.TenantId = tenantId
+		urList = append(urList, rel)
+	}
+
+	return l.roleUserDao.CreateList(ctx, urList)
+}
+func (l *userLogic) CreateForRegister(ctx context.Context, req *systype.UserCreateReq) error {
+	// 检查用户名是否已存在
+	existUser, err := l.userDao.GetByUsername(ctx, req.Username)
+	if err == nil && existUser != nil {
+		return errors.New("用户名已存在")
+	}
+
+	// 密码加密
+	hashedPassword, err := utils.GetHashStr(req.Password)
+	if err != nil {
+		return err
+	}
+
+	user := &sysmodel.User{
+		Username: req.Username,
+		Password: string(hashedPassword),
+		FullName: req.FullName,
+		Email:    req.Email,
+		Phone:    req.Phone,
+		DeptId:   req.DeptId,
+		Status:   req.Status,
+		Remark:   req.Remark,
+	}
+
+	//tenantId, err := utils.GetTenantIdFromContext(ctx)
+	//if err != nil {
+	//	return err
+	//}
+
+	err = l.userDao.Create(ctx, user)
+	if err != nil {
+		return err
+	}
+
+	urList := make([]sysmodel.UserRoleRel, 0)
+
+	for _, id := range req.RoleIds {
+		rel := sysmodel.UserRoleRel{
+			UserId: user.Id,
+			RoleId: id,
+		}
+		//rel.TenantId = tenantId
 		urList = append(urList, rel)
 	}
 
@@ -115,10 +163,10 @@ func (l *userLogic) Update(ctx context.Context, req *systype.UserUpdateReq) erro
 	}
 
 	// 删除用户与角色的旧关系
-	tenantId, err := utils.GetTenantIdFromContext(ctx)
-	if err != nil {
-		return err
-	}
+	//tenantId, err := utils.GetTenantIdFromContext(ctx)
+	//if err != nil {
+	//	return err
+	//}
 	err = l.roleUserDao.DeleteByUserId(ctx, req.Id)
 	if err != nil {
 		return err
@@ -131,7 +179,7 @@ func (l *userLogic) Update(ctx context.Context, req *systype.UserUpdateReq) erro
 			UserId: user.Id,
 			RoleId: id,
 		}
-		rel.TenantId = tenantId
+		//rel.TenantId = tenantId
 		urList = append(urList, rel)
 	}
 	return l.roleUserDao.CreateList(ctx, urList)
@@ -196,13 +244,13 @@ func (l *userLogic) GetById(ctx context.Context, id int64) (*systype.UserDataRes
 		LoginCount:  user.LoginCount,
 		LastLoginAt: user.LastLoginAt,
 		LastLoginIP: user.LastLoginIP,
-		TenantId:    user.TenantId,
-		OrgId:       user.OrgId,
-		Remark:      user.Remark,
-		CreatedAt:   user.CreatedAt,
-		CreatedBy:   user.CreatedBy,
-		UpdatedAt:   user.UpdatedAt,
-		UpdatedBy:   user.UpdatedBy,
+		//TenantId:    user.TenantId,
+		//OrgId:     user.OrgId,
+		Remark:    user.Remark,
+		CreatedAt: user.CreatedAt,
+		CreatedBy: user.CreatedBy,
+		UpdatedAt: user.UpdatedAt,
+		UpdatedBy: user.UpdatedBy,
 	}, nil
 }
 
@@ -227,13 +275,13 @@ func (l *userLogic) GetList(ctx context.Context, req *systype.UserQueryReq) (*sy
 			LoginCount:  user.LoginCount,
 			LastLoginAt: user.LastLoginAt,
 			LastLoginIP: user.LastLoginIP,
-			TenantId:    user.TenantId,
-			OrgId:       user.OrgId,
-			Remark:      user.Remark,
-			CreatedAt:   user.CreatedAt,
-			CreatedBy:   user.CreatedBy,
-			UpdatedAt:   user.UpdatedAt,
-			UpdatedBy:   user.UpdatedBy,
+			//TenantId:    user.TenantId,
+			//OrgId:     user.OrgId,
+			Remark:    user.Remark,
+			CreatedAt: user.CreatedAt,
+			CreatedBy: user.CreatedBy,
+			UpdatedAt: user.UpdatedAt,
+			UpdatedBy: user.UpdatedBy,
 		})
 	}
 	res := &systype.UserDataListResp{
@@ -273,13 +321,13 @@ func (l *userLogic) GetByPhone(ctx context.Context, phone string) (*systype.User
 		LoginCount:  user.LoginCount,
 		LastLoginAt: user.LastLoginAt,
 		LastLoginIP: user.LastLoginIP,
-		TenantId:    user.TenantId,
-		OrgId:       user.OrgId,
-		Remark:      user.Remark,
-		CreatedAt:   user.CreatedAt,
-		CreatedBy:   user.CreatedBy,
-		UpdatedAt:   user.UpdatedAt,
-		UpdatedBy:   user.UpdatedBy,
+		//TenantId:    user.TenantId,
+		//OrgId:     user.OrgId,
+		Remark:    user.Remark,
+		CreatedAt: user.CreatedAt,
+		CreatedBy: user.CreatedBy,
+		UpdatedAt: user.UpdatedAt,
+		UpdatedBy: user.UpdatedBy,
 	}, nil
 }
 

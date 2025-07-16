@@ -67,9 +67,9 @@ func (l *DepartmentLogic) GetById(ctx context.Context, id int64) (*systype.Depar
 	}
 
 	return &systype.DepartmentDataResp{
-		Id:        dept.Id,
-		DeptName:  dept.Name,
-		TenantId:  dept.TenantId,
+		Id:       dept.Id,
+		DeptName: dept.Name,
+		//TenantId:  dept.TenantId,
 		ParentId:  &dept.ParentId,
 		Status:    dept.Status,
 		CreatedAt: dept.CreatedAt,
@@ -94,9 +94,9 @@ func (l *DepartmentLogic) GetList(ctx context.Context, req *systype.DepartmentQu
 
 	for _, dept := range depts {
 		resp.List = append(resp.List, systype.DepartmentDataResp{
-			Id:        dept.Id,
-			DeptName:  dept.Name,
-			TenantId:  dept.TenantId,
+			Id:       dept.Id,
+			DeptName: dept.Name,
+			//TenantId:  dept.TenantId,
 			ParentId:  &dept.ParentId,
 			Status:    dept.Status,
 			CreatedAt: dept.CreatedAt,
@@ -110,8 +110,8 @@ func (l *DepartmentLogic) GetList(ctx context.Context, req *systype.DepartmentQu
 }
 
 // GetTree 获取部门树
-func (l *DepartmentLogic) GetTree(ctx context.Context, tenantId int64) ([]systype.DepartmentTreeResp, error) {
-	trees, err := l.dao.GetTree(ctx, tenantId)
+func (l *DepartmentLogic) GetTree(ctx context.Context) ([]systype.DepartmentTreeResp, error) {
+	trees, err := l.dao.GetTree(ctx)
 	if err != nil {
 		return nil, err
 	}
@@ -121,7 +121,7 @@ func (l *DepartmentLogic) GetTree(ctx context.Context, tenantId int64) ([]systyp
 		resp = append(resp, systype.DepartmentTreeResp{
 			Id:       tree.Id,
 			DeptName: tree.Name,
-			TenantId: tree.TenantId,
+			//TenantId: tree.TenantId,
 			ParentId: tree.ParentId,
 			Status:   tree.Status,
 			Children: convertTreeToResp(tree.Children),
@@ -137,7 +137,7 @@ func convertTreeToResp(trees []sysmodel.DepartmentTree) []systype.DepartmentTree
 		resp = append(resp, systype.DepartmentTreeResp{
 			Id:       tree.Id,
 			DeptName: tree.Name,
-			TenantId: tree.TenantId,
+			//TenantId: tree.TenantId,
 			ParentId: tree.ParentId,
 			Status:   tree.Status,
 			Children: convertTreeToResp(tree.Children),

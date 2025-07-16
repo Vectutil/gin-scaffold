@@ -2,7 +2,6 @@ package system
 
 import (
 	"context"
-	"gin-scaffold/internal/app/model/common"
 	"gin-scaffold/internal/app/model/system"
 	systype "gin-scaffold/internal/app/types/system"
 	"gorm.io/gorm"
@@ -23,12 +22,12 @@ func (d *UserRoleRelDao) Create(ctx context.Context, rel *system.UserRoleRel) er
 
 // CreateList 批量创建用户角色关系
 func (d *UserRoleRelDao) CreateList(ctx context.Context, urList []system.UserRoleRel) error {
-	return d.db.WithContext(ctx).Scopes(common.TenantScope(ctx)).Create(&urList).Error
+	return d.db.WithContext(ctx).Create(&urList).Error
 }
 
 // Delete 删除用户角色关系
 func (d *UserRoleRelDao) Delete(ctx context.Context, userId, roleId int64) error {
-	return d.db.WithContext(ctx).Scopes(common.TenantScope(ctx)).
+	return d.db.WithContext(ctx).
 		Where("user_id = ? AND role_id = ?", userId, roleId).
 		Delete(&system.UserRoleRel{}).Error
 }
@@ -36,7 +35,7 @@ func (d *UserRoleRelDao) Delete(ctx context.Context, userId, roleId int64) error
 // GetByUserId 根据用户Id获取角色关系
 func (d *UserRoleRelDao) GetByUserId(ctx context.Context, userId int64) ([]*system.UserRoleRel, error) {
 	var rels []*system.UserRoleRel
-	err := d.db.WithContext(ctx).Scopes(common.TenantScope(ctx)).
+	err := d.db.WithContext(ctx).
 		Where("user_id = ?", userId).Find(&rels).Error
 	return rels, err
 }
@@ -44,21 +43,21 @@ func (d *UserRoleRelDao) GetByUserId(ctx context.Context, userId int64) ([]*syst
 // GetByRoleId 根据角色Id获取用户关系
 func (d *UserRoleRelDao) GetByRoleId(ctx context.Context, roleId int64) ([]*system.UserRoleRel, error) {
 	var rels []*system.UserRoleRel
-	err := d.db.WithContext(ctx).Scopes(common.TenantScope(ctx)).
+	err := d.db.WithContext(ctx).
 		Where("role_id = ?", roleId).Find(&rels).Error
 	return rels, err
 }
 
 // DeleteByUserId 删除用户的所有角色关系
 func (d *UserRoleRelDao) DeleteByUserId(ctx context.Context, userId int64) error {
-	return d.db.WithContext(ctx).Scopes(common.TenantScope(ctx)).
+	return d.db.WithContext(ctx).
 		Where("user_id = ?", userId).
 		Delete(&system.UserRoleRel{}).Error
 }
 
 // DeleteByRoleId 删除角色的所有用户关系
 func (d *UserRoleRelDao) DeleteByRoleId(ctx context.Context, roleId int64) error {
-	return d.db.WithContext(ctx).Scopes(common.TenantScope(ctx)).
+	return d.db.WithContext(ctx).
 		Where("role_id = ?", roleId).
 		Delete(&system.UserRoleRel{}).Error
 }
@@ -70,7 +69,7 @@ func (d *UserRoleRelDao) List(ctx context.Context, req *systype.UserRoleRelQuery
 		total int64
 	)
 
-	query := d.db.WithContext(ctx).Scopes(common.TenantScope(ctx)).
+	query := d.db.WithContext(ctx).
 		Model(&system.UserRoleRel{})
 
 	if req.UserId != 0 {

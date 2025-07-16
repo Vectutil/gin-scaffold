@@ -19,12 +19,12 @@ func NewUserRoleRelLogic(db *gorm.DB) *UserRoleRelLogic {
 }
 
 // Create 创建用户角色关系
-func (l *UserRoleRelLogic) Create(ctx context.Context, req *systype.UserRoleRelCreateReq, tenantId int64) error {
+func (l *UserRoleRelLogic) Create(ctx context.Context, req *systype.UserRoleRelCreateReq) error {
 	rel := &sysmodel.UserRoleRel{
 		UserId: req.UserId,
 		RoleId: req.RoleId,
 	}
-	rel.TenantId = tenantId
+	//rel.TenantId = tenantId
 	return l.dao.Create(ctx, rel)
 }
 
@@ -43,10 +43,10 @@ func (l *UserRoleRelLogic) GetByUserId(ctx context.Context, userId int64) ([]*sy
 	resp := make([]*systype.UserRoleRelDataResp, 0, len(rels))
 	for _, rel := range rels {
 		resp = append(resp, &systype.UserRoleRelDataResp{
-			Id:       rel.Id,
-			TenantId: rel.TenantId,
-			UserId:   rel.UserId,
-			RoleId:   rel.RoleId,
+			Id: rel.Id,
+			//TenantId: rel.TenantId,
+			UserId: rel.UserId,
+			RoleId: rel.RoleId,
 		})
 	}
 	return resp, nil
@@ -62,10 +62,10 @@ func (l *UserRoleRelLogic) GetByRoleId(ctx context.Context, roleId int64) ([]*sy
 	resp := make([]*systype.UserRoleRelDataResp, 0, len(rels))
 	for _, rel := range rels {
 		resp = append(resp, &systype.UserRoleRelDataResp{
-			Id:       rel.Id,
-			TenantId: rel.TenantId,
-			UserId:   rel.UserId,
-			RoleId:   rel.RoleId,
+			Id: rel.Id,
+			//TenantId: rel.TenantId,
+			UserId: rel.UserId,
+			RoleId: rel.RoleId,
 		})
 	}
 	return resp, nil
@@ -95,10 +95,10 @@ func (l *UserRoleRelLogic) GetList(ctx context.Context, req *systype.UserRoleRel
 
 	for _, rel := range rels {
 		resp.List = append(resp.List, systype.UserRoleRelDataResp{
-			Id:       rel.Id,
-			TenantId: rel.TenantId,
-			UserId:   rel.UserId,
-			RoleId:   rel.RoleId,
+			Id: rel.Id,
+			//TenantId: rel.TenantId,
+			UserId: rel.UserId,
+			RoleId: rel.RoleId,
 		})
 	}
 

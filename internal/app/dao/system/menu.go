@@ -2,7 +2,6 @@ package system
 
 import (
 	"context"
-	"gin-scaffold/internal/app/model/common"
 	"gin-scaffold/internal/app/model/system"
 	"gorm.io/gorm"
 )
@@ -22,20 +21,20 @@ func (d *MenuDao) Create(ctx context.Context, menu *system.Menu) error {
 
 // Update 更新菜单
 func (d *MenuDao) Update(ctx context.Context, menu *system.Menu) error {
-	return d.db.WithContext(ctx).Scopes(common.TenantScope(ctx)).
+	return d.db.WithContext(ctx).
 		Model(&system.Menu{}).Where("id = ?", menu.Id).Updates(menu).Error
 }
 
 // Delete 删除菜单
 func (d *MenuDao) Delete(ctx context.Context, id int64) error {
-	return d.db.WithContext(ctx).Scopes(common.TenantScope(ctx)).
+	return d.db.WithContext(ctx).
 		Model(&system.Menu{}).Where("id = ?", id).Update("deleted_at", gorm.Expr("NOW()")).Error
 }
 
 // GetById 根据Id获取菜单
 func (d *MenuDao) GetById(ctx context.Context, id int64) (*system.Menu, error) {
 	var menu system.Menu
-	err := d.db.WithContext(ctx).Scopes(common.TenantScope(ctx)).
+	err := d.db.WithContext(ctx).
 		First(&menu, id).Error
 	if err != nil {
 		return nil, err
@@ -50,7 +49,7 @@ func (d *MenuDao) List(ctx context.Context, req interface{}) ([]*system.Menu, in
 		total int64
 	)
 
-	query := d.db.WithContext(ctx).Scopes(common.TenantScope(ctx)).
+	query := d.db.WithContext(ctx).
 		Model(&system.Menu{})
 
 	// 获取总数

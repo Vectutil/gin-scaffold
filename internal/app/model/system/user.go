@@ -16,8 +16,8 @@ type User struct {
 	LoginCount  int    `gorm:"column:login_count" json:"loginCount"`    // 登录次数
 	LastLoginAt int64  `gorm:"column:last_login_at" json:"lastLoginAt"` // 最后登录时间
 	LastLoginIP string `gorm:"column:last_login_ip" json:"lastLoginIp"` // 最后登录IP地址
-	OrgId       int64  `gorm:"column:org_id" json:"orgId"`              // 组织Id
-	Remark      string `gorm:"column:remark" json:"remark"`             // 备注信息
+	//OrgId       int64  `gorm:"column:org_id" json:"orgId"`              // 组织Id
+	Remark string `gorm:"column:remark" json:"remark"` // 备注信息
 }
 
 // TableName 指定表名

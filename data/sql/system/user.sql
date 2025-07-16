@@ -12,8 +12,8 @@ CREATE TABLE IF NOT EXISTS `user`
     `login_count`           INT(11)          NOT NULL DEFAULT 0 COMMENT '登录次数',
     `last_login_at`         INT(11)     NOT NULL DEFAULT 0 COMMENT '最后登录时间',
     `last_login_ip`         VARCHAR(45)  NOT NULL DEFAULT '' COMMENT '最后登录IP地址',
-    `tenant_id`             BIGINT(20)   NOT NULL DEFAULT 0 COMMENT '租户Id',
-    `org_id`                BIGINT(20)   NOT NULL DEFAULT 0 COMMENT '组织Id(暂时没能力构建)',
+--     `tenant_id`             BIGINT(20)   NOT NULL DEFAULT 0 COMMENT '租户Id',
+--     `org_id`                BIGINT(20)   NOT NULL DEFAULT 0 COMMENT '组织Id(暂时没能力构建)',
     `remark`                TEXT         NOT NULL COMMENT '备注信息',
     `created_at`            DATETIME     NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
     `created_by`            BIGINT(20)   NOT NULL DEFAULT 0 COMMENT '创建人Id',
@@ -22,9 +22,9 @@ CREATE TABLE IF NOT EXISTS `user`
     `deleted_at`            DATETIME              DEFAULT NULL COMMENT '删除时间',
     `deleted_by`            BIGINT(20)   NOT NULL DEFAULT 0 COMMENT '删除人Id',
     PRIMARY KEY (`id`),
-    KEY `idx_dept_id` (`dept_id`),
-    KEY `idx_tenant_id` (`tenant_id`),
-    KEY `idx_deleted_status` (`deleted_at`, `status`)
+    KEY `idx_dept_id` (`dept_id`)
+--     KEY `idx_tenant_id` (`tenant_id`),
+--     KEY `idx_deleted_status` (`deleted_at`, `status`)
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4 COMMENT ='用户表';
 

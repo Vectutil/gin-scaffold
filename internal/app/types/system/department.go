@@ -33,9 +33,9 @@ type DepartmentDeleteResp struct{}
 
 // DepartmentDataResp 部门数据响应
 type DepartmentDataResp struct {
-	Id        int64      `json:"id"`        // 部门Id
-	DeptName  string     `json:"deptName"`  // 部门名称
-	TenantId  int64      `json:"tenantId"`  // 租户Id
+	Id       int64  `json:"id"`       // 部门Id
+	DeptName string `json:"deptName"` // 部门名称
+	//TenantId  int64      `json:"tenantId"`  // 租户Id
 	ParentId  *int64     `json:"parentId"`  // 上级部门Id
 	Status    int8       `json:"status"`    // 状态：1启用 0禁用
 	CreatedAt time.Time  `json:"createdAt"` // 创建时间
@@ -62,9 +62,9 @@ type DepartmentQueryReq struct {
 
 // DepartmentTreeResp 部门树响应
 type DepartmentTreeResp struct {
-	Id       int64                `json:"id"`                 // 部门Id
-	DeptName string               `json:"deptName"`           // 部门名称
-	TenantId int64                `json:"tenantId"`           // 租户Id
+	Id       int64  `json:"id"`       // 部门Id
+	DeptName string `json:"deptName"` // 部门名称
+	//TenantId int64                `json:"tenantId"`           // 租户Id
 	ParentId int64                `json:"parentId"`           // 上级部门Id
 	Status   int8                 `json:"status"`             // 状态：1启用 0禁用
 	Children []DepartmentTreeResp `json:"children,omitempty"` // 子部门
