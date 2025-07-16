@@ -14,10 +14,10 @@ import (
 func AuthMiddleware() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		authHeader := c.GetHeader("Authorization")
-		if !strings.HasPrefix(authHeader, "Bearer ") {
-			c.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{"error": "missing token"})
-			return
-		}
+		//if !strings.HasPrefix(authHeader, "Bearer ") {
+		//	c.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{"error": "missing token"})
+		//	return
+		//}
 
 		token := strings.TrimPrefix(authHeader, "Bearer ")
 
@@ -35,7 +35,7 @@ func AuthMiddleware() gin.HandlerFunc {
 			return
 		}
 
-		var userInfo metadata.MetaData
+		var userInfo *metadata.MetaData
 		_ = json.Unmarshal([]byte(data), &userInfo)
 		if userInfo.Id != claims.UserId {
 			c.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{"error": "token mismatch"})

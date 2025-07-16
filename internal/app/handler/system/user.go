@@ -42,7 +42,7 @@ func (h *UserHandler) Create(c *gin.Context) {
 	)
 
 	defer func() {
-		commit()
+		commit(err)
 		response.HandleDefault(c, res)(&err)
 	}()
 
@@ -83,7 +83,7 @@ func (h *UserHandler) Update(c *gin.Context) {
 	)
 
 	defer func() {
-		commit()
+		commit(err)
 		response.HandleDefault(c, res)(&err)
 	}()
 
@@ -118,7 +118,7 @@ func (h *UserHandler) Delete(c *gin.Context) {
 	)
 
 	defer func() {
-		commit()
+		commit(err)
 		response.HandleDefault(c, res)(&err)
 	}()
 
@@ -189,7 +189,7 @@ func (h *UserHandler) List(c *gin.Context) {
 	)
 
 	defer func() {
-		commit()
+		commit(err)
 		response.HandleListDefault(c, res)(&err)
 	}()
 

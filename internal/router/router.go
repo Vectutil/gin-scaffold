@@ -18,12 +18,11 @@ func InitRouter(r *gin.Engine) {
 	{
 		//commentRoute.GET("/list", GetCommentList)
 	}
+	initSystemRout(r)
 
 	// 使用慢日志中间件，阈值设置为 3 秒
 	r.Use(middleware.SlowLogMiddleware(3 * time.Second))
 	r.Use(middleware.CorsMiddleware())
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
-
-	initSystemRout(r)
 
 }

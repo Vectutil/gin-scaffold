@@ -2,7 +2,6 @@ CREATE TABLE IF NOT EXISTS `department`
 (
     `id`         BIGINT(20)   NOT NULL AUTO_INCREMENT COMMENT '部门Id',
     `name`  VARCHAR(255) NOT NULL COMMENT '部门名称',
-    `tenant_id`  BIGINT(20)   NOT NULL DEFAULT 0 COMMENT '租户Id',
     `parent_id`  BIGINT(20)    NOT NULL DEFAULT 0 COMMENT '上级部门Id，NULL 表示顶级',
     `level`     TINYINT(1)   NOT NULL DEFAULT 1 COMMENT '深度',
     `status`     TINYINT(1)   NOT NULL DEFAULT 1 COMMENT '状态：1启用 0禁用',
@@ -17,4 +16,4 @@ CREATE TABLE IF NOT EXISTS `department`
     INDEX `idx_tenant_parent` (`tenant_id`, `parent_id`)
     ) ENGINE = InnoDB
     DEFAULT CHARSET = utf8mb4
-    COMMENT = '部门表（含多租户）';
+    COMMENT = '部门表';

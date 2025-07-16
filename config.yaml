@@ -1,0 +1,46 @@
+mysql:
+  host: "114.132.245.76"
+  port: 3306
+  user: "root"
+  password: "123456"
+  database: "gin-scaffold"
+
+redis:
+  host: "114.132.245.76"
+  port: 6379
+  password: "123456"
+  db: 0
+
+rabbitmq:
+  host: "47.112.109.63"
+  port: 5672
+  user: "admin"
+  password: "breelk"
+  name:
+    delayTest: "delay.test"
+
+wxRobot:
+  errorRobot: "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=63c5491c-84fd-4b27-bc66-xxxxxxxxxx"
+
+qny:
+  accessKey: "ciIHqTlKU1AjyJK6kb4LCXlLzxxxxxxxxxx"
+  secretKey: "7iomzYL4h2ytAZxCTStNPDvY4xxxxxxxxx"
+  bucket: "woorho"
+  qnyServer: "https://xxxxxxx.fun"
+
+system:
+  # 应用名称
+  name: "linbe-scaffold"
+  # 应用版本
+  version: "1.0.0"
+  port: 4001
+  migration: false
+  env: "dev"
+#  env: "release"
+
+job:
+  jobStatus:
+    examplejob: false
+
+  jobCron:
+    examplejob: "*/10 * * * * *"

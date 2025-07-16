@@ -5,8 +5,8 @@ import (
 	syslogic "gin-scaffold/internal/app/logic/system"
 	sysmodel "gin-scaffold/internal/app/model/system"
 	"gin-scaffold/internal/app/response"
+	"gin-scaffold/internal/middleware/metadata"
 	"gin-scaffold/pkg/mysql"
-	"gin-scaffold/pkg/utils"
 	"strconv"
 
 	"github.com/gin-gonic/gin"
@@ -51,10 +51,7 @@ func (h *MenuHandler) Create(c *gin.Context) {
 	}
 
 	// 从上下文中获取操作者Id
-	operatorId, err := utils.GetUserIdFromContext(c)
-	if err != nil {
-		return
-	}
+	operatorId := metadata.GetUserId(c.Request.Context())
 
 	req.CreatedBy = operatorId
 	req.UpdatedBy = operatorId
@@ -102,10 +99,7 @@ func (h *MenuHandler) Update(c *gin.Context) {
 	req.Id = id
 
 	// 从上下文中获取操作者Id
-	operatorId, err := utils.GetUserIdFromContext(c)
-	if err != nil {
-		return
-	}
+	operatorId := metadata.GetUserId(c.Request.Context())
 
 	req.UpdatedBy = operatorId
 

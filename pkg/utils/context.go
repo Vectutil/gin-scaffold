@@ -2,7 +2,6 @@ package utils
 
 import (
 	"context"
-	"errors"
 	systype "gin-scaffold/internal/app/types/system"
 	"github.com/gin-gonic/gin"
 )
@@ -28,16 +27,19 @@ func GetUserFromContext(c *gin.Context) (*systype.UserDataResp, error) {
 	return userInfo, nil
 }
 
-// GetUserIdFromContext 从上下文中获取用户Id
-func GetUserIdFromContext(ctx context.Context) (int64, error) {
-	if ctx == nil {
-		return 0, errors.New("context is nil")
-	}
-	if userId, ok := ctx.Value(UserIdKey).(int64); ok {
-		return userId, nil
-	}
-	return 0, errors.New("userId not found in context")
-}
+//
+//// GetUserIdFromContext 从上下文中获取用户Id
+//func GetUserIdFromContext(ctx context.Context) (int64, error) {
+//	if ctx == nil {
+//		return 0, errors.New("context is nil")
+//	}
+//	id := metadata.GetUserId(ctx)
+//	fmt.Println(id)
+//	if userId, ok := ctx.Value(UserIdKey).(int64); ok {
+//		return userId, nil
+//	}
+//	return 0, errors.New("userId not found in context")
+//}
 
 // GetTenantIdFromContext 从上下文中获取租户Id
 //func GetTenantIdFromContext(ctx context.Context) (int64, error) {

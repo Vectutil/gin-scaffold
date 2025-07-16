@@ -4,8 +4,8 @@ import (
 	"gin-scaffold/internal/app/logic/system"
 	"gin-scaffold/internal/app/response"
 	systype "gin-scaffold/internal/app/types/system"
+	"gin-scaffold/internal/middleware/metadata"
 	"gin-scaffold/pkg/mysql"
-	"gin-scaffold/pkg/utils"
 	"strconv"
 
 	"github.com/gin-gonic/gin"
@@ -50,10 +50,7 @@ func (h *RoleHandler) Create(c *gin.Context) {
 	}
 
 	// 从上下文中获取操作者Id
-	operatorId, err := utils.GetUserIdFromContext(c)
-	if err != nil {
-		return
-	}
+	operatorId := metadata.GetUserId(c.Request.Context())
 
 	if err = roleLogic.Create(c.Request.Context(), &req, operatorId); err != nil {
 		return
@@ -98,10 +95,7 @@ func (h *RoleHandler) Update(c *gin.Context) {
 	req.Id = id
 
 	// 从上下文中获取操作者Id
-	operatorId, err := utils.GetUserIdFromContext(c)
-	if err != nil {
-		return
-	}
+	operatorId := metadata.GetUserId(c.Request.Context())
 
 	if err = roleLogic.Update(c.Request.Context(), &req, operatorId); err != nil {
 		return
@@ -138,10 +132,7 @@ func (h *RoleHandler) Delete(c *gin.Context) {
 	}
 
 	// 从上下文中获取操作者Id
-	operatorId, err := utils.GetUserIdFromContext(c)
-	if err != nil {
-		return
-	}
+	operatorId := metadata.GetUserId(c.Request.Context())
 
 	if err = roleLogic.Delete(c.Request.Context(), id, operatorId); err != nil {
 		return

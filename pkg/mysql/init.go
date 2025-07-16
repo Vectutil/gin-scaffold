@@ -11,7 +11,7 @@ import (
 	"time"
 )
 
-var dbMap = make(map[string]*gorm.DB)
+var dbMap *gorm.DB
 
 func InitMysql() {
 	//
@@ -63,26 +63,23 @@ func InitMysql() {
 	sqlDB.SetConnMaxLifetime(5 * time.Minute)
 	//db.Logger = logger.Default.LogMode(logger.Silent)
 
-	dbMap["lb"] = db
+	dbMap = db
 }
 
-func GetDB(key ...string) *gorm.DB {
-	if len(key) == 0 {
-		return dbMap["lb"]
-	}
-	return dbMap[key[0]]
+func GetDB() *gorm.DB {
+	return dbMap
 }
 
 // GetTrans 开启事务并返回事务句柄和提交函数
-func GetTrans() (*gorm.DB, func()) {
-	tx := dbMap["jt"].Begin()
-	commit := func() {
+func GetTrans() (*gorm.DB, func(err error)) {
+	tx := dbMap.Begin()
+	commit := func(err error) {
 		if r := recover(); r != nil {
 			tx.Rollback()
 			return
 		}
 
-		if err := tx.Error; err != nil {
+		if err != nil {
 			tx.Rollback()
 		} else {
 			tx.Commit()

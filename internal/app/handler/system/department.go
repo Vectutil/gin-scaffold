@@ -4,8 +4,8 @@ import (
 	"gin-scaffold/internal/app/logic/system"
 	"gin-scaffold/internal/app/response"
 	systype "gin-scaffold/internal/app/types/system"
+	"gin-scaffold/internal/middleware/metadata"
 	"gin-scaffold/pkg/mysql"
-	"gin-scaffold/pkg/utils"
 	"strconv"
 
 	"github.com/gin-gonic/gin"
@@ -34,15 +34,17 @@ func NewDepartmentHandler() *DepartmentHandler {
 // @Router /department [post]
 func (h *DepartmentHandler) Create(c *gin.Context) {
 	var (
-		err       error
-		db        = mysql.GetDB().Begin()
-		req       systype.DepartmentCreateReq
-		res       = &systype.DepartmentCreateResp{}
-		deptLogic = system.NewDepartmentLogic(db)
+		err        error
+		db, commit = mysql.GetTrans()
+		req        systype.DepartmentCreateReq
+		res        = &systype.DepartmentCreateResp{}
+		deptLogic  = system.NewDepartmentLogic(db)
 	)
 
 	defer func() {
+		commit(err)
 		response.HandleDefault(c, res)(&err)
+
 	}()
 
 	if err = c.ShouldBindJSON(&req); err != nil {
@@ -50,10 +52,14 @@ func (h *DepartmentHandler) Create(c *gin.Context) {
 	}
 
 	// 从上下文中获取操作者Id
-	operatorId, err := utils.GetUserIdFromContext(c)
-	if err != nil {
-		return
-	}
+	//operatorId, err := utils.GetUserIdFromContext(c)
+	//if err != nil {
+	//	return
+	//}
+	operatorId := metadata.GetUserId(c.Request.Context())
+	//if err != nil {
+	//	return err
+	//}
 
 	if err = deptLogic.Create(c.Request.Context(), &req, operatorId); err != nil {
 		return
@@ -98,10 +104,7 @@ func (h *DepartmentHandler) Update(c *gin.Context) {
 	req.Id = id
 
 	// 从上下文中获取操作者Id
-	operatorId, err := utils.GetUserIdFromContext(c)
-	if err != nil {
-		return
-	}
+	operatorId := metadata.GetUserId(c.Request.Context())
 
 	if err = deptLogic.Update(c.Request.Context(), &req, operatorId); err != nil {
 		return
@@ -138,10 +141,7 @@ func (h *DepartmentHandler) Delete(c *gin.Context) {
 	}
 
 	// 从上下文中获取操作者Id
-	operatorId, err := utils.GetUserIdFromContext(c)
-	if err != nil {
-		return
-	}
+	operatorId := metadata.GetUserId(c.Request.Context())
 
 	if err = deptLogic.Delete(c.Request.Context(), id, operatorId); err != nil {
 		return

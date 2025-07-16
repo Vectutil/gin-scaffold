@@ -8,6 +8,7 @@ import (
 	"gin-scaffold/internal/app/response"
 	"gin-scaffold/internal/app/types/common"
 	systype "gin-scaffold/internal/app/types/system"
+	"gin-scaffold/internal/middleware/metadata"
 	"gin-scaffold/pkg/utils"
 	"golang.org/x/crypto/bcrypt"
 	"gorm.io/gorm"
@@ -207,10 +208,10 @@ func (l *userLogic) Delete(ctx context.Context, id int64) error {
 		return err
 	}
 
-	opId, err := utils.GetUserIdFromContext(ctx)
-	if err != nil {
-		return err
-	}
+	opId := metadata.GetUserId(ctx)
+	//if err != nil {
+	//	return err
+	//}
 
 	if user.Id == opId {
 		return errors.New("不能删除自己")

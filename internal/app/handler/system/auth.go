@@ -33,7 +33,7 @@ func NewAuthHandler() *AuthHandler {
 // @Success 200 {object} LoginResp "成功返回"
 // @Failure 400 {object} response.Response "请求错误"
 // @Failure 401 {object} response.Response "认证失败"
-// @Router /auth/login [post]
+// @Router /login [post]
 func (h *AuthHandler) Login(c *gin.Context) {
 	var (
 		err       error
@@ -87,7 +87,7 @@ func (h *AuthHandler) Login(c *gin.Context) {
 // @Success 200 {object} map[string]string "成功返回"
 // @Failure 400 {object} response.Response "请求错误"
 // @Failure 401 {object} response.Response "认证失败"
-// @Router /auth/refresh [post]
+// @Router /refresh [post]
 func RefreshToken(c *gin.Context) {
 	var req struct {
 		RefreshToken string `json:"refresh_token"`
@@ -125,7 +125,7 @@ func RefreshToken(c *gin.Context) {
 // @Success 200 {object} systype.RegisterResp "成功返回"
 // @Failure 400 {object} response.Response "请求错误"
 // @Failure 500 {object} response.Response "内部错误"
-// @Router /auth/register [post]
+// @Router /register [post]
 func (h *AuthHandler) Register(c *gin.Context) {
 	var (
 		err       error
