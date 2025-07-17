@@ -27,7 +27,6 @@ func NewDepartmentHandler() *DepartmentHandler {
 // @Tags 部门管理
 // @Accept json
 // @Produce json
-// @Param Authorization header string true "Bearer 用户令牌"
 // @Param request body systype.DepartmentCreateReq true "部门创建请求参数"
 // @Success 200 {object} systype.DepartmentCreateResp "成功返回"
 // @Failure 500 {object} response.Response "内部错误"
@@ -73,7 +72,6 @@ func (h *DepartmentHandler) Create(c *gin.Context) {
 // @Tags 部门管理
 // @Accept json
 // @Produce json
-// @Param Authorization header string true "Bearer 用户令牌"
 // @Param id path int true "部门Id"
 // @Param request body systype.DepartmentUpdateReq true "部门更新请求参数"
 // @Success 200 {object} systype.DepartmentUpdateResp "成功返回"
@@ -118,7 +116,6 @@ func (h *DepartmentHandler) Update(c *gin.Context) {
 // @Tags 部门管理
 // @Accept json
 // @Produce json
-// @Param Authorization header string true "Bearer 用户令牌"
 // @Param id path int true "部门Id"
 // @Success 200 {object} systype.DepartmentDeleteResp "成功返回"
 // @Failure 500 {object} response.Response "内部错误"
@@ -155,7 +152,6 @@ func (h *DepartmentHandler) Delete(c *gin.Context) {
 // @Tags 部门管理
 // @Accept json
 // @Produce json
-// @Param Authorization header string true "Bearer 用户令牌"
 // @Param id path int true "部门Id"
 // @Success 200 {object} systype.DepartmentDataResp "成功返回"
 // @Failure 500 {object} response.Response "内部错误"
@@ -189,7 +185,6 @@ func (h *DepartmentHandler) GetById(c *gin.Context) {
 // @Tags 部门管理
 // @Accept json
 // @Produce json
-// @Param Authorization header string true "Bearer 用户令牌"
 // @Param page query int false "页码" default(1)
 // @Param page_size query int false "每页数量" default(10)
 // @Success 200 {object} systype.DepartmentDataListResp "成功返回"
@@ -226,7 +221,6 @@ func (h *DepartmentHandler) List(c *gin.Context) {
 // @Tags 部门管理
 // @Accept json
 // @Produce json
-// @Param Authorization header string true "Bearer 用户令牌"
 // @Success 200 {object} []systype.DepartmentTreeResp "成功返回"
 // @Failure 500 {object} response.Response "内部错误"
 // @Router /department/tree [get]

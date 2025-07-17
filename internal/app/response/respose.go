@@ -87,7 +87,7 @@ func Error(ctx *gin.Context, err *error, code int, msg interface{}) {
 %s`,
 		t, ctx.Request.URL.Path, code, qerr.Msg, stack)
 
-	http_call.CallQWAssistant(ctx, markdown, http_call.QWRobotMsgTypeMarkdown)
+	http_call.CallQWAssistant(ctx, markdown, http_call.QWRobotMsgTypeText)
 
 	ctx.JSON(http.StatusOK, Response{
 		Code:    code,

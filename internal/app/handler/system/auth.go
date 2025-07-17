@@ -62,14 +62,14 @@ func (h *AuthHandler) Login(c *gin.Context) {
 
 	userData, _ := json.Marshal(userInfo)
 	// 将token存储在Redis中，设置过期时间为7*24小时
-	err = redis.GetClient().Set(c.Request.Context(), "accToken:"+accToken, userData, 2*time.Hour)
+	err = redis.GetClient().Set(c.Request.Context(), "accToken:"+accToken, userData, 7*24*time.Hour)
 	if err != nil {
 		return
 	}
-	err = redis.GetClient().Set(c.Request.Context(), "refToken:"+refToken, userData, 7*24*time.Hour)
-	if err != nil {
-		return
-	}
+	//err = redis.GetClient().Set(c.Request.Context(), "refToken:"+refToken, userData, 7*24*time.Hour)
+	//if err != nil {
+	//	return
+	//}
 
 	res.AccessToken = accToken
 	res.RefreshToken = refToken

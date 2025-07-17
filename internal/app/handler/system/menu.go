@@ -28,7 +28,6 @@ func NewMenuHandler() *MenuHandler {
 // @Tags 菜单管理
 // @Accept json
 // @Produce json
-// @Param Authorization header string true "Bearer 用户令牌"
 // @Param request body  sysmodel.Menu true "菜单创建请求参数"
 // @Success 200 {object}  sysmodel.Menu "成功返回"
 // @Failure 500 {object} response.Response "内部错误"
@@ -68,7 +67,6 @@ func (h *MenuHandler) Create(c *gin.Context) {
 // @Tags 菜单管理
 // @Accept json
 // @Produce json
-// @Param Authorization header string true "Bearer 用户令牌"
 // @Param id path int true "菜单Id"
 // @Param request body sysmodel.Menu true "菜单更新请求参数"
 // @Success 200 {object} sysmodel.Menu "成功返回"
@@ -115,7 +113,6 @@ func (h *MenuHandler) Update(c *gin.Context) {
 // @Tags 菜单管理
 // @Accept json
 // @Produce json
-// @Param Authorization header string true "Bearer 用户令牌"
 // @Param id path int true "菜单Id"
 // @Success 200 {object} sysmodel.Menu "成功返回"
 // @Failure 500 {object} response.Response "内部错误"
@@ -149,7 +146,6 @@ func (h *MenuHandler) Delete(c *gin.Context) {
 // @Tags 菜单管理
 // @Accept json
 // @Produce json
-// @Param Authorization header string true "Bearer 用户令牌"
 // @Param id path int true "菜单Id"
 // @Success 200 {object} sysmodel.Menu "成功返回"
 // @Failure 500 {object} response.Response "内部错误"
@@ -183,7 +179,6 @@ func (h *MenuHandler) GetById(c *gin.Context) {
 // @Tags 菜单管理
 // @Accept json
 // @Produce json
-// @Param Authorization header string true "Bearer 用户令牌"
 // @Param page query int false "页码" default(1)
 // @Param page_size query int false "每页数量" default(10)
 // @Success 200 {object} sysmodel.Menu "成功返回"

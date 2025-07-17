@@ -6,17 +6,17 @@
 
 ## user
     ✅ create 
-    ❌ update
-    ❌ delete
-    ❌ get
+    ✅ update
+    ✅ delete
+    ✅ get
     ✅ list
 
 ## role
     ✅ create 
-    ❌ update
-    ❌ delete
-    ❌ get
-    ❌ list
+    ✅ update
+    ✅ delete
+    ✅ get
+    ✅ list
 
 ## dept
     ✅ create 

@@ -21,8 +21,8 @@ func initSystemRout(r *gin.Engine) {
 	userGroup := authRouter.Group("/user")
 	{
 		userGroup.POST("", userHandler.Create)
-		userGroup.PUT("/:id", userHandler.Update)
-		userGroup.DELETE("/:id", userHandler.Delete)
+		userGroup.PUT("", userHandler.Update)
+		userGroup.DELETE("", userHandler.Delete)
 		userGroup.GET("/:id", userHandler.GetById)
 		userGroup.GET("", userHandler.List)
 	}
@@ -42,8 +42,8 @@ func initSystemRout(r *gin.Engine) {
 	{
 		h := system.NewRoleHandler()
 		role.POST("", h.Create)
-		role.PUT("/:id", h.Update)
-		role.DELETE("/:id", h.Delete)
+		role.PUT("", h.Update)
+		role.DELETE("", h.Delete)
 		role.GET("/:id", h.GetById)
 		role.GET("", h.List)
 	}

@@ -4,6 +4,7 @@ import (
 	"errors"
 	syslogic "gin-scaffold/internal/app/logic/system"
 	"gin-scaffold/internal/app/response"
+	"gin-scaffold/internal/app/types/common"
 	systype "gin-scaffold/internal/app/types/system"
 	"gin-scaffold/pkg/mysql"
 	"strconv"
@@ -28,7 +29,6 @@ func NewUserHandler() *UserHandler {
 // @Tags 用户管理
 // @Accept json
 // @Produce json
-// @Param Authorization header string true "Bearer 用户令牌"
 // @Param request body systype.UserCreateReq true "用户创建请求参数"
 // @Success 200 {object} systype.UserCreateResp "成功返回"
 // @Failure 500 {object} response.Response "内部错误"
@@ -68,12 +68,11 @@ func (h *UserHandler) Create(c *gin.Context) {
 // @Tags 用户管理
 // @Accept json
 // @Produce json
-// @Param Authorization header string true "Bearer 用户令牌"
 // @Param id path int true "用户Id"
 // @Param request body systype.UserUpdateReq true "用户更新请求参数"
 // @Success 200 {object} systype.UserUpdateResp "成功返回"
 // @Failure 500 {object} response.Response "内部错误"
-// @Router /user/{id} [put]
+// @Router /user [put]
 func (h *UserHandler) Update(c *gin.Context) {
 	var (
 		err        error
@@ -104,15 +103,16 @@ func (h *UserHandler) Update(c *gin.Context) {
 // @Tags 用户管理
 // @Accept json
 // @Produce json
-// @Param Authorization header string true "Bearer 用户令牌"
 // @Param id path int true "用户Id"
+// @Param request body common.IdReq true "用户更新请求参数"
 // @Success 200 {object} systype.UserDeleteResp "成功返回"
 // @Failure 500 {object} response.Response "内部错误"
-// @Router /user/{id} [delete]
+// @Router /user [delete]
 func (h *UserHandler) Delete(c *gin.Context) {
 	var (
 		err        error
 		db, commit = mysql.GetTrans()
+		req        = &common.IdReq{}
 		res        = &systype.UserDeleteResp{}
 		userLogic  = syslogic.NewUserLogic(db)
 	)
@@ -122,12 +122,11 @@ func (h *UserHandler) Delete(c *gin.Context) {
 		response.HandleDefault(c, res)(&err)
 	}()
 
-	id, err := strconv.ParseInt(c.Param("id"), 10, 64)
-	if err != nil {
+	if err = c.ShouldBindJSON(req); err != nil {
 		return
 	}
 
-	if err = userLogic.Delete(c.Request.Context(), id); err != nil {
+	if err = userLogic.Delete(c.Request.Context(), req.Id); err != nil {
 		return
 	}
 }
@@ -139,7 +138,6 @@ func (h *UserHandler) Delete(c *gin.Context) {
 // @Tags 用户管理
 // @Accept json
 // @Produce json
-// @Param Authorization header string true "Bearer 用户令牌"
 // @Param id path int true "用户Id"
 // @Success 200 {object} systype.UserDataResp "成功返回"
 // @Failure 500 {object} response.Response "内部错误"
@@ -173,7 +171,6 @@ func (h *UserHandler) GetById(c *gin.Context) {
 // @Tags 用户管理
 // @Accept json
 // @Produce json
-// @Param Authorization header string true "Bearer 用户令牌"
 // @Param page query int false "页码" default(1)
 // @Param page_size query int false "每页数量" default(10)
 // @Success 200 {object} systype.UserDataListResp "成功返回"

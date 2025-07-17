@@ -43,3 +43,7 @@ func (l *ListResp) GetTotalPage() int {
 	}
 	return (int(l.Total) + l.PageSize - 1) / l.PageSize
 }
+
+type IdReq struct {
+	Id int64 `json:"id" binding:"required"`
+}

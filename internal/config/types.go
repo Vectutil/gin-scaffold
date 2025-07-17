@@ -5,6 +5,7 @@ type Config struct {
 	Redis    Redis         `json:"redis"`
 	System   System        `json:"system"`
 	WXRobot  WXRobot       `json:"wxRobot"`
+	FSRobot  FSRobot       `json:"fsRobot"`
 	Job      CronJobConfig `json:"job"`
 	Qny      Qny           `json:"qny"`
 	RabbitMQ RabbitMQ      `json:"rabbitmq"`
@@ -37,6 +38,9 @@ type MQName struct {
 }
 
 type WXRobot struct {
+	ErrorRobot string `json:"errorRobot"`
+}
+type FSRobot struct {
 	ErrorRobot string `json:"errorRobot"`
 }
 

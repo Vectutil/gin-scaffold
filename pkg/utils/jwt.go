@@ -27,9 +27,9 @@ func GenerateAccessToken(userId int64, role string) (string, error) {
 		UserId: userId,
 		Role:   role,
 		RegisteredClaims: jwt.RegisteredClaims{
-			ExpiresAt: jwt.NewNumericDate(time.Now().Add(2 * time.Hour)),
+			ExpiresAt: jwt.NewNumericDate(time.Now().Add(7 * 24 * time.Hour)),
 			IssuedAt:  jwt.NewNumericDate(time.Now()),
-			Issuer:    "your-app",
+			Issuer:    "gin-scaffold",
 		},
 	}
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
@@ -40,9 +40,9 @@ func GenerateRefreshToken(userId int64) (string, error) {
 	claims := Claims{
 		UserId: userId,
 		RegisteredClaims: jwt.RegisteredClaims{
-			ExpiresAt: jwt.NewNumericDate(time.Now().Add(30 * 24 * time.Hour)),
+			ExpiresAt: jwt.NewNumericDate(time.Now().Add(7 * 24 * time.Hour)),
 			IssuedAt:  jwt.NewNumericDate(time.Now()),
-			Issuer:    "your-app",
+			Issuer:    "gin-scaffold",
 		},
 	}
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)

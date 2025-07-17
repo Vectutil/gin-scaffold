@@ -20,7 +20,7 @@ func NewRoleLogic(db *gorm.DB) *RoleLogic {
 }
 
 // Create 创建角色
-func (l *RoleLogic) Create(ctx context.Context, req *systype.RoleCreateReq, operatorId int64) error {
+func (l *RoleLogic) Create(ctx context.Context, req *systype.RoleCreateReq) error {
 	// 检查角色编码是否已存在
 	_, err := l.dao.GetByCode(ctx, req.Code)
 	if err == nil {
@@ -42,7 +42,7 @@ func (l *RoleLogic) Create(ctx context.Context, req *systype.RoleCreateReq, oper
 }
 
 // Update 更新角色
-func (l *RoleLogic) Update(ctx context.Context, req *systype.RoleUpdateReq, operatorId int64) error {
+func (l *RoleLogic) Update(ctx context.Context, req *systype.RoleUpdateReq) error {
 	// 检查角色是否存在
 	role, err := l.dao.GetById(ctx, req.Id)
 	if err != nil {
@@ -70,7 +70,7 @@ func (l *RoleLogic) Update(ctx context.Context, req *systype.RoleUpdateReq, oper
 }
 
 // Delete 删除角色
-func (l *RoleLogic) Delete(ctx context.Context, id int64, operatorId int64) error {
+func (l *RoleLogic) Delete(ctx context.Context, id int64) error {
 	return l.dao.Delete(ctx, id)
 }
 

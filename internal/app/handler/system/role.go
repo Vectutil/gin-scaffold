@@ -3,8 +3,8 @@ package system
 import (
 	"gin-scaffold/internal/app/logic/system"
 	"gin-scaffold/internal/app/response"
+	"gin-scaffold/internal/app/types/common"
 	systype "gin-scaffold/internal/app/types/system"
-	"gin-scaffold/internal/middleware/metadata"
 	"gin-scaffold/pkg/mysql"
 	"strconv"
 
@@ -27,7 +27,6 @@ func NewRoleHandler() *RoleHandler {
 // @Tags 角色管理
 // @Accept json
 // @Produce json
-// @Param Authorization header string true "Bearer 用户令牌"
 // @Param request body systype.RoleCreateReq true "角色创建请求参数"
 // @Success 200 {object} systype.RoleCreateResp "成功返回"
 // @Failure 500 {object} response.Response "内部错误"
@@ -49,10 +48,7 @@ func (h *RoleHandler) Create(c *gin.Context) {
 		return
 	}
 
-	// 从上下文中获取操作者Id
-	operatorId := metadata.GetUserId(c.Request.Context())
-
-	if err = roleLogic.Create(c.Request.Context(), &req, operatorId); err != nil {
+	if err = roleLogic.Create(c.Request.Context(), &req); err != nil {
 		return
 	}
 }
@@ -64,12 +60,11 @@ func (h *RoleHandler) Create(c *gin.Context) {
 // @Tags 角色管理
 // @Accept json
 // @Produce json
-// @Param Authorization header string true "Bearer 用户令牌"
 // @Param id path int true "角色Id"
 // @Param request body systype.RoleUpdateReq true "角色更新请求参数"
 // @Success 200 {object} systype.RoleUpdateResp "成功返回"
 // @Failure 500 {object} response.Response "内部错误"
-// @Router /role/{id} [put]
+// @Router /role [put]
 func (h *RoleHandler) Update(c *gin.Context) {
 	var (
 		err       error
@@ -83,21 +78,11 @@ func (h *RoleHandler) Update(c *gin.Context) {
 		response.HandleDefault(c, res)(&err)
 	}()
 
-	id, err := strconv.ParseInt(c.Param("id"), 10, 64)
-	if err != nil {
-		return
-	}
-
 	if err = c.ShouldBindJSON(&req); err != nil {
 		return
 	}
 
-	req.Id = id
-
-	// 从上下文中获取操作者Id
-	operatorId := metadata.GetUserId(c.Request.Context())
-
-	if err = roleLogic.Update(c.Request.Context(), &req, operatorId); err != nil {
+	if err = roleLogic.Update(c.Request.Context(), &req); err != nil {
 		return
 	}
 }
@@ -109,15 +94,16 @@ func (h *RoleHandler) Update(c *gin.Context) {
 // @Tags 角色管理
 // @Accept json
 // @Produce json
-// @Param Authorization header string true "Bearer 用户令牌"
 // @Param id path int true "角色Id"
+// @Param request body common.IdReq true "角色更新请求参数"
 // @Success 200 {object} systype.RoleDeleteResp "成功返回"
 // @Failure 500 {object} response.Response "内部错误"
-// @Router /role/{id} [delete]
+// @Router /role [delete]
 func (h *RoleHandler) Delete(c *gin.Context) {
 	var (
 		err       error
 		db        = mysql.GetDB()
+		req       = &common.IdReq{}
 		res       = &systype.RoleDeleteResp{}
 		roleLogic = system.NewRoleLogic(db)
 	)
@@ -126,15 +112,11 @@ func (h *RoleHandler) Delete(c *gin.Context) {
 		response.HandleDefault(c, res)(&err)
 	}()
 
-	id, err := strconv.ParseInt(c.Param("id"), 10, 64)
-	if err != nil {
+	if err = c.ShouldBindJSON(&req); err != nil {
 		return
 	}
 
-	// 从上下文中获取操作者Id
-	operatorId := metadata.GetUserId(c.Request.Context())
-
-	if err = roleLogic.Delete(c.Request.Context(), id, operatorId); err != nil {
+	if err = roleLogic.Delete(c.Request.Context(), req.Id); err != nil {
 		return
 	}
 }
@@ -146,7 +128,6 @@ func (h *RoleHandler) Delete(c *gin.Context) {
 // @Tags 角色管理
 // @Accept json
 // @Produce json
-// @Param Authorization header string true "Bearer 用户令牌"
 // @Param id path int true "角色Id"
 // @Success 200 {object} systype.RoleDataResp "成功返回"
 // @Failure 500 {object} response.Response "内部错误"
@@ -180,7 +161,6 @@ func (h *RoleHandler) GetById(c *gin.Context) {
 // @Tags 角色管理
 // @Accept json
 // @Produce json
-// @Param Authorization header string true "Bearer 用户令牌"
 // @Param page query int false "页码" default(1)
 // @Param page_size query int false "每页数量" default(10)
 // @Success 200 {object} systype.RoleDataListResp "成功返回"

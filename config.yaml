@@ -20,13 +20,18 @@ rabbitmq:
     delayTest: "delay.test"
 
 wxRobot:
-  errorRobot: "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=63c5491c-84fd-4b27-bc66-xxxxxxxxxx"
+  errorRobot: "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=cedaa47c-a156-4a8b-a4c9-0d407900ea63"
+
+fsRobot:
+  errorRobot: "https://open.feishu.cn/open-apis/bot/v2/hook/2f8e0477-44d5-4172-becc-f2f4d5d37820"
 
 qny:
   accessKey: "ciIHqTlKU1AjyJK6kb4LCXlLzxxxxxxxxxx"
   secretKey: "7iomzYL4h2ytAZxCTStNPDvY4xxxxxxxxx"
   bucket: "woorho"
   qnyServer: "https://xxxxxxx.fun"
+
+aliyun:
 
 system:
   # 应用名称
