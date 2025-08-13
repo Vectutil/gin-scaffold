@@ -20,9 +20,9 @@ func (Department) TableName() string {
 
 type DepartmentTree struct {
 	common.BaseModel
-	Name     string           `json:"name"`      // 部门名称
-	ParentId int64            `json:"parent_id"` // 上级部门Id，NULL 表示顶级
-	Level    int8             `json:"level"`     // 深度
-	Status   int8             `json:"status"`    // 状态：1启用 0禁用
-	Children []DepartmentTree `json:"children,omitempty"`
+	Name     string            `json:"name"`      // 部门名称
+	ParentId int64             `json:"parent_id"` // 上级部门Id，NULL 表示顶级
+	Level    int8              `json:"level"`     // 深度
+	Status   int8              `json:"status"`    // 状态：1启用 0禁用
+	Children []*DepartmentTree `json:"children,omitempty"`
 }

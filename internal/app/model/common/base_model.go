@@ -48,9 +48,8 @@ func (m *BaseModel) BeforeUpdate(tx *gorm.DB) error {
 func (m *BaseModel) BeforeDelete(tx *gorm.DB) error {
 	// 从上下文中获取用户Id
 	if ctx, ok := tx.Statement.Context.(context.Context); ok {
-		//if userId, err := utils.GetUserIdFromContext(ctx); err == nil {
 		m.DeletedBy = metadata.GetUserId(ctx)
-		//}
+		tx.Statement.SetColumn("deleted_by", m.DeletedBy)
 	}
 	return nil
 }

@@ -31,8 +31,8 @@ func initSystemRout(r *gin.Engine) {
 	{
 		h := system.NewDepartmentHandler()
 		department.POST("", h.Create)
-		department.PUT("/:id", h.Update)
-		department.DELETE("/:id", h.Delete)
+		department.PUT("", h.Update)
+		department.DELETE("", h.Delete)
 		department.GET("/:id", h.GetById)
 		department.GET("", h.List)
 		department.GET("/tree", h.GetTree)

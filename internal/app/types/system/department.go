@@ -21,7 +21,7 @@ type DepartmentCreateResp struct {
 type DepartmentUpdateReq struct {
 	Id       int64  `json:"id" binding:"required"`       // 部门Id
 	DeptName string `json:"deptName" binding:"required"` // 部门名称
-	ParentId *int64 `json:"parentId"`                    // 上级部门Id
+	ParentId int64  `json:"parentId"`                    // 上级部门Id
 	Status   int8   `json:"status" binding:"required"`   // 状态：1启用 0禁用
 }
 

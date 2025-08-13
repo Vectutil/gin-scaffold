@@ -1,8 +1,10 @@
 package mysql
 
 import (
+	"context"
 	"fmt"
 	"gin-scaffold/internal/config"
+	"gin-scaffold/internal/middleware/metadata"
 	sys_logger "gin-scaffold/pkg/logger"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
@@ -62,7 +64,7 @@ func InitMysql() {
 	sqlDB.SetMaxIdleConns(25)  // 最大空闲连接数
 	sqlDB.SetConnMaxLifetime(5 * time.Minute)
 	//db.Logger = logger.Default.LogMode(logger.Silent)
-
+	setupGlobalHooks(db)
 	dbMap = db
 }
 
@@ -86,4 +88,51 @@ func GetTrans() (*gorm.DB, func(err error)) {
 		}
 	}
 	return tx, commit
+}
+
+func setupGlobalHooks(db *gorm.DB) {
+	//db.Callback().Create().Before("gorm:before_create").Register("before_create_hook", beforeCreateHook)
+	//db.Callback().Create().Before("gorm:before_update").Register("before_update_hook", beforeUpdateHook)
+	db.Callback().Delete().Before("gorm:before_delete").Register("before_delete_hook", beforeDeleteHook)
+}
+
+//	func beforeCreateHook(db *gorm.DB) {
+//		if db.Error != nil {
+//			return
+//		}
+//		if db.Statement.Schema != nil {
+//			idField := db.Statement.Schema.PrimaryFields[0]
+//			if idField.DataType == "uint32" {
+//				_, zero := idField.ValueOf(db.Statement.Context, db.Statement.ReflectValue)
+//				if zero {
+//					idField.Set(db.Statement.Context, db.Statement.ReflectValue, uuid.New().ID())
+//					db.Statement.SetColumn("created_at", time.Now().Format("2006-01-02 15:04:05"))
+//					db.Statement.AddClause(clause.OnConflict{
+//						DoNothing: true,
+//					})
+//				}
+//			}
+//			//db.Statement.SetColumn("id", uuid.New().String())
+//			//db.Statement.SetColumn("created_at", time.Now().Format("2006-01-02 15:04:05"))
+//		}
+//	}
+//
+//	func beforeUpdateHook(db *gorm.DB) {
+//		if db.Error != nil {
+//			return
+//		}
+//		if db.Statement.Schema != nil {
+//			db.Statement.SetColumn("updated_at", time.Now().Format("2006-01-02 15:04:05"))
+//		}
+//	}
+func beforeDeleteHook(db *gorm.DB) {
+	if db.Error != nil {
+		return
+	}
+	if db.Statement.Schema != nil {
+		//db.Statement.SetColumn("deleted_at", time.Now().Format("2006-01-02 15:04:05"))
+		if ctx, ok := db.Statement.Context.(context.Context); ok {
+			db.Statement.SetColumn("deleted_by", metadata.GetUserId(ctx))
+		}
+	}
 }

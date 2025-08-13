@@ -3,8 +3,8 @@ package system
 import (
 	"gin-scaffold/internal/app/logic/system"
 	"gin-scaffold/internal/app/response"
+	"gin-scaffold/internal/app/types/common"
 	systype "gin-scaffold/internal/app/types/system"
-	"gin-scaffold/internal/middleware/metadata"
 	"gin-scaffold/pkg/mysql"
 	"strconv"
 
@@ -55,12 +55,12 @@ func (h *DepartmentHandler) Create(c *gin.Context) {
 	//if err != nil {
 	//	return
 	//}
-	operatorId := metadata.GetUserId(c.Request.Context())
+	//operatorId := metadata.GetUserId(c.Request.Context())
 	//if err != nil {
 	//	return err
 	//}
 
-	if err = deptLogic.Create(c.Request.Context(), &req, operatorId); err != nil {
+	if err = deptLogic.Create(c.Request.Context(), &req); err != nil {
 		return
 	}
 }
@@ -76,7 +76,7 @@ func (h *DepartmentHandler) Create(c *gin.Context) {
 // @Param request body systype.DepartmentUpdateReq true "部门更新请求参数"
 // @Success 200 {object} systype.DepartmentUpdateResp "成功返回"
 // @Failure 500 {object} response.Response "内部错误"
-// @Router /department/{id} [put]
+// @Router /department [put]
 func (h *DepartmentHandler) Update(c *gin.Context) {
 	var (
 		err       error
@@ -90,21 +90,14 @@ func (h *DepartmentHandler) Update(c *gin.Context) {
 		response.HandleDefault(c, res)(&err)
 	}()
 
-	id, err := strconv.ParseInt(c.Param("id"), 10, 64)
-	if err != nil {
-		return
-	}
-
 	if err = c.ShouldBindJSON(&req); err != nil {
 		return
 	}
 
-	req.Id = id
-
 	// 从上下文中获取操作者Id
-	operatorId := metadata.GetUserId(c.Request.Context())
+	//operatorId := metadata.GetUserId(c.Request.Context())
 
-	if err = deptLogic.Update(c.Request.Context(), &req, operatorId); err != nil {
+	if err = deptLogic.Update(c.Request.Context(), &req); err != nil {
 		return
 	}
 }
@@ -117,13 +110,15 @@ func (h *DepartmentHandler) Update(c *gin.Context) {
 // @Accept json
 // @Produce json
 // @Param id path int true "部门Id"
+// @Param request body common.IdReq true "角色更新请求参数"
 // @Success 200 {object} systype.DepartmentDeleteResp "成功返回"
 // @Failure 500 {object} response.Response "内部错误"
-// @Router /department/{id} [delete]
+// @Router /department [delete]
 func (h *DepartmentHandler) Delete(c *gin.Context) {
 	var (
 		err       error
 		db        = mysql.GetDB()
+		req       = &common.IdReq{}
 		res       = &systype.DepartmentDeleteResp{}
 		deptLogic = system.NewDepartmentLogic(db)
 	)
@@ -131,16 +126,13 @@ func (h *DepartmentHandler) Delete(c *gin.Context) {
 	defer func() {
 		response.HandleDefault(c, res)(&err)
 	}()
-
-	id, err := strconv.ParseInt(c.Param("id"), 10, 64)
-	if err != nil {
+	if err = c.ShouldBindJSON(&req); err != nil {
 		return
 	}
-
 	// 从上下文中获取操作者Id
-	operatorId := metadata.GetUserId(c.Request.Context())
+	//operatorId := metadata.GetUserId(c.Request.Context())
 
-	if err = deptLogic.Delete(c.Request.Context(), id, operatorId); err != nil {
+	if err = deptLogic.Delete(c.Request.Context(), req.Id); err != nil {
 		return
 	}
 }

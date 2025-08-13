@@ -2,6 +2,7 @@ package system
 
 import (
 	"context"
+	"gin-scaffold/internal/app/model/common"
 	sysmodel "gin-scaffold/internal/app/model/system"
 	systype "gin-scaffold/internal/app/types/system"
 	"gorm.io/gorm"
@@ -23,13 +24,16 @@ func (d *DepartmentDao) Create(ctx context.Context, dept *sysmodel.Department) e
 // Update 更新部门
 func (d *DepartmentDao) Update(ctx context.Context, dept *sysmodel.Department) error {
 	return d.db.WithContext(ctx).
-		Model(&sysmodel.Department{}).Where("id = ?", dept.Id).Updates(dept).Error
+		Model(&sysmodel.Department{}).Where("id = ?", dept.Id).Save(dept).Error
 }
 
 // Delete 删除部门
 func (d *DepartmentDao) Delete(ctx context.Context, id int64) error {
-	return d.db.WithContext(ctx).
-		Model(&sysmodel.Department{}).Where("id = ?", id).Update("deleted_at", gorm.Expr("NOW()")).Error
+	return d.db.WithContext(ctx).Delete(&sysmodel.Department{
+		BaseModel: common.BaseModel{
+			Id: id,
+		},
+	}).Error
 }
 
 // GetById 根据Id获取部门
@@ -100,38 +104,34 @@ func (d *DepartmentDao) GetChildren(ctx context.Context, parentId int64) ([]*sys
 }
 
 // GetTree 获取部门树
-func (d *DepartmentDao) GetTree(ctx context.Context) ([]sysmodel.DepartmentTree, error) {
+func (d *DepartmentDao) GetTree(ctx context.Context) ([]*sysmodel.DepartmentTree, error) {
 	var depts []*sysmodel.Department
 	err := d.db.WithContext(ctx).Find(&depts).Error
 	if err != nil {
 		return nil, err
 	}
 
-	// 构建部门树
 	deptMap := make(map[int64]*sysmodel.DepartmentTree)
-	var roots []sysmodel.DepartmentTree
+	var roots []*sysmodel.DepartmentTree
 
-	// 先将所有部门转换为树节点
+	// 先构造所有节点
 	for _, dept := range depts {
-		tree := sysmodel.DepartmentTree{
+		node := &sysmodel.DepartmentTree{
 			Name:     dept.Name,
 			ParentId: dept.ParentId,
 			Status:   dept.Status,
+			Children: []*sysmodel.DepartmentTree{},
 		}
-		tree.Id = dept.Id
-		//tree.TenantId = dept.TenantId
-		deptMap[dept.Id] = &tree
+		node.Id = dept.Id
+		deptMap[dept.Id] = node
 	}
 
-	// 构建树结构
-	for _, dept := range depts {
-		if dept.ParentId == 0 {
-			// 根节点
-			roots = append(roots, *deptMap[dept.Id])
-		} else {
-			// 子节点
-			parent := deptMap[dept.ParentId]
-			parent.Children = append(parent.Children, *deptMap[dept.Id])
+	// 构建树
+	for _, node := range deptMap {
+		if node.ParentId == 0 {
+			roots = append(roots, node)
+		} else if parent, ok := deptMap[node.ParentId]; ok {
+			parent.Children = append(parent.Children, node) // 用指针
 		}
 	}
 
