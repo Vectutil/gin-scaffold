@@ -39,7 +39,7 @@ func (r *RabbitMQ) CreateDelayQueue(qName string) (err error) {
 	// 3. 绑定目标队列到死信交换机（路由键设为延迟队列名称）
 	err = r.ch.QueueBind(
 		qName,          // 目标队列名称
-		qName+"_delay", // ✅ 关键修正：路由键为延迟队列名称
+		qName+"_delay", //  关键修正：路由键为延迟队列名称
 		qName+"_dlx",   // 死信交换机名称
 		false,
 		nil,

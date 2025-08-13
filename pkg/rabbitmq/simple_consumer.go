@@ -10,9 +10,9 @@ func (r *RabbitMQ) Consumer(qName string, handler func([]byte) error) (err error
 	// 声明队列（确保队列存在）
 	_, err = r.ch.QueueDeclare(
 		qName, // 队列名称
-		false, // 非持久化（根据需求修改）
+		true,  // 非持久化（根据需求修改）
 		false, // 不自动删除
-		true,  // 排他性
+		false, // 排他性
 		false, // 不等待响应
 		nil,   // 无额外参数
 	)

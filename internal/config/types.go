@@ -63,3 +63,8 @@ type CronJobConfig struct {
 	JobStatus map[string]bool   `json:"jobStatus"`
 	JobCron   map[string]string `json:"jobCron"`
 }
+
+type fuckXike struct {
+	dram map[string]string `json:"dram"`
+	shit map[string]string `json:"shit"`
+}

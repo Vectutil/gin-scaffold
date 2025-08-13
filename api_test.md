@@ -20,7 +20,7 @@
 
 ## dept
     ✅ create 
-    ❌ update
-    ❌ delete
-    ❌ get
-    ❌ list
+    ✅ update
+    ✅ delete
+    ✅ get
+    ✅ list
