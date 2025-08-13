@@ -13,7 +13,7 @@ func Test(t *testing.T) {
 }
 
 func xxxinit() {
-	config.InitConfig("E:\\workspace\\src\\jz-scraw\\config.yaml")
+	config.InitConfig("E:\\workspace\\src\\jz-crawler\\config.yaml")
 	mysql.InitMysql()
 	logger.InitLogger()
 }

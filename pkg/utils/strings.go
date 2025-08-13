@@ -25,3 +25,23 @@ func SplitTrim(str, splitMark string) []string {
 	}
 	return strs
 }
+
+// ExtractPercentageNumber 从百分比字符串中提取数字部分
+func ExtractPercentageNumber(s string) float64 {
+	// 检查字符串是否以百分号结尾
+	if !strings.HasSuffix(s, "%") {
+		return 0
+	}
+
+	// 去除末尾的百分号
+	numberStr := s[:len(s)-1]
+
+	// 简单验证数字格式（可以根据需要增强）
+	if len(numberStr) == 0 {
+		return 0
+	}
+
+	value, _ := strconv.ParseFloat(numberStr, 64)
+
+	return value
+}

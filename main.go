@@ -6,6 +6,7 @@ import (
 	"gin-scaffold/internal/app/job"
 	"gin-scaffold/internal/config"
 	"gin-scaffold/internal/router"
+	"gin-scaffold/pkg/crawler"
 	"gin-scaffold/pkg/logger"
 	"gin-scaffold/pkg/mysql"
 	"gin-scaffold/pkg/rabbitmq"
@@ -87,4 +88,7 @@ func init() {
 	rabbitmq.InitRabbitMQ()
 	defer rabbitmq.RabbitMQClient.DeferClose()
 
+	// 跑异步任务
+
+	crawler.CrawlerFutunn()
 }
