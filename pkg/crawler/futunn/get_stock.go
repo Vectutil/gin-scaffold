@@ -17,19 +17,27 @@ import (
 )
 
 const (
-	StockTypeETF = "etf"
-	StockTypeCNA = "cn-a"
+	StockTypeETF  = "etf"
+	StockTypeCNSH = "cn-sh"
+	StockTypeCNSZ = "cn-sz"
 )
 
 var stockList = map[string]map[string]string{
 	StockTypeETF: {
 		"513120": "港股创新药ETF",
-		"513090": "香港债券ETF",
+		"513090": "香港证券ETF",
 		"513220": "中概互联ETF",
+		"159887": "美国50ETF",
+		"520550": "港股红利低波ETF",
+		"159529": "普标消费ETF",
 	},
-	StockTypeCNA: {
+	StockTypeCNSH: {
 		"600872": "中炬高新",
+		"601318": "中国平安",
 	},
+	//StockTypeCNSZ: {
+	//	"000858": "五粮液",
+	//},
 }
 
 var stockValue = map[string]string{}
@@ -41,13 +49,15 @@ func ConnectHtml() {
 	// 请求URL
 	for stockType, stockTypeSon := range stockList {
 		for stockCode, stockName := range stockTypeSon {
-			time.Sleep(2 * time.Second)
+			time.Sleep(10 * time.Second)
 			url := ""
 			switch stockType {
 			case StockTypeETF:
 				url = fmt.Sprintf("https://www.futunn.com/etfs/%s-SH", stockCode)
-			case StockTypeCNA:
+			case StockTypeCNSH:
 				url = fmt.Sprintf("https://www.futunn.com/stock/%s-SH", stockCode)
+			case StockTypeCNSZ:
+				//url = fmt.Sprintf("https://www.futunn.com/stock/%s-SZ", stockCode)
 			}
 			callFutunn(url, stockCode, stockName)
 		}
@@ -87,7 +97,7 @@ func callFutunn(url string, stockCode, stockName string) {
 	req.Header.Set("user-agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0")
 
 	// 设置Cookie
-	cookies := `csrfToken=cqQtDcK8j52pGMM5SLDMU7Qi; locale=zh-cn; locale.sig=ObiqV0BmZw7fEycdGJRoK-Q0Yeuop294gBeiHL1LqgQ; cipher_device_id=1755058562161456; ftreport-jssdk%40new_user=1; device_id=1755058562161456; Hm_lvt_f3ecfeb354419b501942b6f9caf8d0db=1755058562; HMACCOUNT=F38274C5C42977AB; futu-csrf=Nk5ifXE3KlfKYFfIXSR6iD5E9as=; _gid=GA1.2.1348321045.1755058563; _gcl_au=1.1.1960921928.1755058564; sajssdk_2015_cross_new_user=1; sensorsdata2015jssdkcross=%7B%22distinct_id%22%3A%22ftv14FfjFXaKG0u9aodemHfGed3kzpGjFrueid6z1Bsc5Mp7x8PSd0R0sg4cmCX4Ml24%22%2C%22first_id%22%3A%22198a1a46ec01ca3-03f1d019d88768c-4c657b58-2073600-198a1a46ec11dd9%22%2C%22props%22%3A%7B%7D%2C%22identities%22%3A%22eyIkaWRlbnRpdHlfY29va2llX2lkIjoiMTk4YTFhNDZlYzAxY2EzLTAzZjFkMDE5ZDg4NzY4Yy00YzY1N2I1OC0yMDczNjAwLTE5OGExYTQ2ZWMxMWRkOSIsIiRpZGVudGl0eV9sb2dpbl9pZCI6ImZ0djE0RmZqRlhhS0cwdTlhb2RlbUhmR2VkM2t6cEdqRnJ1ZWlkNnoxQnNjNU1wN3g4UFNkMFIwc2c0Y21DWDRNbDI0In0%3D%22%2C%22history_login_id%22%3A%7B%22name%22%3A%22%24identity_login_id%22%2C%22value%22%3A%22ftv14FfjFXaKG0u9aodemHfGed3kzpGjFrueid6z1Bsc5Mp7x8PSd0R0sg4cmCX4Ml24%22%7D%7D; _ga=GA1.2.1839857836.1755058563; Hm_lpvt_f3ecfeb354419b501942b6f9caf8d0db=1755058650; _ga_370Q8HQYD7=GS2.2.s1755058575$o1$g1$t1755058649$j60$l0$h0; ftreport-jssdk%40session={%22distinctId%22:%22ftv14FfjFXaKG0u9aodemHfGebexE0JrrimcBouwp2vGAwV7x8PSd0R0sg4cmCX4Ml24%22%2C%22firstId%22:%22ftv14FfjFXaKG0u9aodemHfGeQmesVqE+y2DezXEXaNRhGl7x8PSd0R0sg4cmCX4Ml24%22%2C%22latestReferrer%22:%22https://www.futunn.com/%22}; _ga_XECT8CPR37=GS2.1.s1755058563$o1$g1$t1755059185$j60$l0$h0; _ga_EJJJZFNPTW=GS2.1.s1755058563$o1$g1$t1755059185$j60$l0$h0`
+	cookies := `csrfToken=cqQtDcK8j52pGMM5SLDMU7Qi; locale=zh-cn; locale.sig=ObiqV0BmZw7fEycdGJRoK-Q0Yeuop294gBeiHL1LqgQ; cipher_device_id=1755058562161456; device_id=1755058562161456; Hm_lvt_f3ecfeb354419b501942b6f9caf8d0db=1755058562; HMACCOUNT=F38274C5C42977AB; futu-csrf=Nk5ifXE3KlfKYFfIXSR6iD5E9as=; _gid=GA1.2.1348321045.1755058563; _gcl_au=1.1.1960921928.1755058564; sensorsdata2015jssdkcross=%7B%22distinct_id%22%3A%22ftv14FfjFXaKG0u9aodemHfGebRhebfgmuYMZvUSvxsSa%2FR7x8PSd0R0sg4cmCX4Ml24%22%2C%22first_id%22%3A%22198a1a46ec01ca3-03f1d019d88768c-4c657b58-2073600-198a1a46ec11dd9%22%2C%22props%22%3A%7B%22%24latest_traffic_source_type%22%3A%22%E7%9B%B4%E6%8E%A5%E6%B5%81%E9%87%8F%22%2C%22%24latest_search_keyword%22%3A%22%E6%9C%AA%E5%8F%96%E5%88%B0%E5%80%BC_%E7%9B%B4%E6%8E%A5%E6%89%93%E5%BC%80%22%2C%22%24latest_referrer%22%3A%22%22%7D%2C%22identities%22%3A%22eyIkaWRlbnRpdHlfY29va2llX2lkIjoiMTk4YTFhNDZlYzAxY2EzLTAzZjFkMDE5ZDg4NzY4Yy00YzY1N2I1OC0yMDczNjAwLTE5OGExYTQ2ZWMxMWRkOSIsIiRpZGVudGl0eV9sb2dpbl9pZCI6ImZ0djE0RmZqRlhhS0cwdTlhb2RlbUhmR2ViUmhlYmZnbXVZTVp2VVN2eHNTYS9SN3g4UFNkMFIwc2c0Y21DWDRNbDI0In0%3D%22%2C%22history_login_id%22%3A%7B%22name%22%3A%22%24identity_login_id%22%2C%22value%22%3A%22ftv14FfjFXaKG0u9aodemHfGebRhebfgmuYMZvUSvxsSa%2FR7x8PSd0R0sg4cmCX4Ml24%22%7D%7D; _ga_XECT8CPR37=GS2.1.s1755146175$o5$g1$t1755147371$j59$l0$h0; _ga=GA1.2.1839857836.1755058563; _gat_UA-71722593-3=1; Hm_lpvt_f3ecfeb354419b501942b6f9caf8d0db=1755147372; _ga_370Q8HQYD7=GS2.2.s1755146176$o5$g1$t1755147371$j60$l0$h0; ftreport-jssdk%40session={%22distinctId%22:%22ftv14FfjFXaKG0u9aodemHfGealQEu0CglA/sb6cjsBruZN7x8PSd0R0sg4cmCX4Ml24%22%2C%22firstId%22:%22ftv14FfjFXaKG0u9aodemHfGeQmesVqE+y2DezXEXaNRhGl7x8PSd0R0sg4cmCX4Ml24%22%2C%22latestReferrer%22:%22https://www.futunn.com/%22}; _ga_EJJJZFNPTW=GS2.1.s1755146161$o5$g1$t1755147376$j54$l0$h0`
 
 	// 分割并设置每个Cookie
 	for _, cookie := range strings.Split(cookies, "; ") {
@@ -110,6 +120,7 @@ func callFutunn(url string, stockCode, stockName string) {
 
 	// 读取响应内容
 	//body, err := ioutil.ReadAll(resp.Body)
+	//fmt.Println(body)
 	//if err != nil {
 	//	fmt.Printf("读取响应失败: %v\n", err)
 	//	return
@@ -185,7 +196,7 @@ func callFutunn(url string, stockCode, stockName string) {
 	}
 	if val, ok := stockValue[stockCode]; ok {
 		subValue := utils.ExtractPercentageNumber(val) - utils.ExtractPercentageNumber(ratio)
-		msg := ""
+		msg := fmt.Sprintf("[%s]%s(%s) 当前涨幅:%s  当前价:%s", ratio, stockName, stockCode, changePrice, currentPrice)
 		if subValue > 0.5 {
 			msg = fmt.Sprintf("↓[%s]%s(%s) 当前涨幅:%s  当前价:%s", ratio, stockName, stockCode, changePrice, currentPrice)
 		}

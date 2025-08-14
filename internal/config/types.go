@@ -58,6 +58,7 @@ type System struct {
 	Env       string `json:"env"`
 	Port      string `json:"port"`
 	Migration bool   `json:"migration"`
+	Chrome    string `json:"chrome"`
 }
 
 type CronJobConfig struct {

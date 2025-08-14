@@ -1,4 +1,4 @@
-package router
+package admin
 
 import (
 	"gin-scaffold/internal/app/handler/system"
@@ -6,8 +6,8 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func initSystemRout(r *gin.Engine) {
-	systemRoute := r.Group("")
+func InitSystemRout(r *gin.Engine) {
+	systemRoute := r.Group("admin")
 	authRouter := systemRoute.Group("")
 	authRouter.Use(middleware.AuthMiddleware())
 

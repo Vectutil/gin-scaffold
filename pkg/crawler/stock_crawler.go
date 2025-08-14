@@ -2,6 +2,7 @@ package crawler
 
 import (
 	"gin-scaffold/pkg/crawler/futunn"
+	"gin-scaffold/pkg/logger"
 	"time"
 )
 
@@ -22,6 +23,7 @@ func CrawlerFutunn() {
 			if (nowUnix >= todayAt0900 && nowUnix <= todayAt1130) || (nowUnix >= todayAt1300 && nowUnix <= todayAt1500) {
 				futunn.ConnectHtml()
 			} else {
+				logger.Logger.Info("休眠5分钟 - 非交易时间")
 				time.Sleep(5 * time.Minute)
 			}
 		}

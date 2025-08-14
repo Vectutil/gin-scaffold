@@ -41,6 +41,7 @@ system:
   version: "1.0.0"
   port: 4001
   migration: true
+  chrome: "msedge.exe"
   env: "dev"
 #  env: "release"
 
