@@ -4,9 +4,10 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"gin-scaffold/internal/app/consts"
 	"gin-scaffold/internal/config"
-	"gin-scaffold/pkg/http_call"
 	"gin-scaffold/pkg/logger"
+	"gin-scaffold/pkg/robot"
 	"gin-scaffold/pkg/utils"
 	"github.com/PuerkitoBio/goquery"
 	"math"
@@ -205,7 +206,7 @@ func callFutunn(url string, stockCode, stockName string) {
 		}
 		logger.Logger.Info(msg)
 		if math.Abs(subValue) >= 0.5 {
-			http_call.SendFeishuRobotWithUrl(context.Background(), botUrl, msg)
+			robot.SendFeishuRobotWithUrl(context.Background(), botUrl, msg, consts.MsgTypeText)
 			stockValue[stockCode] = ratio
 		}
 		return
@@ -213,6 +214,10 @@ func callFutunn(url string, stockCode, stockName string) {
 
 	stockValue[stockCode] = ratio
 	msg := fmt.Sprintf("[%s]%s(%s) 当前涨幅:%s  当前价:%s", ratio, stockName, stockCode, changePrice, currentPrice)
-	http_call.SendFeishuRobotWithUrl(context.Background(), botUrl, msg)
+	robot.SendFeishuRobotWithUrl(context.Background(), botUrl, msg, consts.MsgTypeText)
 	logger.Logger.Info(msg)
+}
+
+func InitStockValue() {
+	stockValue = make(map[string]string)
 }

@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charSet="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <link rel="icon" href="/favicon.ico" />
+  <title>国际_澎湃新闻-The Paper</title>
+  <meta name="robots" content="index,follow" />
+  <meta name="description"
+    content="澎湃，澎湃新闻，澎湃新闻网，新闻与思想，澎湃是植根于中国上海的时政思想类互联网平台，以最活跃的原创新闻与最冷静的思想分析为两翼，是互联网技术创新与新闻价值传承的结合体，致力于问答式新闻与新闻追踪功能的实践。" />
+  <meta property="og:title" content="国际_澎湃新闻-The Paper" />
+  <meta property="og:description"
+    content="澎湃，澎湃新闻，澎湃新闻网，新闻与思想，澎湃是植根于中国上海的时政思想类互联网平台，以最活跃的原创新闻与最冷静的思想分析为两翼，是互联网技术创新与新闻价值传承的结合体，致力于问答式新闻与新闻追踪功能的实践。" />
+  <meta property="keywords"
+    content="澎湃，Paper，The Paper，热问答，新闻跟踪，政治，时政，政经，澎湃新闻，新闻，思想，原创新闻，突发新闻，独家报道，上海报业，东方早报，东方报业，上海东方报业" />
+  <meta name="next-head-count" content="9" />
+  <script src="https://g.alicdn.com/AWSC/AWSC/awsc.js" defer=""></script>
+  <script defer="" type="text/javascript" src="/wza/aria.js?appid=7abb0bdd77acc1c9bf454c30409e9724" charSet="utf-8">
+  </script>
+  <script defer="" src="/common/baseClick.js"></script>
+  <script>
+    var _hmt = _hmt || [];
+              (function() {
+                var hm = document.createElement("script");
+                hm.src = "//hm.baidu.com/hm.js?94a1e06bbce219d29285cee2e37d1d26";
+                var s = document.getElementsByTagName("script")[0];
+                s.parentNode.insertBefore(hm, s);
+              })();
+  </script>
+  <link rel="preload" href="/_next/static/css/600488af753e58c4.css" as="style" />
+  <link rel="stylesheet" href="/_next/static/css/600488af753e58c4.css" data-n-g="" />
+  <link rel="preload" href="/_next/static/css/bc30ab28e40a7b2f.css" as="style" />
+  <link rel="stylesheet" href="/_next/static/css/bc30ab28e40a7b2f.css" data-n-p="" />
+  <link rel="preload" href="/_next/static/css/c4347e3d8dc0fe92.css" as="style" />
+  <link rel="stylesheet" href="/_next/static/css/c4347e3d8dc0fe92.css" data-n-p="" />
+  <link rel="preload" href="/_next/static/css/71bd30c9ad19f5f6.css" as="style" />
+  <link rel="stylesheet" href="/_next/static/css/71bd30c9ad19f5f6.css" data-n-p="" />
+  <link rel="preload" href="/_next/static/css/3a408bf2f7d59736.css" as="style" />
+  <link rel="stylesheet" href="/_next/static/css/3a408bf2f7d59736.css" data-n-p="" />
+  <link rel="preload" href="/_next/static/css/522a32beb3ddd0ec.css" as="style" />
+  <link rel="stylesheet" href="/_next/static/css/522a32beb3ddd0ec.css" data-n-p="" />
+  <link rel="preload" href="/_next/static/css/a3d3031afcb98252.css" as="style" />
+  <link rel="stylesheet" href="/_next/static/css/a3d3031afcb98252.css" data-n-p="" />
+  <link rel="preload" href="/_next/static/css/e81c0e50af68ac32.css" as="style" />
+  <link rel="stylesheet" href="/_next/static/css/e81c0e50af68ac32.css" data-n-p="" />
+  <link rel="preload" href="/_next/static/css/3d6c513b96590b90.css" as="style" />
+  <link rel="stylesheet" href="/_next/static/css/3d6c513b96590b90.css" data-n-p="" />
+  <link rel="preload" href="/_next/static/css/5dad305b4bf562ef.css" as="style" />
+  <link rel="stylesheet" href="/_next/static/css/5dad305b4bf562ef.css" data-n-p="" />
+  <link rel="preload" href="/_next/static/css/13c53bfd125ffdd2.css" as="style" />
+  <link rel="stylesheet" href="/_next/static/css/13c53bfd125ffdd2.css" data-n-p="" /><noscript data-n-css=""></noscript>
+  <script defer="" nomodule="" src="/_next/static/chunks/polyfills-c67a75d1b6f99dc8.js"></script>
+  <script src="/_next/static/chunks/webpack-220d3ff2c0062391.js" defer=""></script>
+  <script src="/_next/static/chunks/framework-9cf46cf0fe8d1146.js" defer=""></script>
+  <script src="/_next/static/chunks/main-641ee39dd69ccbc2.js" defer=""></script>
+  <script src="/_next/static/chunks/pages/_app-7ecee95886ff6b7d.js" defer=""></script>
+  <script src="/_next/static/chunks/e8948b88-07d307bde084d7e0.js" defer=""></script>
+  <script src="/_next/static/chunks/37a763b4-a5f7b63a03fe2aff.js" defer=""></script>
+  <script src="/_next/static/chunks/6337-94aab384bd69cf39.js" defer=""></script>
+  <script src="/_next/static/chunks/1646-fad442ad2762fe30.js" defer=""></script>
+  <script src="/_next/static/chunks/826-7b23bc7b7b0224e0.js" defer=""></script>
+  <script src="/_next/static/chunks/2962-e480ed41553859de.js" defer=""></script>
+  <script src="/_next/static/chunks/2949-c6d66a6b93c46a8a.js" defer=""></script>
+  <script src="/_next/static/chunks/6099-d5863db8f98cd45a.js" defer=""></script>
+  <script src="/_next/static/chunks/4638-df74319dffee102a.js" defer=""></script>
+  <script src="/_next/static/chunks/178-d3f987440fe84c3c.js" defer=""></script>
+  <script src="/_next/static/chunks/5675-dfd22fe6e1bab1c5.js" defer=""></script>
+  <script src="/_next/static/chunks/4433-5e87d7ee22cad124.js" defer=""></script>
+  <script src="/_next/static/chunks/4875-90d05c000af38e25.js" defer=""></script>
+  <script src="/_next/static/chunks/6317-34e0da89ed717f71.js" defer=""></script>
+  <script src="/_next/static/chunks/8500-28fb6a81e3870c3e.js" defer=""></script>
+  <script src="/_next/static/chunks/94-fed7faad4af10cec.js" defer=""></script>
+  <script src="/_next/static/chunks/7094-aa245d12022b56b6.js" defer=""></script>
+  <script src="/_next/static/chunks/4096-0a5eb01e3d2de9cd.js" defer=""></script>
+  <script src="/_next/static/chunks/6103-b4ba5fe15ebd5b98.js" defer=""></script>
+  <script src="/_next/static/chunks/1-73f3080c4e6cace2.js" defer=""></script>
+  <script src="/_next/static/chunks/1357-ecc324bfb6905f46.js" defer=""></script>
+  <script src="/_next/static/chunks/6021-aebb3725debdc18a.js" defer=""></script>
+  <script src="/_next/static/chunks/pages/channel/%5Bid%5D-a5027f2d6fef1aed.js" defer=""></script>
+  <script src="/_next/static/c27cd861a06092c1c802308fa1b7ddcec2adddf3/_buildManifest.js" defer=""></script>
+  <script src="/_next/static/c27cd861a06092c1c802308fa1b7ddcec2adddf3/_ssgManifest.js" defer=""></script>
+</head>
+
+<body>
+  <div id="__next">
+    <main>
+      <div class="index_headerfixed__GyBYK">
+        <div>
+          <div class="">
+            <div class="index_header__mmxqW">
+              <div class="index_nav__cbLaK">
+                <div class="index_logo__cdq4N"><a
+                    href="/"><img src="/_next/static/media/logo_light.4da59bed.png" alt="澎湃Logo"/></a></div>
+                <div class="index_navMenu__BLg_2" id="navMenu">
+                  <ul class="index_ulcontext__K_LpV">
+                    <li class="" style="position:inherit"></li>
+                  </ul>
+                </div>
+                <div class="index_loginMenu__Nn__8">
+                  <div class="index_searchInput__TLl4M">
+                    <input class="ant-input index_search__qyoov" type="text" value=""/><span class="index_searchicon__COJ7w"></span>
+                  </div>
+                  <div class="index_downapp__uxwW6" id="QRcode"><b>下载客户端</b></div>
+                  <div class="index_menu__tvD_d">
+                    <div class="index_nologin__0TBI6">
+                      <p tabindex="0">登录</p>
+                    </div>
+                  </div>
+                  <div class="index_nozhangai__eUut2"><a href="javascript:void(0)" onclick="aria.start()">无障碍</a></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mdCard"></div>
+      <div class="index_topPicImg__x4aqi" style="display:none"></div>
+      <div class="index_container__ETYBL">
+        <div class="index_leftcontent__lACdC">
+          <div>
+            <div class="index_main__q1zZQ">
+              <div class="index_carousel__Ku2qV index_single__NPic_" style="height:366px">
+                <div class="index_carousel-left__DMdXu" style="--h:366px">
+                  <div class="ant-carousel ant-carousel-vertical">
+                    <div class="slick-slider slick-vertical slick-initialized">
+                      <div class="slick-list">
+                        <div class="slick-track" style="width:100%;left:0%">
+                          <div data-index="0" class="slick-slide slick-active slick-current" tabindex="-1"
+                            aria-hidden="false" style="outline:none;width:100%">
+                            <div>
+                              <div class="index_carousel_img__HbOWM" tabindex="-1"
+                                style="width:100%;display:inline-block"><a target="_blank"
+                                  href="/newsDetail_forward_31403252" class="index_inherit__A1ImK"><img src="https://imgpai.thepaper.cn/newpai/image/1755244434176_NnhkhQ_1755244434333.png" alt="圆桌｜特普会165分钟：美俄关系正常化出现窗口，但双边框架或不会带来和平"/>
+                                  <div class="index_carousel_mask__bfYk0"></div>
+                                </a></div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="index_carousel-right__C9au9">
+                  <div class="index_corner_label__q3VQx">
+                    <div class="index_corner_label__3aOsf"><span>头条</span></div>
+                  </div>
+                  <h2 class="index_title__6_0eA">
+                    <p><a target="_blank" href="/newsDetail_forward_31403252"
+                        class="index_inherit__A1ImK">圆桌｜特普会165分钟：美俄关系正常化出现窗口，但双边框架或不会带来和平</a></p>
+                  </h2>
+                  <div class="index_author__FELoB">
+                    <div class="index_info__XsoAw">
+                      <div class="index_author_left__a_ByF"><a target="_blank" href="/list_122903"
+                          class="index_inherit__A1ImK">
+                          <p class="ellipsis index_author_left_name__J92mz">澎湃世界观</p>
+                        </a>
+                        <p class="index_time__nci_0">3小时前</p>
+                      </div>
+                      <div class="index_author_right__Kq4DS"><a target="_blank"
+                          href="/newsDetail_forward_31403252?commTag=true"
+                          class="index_inherit__A1ImK"><span class="index_author_right_comment__Odz24">56</span></a><b class="share_normalstyle__UTbBN"><span class="ant-dropdown-trigger index_author_right_share__AA7nP"></span></b>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="index_container__ytvOZ">
+            <div class="index_tabs__jOS8e">
+              <div class="index_change__9aUYp">
+                <p>卡片</p>
+                <p>列表</p>
+              </div>
+            </div>
+            <div>
+              <div class="index_cards__AdZtA">
+                <div class="ant-row"
+                  style="margin-left:-4.5px;margin-right:-4.5px;margin-top:-4.5px;margin-bottom:-4.5px">
+                  <div style="padding-left:4.5px;padding-right:4.5px;padding-top:4.5px;padding-bottom:4.5px"
+                    class="ant-col ant-col-6">
+                    <div
+                      class="ant-card ant-card-bordered ant-card-hoverable small_basecard__tH4iV small_article_card__xBP8q">
+                      <div class="ant-card-body">
+                        <div class="small_cardcontent__BTALp">
+                          <div class="small_toplink__GmZhY"><a target="_blank" href="/newsDetail_forward_31410867"
+                              class="index_inherit__A1ImK">
+                              <div class="small_imgposition__PYVLm">
+                                <div class="small_isrecommend__zSjSv">
+                                  <div class="index_corner_label__3aOsf"><span>推荐</span></div>
+                                </div><img alt="普京称“普特会”为乌克兰和平铺路，特朗普：有进展但无协议" src="https://imgpai.thepaper.cn/newpai/image/1755303312816_5BjFF5_1755303312981.png?x-oss-process=image/resize,w_332" width="318" height="182"/>
+                              </div>
+                              <h2>普京称“普特会”为乌克兰和平铺路，特朗普：有进展但无协议</h2>
+                            </a></div>
+                          <div class="small_text__dR01h">
+                            <div class="small_cardcontentdes__st4Ou small_noreply__K_aom">
+                              <p>
+                                <span class="small_first____NUY"><a target="_blank" href="/list_25429" class="index_inherit__A1ImK">全球速报</a></span><span>1小时前</span>
+                              </p>
+                              <p>
+                                <b class="share_normalstyle__UTbBN"><span class="ant-dropdown-trigger small_share__0NxV1 shareall"></span></b>
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div style="padding-left:4.5px;padding-right:4.5px;padding-top:4.5px;padding-bottom:4.5px"
+                    class="ant-col ant-col-6">
+                    <div
+                      class="ant-card ant-card-bordered ant-card-hoverable small_basecard__tH4iV small_article_card__xBP8q">
+                      <div class="ant-card-body">
+                        <div class="small_cardcontent__BTALp">
+                          <div class="small_toplink__GmZhY"><a target="_blank" href="/newsDetail_forward_31411595"
+                              class="index_inherit__A1ImK">
+                              <div class="small_imgposition__PYVLm">
+                                <div class="small_isrecommend__zSjSv">
+                                  <div class="index_corner_label__3aOsf"><span>推荐</span></div>
+                                </div>
+                                <img alt="特朗普安排红毯，B-2隐形轰炸机从普京头顶飞过" src="https://imgpai.thepaper.cn/newpai/image/1755305059245_xfkTW3_1755305059507.png?x-oss-process=image/resize,w_332" width="318" height="182"/><span class="index_watermark_duration__70Kqz"><i class="index_icon_play__U_vMl"></i><i class="index_watermark_num__X23Fl">00:16</i></span>
+                              </div>
+                              <h2>特朗普安排红毯，B-2隐形轰炸机从普京头顶飞过</h2>
+                            </a></div>
+                          <div class="small_text__dR01h">
+                            <div class="small_cardcontentdes__st4Ou small_noreply__K_aom">
+                              <p>
+                                <span class="small_first____NUY"><a target="_blank" href="/list_27260" class="index_inherit__A1ImK">World湃</a></span><span>1小时前</span>
+                              </p>
+                              <p>
+                                <b class="share_normalstyle__UTbBN"><span class="ant-dropdown-trigger small_share__0NxV1 shareall"></span></b>
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div style="padding-left:4.5px;padding-right:4.5px;padding-top:4.5px;padding-bottom:4.5px"
+                    class="ant-col ant-col-6">
+                    <div
+                      class="ant-card ant-card-bordered ant-card-hoverable small_basecard__tH4iV small_article_card__xBP8q">
+                      <div class="ant-card-body">
+                        <div class="small_cardcontent__BTALp">
+                          <div class="small_toplink__GmZhY"><a target="_blank" href="/newsDetail_forward_31410837"
+                              class="index_inherit__A1ImK">
+                              <div class="small_imgposition__PYVLm">
+                                <div class="small_isrecommend__zSjSv">
+                                  <div class="index_corner_label__3aOsf"><span>推荐</span></div>
+                                </div>
+                                <img alt="“普特会”开场媒体疯狂提问：普京表情疑惑，特朗普罕见沉默" src="https://imgpai.thepaper.cn/newpai/image/1755297815212_3wFcpz_1755297815388.png?x-oss-process=image/resize,w_332" width="318" height="182"/><span class="index_watermark_duration__70Kqz"><i class="index_icon_play__U_vMl"></i><i class="index_watermark_num__X23Fl">00:32</i></span>
+                              </div>
+                              <h2>“普特会”开场媒体疯狂提问：普京表情疑惑，特朗普罕见沉默</h2>
+                            </a></div>
+                          <div class="small_text__dR01h">
+                            <div class="small_cardcontentdes__st4Ou small_noreply__K_aom">
+                              <p>
+                                <span class="small_first____NUY"><a target="_blank" href="/list_27260" class="index_inherit__A1ImK">World湃</a></span><span>3小时前</span>
+                              </p>
+                              <p>
+                                <b class="share_normalstyle__UTbBN"><span class="ant-dropdown-trigger small_share__0NxV1 shareall"></span></b>
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div style="padding-left:4.5px;padding-right:4.5px;padding-top:4.5px;padding-bottom:4.5px"
+                    class="ant-col ant-col-6">
+                    <div
+                      class="ant-card ant-card-bordered ant-card-hoverable small_basecard__tH4iV small_article_card__xBP8q">
+                      <div class="ant-card-body">
+                        <div class="small_cardcontent__BTALp">
+                          <div class="small_toplink__GmZhY"><a target="_blank" href="/newsDetail_forward_31405282"
+                              class="index_inherit__A1ImK">
+                              <div class="small_imgposition__PYVLm">
+                                <div class="small_isrecommend__zSjSv">
+                                  <div class="index_corner_label__3aOsf"><span>推荐</span></div>
+                                </div><img alt="明查｜印度成功征服加拿大？占领三大政党多数席位？" src="https://imgpai.thepaper.cn/newpai/image/1755248343859_6F66sm_1755248344082.png?x-oss-process=image/resize,w_332" width="318" height="182"/>
+                              </div>
+                              <h2>明查｜印度成功征服加拿大？占领三大政党多数席位？</h2>
+                            </a></div>
+                          <div class="small_text__dR01h">
+                            <div class="small_cardcontentdes__st4Ou small_noreply__K_aom">
+                              <p>
+                                <span class="small_first____NUY"><a target="_blank" href="/list_122904" class="index_inherit__A1ImK">澎湃明查</a></span><span>3小时前</span>
+                              </p>
+                              <p>
+                                <b class="share_normalstyle__UTbBN"><span class="ant-dropdown-trigger small_share__0NxV1 shareall"></span></b>
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div style="padding-left:4.5px;padding-right:4.5px;padding-top:4.5px;padding-bottom:4.5px"
+                    class="ant-col ant-col-6">
+                    <div
+                      class="ant-card ant-card-bordered ant-card-hoverable small_basecard__tH4iV small_article_card__xBP8q">
+                      <div class="ant-card-body">
+                        <div class="small_cardcontent__BTALp">
+                          <div class="small_toplink__GmZhY"><a target="_blank" href="/newsDetail_forward_31411804"
+                              class="index_inherit__A1ImK">
+                              <div class="small_imgposition__PYVLm"><img alt="特朗普：暂时收回对俄“严重后果”威胁" src="https://imgpai.thepaper.cn/newpai/image/1755309382251_hEKHnR_1755309382434.png?x-oss-process=image/resize,w_332" width="318" height="182"/>
+                              </div>
+                              <h2>特朗普：暂时收回对俄“严重后果”威胁</h2>
+                            </a></div>
+                          <div class="small_text__dR01h">
+                            <div class="small_cardcontentdes__st4Ou small_noreply__K_aom">
+                              <p>
+                                <span class="small_first____NUY"><a target="_blank" href="/list_25429" class="index_inherit__A1ImK">全球速报</a></span><span>17分钟前</span>
+                              </p>
+                              <p>
+                                <b class="share_normalstyle__UTbBN"><span class="ant-dropdown-trigger small_share__0NxV1 shareall"></span></b>
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div style="padding-left:4.5px;padding-right:4.5px;padding-top:4.5px;padding-bottom:4.5px"
+                    class="ant-col ant-col-6">
+                    <div
+                      class="ant-card ant-card-bordered ant-card-hoverable small_basecard__tH4iV small_article_card__xBP8q">
+                      <div class="ant-card-body">
+                        <div class="small_cardcontent__BTALp">
+                          <div class="small_toplink__GmZhY"><a target="_blank" href="/newsDetail_forward_31411478"
+                              class="index_inherit__A1ImK">
+                              <div class="small_imgposition__PYVLm"><img alt="俄驻美大使：俄美近期将进一步就关系正常化进行磋商" src="https://imgpai.thepaper.cn/newpai/image/1755304940204_aEQPwT_1755304940395.png?x-oss-process=image/resize,w_332" width="318" height="182"/>
+                              </div>
+                              <h2>俄驻美大使：俄美近期将进一步就关系正常化进行磋商</h2>
+                            </a></div>
+                          <div class="small_text__dR01h">
+                            <div class="small_cardcontentdes__st4Ou small_noreply__K_aom">
+                              <p>
+                                <span class="small_first____NUY"><a target="_blank" href="/list_25429" class="index_inherit__A1ImK">全球速报</a></span><span>1小时前</span>
+                              </p>
+                              <p>
+                                <b class="share_normalstyle__UTbBN"><span class="ant-dropdown-trigger small_share__0NxV1 shareall"></span></b>
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div style="padding-left:4.5px;padding-right:4.5px;padding-top:4.5px;padding-bottom:4.5px"
+                    class="ant-col ant-col-6">
+                    <div
+                      class="ant-card ant-card-bordered ant-card-hoverable small_basecard__tH4iV small_article_card__xBP8q">
+                      <div class="ant-card-body">
+                        <div class="small_cardcontent__BTALp">
+                          <div class="small_toplink__GmZhY"><a target="_blank" href="/newsDetail_forward_31407383"
+                              class="index_inherit__A1ImK">
+                              <div class="small_imgposition__PYVLm"><img alt="用“爱”回答“柯伯格之问”：《让世界爱中国》提出讲好中国故事的标准" src="https://imgpai.thepaper.cn/newpai/image/1755297040524_GJMx7H_1755297040727.png?x-oss-process=image/resize,w_332" width="318" height="182"/>
+                              </div>
+                              <h2>用“爱”回答“柯伯格之问”：《让世界爱中国》提出讲好中国故事的标准</h2>
+                            </a></div>
+                          <div class="small_text__dR01h">
+                            <div class="small_cardcontentdes__st4Ou small_noreply__K_aom">
+                              <p>
+                                <span class="small_first____NUY"><a target="_blank" href="/list_122905" class="index_inherit__A1ImK">大国外交</a></span><span>1小时前</span>
+                              </p>
+                              <p>
+                                <b class="share_normalstyle__UTbBN"><span class="ant-dropdown-trigger small_share__0NxV1 shareall"></span></b>
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div style="padding-left:4.5px;padding-right:4.5px;padding-top:4.5px;padding-bottom:4.5px"
+                    class="ant-col ant-col-6">
+                    <div
+                      class="ant-card ant-card-bordered ant-card-hoverable small_basecard__tH4iV small_article_card__xBP8q">
+                      <div class="ant-card-body">
+                        <div class="small_cardcontent__BTALp">
+                          <div class="small_toplink__GmZhY"><a target="_blank" href="/newsDetail_forward_31411367"
+                              class="index_inherit__A1ImK">
+                              <div class="small_imgposition__PYVLm"><img alt="特朗普评价美俄总统阿拉斯加会晤：打10分" src="https://imgpai.thepaper.cn/newpai/image/1755304877526_GWxiNA_1755304877737.png?x-oss-process=image/resize,w_332" width="318" height="182"/>
+                              </div>
+                              <h2>特朗普评价美俄总统阿拉斯加会晤：打10分</h2>
+                            </a></div>
+                          <div class="small_text__dR01h">
+                            <div class="small_cardcontentdes__st4Ou small_noreply__K_aom">
+                              <p>
+                                <span class="small_first____NUY"><a target="_blank" href="/list_25429" class="index_inherit__A1ImK">全球速报</a></span><span>1小时前</span>
+                              </p>
+                              <p>
+                                <b class="share_normalstyle__UTbBN"><span class="ant-dropdown-trigger small_share__0NxV1 shareall"></span></b>
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div style="padding-left:4.5px;padding-right:4.5px;padding-top:4.5px;padding-bottom:4.5px"
+                    class="ant-col ant-col-6">
+                    <div
+                      class="ant-card ant-card-bordered ant-card-hoverable small_basecard__tH4iV small_article_card__xBP8q">
+                      <div class="ant-card-body">
+                        <div class="small_cardcontent__BTALp">
+                          <div class="small_toplink__GmZhY"><a target="_blank" href="/newsDetail_forward_31410855"
+                              class="index_inherit__A1ImK">
+                              <div class="small_imgposition__PYVLm">
+                                <img alt="乌总统指责俄军袭击，俄称乌言论破坏会晤" src="https://imgpai.thepaper.cn/newpai/image/1755301361247_6DJdJc_1755301361499.png?x-oss-process=image/resize,w_332" width="318" height="182"/><span class="index_watermark_duration__70Kqz"><i class="index_icon_videos__yVco6"></i><i class="index_watermark_num__X23Fl">1</i></span>
+                              </div>
+                              <h2>乌总统指责俄军袭击，俄称乌言论破坏会晤</h2>
+                            </a></div>
+                          <div class="small_text__dR01h">
+                            <div class="small_cardcontentdes__st4Ou small_noreply__K_aom">
+                              <p>
+                                <span class="small_first____NUY"><a target="_blank" href="/list_25429" class="index_inherit__A1ImK">全球速报</a></span><span>2小时前</span>
+                              </p>
+                              <p>
+                                <b class="share_normalstyle__UTbBN"><span class="ant-dropdown-trigger small_share__0NxV1 shareall"></span></b>
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div style="padding-left:4.5px;padding-right:4.5px;padding-top:4.5px;padding-bottom:4.5px"
+                    class="ant-col ant-col-6">
+                    <div
+                      class="ant-card ant-card-bordered ant-card-hoverable small_basecard__tH4iV small_article_card__xBP8q">
+                      <div class="ant-card-body">
+                        <div class="small_cardcontent__BTALp">
+                          <div class="small_toplink__GmZhY"><a target="_blank" href="/newsDetail_forward_31410860"
+                              class="index_inherit__A1ImK">
+                              <div class="small_imgposition__PYVLm">
+                                <img alt="俄总统普京向阿拉斯加州苏联飞行员墓献花" src="https://imgpai.thepaper.cn/newpai/image/1755302866175_7YJarN_1755302866380.png?x-oss-process=image/resize,w_332" width="318" height="182"/><span class="index_watermark_duration__70Kqz"><i class="index_icon_videos__yVco6"></i><i class="index_watermark_num__X23Fl">1</i></span>
+                              </div>
+                              <h2>俄总统普京向阿拉斯加州苏联飞行员墓献花</h2>
+                            </a></div>
+                          <div class="small_text__dR01h">
+                            <div class="small_cardcontentdes__st4Ou small_noreply__K_aom">
+                              <p>
+                                <span class="small_first____NUY"><a target="_blank" href="/list_25429" class="index_inherit__A1ImK">全球速报</a></span><span>2小时前</span>
+                              </p>
+                              <p>
+                                <b class="share_normalstyle__UTbBN"><span class="ant-dropdown-trigger small_share__0NxV1 shareall"></span></b>
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div style="padding-left:4.5px;padding-right:4.5px;padding-top:4.5px;padding-bottom:4.5px"
+                    class="ant-col ant-col-6">
+                    <div
+                      class="ant-card ant-card-bordered ant-card-hoverable small_basecard__tH4iV small_article_card__xBP8q">
+                      <div class="ant-card-body">
+                        <div class="small_cardcontent__BTALp">
+                          <div class="small_toplink__GmZhY"><a target="_blank" href="/newsDetail_forward_31410877"
+                              class="index_inherit__A1ImK">
+                              <div class="small_imgposition__PYVLm">
+                                <img alt="特朗普和普京分别启程离开阿拉斯加" src="https://imgpai.thepaper.cn/newpai/image/1755304643793_zyCTFE_1755304644002.png?x-oss-process=image/resize,w_332" width="318" height="182"/><span class="index_watermark_duration__70Kqz"><i class="index_icon_videos__yVco6"></i><i class="index_watermark_num__X23Fl">1</i></span>
+                              </div>
+                              <h2>特朗普和普京分别启程离开阿拉斯加</h2>
+                            </a></div>
+                          <div class="small_text__dR01h">
+                            <div class="small_cardcontentdes__st4Ou small_noreply__K_aom">
+                              <p>
+                                <span class="small_first____NUY"><a target="_blank" href="/list_25429" class="index_inherit__A1ImK">全球速报</a></span><span>2小时前</span>
+                              </p>
+                              <p>
+                                <b class="share_normalstyle__UTbBN"><span class="ant-dropdown-trigger small_share__0NxV1 shareall"></span></b>
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div style="padding-left:4.5px;padding-right:4.5px;padding-top:4.5px;padding-bottom:4.5px"
+                    class="ant-col ant-col-6">
+                    <div
+                      class="ant-card ant-card-bordered ant-card-hoverable small_basecard__tH4iV small_article_card__xBP8q">
+                      <div class="ant-card-body">
+                        <div class="small_cardcontent__BTALp">
+                          <div class="small_toplink__GmZhY"><a target="_blank" href="/newsDetail_forward_31410849"
+                              class="index_inherit__A1ImK">
+                              <div class="small_imgposition__PYVLm">
+                                <img alt="持续超两个半小时，特朗普与普京举行历史性会晤" src="https://imgpai.thepaper.cn/newpai/image/1755299409331_2cYQMY_1755299409523.png?x-oss-process=image/resize,w_332" width="318" height="182"/><span class="index_watermark_duration__70Kqz"><i class="index_icon_videos__yVco6"></i><i class="index_watermark_num__X23Fl">3</i></span>
+                              </div>
+                              <h2>持续超两个半小时，特朗普与普京举行历史性会晤</h2>
+                            </a></div>
+                          <div class="small_text__dR01h">
+                            <div class="small_cardcontentdes__st4Ou small_noreply__K_aom">
+                              <p>
+                                <span class="small_first____NUY"><a target="_blank" href="/list_25429" class="index_inherit__A1ImK">全球速报</a></span><span>3小时前</span>
+                              </p>
+                              <p>
+                                <b class="share_normalstyle__UTbBN"><span class="ant-dropdown-trigger small_share__0NxV1 shareall"></span></b>
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div style="padding-left:4.5px;padding-right:4.5px;padding-top:4.5px;padding-bottom:4.5px"
+                    class="ant-col ant-col-6">
+                    <div
+                      class="ant-card ant-card-bordered ant-card-hoverable small_basecard__tH4iV small_article_card__xBP8q">
+                      <div class="ant-card-body">
+                        <div class="small_cardcontent__BTALp">
+                          <div class="small_toplink__GmZhY"><a target="_blank" href="/newsDetail_forward_31409944"
+                              class="index_inherit__A1ImK">
+                              <div class="small_imgposition__PYVLm">
+                                <img alt="直击美俄会晤｜特朗普机场迎接普京，双方肢体频繁互动" src="https://imgpai.thepaper.cn/newpai/image/1755287836495_xncCWK_1755287836780.png?x-oss-process=image/resize,w_332" width="318" height="182"/><span class="index_watermark_duration__70Kqz"><i class="index_icon_play__U_vMl"></i><i class="index_watermark_num__X23Fl">00:31</i></span>
+                              </div>
+                              <h2>直击美俄会晤｜特朗普机场迎接普京，双方肢体频繁互动</h2>
+                            </a></div>
+                          <div class="small_text__dR01h">
+                            <div class="small_cardcontentdes__st4Ou">
+                              <p>
+                                <span class="small_first____NUY"><a target="_blank" href="/list_27260" class="index_inherit__A1ImK">World湃</a></span><span>3小时前</span>
+                              </p>
+                              <p><a target="_blank" href="/newsDetail_forward_31409944?commTag=true"
+                                  class="index_inherit__A1ImK"><span class="small_zan__6Ny1e">15</span></a><b class="share_normalstyle__UTbBN"><span class="ant-dropdown-trigger small_share__0NxV1 shareall"></span></b>
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div style="padding-left:4.5px;padding-right:4.5px;padding-top:4.5px;padding-bottom:4.5px"
+                    class="ant-col ant-col-6">
+                    <div
+                      class="ant-card ant-card-bordered ant-card-hoverable small_basecard__tH4iV small_article_card__xBP8q">
+                      <div class="ant-card-body">
+                        <div class="small_cardcontent__BTALp">
+                          <div class="small_toplink__GmZhY"><a target="_blank" href="/newsDetail_forward_31410845"
+                              class="index_inherit__A1ImK">
+                              <div class="small_imgposition__PYVLm"><img alt="“普特会”谈近3小时，“大阵仗”有玄机" src="https://imgpai.thepaper.cn/newpai/image/1755298844843_nJ2TAi_1755298845038.png?x-oss-process=image/resize,w_332" width="318" height="182"/>
+                              </div>
+                              <h2>“普特会”谈近3小时，“大阵仗”有玄机</h2>
+                            </a></div>
+                          <div class="small_text__dR01h">
+                            <div class="small_cardcontentdes__st4Ou small_noreply__K_aom">
+                              <p>
+                                <span class="small_first____NUY"><a target="_blank" href="/list_25429" class="index_inherit__A1ImK">全球速报</a></span><span>3小时前</span>
+                              </p>
+                              <p>
+                                <b class="share_normalstyle__UTbBN"><span class="ant-dropdown-trigger small_share__0NxV1 shareall"></span></b>
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="index_loading__6IvcD">
+                  <span role="img" aria-label="sync" class="anticon anticon-sync anticon-spin"><svg viewBox="64 64 896 896" focusable="false" data-icon="sync" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M168 504.2c1-43.7 10-86.1 26.9-126 17.3-41 42.1-77.7 73.7-109.4S337 212.3 378 195c42.4-17.9 87.4-27 133.9-27s91.5 9.1 133.8 27A341.5 341.5 0 01755 268.8c9.9 9.9 19.2 20.4 27.8 31.4l-60.2 47a8 8 0 003 14.1l175.7 43c5 1.2 9.9-2.6 9.9-7.7l.8-180.9c0-6.7-7.7-10.5-12.9-6.3l-56.4 44.1C765.8 155.1 646.2 92 511.8 92 282.7 92 96.3 275.6 92 503.8a8 8 0 008 8.2h60c4.4 0 7.9-3.5 8-7.8zm756 7.8h-60c-4.4 0-7.9 3.5-8 7.8-1 43.7-10 86.1-26.9 126-17.3 41-42.1 77.8-73.7 109.4A342.45 342.45 0 01512.1 856a342.24 342.24 0 01-243.2-100.8c-9.9-9.9-19.2-20.4-27.8-31.4l60.2-47a8 8 0 00-3-14.1l-175.7-43c-5-1.2-9.9 2.6-9.9 7.7l-.7 181c0 6.7 7.7 10.5 12.9 6.3l56.4-44.1C258.2 868.9 377.8 932 512.2 932c229.2 0 415.5-183.7 419.8-411.8a8 8 0 00-8-8.2z"></path></svg></span>
+                  加载中
+                  <!-- -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="index_content___Uhtm">
+          <div class="index_banner__Dg2d_">
+            <div class="rt_ad" id="rt_ad"></div>
+          </div>
+          <div class="index_commonsider__3D368">
+            <div class="mdCard">
+              <div class="index_ppreport__slNZB index_zwb__Q0Tlm">
+                <div class="index_reporttop__VGXP7"><img src="/_next/static/media/pp_report.644295c3.png"/></div>
+                <div class="index_content___Uhtm">
+                  <ul></ul><button>查看更多</button>
+                </div>
+              </div>
+            </div>
+            <div class="mdCard">
+              <div class="index_ppreport__slNZB index_caixun__PpO3O">
+                <div class="index_moneytop__c_UkG"><img src="/_next/static/media/logo_kuaixun.d8f19ada.png"/></div>
+                <div class="index_content___Uhtm">
+                  <ul></ul><button>查看更多</button>
+                </div>
+              </div>
+            </div>
+            <div class="mdCard">
+              <div class="index_ppreport__slNZB index_crossword__toY3q">
+                <div class="index_moneytop__c_UkG"><img src="/_next/static/media/logo_104x44_tianzi_white@2x.b88d1296.png"/>
+                </div>
+                <div class="index_content___Uhtm">
+                  <ul></ul><button>开始答题</button>
+                </div>
+              </div>
+            </div>
+            <div class="index_ppreport__slNZB index_notranstion__R0Uwz">
+              <div class="index_rebangtop__tpSSj"><img src="/_next/static/media/logo_rebang.f9ee1ca1.png"/></div>
+              <div class="index_content___Uhtm">
+                <ul></ul>
+              </div>
+            </div>
+            <div class="se_ad" id="rt_ad1"></div>
+            <div class="index_handpick__RUz3F" style="box-shadow:2px 2px 4px 0px #DEE4E6, -2px -2px 4px 0px #FFFFFF">
+              <div class="index_handpick_top__vch9Z"><img src="/_next/static/media/logo_bjjx.667644a5.png"/></div>
+              <div class="index_handpick_content__aAPXI">
+                <div class="index_content___Uhtm"></div>
+                <div style="background:#F0F0F0" class="index_look_more__aZwZO"><span style="color:#666">查看更多</span>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div class="scale_connent__Qjc3N">
+                <div class="scale_vcode__Pj3i0"><img src="/_next/static/media/scalecode.ed629179.png"/>
+                  <h4><b>扫码下载</b><b>澎湃新闻客户端</b></h4>
+                </div>
+                <div class="scale_links__NoB8o">
+                  <p><a href="https://m.thepaper.cn/download?id=2" target="_blank">Android版</a></p>
+                  <p><a href="https://apps.apple.com/cn/app/id878962716?mt=8" target="_blank">iPhone版</a></p>
+                  <p><a href="https://apps.apple.com/cn/app/id986646876?mt=8" target="_blank">iPad版</a></p>
+                </div>
+              </div>
+            </div>
+            <div class="index_content__2xnNC undefined">
+              <div class="index_maxwidth__8UwRQ">
+                <div id="juzhen" class="ant-row card" style="margin-left:-5px;margin-right:-5px">
+                  <div style="padding-left:5px;padding-right:5px" class="ant-col ant-col-6"><a>关于澎湃</a></div>
+                  <div style="padding-left:5px;padding-right:5px" class="ant-col ant-col-6"><a>加入澎湃</a></div>
+                  <div style="padding-left:5px;padding-right:5px" class="ant-col ant-col-6"><a>联系我们</a></div>
+                  <div style="padding-left:5px;padding-right:5px" class="ant-col ant-col-6"><a>广告合作</a></div>
+                  <div style="padding-left:5px;padding-right:5px" class="ant-col ant-col-6"><a>法律声明</a></div>
+                  <div style="padding-left:5px;padding-right:5px" class="ant-col ant-col-6"><a>隐私政策</a></div>
+                  <div id="ppjuzhen" style="padding-left:5px;padding-right:5px" class="ant-col ant-col-6">
+                    <div class="index_juzhencontent__iSta9"><span class="index_cursor__UXmdF">澎湃矩阵</span>
+                      <ul class="index_juzhenul__T9Y_U">
+                        <li><a target="_blank" rel="noopener noreferrer"
+                            href="https://weibo.com/thepapernewsapp">澎湃新闻微博</a></li>
+                        <li class="index_wechartcontent__yM1tu"><span>澎湃新闻公众号</span>
+                          <div class="index_wechat__82gBN"><img src="/_next/static/media/wechat.ebe50fdd.png"/></div>
+                        </li>
+                        <li><a target="_blank" rel="noopener noreferrer"
+                            href="https://www.douyin.com/user/MS4wLjABAAAAzMDwcAi4v-kdwAGtt9Ni1jfE0hV9-TiUVlNLX7mb9Hw">澎湃新闻抖音号</a>
+                        </li>
+                        <li></li>
+                        <li><a target="_blank" href="https://www.pai-tech.net/">派生万物开放平台</a></li>
+                        <li><a target="_blank" rel="noopener noreferrer" href="https://www.ipshanghai.cn">IP
+                            SHANGHAI</a></li>
+                        <li><a target="_blank" rel="noopener noreferrer" href="https://www.sixthtone.com">SIXTH TONE</a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div id="ppbaoliao" style="padding-left:5px;padding-right:5px" class="ant-col ant-col-6">
+                    <div class="index_juzhencontent__iSta9"><span class="index_cursor__UXmdF">新闻报料</span>
+                      <ul class="index_juzhenul__T9Y_U index_baoliaoul__d9Csd">
+                        <li class="index_noCursor__cCs4f"><span>报料热线: 021-962866</span></li>
+                        <li><a href="mailto:news@thepaper.cn"><span>报料邮箱: news@thepaper.cn</span></a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="index_beian__uhLsE">
+              <p><a href="https://beian.miit.gov.cn" target="_blank">沪ICP备14003370号</a></p>
+              <p><a href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31010602000299"
+                  target="_blank">沪公网安备31010602000299号</a></p>
+              <p>互联网新闻信息服务许可证：31120170006</p>
+              <p>增值电信业务经营许可证：沪B2-2017116</p>
+              <p>© 2014-
+                <!-- -->2025
+                <!-- --> 上海东方报业有限公司
+                <!-- -->
+              </p>
+            </div>
+            <div class="index_renzheng__UYHh9">
+              <div><a target="cyxyv"
+                  href="https://v.yunaq.com/certificate?domain=www.thepaper.cn&amp;from=label&amp;code=90030"><img src="/_next/static/media/label_sm_90030.2e849b63.png" alt=""/></a>
+              </div>
+              <div><img src="/_next/static/media/wuzhangai.a66118af.png" alt=""/></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="index_light__hRATr">
+        <div class="index_feedBack__KglnL"><span class="index_feedIcon__7bsOT"></span><span>反馈</span></div>
+        <div class="index_backtop__Gb9ym">
+          <div duration="0" class="ant-back-top"></div>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script id="__NEXT_DATA__" type="application/json">
+    {"props":{"pageProps":{"data":{"code":200,"data":{"hasNext":true,"startTime":1755299244358,"list":[{"contId":"31410867","isOutForword":"0","isOutForward":"0","forwardType":"0","mobForwardType":2,"interactionNum":"","praiseTimes":"23","pic":"https://imgpai.thepaper.cn/newpai/image/1755303312816_5BjFF5_1755303312981.png","imgCardMode":0,"smallPic":"https://imgpai.thepaper.cn/newpai/image/1755303312816_5BjFF5_1755303312981.png?x-oss-process=image/resize,w_332","sharePic":"https://imgpai.thepaper.cn/newpai/image/1755303312844_8T3Qnt_1755303313001.png","pubTime":"1小时前","pubTimeNew":"1小时前","name":"普京称“普特会”为乌克兰和平铺路，特朗普：有进展但无协议","cornerLabelDesc":"推荐","closePraise":"0","nodeInfo":{"nodeId":25429,"name":"全球速报","desc":"最热点的全球资讯","pic":"https://imagecloud.thepaper.cn/thepaper/image/4/158/73.png","nodeType":0,"channelType":0,"forwordType":22,"forwardType":"22","liveType":"2","parentId":25388,"isOrder":"0","dataType":"0","shareName":"全球速报","nickName":"","publishTime":1668726066292,"mobForwardType":"22","summarize":"最热点的全球资讯","color":"","videoLivingRoomDes":"","wwwSpecNodeAlign":0,"govAffairsType":"","showSpecialBanner":false,"showSpecialTopDesc":false,"topBarTypeCustomColor":false,"showVideoBottomRightBtn":false},"nodeId":25429,"contType":0,"pubTimeLong":1755305434762,"specialNodeId":0,"cardMode":"101","dataObjId":52,"closeFrontComment":false,"isSupInteraction":false,"tagList":[{"tagId":843929,"tag":"普特会","isOrder":"0","isUpdateNotify":"0","isWonderfulComments":"0"}],"hideVideoFlag":false,"praiseStyle":1,"isSustainedFly":0,"softLocType":1,"closeComment":false,"voiceInfo":{"voiceSrc":"https://audios.thepaper.cn/input/31410867_202508160850f4d3e3fa-2b21-47d3-8730-6b0143d6fda1.mp3","imgSrc":"https://imgpai.thepaper.cn/newpai/image/1755303312844_8T3Qnt_1755303313001.png","isHaveVoice":"1"},"softAdTypeStr":"1,1,1","originalContId":31410867,"paywalled":false,"audiovisualBlogSwitch":false,"audiovisualBlogGuests":"","seriesTagRecType":"其他"},{"contId":"31411595","isOutForword":"0","isOutForward":"0","forwardType":"74","mobForwardType":74,"interactionNum":"","praiseTimes":"237","pic":"https://imgpai.thepaper.cn/newpai/image/1755305059245_xfkTW3_1755305059507.png","imgCardMode":0,"smallPic":"https://imgpai.thepaper.cn/newpai/image/1755305059245_xfkTW3_1755305059507.png?x-oss-process=image/resize,w_332","sharePic":"https://imgpai.thepaper.cn/newpai/image/1755305059265_XsAXbS_1755305059424.png","pubTime":"1小时前","pubTimeNew":"1小时前","name":"特朗普安排红毯，B-2隐形轰炸机从普京头顶飞过","cornerLabelDesc":"推荐","closePraise":"0","waterMark":{"type":"1","value":"00:16","bigPicValue":"00:16","videoSize":"1M流量"},"nodeInfo":{"nodeId":27260,"name":"World湃","desc":"看见新闻全球化","pic":"https://imagecloud.thepaper.cn/thepaper/image/5/746/155.jpg","nodeType":4,"channelType":0,"forwordType":22,"forwardType":"23","liveType":"1","parentId":26886,"isOrder":"0","dataType":"0","shareName":"World湃","nickName":"","publishTime":1749814140150,"mobForwardType":"23","recommendIds":[8250141],"summarize":"用短视频记录全球重大事件和热点新闻，用镜头语言讲述世界最新最潮的故事。","color":"","videoLivingRoomDes":"","wwwSpecNodeAlign":0,"govAffairsType":"","showSpecialBanner":false,"showSpecialTopDesc":false,"topBarTypeCustomColor":false,"showVideoBottomRightBtn":false},"videos":{"videoId":null,"hdurl":"https://cloudvideo.thepaper.cn/video/bb65c94bf7834f249b541ca8f9c204c6/hd/1755298633884_RnGAM1_1755305002191.mp4","url":"https://cloudvideo.thepaper.cn/video/bb65c94bf7834f249b541ca8f9c204c6/sd/1755298633884_RnGAM1_1755305002191.mp4","duration":"00:16","coverUrl":"https://img.thepaper.cn/thepaper/common/img/default_video_cover.jpg","verticalCoverUrl":"https://imgpai.thepaper.cn/newpai/image/1755305059263_dhhCBG_1755305059494.png","bytes":"2805626","hdBytes":"5287389","coverUrlFirstFrame":"http://cloudvideo.thepaper.cn/video/bb65c94bf7834f249b541ca8f9c204c6/1000.jpg","verticalVideo":true,"durationNum":16,"videoDes":null,"playInfos":null,"outLink":false},"nodeId":27260,"contType":9,"pubTimeLong":1755305578314,"specialNodeId":0,"cardMode":"101","dataObjId":52,"closeFrontComment":false,"isSupInteraction":false,"tagList":[{"tagId":95,"tag":"特朗普","isOrder":"0","isUpdateNotify":"0","isWonderfulComments":"0"},{"tagId":2754,"tag":"普京","isOrder":"0","isUpdateNotify":"0","isWonderfulComments":"0"}],"hideVideoFlag":false,"praiseStyle":1,"isSustainedFly":0,"softLocType":1,"closeComment":false,"voiceInfo":{"imgSrc":"https://imgpai.thepaper.cn/newpai/image/1755305059265_XsAXbS_1755305059424.png","isHaveVoice":"0"},"softAdTypeStr":"1,1,1","originalContId":31411595,"paywalled":false,"audiovisualBlogSwitch":false,"audiovisualBlogGuests":"","seriesTagRecType":"其他"},{"contId":"31410837","isOutForword":"0","isOutForward":"0","forwardType":"74","mobForwardType":74,"interactionNum":"","praiseTimes":"138","pic":"https://imgpai.thepaper.cn/newpai/image/1755297815212_3wFcpz_1755297815388.png","imgCardMode":0,"smallPic":"https://imgpai.thepaper.cn/newpai/image/1755297815212_3wFcpz_1755297815388.png?x-oss-process=image/resize,w_332","sharePic":"https://imgpai.thepaper.cn/newpai/image/1755297815232_byK6kj_1755297815465.png","pubTime":"3小时前","pubTimeNew":"3小时前","name":"“普特会”开场媒体疯狂提问：普京表情疑惑，特朗普罕见沉默","cornerLabelDesc":"推荐","closePraise":"0","waterMark":{"type":"1","value":"00:32","bigPicValue":"00:32","videoSize":"2M流量"},"nodeInfo":{"nodeId":27260,"name":"World湃","desc":"看见新闻全球化","pic":"https://imagecloud.thepaper.cn/thepaper/image/5/746/155.jpg","nodeType":4,"channelType":0,"forwordType":22,"forwardType":"23","liveType":"1","parentId":26886,"isOrder":"0","dataType":"0","shareName":"World湃","nickName":"","publishTime":1749814140150,"mobForwardType":"23","recommendIds":[8250141],"summarize":"用短视频记录全球重大事件和热点新闻，用镜头语言讲述世界最新最潮的故事。","color":"","videoLivingRoomDes":"","wwwSpecNodeAlign":0,"govAffairsType":"","showSpecialBanner":false,"showSpecialTopDesc":false,"topBarTypeCustomColor":false,"showVideoBottomRightBtn":false},"videos":{"videoId":null,"hdurl":"https://cloudvideo.thepaper.cn/video/6c2a64b99b714e4dbd0f87de36277d3c/hd/1755294365832_rKKkmj_1755297631854.mp4","url":"https://cloudvideo.thepaper.cn/video/6c2a64b99b714e4dbd0f87de36277d3c/sd/1755294365832_rKKkmj_1755297631854.mp4","duration":"00:32","coverUrl":"https://img.thepaper.cn/thepaper/common/img/default_video_cover.jpg","verticalCoverUrl":"https://imgpai.thepaper.cn/newpai/image/1755297815230_aw47ki_1755297815423.png","bytes":"3504208","hdBytes":"4258076","coverUrlFirstFrame":"http://cloudvideo.thepaper.cn/video/6c2a64b99b714e4dbd0f87de36277d3c/1000.jpg","verticalVideo":true,"durationNum":32,"videoDes":null,"playInfos":null,"outLink":false},"nodeId":27260,"contType":9,"pubTimeLong":1755300737067,"specialNodeId":0,"cardMode":"101","dataObjId":52,"closeFrontComment":false,"isSupInteraction":false,"tagList":[{"tagId":95,"tag":"特朗普","isOrder":"0","isUpdateNotify":"0","isWonderfulComments":"0"},{"tagId":2754,"tag":"普京","isOrder":"0","isUpdateNotify":"0","isWonderfulComments":"0"},{"tagId":1762887,"tag":"泽连斯基","isOrder":"0","isUpdateNotify":"0","isWonderfulComments":"0"}],"hideVideoFlag":false,"praiseStyle":1,"isSustainedFly":0,"softLocType":1,"closeComment":false,"voiceInfo":{"imgSrc":"https://imgpai.thepaper.cn/newpai/image/1755297815232_byK6kj_1755297815465.png","isHaveVoice":"0"},"softAdTypeStr":"1,1,1","originalContId":31410837,"paywalled":false,"audiovisualBlogSwitch":false,"audiovisualBlogGuests":"","seriesTagRecType":"其他"},{"contId":"31405282","isOutForword":"0","isOutForward":"0","forwardType":"0","mobForwardType":2,"interactionNum":"","praiseTimes":"12","pic":"https://imgpai.thepaper.cn/newpai/image/1755248343859_6F66sm_1755248344082.png","imgCardMode":0,"smallPic":"https://imgpai.thepaper.cn/newpai/image/1755248343859_6F66sm_1755248344082.png?x-oss-process=image/resize,w_332","sharePic":"https://imgpai.thepaper.cn/newpai/image/1755248343880_imQ2fD_1755248344123.png","pubTime":"3小时前","pubTimeNew":"3小时前","name":"明查｜印度成功征服加拿大？占领三大政党多数席位？","cornerLabelDesc":"推荐","closePraise":"0","nodeInfo":{"nodeId":122904,"name":"澎湃明查","desc":"全球热点及公共事件的“校准器”","pic":"https://imagecloud.thepaper.cn/thepaper/image/225/728/204.png","nodeType":0,"channelType":0,"forwordType":22,"forwardType":"22","liveType":"2","parentId":25388,"isOrder":"0","dataType":"0","shareName":"澎湃明查","nickName":"","publishTime":1668726185345,"mobForwardType":"22","summarize":"全球热点及公共事件的“校准器”","color":"","videoLivingRoomDes":"","wwwSpecNodeAlign":0,"govAffairsType":"","showSpecialBanner":false,"showSpecialTopDesc":false,"topBarTypeCustomColor":false,"showVideoBottomRightBtn":false},"nodeId":122904,"contType":0,"pubTimeLong":1755299748621,"specialNodeId":0,"cardMode":"101","dataObjId":52,"closeFrontComment":false,"isSupInteraction":false,"tagList":[{"tagId":1761084,"tag":"事实核查","isOrder":"0","isUpdateNotify":"0","isWonderfulComments":"0"},{"tagId":2144,"tag":"印度","isOrder":"0","isUpdateNotify":"0","isWonderfulComments":"0"},{"tagId":102,"tag":"加拿大","isOrder":"0","isUpdateNotify":"0","isWonderfulComments":"0"}],"hideVideoFlag":false,"praiseStyle":1,"isSustainedFly":0,"softLocType":1,"closeComment":false,"voiceInfo":{"voiceSrc":"https://audios.thepaper.cn/input/31405282_202508160715a7b4a861-e5cb-4b2d-b9ff-ebe07bed59cd.mp3","imgSrc":"https://imgpai.thepaper.cn/newpai/image/1755248343880_imQ2fD_1755248344123.png","isHaveVoice":"1"},"softAdTypeStr":"1,1,1","originalContId":31405282,"paywalled":false,"audiovisualBlogSwitch":false,"audiovisualBlogGuests":"","seriesTagRecType":"其他"},{"contId":"31411804","isOutForword":"0","isOutForward":"0","forwardType":"0","mobForwardType":2,"interactionNum":"","praiseTimes":"9","pic":"https://imgpai.thepaper.cn/newpai/image/1755309382251_hEKHnR_1755309382434.png","imgCardMode":0,"smallPic":"https://imgpai.thepaper.cn/newpai/image/1755309382251_hEKHnR_1755309382434.png?x-oss-process=image/resize,w_332","sharePic":"https://imgpai.thepaper.cn/newpai/image/1755309382281_PYm7s1_1755309382466.png","pubTime":"17分钟前","pubTimeNew":"17分钟前","name":"特朗普：暂时收回对俄“严重后果”威胁","closePraise":"0","nodeInfo":{"nodeId":25429,"name":"全球速报","desc":"最热点的全球资讯","pic":"https://imagecloud.thepaper.cn/thepaper/image/4/158/73.png","nodeType":0,"channelType":0,"forwordType":22,"forwardType":"22","liveType":"2","parentId":25388,"isOrder":"0","dataType":"0","shareName":"全球速报","nickName":"","publishTime":1668726066292,"mobForwardType":"22","summarize":"最热点的全球资讯","color":"","videoLivingRoomDes":"","wwwSpecNodeAlign":0,"govAffairsType":"","showSpecialBanner":false,"showSpecialTopDesc":false,"topBarTypeCustomColor":false,"showVideoBottomRightBtn":false},"nodeId":25429,"contType":0,"pubTimeLong":1755311292971,"specialNodeId":0,"cardMode":"101","dataObjId":52,"closeFrontComment":false,"isSupInteraction":false,"tagList":[{"tagId":95,"tag":"特朗普","isOrder":"0","isUpdateNotify":"0","isWonderfulComments":"0"},{"tagId":9011,"tag":"俄乌","isOrder":"0","isUpdateNotify":"0","isWonderfulComments":"0"}],"hideVideoFlag":false,"praiseStyle":1,"isSustainedFly":0,"softLocType":1,"closeComment":false,"voiceInfo":{"voiceSrc":"https://audios.thepaper.cn/input/31411804_202508161028611c23f1-d081-41ab-baf2-0b57f56b12bc.mp3","imgSrc":"https://imgpai.thepaper.cn/newpai/image/1755309382281_PYm7s1_1755309382466.png","isHaveVoice":"1"},"softAdTypeStr":"1,1,1","originalContId":31411804,"paywalled":false,"audiovisualBlogSwitch":false,"audiovisualBlogGuests":"","seriesTagRecType":"其他"},{"contId":"31411478","isOutForword":"0","isOutForward":"0","forwardType":"0","mobForwardType":2,"interactionNum":"","praiseTimes":"11","pic":"https://imgpai.thepaper.cn/newpai/image/1755304940204_aEQPwT_1755304940395.png","imgCardMode":0,"smallPic":"https://imgpai.thepaper.cn/newpai/image/1755304940204_aEQPwT_1755304940395.png?x-oss-process=image/resize,w_332","sharePic":"https://imgpai.thepaper.cn/newpai/image/1755304940233_pQfhnK_1755304940411.png","pubTime":"1小时前","pubTimeNew":"1小时前","name":"俄驻美大使：俄美近期将进一步就关系正常化进行磋商","closePraise":"0","nodeInfo":{"nodeId":25429,"name":"全球速报","desc":"最热点的全球资讯","pic":"https://imagecloud.thepaper.cn/thepaper/image/4/158/73.png","nodeType":0,"channelType":0,"forwordType":22,"forwardType":"22","liveType":"2","parentId":25388,"isOrder":"0","dataType":"0","shareName":"全球速报","nickName":"","publishTime":1668726066292,"mobForwardType":"22","summarize":"最热点的全球资讯","color":"","videoLivingRoomDes":"","wwwSpecNodeAlign":0,"govAffairsType":"","showSpecialBanner":false,"showSpecialTopDesc":false,"topBarTypeCustomColor":false,"showVideoBottomRightBtn":false},"nodeId":25429,"contType":0,"pubTimeLong":1755307289595,"specialNodeId":0,"cardMode":"101","dataObjId":52,"closeFrontComment":false,"isSupInteraction":false,"tagList":[{"tagId":485005,"tag":"俄美","isOrder":"0","isUpdateNotify":"0","isWonderfulComments":"0"}],"hideVideoFlag":false,"praiseStyle":1,"isSustainedFly":0,"softLocType":1,"closeComment":false,"voiceInfo":{"voiceSrc":"https://audios.thepaper.cn/input/31411478_20250816092157c01adc-a4f6-449b-847e-f25619bd18d1.mp3","imgSrc":"https://imgpai.thepaper.cn/newpai/image/1755304940233_pQfhnK_1755304940411.png","isHaveVoice":"1"},"softAdTypeStr":"1,1,1","originalContId":31411478,"paywalled":false,"audiovisualBlogSwitch":false,"audiovisualBlogGuests":"","seriesTagRecType":"其他"},{"contId":"31407383","isOutForword":"0","isOutForward":"0","forwardType":"0","mobForwardType":2,"interactionNum":"","praiseTimes":"33","pic":"https://imgpai.thepaper.cn/newpai/image/1755297040524_GJMx7H_1755297040727.png","imgCardMode":0,"smallPic":"https://imgpai.thepaper.cn/newpai/image/1755297040524_GJMx7H_1755297040727.png?x-oss-process=image/resize,w_332","sharePic":"https://imgpai.thepaper.cn/newpai/image/1755297040553_s3fjey_1755297040756.png","pubTime":"1小时前","pubTimeNew":"1小时前","name":"用“爱”回答“柯伯格之问”：《让世界爱中国》提出讲好中国故事的标准","closePraise":"0","nodeInfo":{"nodeId":122905,"name":"大国外交","desc":"构建人类命运共同体","pic":"https://imagecloud.thepaper.cn/thepaper/image/225/728/225.png","nodeType":0,"channelType":0,"forwordType":22,"forwardType":"22","liveType":"2","parentId":25388,"isOrder":"0","dataType":"0","shareName":"大国外交","nickName":"","publishTime":1668726187654,"mobForwardType":"22","summarize":"构建人类命运共同体","color":"","videoLivingRoomDes":"","wwwSpecNodeAlign":0,"govAffairsType":"","showSpecialBanner":false,"showSpecialTopDesc":false,"topBarTypeCustomColor":false,"showVideoBottomRightBtn":false},"nodeId":122905,"contType":0,"pubTimeLong":1755305851626,"specialNodeId":0,"cardMode":"101","dataObjId":52,"closeFrontComment":false,"isSupInteraction":false,"tagList":[{"tagId":6982083,"tag":"《让世界爱中国》","isOrder":"0","isUpdateNotify":"0","isWonderfulComments":"0"},{"tagId":28544,"tag":"中国故事","isOrder":"0","isUpdateNotify":"0","isWonderfulComments":"0"},{"tagId":14826,"tag":"上海书展","isOrder":"0","isUpdateNotify":"0","isWonderfulComments":"0"}],"hideVideoFlag":false,"praiseStyle":1,"isSustainedFly":0,"softLocType":1,"closeComment":false,"voiceInfo":{"voiceSrc":"https://audios.thepaper.cn/input/31407383_202508160857b8e27e92-d2ba-4698-a93d-3f3bf48c0fe3.mp3","imgSrc":"https://imgpai.thepaper.cn/newpai/image/1755297040553_s3fjey_1755297040756.png","isHaveVoice":"1"},"softAdTypeStr":"1,1,1","originalContId":31407383,"paywalled":false,"audiovisualBlogSwitch":false,"audiovisualBlogGuests":"","seriesTagRecType":"其他"},{"contId":"31411367","isOutForword":"0","isOutForward":"0","forwardType":"0","mobForwardType":2,"interactionNum":"","praiseTimes":"25","pic":"https://imgpai.thepaper.cn/newpai/image/1755304877526_GWxiNA_1755304877737.png","imgCardMode":0,"smallPic":"https://imgpai.thepaper.cn/newpai/image/1755304877526_GWxiNA_1755304877737.png?x-oss-process=image/resize,w_332","sharePic":"https://imgpai.thepaper.cn/newpai/image/1755304877557_ZQPBQh_1755304877730.png","pubTime":"1小时前","pubTimeNew":"1小时前","name":"特朗普评价美俄总统阿拉斯加会晤：打10分","closePraise":"0","nodeInfo":{"nodeId":25429,"name":"全球速报","desc":"最热点的全球资讯","pic":"https://imagecloud.thepaper.cn/thepaper/image/4/158/73.png","nodeType":0,"channelType":0,"forwordType":22,"forwardType":"22","liveType":"2","parentId":25388,"isOrder":"0","dataType":"0","shareName":"全球速报","nickName":"","publishTime":1668726066292,"mobForwardType":"22","summarize":"最热点的全球资讯","color":"","videoLivingRoomDes":"","wwwSpecNodeAlign":0,"govAffairsType":"","showSpecialBanner":false,"showSpecialTopDesc":false,"topBarTypeCustomColor":false,"showVideoBottomRightBtn":false},"nodeId":25429,"contType":0,"pubTimeLong":1755305165868,"specialNodeId":0,"cardMode":"101","dataObjId":52,"closeFrontComment":false,"isSupInteraction":false,"tagList":[{"tagId":95,"tag":"特朗普","isOrder":"0","isUpdateNotify":"0","isWonderfulComments":"0"}],"hideVideoFlag":false,"praiseStyle":1,"isSustainedFly":0,"softLocType":1,"closeComment":false,"voiceInfo":{"voiceSrc":"https://audios.thepaper.cn/input/31411367_202508160846f3b2cfb0-f202-482d-8a76-42672105dea8.mp3","imgSrc":"https://imgpai.thepaper.cn/newpai/image/1755304877557_ZQPBQh_1755304877730.png","isHaveVoice":"1"},"softAdTypeStr":"1,1,1","originalContId":31411367,"paywalled":false,"audiovisualBlogSwitch":false,"audiovisualBlogGuests":"","seriesTagRecType":"其他"},{"contId":"31410855","isOutForword":"0","isOutForward":"0","forwardType":"0","mobForwardType":2,"interactionNum":"","praiseTimes":"2","pic":"https://imgpai.thepaper.cn/newpai/image/1755301361247_6DJdJc_1755301361499.png","imgCardMode":0,"smallPic":"https://imgpai.thepaper.cn/newpai/image/1755301361247_6DJdJc_1755301361499.png?x-oss-process=image/resize,w_332","sharePic":"https://imgpai.thepaper.cn/newpai/image/1755301361277_ZXmiec_1755301361531.png","pubTime":"2小时前","pubTimeNew":"2小时前","name":"乌总统指责俄军袭击，俄称乌言论破坏会晤","closePraise":"0","waterMark":{"type":"4","value":"1","bigPicValue":"1"},"nodeInfo":{"nodeId":25429,"name":"全球速报","desc":"最热点的全球资讯","pic":"https://imagecloud.thepaper.cn/thepaper/image/4/158/73.png","nodeType":0,"channelType":0,"forwordType":22,"forwardType":"22","liveType":"2","parentId":25388,"isOrder":"0","dataType":"0","shareName":"全球速报","nickName":"","publishTime":1668726066292,"mobForwardType":"22","summarize":"最热点的全球资讯","color":"","videoLivingRoomDes":"","wwwSpecNodeAlign":0,"govAffairsType":"","showSpecialBanner":false,"showSpecialTopDesc":false,"topBarTypeCustomColor":false,"showVideoBottomRightBtn":false},"nodeId":25429,"contType":0,"pubTimeLong":1755304245056,"specialNodeId":0,"cardMode":"101","dataObjId":52,"closeFrontComment":false,"isSupInteraction":false,"tagList":[{"tagId":1762887,"tag":"泽连斯基","isOrder":"0","isUpdateNotify":"0","isWonderfulComments":"0"}],"hideVideoFlag":false,"praiseStyle":1,"isSustainedFly":0,"softLocType":1,"closeComment":false,"voiceInfo":{"imgSrc":"https://imgpai.thepaper.cn/newpai/image/1755301361277_ZXmiec_1755301361531.png","isHaveVoice":"0"},"softAdTypeStr":"1,1,1","originalContId":31410855,"paywalled":false,"audiovisualBlogSwitch":false,"audiovisualBlogGuests":"","seriesTagRecType":"其他"},{"contId":"31410860","isOutForword":"0","isOutForward":"0","forwardType":"0","mobForwardType":2,"interactionNum":"","praiseTimes":"81","pic":"https://imgpai.thepaper.cn/newpai/image/1755302866175_7YJarN_1755302866380.png","imgCardMode":0,"smallPic":"https://imgpai.thepaper.cn/newpai/image/1755302866175_7YJarN_1755302866380.png?x-oss-process=image/resize,w_332","sharePic":"https://imgpai.thepaper.cn/newpai/image/1755302866203_PkxShk_1755302866358.png","pubTime":"2小时前","pubTimeNew":"2小时前","name":"俄总统普京向阿拉斯加州苏联飞行员墓献花","closePraise":"0","waterMark":{"type":"4","value":"1","bigPicValue":"1"},"nodeInfo":{"nodeId":25429,"name":"全球速报","desc":"最热点的全球资讯","pic":"https://imagecloud.thepaper.cn/thepaper/image/4/158/73.png","nodeType":0,"channelType":0,"forwordType":22,"forwardType":"22","liveType":"2","parentId":25388,"isOrder":"0","dataType":"0","shareName":"全球速报","nickName":"","publishTime":1668726066292,"mobForwardType":"22","summarize":"最热点的全球资讯","color":"","videoLivingRoomDes":"","wwwSpecNodeAlign":0,"govAffairsType":"","showSpecialBanner":false,"showSpecialTopDesc":false,"topBarTypeCustomColor":false,"showVideoBottomRightBtn":false},"nodeId":25429,"contType":0,"pubTimeLong":1755304211141,"specialNodeId":0,"cardMode":"101","dataObjId":52,"closeFrontComment":false,"isSupInteraction":false,"tagList":[{"tagId":2754,"tag":"普京","isOrder":"0","isUpdateNotify":"0","isWonderfulComments":"0"}],"hideVideoFlag":false,"praiseStyle":1,"isSustainedFly":0,"softLocType":1,"closeComment":false,"voiceInfo":{"voiceSrc":"https://audios.thepaper.cn/input/31410860_202508160845a4877f5d-3fea-4f8d-b1ae-a6c01e18bac9.mp3","imgSrc":"https://imgpai.thepaper.cn/newpai/image/1755302866203_PkxShk_1755302866358.png","isHaveVoice":"1"},"softAdTypeStr":"1,1,1","originalContId":31410860,"paywalled":false,"audiovisualBlogSwitch":false,"audiovisualBlogGuests":"","seriesTagRecType":"其他"},{"contId":"31410877","isOutForword":"0","isOutForward":"0","forwardType":"0","mobForwardType":2,"interactionNum":"","praiseTimes":"37","pic":"https://imgpai.thepaper.cn/newpai/image/1755304643793_zyCTFE_1755304644002.png","imgCardMode":0,"smallPic":"https://imgpai.thepaper.cn/newpai/image/1755304643793_zyCTFE_1755304644002.png?x-oss-process=image/resize,w_332","sharePic":"https://imgpai.thepaper.cn/newpai/image/1755304643833_FXrsc4_1755304644043.png","pubTime":"2小时前","pubTimeNew":"2小时前","name":"特朗普和普京分别启程离开阿拉斯加","closePraise":"0","waterMark":{"type":"4","value":"1","bigPicValue":"1"},"nodeInfo":{"nodeId":25429,"name":"全球速报","desc":"最热点的全球资讯","pic":"https://imagecloud.thepaper.cn/thepaper/image/4/158/73.png","nodeType":0,"channelType":0,"forwordType":22,"forwardType":"22","liveType":"2","parentId":25388,"isOrder":"0","dataType":"0","shareName":"全球速报","nickName":"","publishTime":1668726066292,"mobForwardType":"22","summarize":"最热点的全球资讯","color":"","videoLivingRoomDes":"","wwwSpecNodeAlign":0,"govAffairsType":"","showSpecialBanner":false,"showSpecialTopDesc":false,"topBarTypeCustomColor":false,"showVideoBottomRightBtn":false},"nodeId":25429,"contType":0,"pubTimeLong":1755304012371,"specialNodeId":0,"cardMode":"101","dataObjId":52,"closeFrontComment":false,"isSupInteraction":false,"tagList":[{"tagId":95,"tag":"特朗普","isOrder":"0","isUpdateNotify":"0","isWonderfulComments":"0"},{"tagId":2754,"tag":"普京","isOrder":"0","isUpdateNotify":"0","isWonderfulComments":"0"}],"hideVideoFlag":false,"praiseStyle":1,"isSustainedFly":0,"softLocType":1,"closeComment":false,"voiceInfo":{"voiceSrc":"https://audios.thepaper.cn/input/31410877_202508160844bbba6ce7-f915-4dfc-acb8-bc0148a8771c.mp3","imgSrc":"https://imgpai.thepaper.cn/newpai/image/1755304643833_FXrsc4_1755304644043.png","isHaveVoice":"1"},"softAdTypeStr":"1,1,1","originalContId":31410877,"paywalled":false,"audiovisualBlogSwitch":false,"audiovisualBlogGuests":"","seriesTagRecType":"其他"},{"contId":"31410849","isOutForword":"0","isOutForward":"0","forwardType":"0","mobForwardType":2,"interactionNum":"","praiseTimes":"31","pic":"https://imgpai.thepaper.cn/newpai/image/1755299409331_2cYQMY_1755299409523.png","imgCardMode":0,"smallPic":"https://imgpai.thepaper.cn/newpai/image/1755299409331_2cYQMY_1755299409523.png?x-oss-process=image/resize,w_332","sharePic":"https://imgpai.thepaper.cn/newpai/image/1755299409360_TxTWdr_1755299409553.png","pubTime":"3小时前","pubTimeNew":"3小时前","name":"持续超两个半小时，特朗普与普京举行历史性会晤","closePraise":"0","waterMark":{"type":"4","value":"3","bigPicValue":"3"},"nodeInfo":{"nodeId":25429,"name":"全球速报","desc":"最热点的全球资讯","pic":"https://imagecloud.thepaper.cn/thepaper/image/4/158/73.png","nodeType":0,"channelType":0,"forwordType":22,"forwardType":"22","liveType":"2","parentId":25388,"isOrder":"0","dataType":"0","shareName":"全球速报","nickName":"","publishTime":1668726066292,"mobForwardType":"22","summarize":"最热点的全球资讯","color":"","videoLivingRoomDes":"","wwwSpecNodeAlign":0,"govAffairsType":"","showSpecialBanner":false,"showSpecialTopDesc":false,"topBarTypeCustomColor":false,"showVideoBottomRightBtn":false},"nodeId":25429,"contType":0,"pubTimeLong":1755300539287,"specialNodeId":0,"cardMode":"101","dataObjId":52,"closeFrontComment":false,"isSupInteraction":false,"tagList":[{"tagId":95,"tag":"特朗普","isOrder":"0","isUpdateNotify":"0","isWonderfulComments":"0"}],"hideVideoFlag":false,"praiseStyle":1,"isSustainedFly":0,"softLocType":1,"closeComment":false,"voiceInfo":{"voiceSrc":"https://audios.thepaper.cn/input/31410849_2025081607297dda16d5-e44e-4ad0-81ab-a836a35736c5.mp3","imgSrc":"https://imgpai.thepaper.cn/newpai/image/1755299409360_TxTWdr_1755299409553.png","isHaveVoice":"1"},"softAdTypeStr":"1,1,1","originalContId":31410849,"paywalled":false,"audiovisualBlogSwitch":false,"audiovisualBlogGuests":"","seriesTagRecType":"其他"},{"contId":"31409944","isOutForword":"0","isOutForward":"0","forwardType":"74","mobForwardType":74,"interactionNum":"15","praiseTimes":"306","pic":"https://imgpai.thepaper.cn/newpai/image/1755287836495_xncCWK_1755287836780.png","imgCardMode":0,"smallPic":"https://imgpai.thepaper.cn/newpai/image/1755287836495_xncCWK_1755287836780.png?x-oss-process=image/resize,w_332","sharePic":"https://imgpai.thepaper.cn/newpai/image/1755287836515_sAEWWm_1755287836737.png","pubTime":"3小时前","pubTimeNew":"3小时前","name":"直击美俄会晤｜特朗普机场迎接普京，双方肢体频繁互动","closePraise":"0","waterMark":{"type":"1","value":"00:31","bigPicValue":"00:31","videoSize":"3M流量"},"nodeInfo":{"nodeId":27260,"name":"World湃","desc":"看见新闻全球化","pic":"https://imagecloud.thepaper.cn/thepaper/image/5/746/155.jpg","nodeType":4,"channelType":0,"forwordType":22,"forwardType":"23","liveType":"1","parentId":26886,"isOrder":"0","dataType":"0","shareName":"World湃","nickName":"","publishTime":1749814140150,"mobForwardType":"23","recommendIds":[8250141],"summarize":"用短视频记录全球重大事件和热点新闻，用镜头语言讲述世界最新最潮的故事。","color":"","videoLivingRoomDes":"","wwwSpecNodeAlign":0,"govAffairsType":"","showSpecialBanner":false,"showSpecialTopDesc":false,"topBarTypeCustomColor":false,"showVideoBottomRightBtn":false},"videos":{"videoId":null,"hdurl":"https://cloudvideo.thepaper.cn/video/381bb80c34b94786ba14ee2bf17cf187/hd/1755286879796_xi2WTs_1755287567420.mp4","url":"https://cloudvideo.thepaper.cn/video/381bb80c34b94786ba14ee2bf17cf187/sd/1755286879796_xi2WTs_1755287567420.mp4","duration":"00:31","coverUrl":"https://img.thepaper.cn/thepaper/common/img/default_video_cover.jpg","verticalCoverUrl":"https://imgpai.thepaper.cn/newpai/image/1755287836513_YPe1fR_1755287836756.png","bytes":"6808154","hdBytes":"12221565","coverUrlFirstFrame":"http://cloudvideo.thepaper.cn/video/381bb80c34b94786ba14ee2bf17cf187/1000.jpg","verticalVideo":true,"durationNum":31,"videoDes":null,"playInfos":null,"outLink":false},"nodeId":27260,"contType":9,"pubTimeLong":1755300048888,"specialNodeId":0,"cardMode":"101","dataObjId":52,"closeFrontComment":false,"isSupInteraction":false,"tagList":[{"tagId":95,"tag":"特朗普","isOrder":"0","isUpdateNotify":"0","isWonderfulComments":"0"},{"tagId":2754,"tag":"普京","isOrder":"0","isUpdateNotify":"0","isWonderfulComments":"0"},{"tagId":33,"tag":"美国","isOrder":"0","isUpdateNotify":"0","isWonderfulComments":"0"},{"tagId":19470,"tag":"俄乌冲突","isOrder":"0","isUpdateNotify":"0","isWonderfulComments":"0"},{"tagId":1762887,"tag":"泽连斯基","isOrder":"0","isUpdateNotify":"0","isWonderfulComments":"0"}],"hideVideoFlag":false,"praiseStyle":1,"isSustainedFly":0,"softLocType":1,"closeComment":false,"voiceInfo":{"imgSrc":"https://imgpai.thepaper.cn/newpai/image/1755287836515_sAEWWm_1755287836737.png","isHaveVoice":"0"},"softAdTypeStr":"1,1,1","originalContId":31409944,"paywalled":false,"audiovisualBlogSwitch":false,"audiovisualBlogGuests":"","seriesTagRecType":"其他"},{"contId":"31410845","isOutForword":"0","isOutForward":"0","forwardType":"0","mobForwardType":2,"interactionNum":"","praiseTimes":"30","pic":"https://imgpai.thepaper.cn/newpai/image/1755298844843_nJ2TAi_1755298845038.png","imgCardMode":0,"smallPic":"https://imgpai.thepaper.cn/newpai/image/1755298844843_nJ2TAi_1755298845038.png?x-oss-process=image/resize,w_332","sharePic":"https://imgpai.thepaper.cn/newpai/image/1755298844880_m42pFC_1755298845056.png","pubTime":"3小时前","pubTimeNew":"3小时前","name":"“普特会”谈近3小时，“大阵仗”有玄机","closePraise":"0","nodeInfo":{"nodeId":25429,"name":"全球速报","desc":"最热点的全球资讯","pic":"https://imagecloud.thepaper.cn/thepaper/image/4/158/73.png","nodeType":0,"channelType":0,"forwordType":22,"forwardType":"22","liveType":"2","parentId":25388,"isOrder":"0","dataType":"0","shareName":"全球速报","nickName":"","publishTime":1668726066292,"mobForwardType":"22","summarize":"最热点的全球资讯","color":"","videoLivingRoomDes":"","wwwSpecNodeAlign":0,"govAffairsType":"","showSpecialBanner":false,"showSpecialTopDesc":false,"topBarTypeCustomColor":false,"showVideoBottomRightBtn":false},"nodeId":25429,"contType":0,"pubTimeLong":1755299244359,"specialNodeId":0,"cardMode":"101","dataObjId":52,"closeFrontComment":false,"isSupInteraction":false,"tagList":[{"tagId":843929,"tag":"普特会","isOrder":"0","isUpdateNotify":"0","isWonderfulComments":"0"}],"hideVideoFlag":false,"praiseStyle":1,"isSustainedFly":0,"softLocType":1,"closeComment":false,"voiceInfo":{"voiceSrc":"https://audios.thepaper.cn/input/31410845_202508160707776deb49-91c2-4080-adbf-e2bbf225f614.mp3","imgSrc":"https://imgpai.thepaper.cn/newpai/image/1755298844880_m42pFC_1755298845056.png","isHaveVoice":"1"},"softAdTypeStr":"1,1,1","originalContId":31410845,"paywalled":false,"audiovisualBlogSwitch":false,"audiovisualBlogGuests":"","seriesTagRecType":"其他"}],"nodeInfo":{"nodeId":122908,"name":"国际","desc":"","nodeType":0,"channelType":0,"forwordType":1,"forwardType":"22","liveType":"1","parentId":25948,"bigDataCode":"gj","isOrder":"0","dataType":"0","shareName":"国际","channelId":122908,"nickName":"International","publishTime":1668726284464,"mobForwardType":"22","summarize":"","color":"#2A3BD3","videoLivingRoomDes":"","wwwSpecNodeAlign":0,"govAffairsType":"","showSpecialBanner":false,"showSpecialTopDesc":false,"topBarTypeCustomColor":false,"showVideoBottomRightBtn":false},"tagInfo":null,"moreNodeInfo":null,"pageNum":1,"pageSize":10,"pages":null,"total":null,"prevPageNum":null,"nextPageNum":null,"excludeContIds":null,"contCont":null,"filterIds":null,"updateCount":null},"desc":"成功","time":1755312341440},"topData":{"code":200,"data":{"recommendTxt":[[],[],[]],"recommendImg":[{"contId":"31403252","isOutForword":"0","isOutForward":"0","forwardType":"0","mobForwardType":2,"interactionNum":"56","praiseTimes":"434","pic":"https://imgpai.thepaper.cn/newpai/image/1755244434176_NnhkhQ_1755244434333.png","imgCardMode":0,"smallPic":"https://imgpai.thepaper.cn/newpai/image/1755244434176_NnhkhQ_1755244434333.png?x-oss-process=image/resize,w_332","sharePic":"https://imgpai.thepaper.cn/newpai/image/1755244434181_Szs2pa_1755244434310.png","pubTime":"3小时前","pubTimeNew":"3小时前","name":"圆桌｜特普会165分钟：美俄关系正常化出现窗口，但双边框架或不会带来和平","cornerLabelDesc":"头条","closePraise":"0","nodeInfo":{"nodeId":122903,"name":"澎湃世界观","desc":"最冷静的深度思考","pic":"https://imagecloud.thepaper.cn/thepaper/image/225/728/138.png","nodeType":0,"channelType":0,"forwordType":22,"forwardType":"22","liveType":"2","parentId":25388,"isOrder":"0","dataType":"0","shareName":"澎湃世界观","nickName":"","publishTime":1668726183254,"mobForwardType":"22","summarize":"最冷静的深度思考","color":"","videoLivingRoomDes":"","wwwSpecNodeAlign":0,"govAffairsType":"","showSpecialBanner":false,"showSpecialTopDesc":false,"topBarTypeCustomColor":false,"showVideoBottomRightBtn":false},"nodeId":122903,"contType":0,"pubTimeLong":1755300352846,"specialNodeId":0,"cardMode":"101","dataObjId":52,"closeFrontComment":false,"isSupInteraction":false,"tagList":[{"tagId":95,"tag":"特朗普","isOrder":"0","isUpdateNotify":"0","isWonderfulComments":"0"},{"tagId":2754,"tag":"普京","isOrder":"0","isUpdateNotify":"0","isWonderfulComments":"0"},{"tagId":797,"tag":"乌克兰","isOrder":"0","isUpdateNotify":"0","isWonderfulComments":"0"}],"hideVideoFlag":false,"praiseStyle":1,"isSustainedFly":0,"softLocType":1,"closeComment":false,"voiceInfo":{"voiceSrc":"https://audios.thepaper.cn/input/31403252_2025081609586b2028a0-755a-4dc5-995e-e7b492048ac9.mp3","imgSrc":"https://imgpai.thepaper.cn/newpai/image/1755244434181_Szs2pa_1755244434310.png","isHaveVoice":"1"},"softAdTypeStr":"1,1,1","originalContId":31403252,"paywalled":false,"audiovisualBlogSwitch":false,"audiovisualBlogGuests":"","seriesTagRecType":"其他"}],"nodeInfo":{"nodeId":122908,"name":"国际","desc":"","nodeType":0,"channelType":0,"forwordType":1,"forwardType":"22","liveType":"1","parentId":25948,"isOrder":"0","dataType":"0","shareName":"国际","nickName":"International","publishTime":1668726284464,"mobForwardType":"22","summarize":"","color":"#2A3BD3","videoLivingRoomDes":"","wwwSpecNodeAlign":0,"govAffairsType":"","showSpecialBanner":false,"showSpecialTopDesc":false,"topBarTypeCustomColor":false,"showVideoBottomRightBtn":false},"excludeContIds":[31411595,31410837,31403252,31410867,31405282],"listRecommendIds":[31410867,31411595,31410837,31405282],"financialInformationNews":null,"noImgRecommend":false},"desc":"成功","time":1755312341392},"province":null,"id":"122908"},"__N_SSP":true},"page":"/channel/[id]","query":{"id":"122908"},"buildId":"c27cd861a06092c1c802308fa1b7ddcec2adddf3","isFallback":false,"gssp":true,"scriptLoader":[]}
+  </script>
+</body>
+
+</html>

@@ -1,11 +1,4 @@
-package http_call
-
-type FeishuWebhookRequest struct {
-	MsgType string `json:"msg_type"`
-	Content struct {
-		Text string `json:"text"`
-	} `json:"content"`
-}
+package robot
 
 type WechatWebhookRequest struct {
 	MsgType string `json:"msgtype"`

@@ -5,8 +5,8 @@ import (
 	"errors"
 	"fmt"
 	"gin-scaffold/internal/app/types/common"
-	"gin-scaffold/pkg/http_call"
 	"gin-scaffold/pkg/logger"
+	"gin-scaffold/pkg/robot"
 	"github.com/gin-gonic/gin"
 	"io"
 	"net/http"
@@ -87,7 +87,7 @@ func Error(ctx *gin.Context, err *error, code int, msg interface{}) {
 %s`,
 		t, ctx.Request.URL.Path, code, qerr.Msg, stack)
 
-	http_call.CallQWAssistant(ctx, markdown, http_call.QWRobotMsgTypeText)
+	robot.CallQWAssistant(ctx, markdown, robot.QWRobotMsgTypeText)
 
 	ctx.JSON(http.StatusOK, Response{
 		Code:    code,

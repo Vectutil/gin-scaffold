@@ -43,6 +43,7 @@ type WXRobot struct {
 type FSRobot struct {
 	ErrorRobot string `json:"errorRobot"`
 	StockRobot string `json:"stockRobot"`
+	NewsRobot  string `json:"newsRobot"`
 }
 
 type Mysql struct {

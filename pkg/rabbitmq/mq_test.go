@@ -2,7 +2,7 @@ package rabbitmq
 
 import (
 	"context"
-	"gin-scaffold/pkg/http_call"
+	"gin-scaffold/pkg/robot"
 	"log"
 	"testing"
 	"time"
@@ -59,7 +59,7 @@ func TestDelay(t *testing.T) {
 }
 
 func abcd(bs []byte) error {
-	http_call.CallQWAssistant(context.Background(), string(bs)+time.Now().Format("2006-01-02 15:04:05"), http_call.QWRobotMsgTypeText)
+	robot.CallQWAssistant(context.Background(), string(bs)+time.Now().Format("2006-01-02 15:04:05"), robot.QWRobotMsgTypeText)
 	//return errors.New("假装错误")
 	return nil
 }

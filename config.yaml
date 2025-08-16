@@ -25,6 +25,7 @@ wxRobot:
 fsRobot:
   errorRobot: "https://open.feishu.cn/open-apis/bot/v2/hook/2f8e0477-44d5-4172-becc-f2f4d5d37820"
   stockRobot: "https://open.feishu.cn/open-apis/bot/v2/hook/c491a832-4705-4773-9ae4-c4293b7e7238"
+  newsRobot: "https://open.feishu.cn/open-apis/bot/v2/hook/352cff98-51cd-48ab-a523-0968f031f49d"
 
 qny:
   accessKey: "ciIHqTlKU1AjyJK6kb4LCXlLzxxxxxxxxxx"
