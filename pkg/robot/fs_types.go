@@ -3,6 +3,21 @@ package robot
 type FeishuWebhookRequest struct {
 	MsgType string                      `json:"msg_type"`
 	Content FeishuWebhookRequestContent `json:"content"`
+	Card    FeishuWebhookRequestCard    `json:"card"`
+}
+
+type FeishuWebhookRequestCard struct {
+	Elements []Elements `json:"elements"`
+}
+
+type Elements struct {
+	Tag  string       `json:"tag"`
+	Text ElementsText `json:"text"`
+}
+
+type ElementsText struct {
+	Content string `json:"content"`
+	Tag     string `json:"tag"`
 }
 
 type FeishuWebhookRequestContent struct {

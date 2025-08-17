@@ -8,11 +8,26 @@ import (
 	"gin-scaffold/pkg/robot"
 	"github.com/PuerkitoBio/goquery"
 	"net/http"
+	"time"
 )
 
-// WorldNews 国际新闻
+var thePaperChannelList = map[string]string{
+	"122908": "国际新闻",
+	"25950":  "时事新闻",
+	"25951":  "财经新闻",
+	"119908": "科技新闻",
+}
+
 func WorldNews(ctx context.Context) {
-	url := "https://www.thepaper.cn/channel_122908"
+	for channel, newType := range thePaperChannelList {
+		worldNews(ctx, channel, newType)
+		time.Sleep(10 * time.Second)
+	}
+}
+
+// WorldNews 国际新闻
+func worldNews(ctx context.Context, channel, newType string) {
+	url := "https://www.thepaper.cn/channel_" + channel
 	method := "GET"
 
 	client := &http.Client{}
@@ -59,32 +74,49 @@ func WorldNews(ctx context.Context) {
 	json.Unmarshal([]byte(scriptContent), &thePaper)
 
 	//msg := ""
-	msgContent := [][]robot.ZhCnContent{}
+	//msgContent := [][]robot.ZhCnContent{}
+	//for _, content := range thePaper.Props.PageProps.Data.Data.List {
+	//	msgContent = append(msgContent, []robot.ZhCnContent{
+	//		{
+	//			Tag:  "text",
+	//			Text: fmt.Sprintf("[**%s**]%s", content.PubTime, content.Name),
+	//		},
+	//		{
+	//			Tag:  "a",
+	//			Text: "超链接",
+	//			Href: "https://www.thepaper.cn/newsDetail_forward_" + content.ContId,
+	//		},
+	//	})
+	//	//msg += fmt.Sprintf("[%s][%s](https://www.thepaper.cn/newsDetail_forward_%s)\n", content.PubTime, content.Name, content.ContId)
+	//}
+	//
+	//postMsg := robot.ZhCn{
+	//	Title:   "澎湃新闻-" + newType,
+	//	Content: msgContent,
+	//}
+	//jsonData, _ := json.Marshal(postMsg)
+	//
+	//robot.SendFeishuRobotWithUrl(context.Background(), config.Cfg.FSRobot.NewsRobot, string(jsonData), robot.MsgTypePost)
+
+	cardMsg := robot.FeishuWebhookRequestCard{}
+	cardMsg.Elements = append(cardMsg.Elements, robot.Elements{
+		Tag: "div",
+		Text: robot.ElementsText{
+			Content: fmt.Sprintf("**澎湃新闻 - %s**", newType),
+			Tag:     "lark_md",
+		},
+	})
 	for _, content := range thePaper.Props.PageProps.Data.Data.List {
-		msgContent = append(msgContent, []robot.ZhCnContent{
-			{
-				Tag:  "text",
-				Text: fmt.Sprintf("[%s]%s", content.PubTime, content.Name),
-			},
-			{
-				Tag:  "a",
-				Text: "超链接",
-				Href: "https://www.thepaper.cn/newsDetail_forward_" + content.ContId,
+		cardMsg.Elements = append(cardMsg.Elements, robot.Elements{
+			Tag: "div",
+			Text: robot.ElementsText{
+				Content: fmt.Sprintf("<font color='grey'>(%s)<font> [**%s**](https://www.thepaper.cn/newsDetail_forward_%s)", content.PubTime, content.Name, content.ContId),
+				Tag:     "lark_md",
 			},
 		})
-		//msg += fmt.Sprintf("[%s][%s](https://www.thepaper.cn/newsDetail_forward_%s)\n", content.PubTime, content.Name, content.ContId)
 	}
 
-	postMsg := robot.ZhCn{
-		Title:   "澎湃新闻-国际新闻",
-		Content: msgContent,
-	}
-
-	jsonData, _ := json.Marshal(postMsg)
-
-	robot.SendFeishuRobotWithUrl(context.Background(), config.Cfg.FSRobot.NewsRobot, string(jsonData), robot.MsgTypePost)
-
-}
-func ChinaNews(ctx context.Context) {
+	jsonData, _ := json.Marshal(cardMsg)
+	robot.SendFeishuRobotWithUrl(context.Background(), config.Cfg.FSRobot.NewsRobot, string(jsonData), robot.MsgTypeInteractive)
 
 }

@@ -4,7 +4,10 @@ import (
 	"bytes"
 	"context"
 	"encoding/json"
+	"fmt"
 	"gin-scaffold/internal/config"
+	"gin-scaffold/pkg/logger"
+	"io"
 	"net/http"
 )
 
@@ -40,6 +43,8 @@ func SendFeishuRobotWithUrl(ctx context.Context, url, data, msgType string) {
 		reqBody.Content.Text = data
 	case MsgTypePost:
 		json.Unmarshal([]byte(data), &reqBody.Content.Post.ZhCn)
+	case MsgTypeInteractive:
+		json.Unmarshal([]byte(data), &reqBody.Card)
 	}
 	jsonData, _ := json.Marshal(reqBody)
 	// 创建 HTTP POST 请求
@@ -50,13 +55,13 @@ func SendFeishuRobotWithUrl(ctx context.Context, url, data, msgType string) {
 
 	// 发送请求
 	client := &http.Client{}
-	client.Do(req)
-	//do, err := client.Do(req)
-	//if err != nil {
-	//	logger.Logger.Error(err.Error())
-	//}
-	//defer do.Body.Close()
-	//// 读取响应体
-	//body, err := io.ReadAll(do.Body)
-	//fmt.Println(string(body))
+	//client.Do(req)
+	do, err := client.Do(req)
+	if err != nil {
+		logger.Logger.Error(err.Error())
+	}
+	defer do.Body.Close()
+	// 读取响应体
+	body, err := io.ReadAll(do.Body)
+	fmt.Println(string(body))
 }
