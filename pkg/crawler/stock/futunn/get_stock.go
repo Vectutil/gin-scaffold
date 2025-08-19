@@ -4,7 +4,6 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"gin-scaffold/internal/app/consts"
 	"gin-scaffold/internal/config"
 	"gin-scaffold/pkg/logger"
 	"gin-scaffold/pkg/robot"
@@ -206,7 +205,7 @@ func callFutunn(url string, stockCode, stockName string) {
 		}
 		logger.Logger.Info(msg)
 		if math.Abs(subValue) >= 0.5 {
-			robot.SendFeishuRobotWithUrl(context.Background(), botUrl, msg, consts.MsgTypeText)
+			robot.SendFeishuRobotWithUrl(context.Background(), botUrl, msg, robot.MsgTypeText)
 			stockValue[stockCode] = ratio
 		}
 		return
@@ -214,7 +213,7 @@ func callFutunn(url string, stockCode, stockName string) {
 
 	stockValue[stockCode] = ratio
 	msg := fmt.Sprintf("[%s]%s(%s) 当前涨幅:%s  当前价:%s", ratio, stockName, stockCode, changePrice, currentPrice)
-	robot.SendFeishuRobotWithUrl(context.Background(), botUrl, msg, consts.MsgTypeText)
+	robot.SendFeishuRobotWithUrl(context.Background(), botUrl, msg, robot.MsgTypeText)
 	logger.Logger.Info(msg)
 }
 

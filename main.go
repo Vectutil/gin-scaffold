@@ -8,7 +8,6 @@ import (
 	"gin-scaffold/internal/router"
 	"gin-scaffold/pkg/crawler/stock"
 	"gin-scaffold/pkg/logger"
-	"gin-scaffold/pkg/mysql"
 	"gin-scaffold/pkg/rabbitmq"
 	"gin-scaffold/pkg/redis"
 	"gin-scaffold/pkg/utils"
@@ -73,10 +72,10 @@ func init() {
 	defer zap.L().Sync()
 
 	// 3. 初始化数据库连接（如 MySQL）
-	mysql.InitMysql()
-	if config.Cfg.System.Migration {
-		mysql.Migration()
-	}
+	//mysql.InitMysql()
+	//if config.Cfg.System.Migration {
+	//	mysql.Migration()
+	//}
 
 	// 4. 初始化 Redis
 	redis.Init()
