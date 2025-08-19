@@ -8,6 +8,7 @@ import (
 	"gin-scaffold/pkg/logger"
 	"gin-scaffold/pkg/robot"
 	"gin-scaffold/pkg/utils"
+	"gin-scaffold/pkg/windows_send"
 	"github.com/PuerkitoBio/goquery"
 	"math"
 	"net/http"
@@ -20,6 +21,8 @@ const (
 	StockTypeETF  = "etf"
 	StockTypeCNSH = "cn-sh"
 	StockTypeCNSZ = "cn-sz"
+
+	WindowsName = "stock_push"
 )
 
 var stockList = map[string]map[string]string{
@@ -37,6 +40,8 @@ var stockList = map[string]map[string]string{
 	},
 	//StockTypeCNSZ: {
 	//	"000858": "五粮液",
+	//	"002213": "大为股份",
+	//	"300301": "ST长方",
 	//},
 }
 
@@ -57,7 +62,7 @@ func ConnectHtml() {
 			case StockTypeCNSH:
 				url = fmt.Sprintf("https://www.futunn.com/stock/%s-SH", stockCode)
 			case StockTypeCNSZ:
-				//url = fmt.Sprintf("https://www.futunn.com/stock/%s-SZ", stockCode)
+				url = fmt.Sprintf("https://www.futunn.com/stock/%s-SZ", stockCode)
 			}
 			callFutunn(url, stockCode, stockName)
 		}
@@ -133,28 +138,6 @@ func callFutunn(url string, stockCode, stockName string) {
 	}
 	// 使用CSS选择器定位目标元素（根据页面结构）
 	// 目标元素特征：class="change-ratio"的span标签
-	//doc.Find("span.change-ratio").Each(func(i int, s *goquery.Selection) {
-	//	text := s.Text()
-	//	// 验证格式是否匹配
-	//	if futunnRatioRegex.MatchString(text) {
-	//		ratio = text
-	//	}
-	//})
-	//doc.Find("span.change-price").Each(func(i int, s *goquery.Selection) {
-	//	text := s.Text()
-	//	// 验证格式是否匹配
-	//	if futunnChangePriceRegex.MatchString(text) {
-	//		changePrice = text
-	//	}
-	//})
-
-	//doc.Find("ul.price-current").Each(func(i int, s *goquery.Selection) {
-	//	text := s.Text()
-	//	// 验证格式是否匹配
-	//	//if futunnChangePriceRegex.MatchString(text) {
-	//	currentPrice = text
-	//	//}
-	//})
 
 	var scriptContent string
 	doc.Find("script").Each(func(i int, s *goquery.Selection) {
@@ -206,6 +189,7 @@ func callFutunn(url string, stockCode, stockName string) {
 		logger.Logger.Info(msg)
 		if math.Abs(subValue) >= 0.5 {
 			robot.SendFeishuRobotWithUrl(context.Background(), botUrl, msg, robot.MsgTypeText)
+			windows_send.SendMsgToWindows(WindowsName, msg)
 			stockValue[stockCode] = ratio
 		}
 		return
@@ -214,6 +198,7 @@ func callFutunn(url string, stockCode, stockName string) {
 	stockValue[stockCode] = ratio
 	msg := fmt.Sprintf("[%s]%s(%s) 当前涨幅:%s  当前价:%s", ratio, stockName, stockCode, changePrice, currentPrice)
 	robot.SendFeishuRobotWithUrl(context.Background(), botUrl, msg, robot.MsgTypeText)
+	windows_send.SendMsgToWindows(WindowsName, msg)
 	logger.Logger.Info(msg)
 }
 

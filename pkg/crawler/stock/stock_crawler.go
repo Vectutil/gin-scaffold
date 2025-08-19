@@ -14,6 +14,7 @@ func InitCrawler() {
 func CrawlerFutunn() {
 	go func() {
 		for {
+			futunn.ConnectHtml()
 			now := time.Now() // 获取当前时间
 			if now.Weekday() == time.Saturday || now.Weekday() == time.Sunday {
 				continue

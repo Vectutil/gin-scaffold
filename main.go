@@ -11,6 +11,7 @@ import (
 	"gin-scaffold/pkg/rabbitmq"
 	"gin-scaffold/pkg/redis"
 	"gin-scaffold/pkg/utils"
+	"gin-scaffold/pkg/windows_send"
 	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
 	"log"
@@ -90,4 +91,7 @@ func init() {
 	// 跑异步任务
 
 	stock.CrawlerFutunn()
+	go func() {
+		windows_send.ConsumeMsgWindows()
+	}()
 }

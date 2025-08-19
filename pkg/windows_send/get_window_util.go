@@ -1,4 +1,4 @@
-package windows
+package windows_send
 
 import (
 	"syscall"
@@ -20,6 +20,7 @@ var (
 	globalAlloc         = kernel32.NewProc("GlobalAlloc")
 	globalLock          = kernel32.NewProc("GlobalLock")
 	globalUnlock        = kernel32.NewProc("GlobalUnlock")
+	procKeybdEvent      = user32.NewProc("keybd_event")
 )
 
 const (
@@ -29,6 +30,10 @@ const (
 	VK_RETURN      = 0x0D
 	GMEM_MOVEABLE  = 0x0002
 	CF_UNICODETEXT = 13
+
+	VK_CONTROL      = 0x11
+	VK_V            = 0x56
+	KEYEVENTF_KEYUP = 0x0002
 )
 
 type WindowInfo struct {
@@ -131,13 +136,32 @@ func SendWechatMessage(hwnd syscall.Handle, message string) bool {
 	}
 
 	// 模拟Ctrl+V粘贴
-	sendMessageW.Call(uintptr(hwnd), WM_KEYDOWN, 0x11, 0) // Ctrl键按下
-	//time.Sleep(50 * time.Millisecond)
-	SendKey(hwnd, 0x56)                                 // V键
-	sendMessageW.Call(uintptr(hwnd), WM_KEYUP, 0x11, 0) // Ctrl键释放
-	time.Sleep(300 * time.Millisecond)
+	// Ctrl down
+	keybdEvent(VK_CONTROL, 0, 0, 0)
+	time.Sleep(50 * time.Millisecond)
+
+	// V down
+	keybdEvent(VK_V, 0, 0, 0)
+	time.Sleep(50 * time.Millisecond)
+
+	// V up
+	keybdEvent(VK_V, 0, KEYEVENTF_KEYUP, 0)
+	time.Sleep(50 * time.Millisecond)
+
+	// Ctrl up
+	keybdEvent(VK_CONTROL, 0, KEYEVENTF_KEYUP, 0)
+	time.Sleep(50 * time.Millisecond)
 
 	// 模拟Enter发送
 	SendKey(hwnd, VK_RETURN)
 	return true
+}
+
+func keybdEvent(bVk byte, bScan byte, dwFlags uint32, dwExtraInfo uintptr) {
+	procKeybdEvent.Call(
+		uintptr(bVk),
+		uintptr(bScan),
+		uintptr(dwFlags),
+		dwExtraInfo,
+	)
 }
