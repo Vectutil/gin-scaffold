@@ -1,6 +1,7 @@
 package stock
 
 import (
+	"gin-scaffold/internal/config"
 	"gin-scaffold/pkg/crawler/stock/cfi"
 	"gin-scaffold/pkg/crawler/stock/common"
 	"gin-scaffold/pkg/crawler/stock/futunn"
@@ -8,19 +9,18 @@ import (
 )
 
 func CallStock() {
-	for stockType, stockTypeList := range common.StockList {
-		for stockCode, stockName := range stockTypeList {
-			switch stockType {
-			case common.StockTypeETF:
-				futunn.ConnectHtml(stockType, stockCode, stockName)
-			case common.StockTypeCNSH:
-				futunn.ConnectHtml(stockType, stockCode, stockName)
-			case common.StockTypeCNSZ:
-				cfi.StockCFI(stockType, stockCode, stockName)
-			}
+	stockList := config.Cfg.Stock
 
-			time.Sleep(10 * time.Second)
-		}
-
+	for stockCode, stockName := range stockList.SZ {
+		cfi.StockCFI(common.StockTypeCNSZ, stockCode, stockName)
+		time.Sleep(10 * time.Second)
+	}
+	for stockCode, stockName := range stockList.SH {
+		futunn.ConnectHtml(common.StockTypeCNSZ, stockCode, stockName)
+		time.Sleep(10 * time.Second)
+	}
+	for stockCode, stockName := range stockList.ETF {
+		futunn.ConnectHtml(common.StockTypeETF, stockCode, stockName)
+		time.Sleep(10 * time.Second)
 	}
 }

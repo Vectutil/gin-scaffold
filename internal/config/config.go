@@ -1,6 +1,7 @@
 package config
 
 import (
+	"encoding/json"
 	"fmt"
 	"gin-scaffold/pkg/logger"
 	"github.com/spf13/viper"
@@ -28,7 +29,7 @@ func InitConfig(filePath string) {
 		return
 	}
 	if Cfg.System.Env == "dev" {
-		//indent, _ := json.MarshalIndent(Cfg, "", "  ")
-		//fmt.Println(string(indent))
+		indent, _ := json.MarshalIndent(Cfg, "", "  ")
+		fmt.Println(string(indent))
 	}
 }

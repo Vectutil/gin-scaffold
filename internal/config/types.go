@@ -9,6 +9,7 @@ type Config struct {
 	Job      CronJobConfig `json:"job"`
 	Qny      Qny           `json:"qny"`
 	RabbitMQ RabbitMQ      `json:"rabbitmq"`
+	Stock    Stock         `json:"stock"`
 }
 
 type Qny struct {
@@ -70,4 +71,10 @@ type CronJobConfig struct {
 type fuckXike struct {
 	dram map[string]string `json:"dram"`
 	shit map[string]string `json:"shit"`
+}
+
+type Stock struct {
+	SZ  map[string]string `json:"sz"`
+	SH  map[string]string `json:"sh"`
+	ETF map[string]string `json:"etf"`
 }
