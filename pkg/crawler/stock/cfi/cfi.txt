@@ -1,0 +1,987 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="Cache-Control" content="no-cache" />
+    <script src='https://quoteimg.cfi.cn/Scripts/jquery-1.4.1.min.js' type='text/javascript'></script>
+
+
+    <title>五粮液(000858)_股票行情，行情首页_中财网</title>
+    <meta name='keywords' content='五粮液,000858,五粮液股票行情,000858股票行情,五粮液实时行情,五粮液财务分析, 中财网-股票,基金,理财，港股，海外股市' />
+    <meta name='description'
+        content='中财网提供五粮液（000858）实时行情动态分析,全面报道五粮液（000858）基本资料及重大新闻、行业资讯,浏览五粮液（000858）财务数据、行情数据,公司公告,重大事件。' />
+    <link id="quoteskin" href="/Styles/quote_skin.css?2022" rel="stylesheet" type="text/css">
+    </link>
+
+    <base id="mybase" target="_blank">
+    </base>
+    <script src='https://quoteimg.cfi.cn/Scripts/addCustomStock.js?202203' type='text/javascript'></script>
+    <link href='https://quoteimg.cfi.cn/Styles/cfitree.css' rel='stylesheet' type='text/css' />
+    <link href='https://quoteimg.cfi.cn/Styles/autotxt.css' rel='stylesheet' type='text/css' />
+    <script src='https://quoteimg.cfi.cn/Scripts/quote_imageOperate.js?20220815' type='text/javascript'></script>
+    <link href='/Styles/quotepage.css?202208' rel='stylesheet' type='text/css' />
+    <script src='https://quoteimg.cfi.cn/miniChart/miniBase_simple.js?202208' type='text/javascript'></script>
+    <link href='https://quoteimg.cfi.cn/miniChart/miniTab_simple.css' rel='stylesheet' type='text/css' />
+
+    <!--[if IE]>
+    <script type="text/javascript" src="/MsChartDraw/excanvas.js"></script>
+            <![endif]-->
+
+    <script type="text/javascript" src="https://quoteimg.cfi.cn/MsChartDraw/chartcaller.js?2022"></script>
+
+</head>
+
+<body id="mybody" style="margin: 0;">
+    <form id='formsearch' name='formsearch' enableviewstate='false' method='get' action='/quote.aspx' target='_top'>
+        <input type='hidden' id='actstockid' name='actstockid' value='' />
+        <input type='hidden' id='actcontenttype' name='actcontenttype' value='outline' />
+        <input type='hidden' id='hidsel' value='-1' />
+        <input type='hidden' id='mousemoveEnable' value='true' />
+        <input type='hidden' id='automarketid' value='' />
+        <input type='hidden' id='client' name='client' value='pc' />
+        <table id='tabMain'>
+            <tr id='titletr'>
+                <td colspan='3' style='padding:0;'>
+                    <table id='tabImg'>
+                        <tr style='border: 0;'>
+                            <td style='text-align:left;'>
+                                <a href='https://cfi.cn'>
+                                    <img src='https://img.cfi.cn/pic/cficback.jpg' border='0' title='中财网' alt='中财网' /></a>
+                            </td>
+                            <td>
+                                <img id='imgright' src='//img.cfi.cn/pic/CFIRIGHT.GIF'
+                                title='中财网股票行情' alt='中财网股票行情' />
+                            </td>
+                        </tr>
+                    </table>
+                    <table id='tabautocomplete_pc' cellpadding='5' cellspacing='0'>
+                        <tr style='border: 0; height: 20px;'>
+                            <td id='indextd'>
+
+                            </td>
+                            <td id='autotd'>
+                                <div>
+                                    <input type='text' id='searchcode' name='searchcode' value='输入代码、简称或拼音'
+                                    autocomplete='off' /><img class='img_his' src='/Image/arrowdown.gif'
+                                        onclick='act_showHistoryCode()' title='历史访问股票查询' />
+                                    <input type='image' id='submit' src='/Image/go2.gif' title='股票查询' />
+                                    <a href='/stockList.aspx' target='_blank'>代码表</a>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                    <div id='divAutocomplete'></div>
+                </td>
+            </tr>
+            <tr id='trContent_pc'>
+                <td id='menutd'>
+                    <div id='menu'>
+                        <div id='tree'>
+                            <DIV id='node1' class='t1' onclick='k("node1_sub")'><SPAN class='fold nowrap'>概览</SPAN>
+                            </DIV>
+                            <DIV id='node1_sub' class='d1'>
+                                <DIV class='b nowrap bold' id='nodea0'>行情首页</DIV>
+                                <DIV class='b nowrap' id='nodea1'><a target='_self'
+                                        href='/cwfxzb/380/000858.html'>财务分析指标</a></DIV>
+                                <DIV class='b nowrap' id='nodea2'><a target='_self'
+                                        href='/yjyg/380/000858.html'>业绩预告</a></DIV>
+                                <DIV class='b nowrap' id='nodea3'><a target='_self'
+                                        href='/yjkb/380/000858.html'>业绩快报</a></DIV>
+                                <DIV class='b nowrap' id='nodea4'><a target='_self'
+                                        href='/fxysg/380/000858.html'>申购状况</a></DIV>
+                            </div>
+                            <DIV id='node12' class='t1' onclick='k("node12_sub")'><SPAN class='fold nowrap'>重要信息</SPAN>
+                            </DIV>
+                            <DIV id='node12_sub' class='d1'>
+                                <DIV class='b nowrap' id='nodea5'><a target='_self'
+                                        href='/yb_stock/380/000858.html'>月报</a></DIV>
+                                <DIV class='b nowrap' id='nodea6'><a target='_self'
+                                        href='/jc_stock/380/000858.html'>减持</a></DIV>
+                                <DIV class='b nowrap' id='nodea7'><a target='_self'
+                                        href='/hg_stock/380/000858.html'>回购</a></DIV>
+                                <DIV class='b nowrap' id='nodea8'><a target='_self'
+                                        href='/zy_stock/380/000858.html'>质押</a></DIV>
+                                <DIV class='b nowrap' id='nodea9'><a target='_self'
+                                        href='/zbjp_stock/380/000858.html'>中标竞拍</a></DIV>
+                            </div>
+                            <DIV id='node2' class='t1' onclick='k("node2_sub")'><SPAN class='fold nowrap'>版块分析</SPAN>
+                            </DIV>
+                            <DIV id='node2_sub' class='d1'>
+                                <DIV class='b nowrap' id='nodea10'><a target='_self'
+                                        href='/same_hy/380/000858.html'>同行业板块</a></DIV>
+                                <DIV class='b nowrap' id='nodea11'><a target='_self'
+                                        href='/same_dq/380/000858.html'>同地区板块</a></DIV>
+                                <DIV class='b nowrap' id='nodea12'><a target='_self'
+                                        href='/same_gn/380/000858.html'>同概念板块</a></DIV>
+                            </div>
+                            <DIV id='node3' class='t1' onclick='k("node3_sub")'><SPAN class='fold nowrap'>财报分析</SPAN>
+                            </DIV>
+                            <DIV id='node3_sub' class='d1'>
+                                <DIV class='b nowrap' id='nodea13'><a target='_self'
+                                        href='/ybyl/380/000858.html'>研报一览</a></DIV>
+                                <DIV class='b nowrap' id='nodea14'><a target='_self'
+                                        href='/zcfzb_x/380/000858.html'>资产负债表</a></DIV>
+                                <DIV class='b nowrap' id='nodea15'><a target='_self'
+                                        href='/lrfpb_x/380/000858.html'>利润分配表</a></DIV>
+                                <DIV class='b nowrap' id='nodea16'><a target='_self'
+                                        href='/xjll/380/000858.html'>现金流量表</a></DIV>
+                                <DIV class='b nowrap' id='nodea17'><a target='_self'
+                                        href='/FJCXSY_HJ/380/000858.html'>非经常性损益合计</a></DIV>
+                            </div>
+                            <DIV id='node4' class='t1' onclick='k("node4_sub")'><SPAN class='fold nowrap'>经营情况</SPAN>
+                            </DIV>
+                            <DIV id='node4_sub' class='d1'>
+                                <DIV class='b nowrap' id='nodea18'><a target='_self'
+                                        href='/gsda/380/000858.html'>公司档案</a></DIV>
+                                <DIV class='b nowrap' id='nodea19'><a target='_self'
+                                        href='/zyfb/380/000858.html'>主营分布</a></DIV>
+                                <DIV class='b nowrap' id='nodea20'><a target='_self'
+                                        href='/ggyl/380/000858.html'>高管一览</a></DIV>
+                                <DIV class='b nowrap' id='nodea21'><a target='_self'
+                                        href='/zbyz/380/000858.html'>资本运作</a></DIV>
+                            </div>
+                            <DIV id='node12' class='t1' onclick='k("node12_sub")'><SPAN class='fold nowrap'>北上资金</SPAN>
+                            </DIV>
+                            <DIV id='node12_sub' class='d1'>
+                                <DIV class='b nowrap' id='nodea22'><a target='_self'
+                                        href='/cjb/380/000858.html'>深股通成交榜</a></DIV>
+                                <DIV class='b nowrap' id='nodea23'><a target='_self'
+                                        href='/cgtj/380/000858.html'>深股通持股统计</a></DIV>
+                            </div>
+                            <DIV id='node5' class='t1' onclick='k("node5_sub")'><SPAN class='fold nowrap'>主力动向</SPAN>
+                            </DIV>
+                            <DIV id='node5_sub' class='d1'>
+                                <DIV class='b nowrap' id='nodea24'><a target='_self'
+                                        href='/zlsj/380/000858.html'>交易异动</a></DIV>
+                                <DIV class='b nowrap' id='nodea25'><a target='_self'
+                                        href='/dzjy/380/000858.html'>大宗交易</a></DIV>
+                                <DIV class='b nowrap' id='nodea26'><a target='_self'
+                                        href='/rzrq/380/000858.html'>融资融券</a></DIV>
+                                <DIV class='b nowrap' id='nodea27'><a target='_self'
+                                        href='/ggcgbd/380/000858.html'>大股东增减持</a></DIV>
+                            </div>
+                            <DIV id='node6' class='t1' onclick='k("node6_sub")'><SPAN class='fold  nowrap'>股东统计</SPAN>
+                            </DIV>
+                            <DIV id='node6_sub' class='d1'>
+                                <DIV class='b nowrap' id='nodea28'><a target='_self'
+                                        href='/gbjg/380/000858.html'>股本结构</a></DIV>
+                                <DIV class='b nowrap' id='nodea29'><a target='_self'
+                                        href='/gdtj/380/000858.html'>股东名单</a></DIV>
+                                <DIV class='b nowrap' id='nodea30'><a target='_self'
+                                        href='/gdhs/380/000858.html'>股东户数</a></DIV>
+                                <DIV class='b nowrap' id='nodea31'><a target='_self'
+                                        href='/xsjj/380/000858.html'>限售解禁</a></DIV>
+                            </div>
+                            <DIV id='node7' class='t1' onclick='k("node7_sub")'><SPAN class='fold nowrap'>持仓分析</SPAN>
+                            </DIV>
+                            <DIV id='node7_sub' class='d1'>
+                                <DIV class='b nowrap' id='nodea32'><a target='_self'
+                                        href='/jjcc/380/000858.html'>基金持仓</a></DIV>
+                                <DIV class='b nowrap' id='nodea33'><a target='_self'
+                                        href='/jjccbd/380/000858.html'>基金持仓变动</a></DIV>
+                                <DIV class='b nowrap' id='nodea34'><a target='_self'
+                                        href='/jjzc/380/000858.html'>基金重仓</a></DIV>
+                                <DIV class='b nowrap' id='nodea35'><a target='_self'
+                                        href='/jjzcbd/380/000858.html'>基金重仓变动</a></DIV>
+                            </div>
+                            <DIV id='node8' class='t1' onclick='k("node8_sub")'><SPAN class='fold nowrap'>分红扩股</SPAN>
+                            </DIV>
+                            <DIV id='node8_sub' class='d1'>
+                                <DIV class='b nowrap' id='nodea36'><a target='_self'
+                                        href='/fhpx/380/000858.html'>分红派息</a></DIV>
+                                <DIV class='b nowrap' id='nodea37'><a target='_self'
+                                        href='/pgzf/380/000858.html'>配股增发</a></DIV>
+                            </div>
+                            <DIV id='node9' class='t1' onclick='k("node9_sub")'><SPAN class='fold nowrap'>管理层报告</SPAN>
+                            </DIV>
+                            <DIV id='node9_sub' class='d1'>
+                                <DIV class='b nowrap' id='nodea38'><a target='_self'
+                                        href='/jyzj/380/000858.html'>经营总结</a></DIV>
+                            </div>
+                            <DIV id='node10' class='t1' onclick='k("node10_sub")'><SPAN class='fold nowrap'>公开信息</SPAN>
+                            </DIV>
+                            <DIV id='node10_sub' class='d1'>
+                                <DIV class='b nowrap' id='nodea39'><a target='_self'
+                                        href='//gg.cfi.cn/cbgg/380/000858.html'>财报全文</a></DIV>
+                                <DIV class='b nowrap' id='nodea40'><a target='_self'
+                                        href='//gg.cfi.cn/ggqw/380/000858.html'>公告全文</a></DIV>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+                <td id='blanktd'></td>
+                <td id='content'>
+                    <div id='act_quote'>
+                        <table>
+                            <tr>
+                                <td class='col1'>
+                                    <table>
+                                        <tr>
+                                            <td>
+                                                <table>
+                                                    <tr id='tr_namerow'>
+                                                        <td colspan=2 class='tit01'>
+                                                            <div class='Lfont'>五粮液(000858)</div>
+                                                            <div class='Rbtn'><input type='button' class='zxgBtn' onclick='cfi_AddCustomStock(380)'/>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class='Lnum'>
+                                                            <table height='100%'>
+                                                                <tr style='height:50%;'>
+                                                                    <td class='s_pclose red'>
+                                                                        <span id='last'>125.78↑</span></td>
+                                                                </tr>
+                                                                <tr style='height:25%;'>
+                                                                    <td class='s_zd'>
+                                                                        <span id='chg' style='color:red'>1.37<span class='s_em1'></span>1.10%</span>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr style='height:25%;'>
+                                                                    <td class='Ldate' id='hq_time'>
+                                                                        <!--ptime=20250820150000-->2025-08-20 15:00:00
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                        </td>
+                                                        <td class='Rlist'>
+                                                            <table id='quotetab_stock'>
+                                                                <tr>
+                                                                    <td>今<span class='s_em1'>开</span>:<font class='red'>
+                                                                            124.42</font>
+                                                                    </td>
+                                                                    <td>最<span class='s_em1'>高</span>:<font class='red'>
+                                                                            126.50</font>
+                                                                    </td>
+                                                                    <td>振<span class='s_em1'>幅</span>:2.53%</td>
+                                                                    <td>换手率:1.04%</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>昨<span class='s_em1'>收</span>:124.41</td>
+                                                                    <td>最<span class='s_em1'>低</span>:<font
+                                                                            class='green'>123.35</font>
+                                                                    </td>
+                                                                    <td>成交量:404310手</td>
+                                                                    <td>成交额:508305.7万元</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>市盈率:14.95倍</td>
+                                                                    <td colspan=3>
+                                                                        扣除后市盈率:14.99倍<span class='s_em1'></span><a
+                                                                            href="/calinfo.htm"
+                                                                            target="_blank">计算公式说明</a></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>市净率:3.22倍</td>
+                                                                    <td colspan=3>2025-03-31 每股收益：8.42元</td>
+                                                                </tr>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class='Ltrade'>所属行业：<a target=_blank
+                                                    href='/quotelist.aspx?bklb=hy&bkid=110340&colorid=380'>酒、饮料和精制茶制造业</a><span class='s_em1'></span>中位市盈率：27.71倍<span class='s_em1'></span>扣除后中位市盈率：25.58倍<br/>2025年07月12日最新公告：<a
+                                                    target='_blank'
+                                                    href='https://cfi.cn/p20250712001081.html'>关于四川省宜宾五粮液集团有限公司增持公司股票的进展公告</a><a
+                                                    target='_blank' href='//gg.cfi.cn/ggqw/380/000858.html'>(更多)</a>
+                                            </td>
+                                        </tr>
+                                        <tr style='height:15px;clear:both;'>
+                                            <td style='border:none;clear:both;'></td>
+                                        </tr>
+                                        <tr>
+                                            <td class='stockback'>
+                                                <div id='curve'>
+                                                    <ul id='tabul'>
+                                                        <li id='picitem1' class='currentBgcolor'><a
+                                                                onclick="stock_picItemchange(6,1,'picitem','min','380','','');return false;"
+                                                                href='' target='_self'>分时</a></li>
+                                                        <li id='picitem2'><a
+                                                                onclick="stock_picItemchange(6,2,'picitem','day','380','','');return false;"
+                                                                href='' target='_self'>日K</a></li>
+                                                        <li id='picitem3'><a
+                                                                onclick="stock_picItemchange(6,3,'picitem','week','380','','');return false;"
+                                                                href='' target='_self'>周K</a></li>
+                                                        <li id='picitem4'><a
+                                                                onclick="stock_picItemchange(6,4,'picitem','month','380','','');return false;"
+                                                                href='' target='_self'>月K</a></li>
+                                                        <li id='picitem5'><a
+                                                                onclick="stock_picItemchange(6,5,'picitem','quarter','380','','');return false;"
+                                                                href='' target='_self'>季K</a></li>
+                                                        <li id='picitem6'><a
+                                                                onclick="stock_picItemchange(6,6,'picitem','year','380','','');return false;"
+                                                                href='' target='_self'>年K</a></li>
+                                                    </ul>
+                                                    <select onchange="stock_picItemchange(6,7,'picitem','','380','','');return false;" class='script_sel' id='js_hg_select'><option value=''>选择指标</option><option value='pe' selected='selected'>市盈率</option><option value='macd'>MACD</option><option value='kdj'>KDJ</option><option value='rsi'>RSI</option><option value='asi'>ASI</option><option value='bias'>BIAS</option><option value='boll'>BOLL</option><option value='arbr'>ARBR</option><option value='cci'>CCI</option><option value='cr'>CR</option><option value='dma'>DMA</option><option value='dmi'>DMI</option><option value='emv'>EMV</option><option value='expma'>EXPMA</option><option value='mike'>MIKE</option><option value='obv'>OBV</option><option value='psy'>PSY</option><option value='roc'>ROC</option><option value='trix'>TRIX</option><option value='vr'>VR</option><option value='wr'>WR</option><option value='wvad'>WVAD</option></select><select onchange="stock_picItemchange(6,7,'picitem','','380','','');return false;" class='script_sel' id='js_index_select'><option value='' selected='selected'>叠加指数</option><option value='714'>上证指数</option><option value='802'>深证成指</option><option value='10997'>创业板指</option><option value='108242'>科创50</option></select><input type='hidden' id='hid_quotetype' value='min' /><input type='hidden' id='hid_quotescript' value='pe' />
+                                                    <div id='div_imgoperate' style='display:block;'><a href=''
+                                                            onclick='javascript:quote_zoom("380",-1,"","w=540&h=400 ","stock",false,"");return false '
+                                                            target='_self'><img src='/Styles/Image/long.png' title='放大'/></a><span class='s_em05'></span><a
+                                                            href=''
+                                                            onclick='javascript:quote_zoom("380",1,"","w=540&h=400 ","stock",false,"");return false'
+                                                            target='_self'><img src='/Styles/Image/short.png' title='缩小'/></a><span class='s_em05'></span><a
+                                                            href=''
+                                                            onclick='javascript:quote_zoom("380",2,"","w=540&h=400 ","stock",false,"");return false '
+                                                            target='_self'><img src='/Styles/Image/left.png' title='左移'/></a><span class='s_em05'></span><a
+                                                            href=''
+                                                            onclick='javascript:quote_zoom("380",-2,"","w=540&h=400 ","stock",false,"");return false'
+                                                            target='_self'><img src='/Styles/Image/right.png' title='右移'/></a><span class='s_em05'></span><a
+                                                            id='bigpic_link' href=''
+                                                            onclick='javascript:quote_bigpic("380","");'
+                                                            target='_blank'><img  src='/Styles/Image/big.png' title='大图'/></a>
+                                                    </div>
+                                                </div>
+                                                <div style='clear:both;margin:0;'>
+                                                    <div style='text-align:left;'>
+                                                        <input type='checkbox' id='cb_zdsj_control' onchange="stock_picItemchange(6,7,'picitem','','380','','');return false;"  /><label for='cb_zdsj_control' style=' cursor:pointer;'>重大事件</label>
+                                                    </div><a href='/bigimage.aspx?stockid=380&type=min&w=800&h=600'
+                                                        target='_blank' id='pic_link'>
+                                                        <div id='div_quote_image' style='width:540px;height:400px;'><img src='/drawprice.aspx?stockid=380&type=min&w=540&h=400' id='pic_img' width='540' height='400' border=0 alt='点击查看大图'/>
+                                                        </div>
+                                                        <script tyle='text/javascript' id='js_zdsj_dy'></script>
+                                                    </a>
+                                                </div>
+                                                <div class='delaytip'>注意：本页面行情存在延时，交易请以交易所实时价格为准，数值仅供参考，据此入市风险自担。</div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td class='col2'></td>
+                                <td class='col3'>
+                                    <table class='Rtable'>
+                                        <tr>
+                                            <td colspan=2 class='tdRtitle'>涨跌排名</td>
+                                        </tr>
+                                        <tr>
+                                            <td style='width:60%;'>涨跌排名(A股)</td>
+                                            <td class='red' style='width:40%;'>1824</td>
+                                        </tr>
+                                        <tr>
+                                            <td>换手排名(A股)</td>
+                                            <td class='red'>4828</td>
+                                        </tr>
+                                        <tr>
+                                            <td>总<span style='margin-left:1.5em;'></span>股<span style='margin-left:1.5em;'></span>本
+                                            </td>
+                                            <td>38.82亿股</td>
+                                        </tr>
+                                        <tr>
+                                            <td>流<span style='margin-left:0.75em;'></span>通<span style='margin-left:0.75em;'></span>股<span style='margin-left:0.75em;'></span>本
+                                            </td>
+                                            <td>38.81亿股</td>
+                                        </tr>
+                                    </table>
+                                    <div style='height:10px;border:none;width:100%;'></div>
+                                    <div class='Rtable' style='height:220px;padding:0;'>
+                                        <table>
+                                            <tr>
+                                                <td colspan=4 class='tdRtitle'>(酒、饮料和精制茶制..)涨跌前八名</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='/quote341_000799.html'
+                                                        onmouseover=popLayer_simple(getPosLeft(this),this.getBoundingClientRect().top,'@341');overdiv=1
+                                                        onmouseout=overdiv=0;setTimeout('hideLayer()',100)>酒鬼酒</a></td>
+                                                <td>63.47</td>
+                                                <td class='red'>+5.77</td>
+                                                <td class='red'>+10.00%</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='/quote19588_601579.html'
+                                                        onmouseover=popLayer_simple(getPosLeft(this),this.getBoundingClientRect().top,'@19588');overdiv=1
+                                                        onmouseout=overdiv=0;setTimeout('hideLayer()',100)>会稽山</a></td>
+                                                <td>21.69</td>
+                                                <td class='red'>+1.97</td>
+                                                <td class='red'>+9.99%</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='/quote1406_600702.html'
+                                                        onmouseover=popLayer_simple(getPosLeft(this),this.getBoundingClientRect().top,'@1406');overdiv=1
+                                                        onmouseout=overdiv=0;setTimeout('hideLayer()',100)>舍得酒业</a></td>
+                                                <td>62.70</td>
+                                                <td class='red'>+4.86</td>
+                                                <td class='red'>+8.40%</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='/quote1025_600197.html'
+                                                        onmouseover=popLayer_simple(getPosLeft(this),this.getBoundingClientRect().top,'@1025');overdiv=1
+                                                        onmouseout=overdiv=0;setTimeout('hideLayer()',100)>伊力特</a></td>
+                                                <td>16.79</td>
+                                                <td class='red'>+1.09</td>
+                                                <td class='red'>+6.94%</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='/quote92335_605388.html'
+                                                        onmouseover=popLayer_simple(getPosLeft(this),this.getBoundingClientRect().top,'@92335');overdiv=1
+                                                        onmouseout=overdiv=0;setTimeout('hideLayer()',100)>均瑶健康</a></td>
+                                                <td>8.12</td>
+                                                <td class='red'>+0.41</td>
+                                                <td class='red'>+5.32%</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='/quote1027_600199.html'
+                                                        onmouseover=popLayer_simple(getPosLeft(this),this.getBoundingClientRect().top,'@1027');overdiv=1
+                                                        onmouseout=overdiv=0;setTimeout('hideLayer()',100)>金种子酒</a></td>
+                                                <td>11.44</td>
+                                                <td class='red'>+0.57</td>
+                                                <td class='red'>+5.24%</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='/quote434_000929.html'
+                                                        onmouseover=popLayer_simple(getPosLeft(this),this.getBoundingClientRect().top,'@434');overdiv=1
+                                                        onmouseout=overdiv=0;setTimeout('hideLayer()',100)>*ST兰黄</a>
+                                                </td>
+                                                <td>8.58</td>
+                                                <td class='red'>+0.41</td>
+                                                <td class='red'>+5.02%</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='/quote1401_600696.html'
+                                                        onmouseover=popLayer_simple(getPosLeft(this),this.getBoundingClientRect().top,'@1401');overdiv=1
+                                                        onmouseout=overdiv=0;setTimeout('hideLayer()',100)>*ST岩石</a>
+                                                </td>
+                                                <td>6.52</td>
+                                                <td class='red'>+0.31</td>
+                                                <td class='red'>+4.99%</td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <div style='height:10px;border:none;width:100%;'></div>
+                                    <div class='Rtable' style='height:220px;padding:0;'>
+                                        <table>
+                                            <tr>
+                                                <td colspan=4 class='tdRtitle'>(酒、饮料和精制茶制..)涨跌后八名</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='/quote305_000752.html'
+                                                        onmouseover=popLayer_simple(getPosLeft(this),this.getBoundingClientRect().top,'@305');overdiv=1
+                                                        onmouseout=overdiv=0;setTimeout('hideLayer()',100)>ST西发</a></td>
+                                                <td>11.23</td>
+                                                <td class='green'>-0.18</td>
+                                                <td class='green'>-1.58%</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='/quote106087_300997.html'
+                                                        onmouseover=popLayer_simple(getPosLeft(this),this.getBoundingClientRect().top,'@106087');overdiv=1
+                                                        onmouseout=overdiv=0;setTimeout('hideLayer()',100)>欢乐家</a></td>
+                                                <td>17.05</td>
+                                                <td class='green'>-0.11</td>
+                                                <td class='green'>-0.64%</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='/quote93262_605337.html'
+                                                        onmouseover=popLayer_simple(getPosLeft(this),this.getBoundingClientRect().top,'@93262');overdiv=1
+                                                        onmouseout=overdiv=0;setTimeout('hideLayer()',100)>李子园</a></td>
+                                                <td>13.98</td>
+                                                <td class='green'>-0.07</td>
+                                                <td class='green'>-0.50%</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='/quote10633_002304.html'
+                                                        onmouseover=popLayer_simple(getPosLeft(this),this.getBoundingClientRect().top,'@10633');overdiv=1
+                                                        onmouseout=overdiv=0;setTimeout('hideLayer()',100)>洋河股份</a></td>
+                                                <td>73.38</td>
+                                                <td class='green'>-0.20</td>
+                                                <td class='green'>-0.27%</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='/quote106096_605499.html'
+                                                        onmouseover=popLayer_simple(getPosLeft(this),this.getBoundingClientRect().top,'@106096');overdiv=1
+                                                        onmouseout=overdiv=0;setTimeout('hideLayer()',100)>东鹏饮料</a></td>
+                                                <td>298.00</td>
+                                                <td class='red'>+1.35</td>
+                                                <td class='red'>+0.46%</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='/quote1243_600519.html'
+                                                        onmouseover=popLayer_simple(getPosLeft(this),this.getBoundingClientRect().top,'@1243');overdiv=1
+                                                        onmouseout=overdiv=0;setTimeout('hideLayer()',100)>贵州茅台</a></td>
+                                                <td>1450.00</td>
+                                                <td class='red'>+12.00</td>
+                                                <td class='red'>+0.83%</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='/quote925_600084.html'
+                                                        onmouseover=popLayer_simple(getPosLeft(this),this.getBoundingClientRect().top,'@925');overdiv=1
+                                                        onmouseout=overdiv=0;setTimeout('hideLayer()',100)>中信尼雅</a></td>
+                                                <td>5.78</td>
+                                                <td class='red'>+0.06</td>
+                                                <td class='red'>+1.05%</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href='/quote380_000858.html'
+                                                        onmouseover=popLayer_simple(getPosLeft(this),this.getBoundingClientRect().top,'@380');overdiv=1
+                                                        onmouseout=overdiv=0;setTimeout('hideLayer()',100)>五粮液</a></td>
+                                                <td>125.78</td>
+                                                <td class='red'>+1.37</td>
+                                                <td class='red'>+1.10%</td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                        <script id='customStockJs' src='' type='text/javascript'></script>
+                        <script language='javascript' type='text/javascript'>
+                            checkImgCookie('stock');
+                        </script>
+                    </div>
+                    <div id='quote_table'>
+                        <table style='width:825px;padding:0;border-collapse:collapse;'>
+                            <tr class='blank_h'>
+                                <td colspan=3></td>
+                            </tr>
+                            <tr>
+                                <td class='border' style='width:405px;height:200px;text-align:left;'>
+                                    <script language='javascript' type='text/javascript'>
+                                        function fun(){ var sel=document.getElementById('sel'); window.location='/quote.aspx?stockid=380&contenttype=outline&jzrq='+sel.options[sel.selectedIndex].value;}
+                                    </script>
+                                    <table class='vertical_table'>
+                                        <tr>
+                                            <td colspan='2'>五粮液(000858)公司概况<a href='/gsda/380/000858.html'>>>详细</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>公司名称</td>
+                                            <td class='nowrap'>宜宾五粮液股份有限公司</td>
+                                        </tr>
+                                        <tr>
+                                            <td>所属行业</td>
+                                            <td>酒、饮料和精制茶制造业</td>
+                                        </tr>
+                                        <tr>
+                                            <td>成立日期</td>
+                                            <td>1998-04-21</td>
+                                        </tr>
+                                        <tr>
+                                            <td>总股本(亿)</td>
+                                            <td>38.82</td>
+                                        </tr>
+                                        <tr>
+                                            <td>流通A股(亿)</td>
+                                            <td>38.81</td>
+                                        </tr>
+                                        <tr>
+                                            <td>限售股份(亿)</td>
+                                            <td>0.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td class='nowrap'>无限售股份(亿)</td>
+                                            <td>38.81</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td class='blank_w'></td>
+                                <td style='width:405px;padding:0'><a target='_blank'
+                                        href='/zyfb/380/000858.html'><img  class='border' title='000858主营分布图' alt='000858主营分布图' src='//quoteimg.cfi.cn/readimage.aspx?class=OutlineGsgkNew&stockid=380&stockcode=000858'/></a>
+                                </td>
+                            </tr>
+                            <tr class='blank_h'>
+                                <td colspan=3></td>
+                            </tr>
+                            <tr>
+                                <td id='tdcwzb' class='border' style='width:405px;height:200px;text-align:left;'>
+                                    <table class='index_cwzb'>
+                                        <tr>
+                                            <td class='labela' id='tdcw1'
+                                                onclick='autoChangeBackColor(3,1,"tdcw","divcw");'>年度统计</td>
+                                            <td class='labelb' id='tdcw2'
+                                                onclick='autoChangeBackColor(3,2,"tdcw","divcw");'>同期历史</td>
+                                            <td class='labelb' id='tdcw3'
+                                                onclick='autoChangeBackColor(3,3,"tdcw","divcw");'>季度统计</td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan=4>
+                                                <div id='divcw1'>
+                                                    <script language='javascript' type='text/javascript'>
+                                                        function fun(){ var sel=document.getElementById('sel'); window.location='/quote.aspx?stockid=380&contenttype=outline&jzrq='+sel.options[sel.selectedIndex].value;}
+                                                    </script>
+                                                    <table class='vertical_table'>
+                                                        <tr>
+                                                            <td colspan='6'>五粮液(000858)财务指标<a
+                                                                    href='/cwfxzb/380/000858.html'>>>详细</a><br/></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>截止日期</td>
+                                                            <td class='nowrap'>2025-03</td>
+                                                            <td class='nowrap'>2024-12</td>
+                                                            <td class='nowrap'>2023-12</td>
+                                                            <td class='nowrap '>2022-12</td>
+                                                            <td class='nowrap '>2021-12</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class='nowrap'>扣非每股收益</td>
+                                                            <td>3.83元</td>
+                                                            <td>8.18元</td>
+                                                            <td>7.76元</td>
+                                                            <td class='nowrap '>6.87元</td>
+                                                            <td class='nowrap '>6.01元</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>每股净资产</td>
+                                                            <td>39.09元</td>
+                                                            <td>35.14元</td>
+                                                            <td>34.10元</td>
+                                                            <td class='nowrap '>30.06元</td>
+                                                            <td class='nowrap '>26.12元</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>净利润(亿)</td>
+                                                            <td>148.60</td>
+                                                            <td>318.53</td>
+                                                            <td>302.11</td>
+                                                            <td class='nowrap '>266.91</td>
+                                                            <td class='nowrap '>233.77</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>净资产(亿)</td>
+                                                            <td>1517.63</td>
+                                                            <td>1363.95</td>
+                                                            <td>1323.49</td>
+                                                            <td class='nowrap '>1166.84</td>
+                                                            <td class='nowrap '>1013.92</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>每股资本公积</td>
+                                                            <td>0.69元</td>
+                                                            <td>0.69元</td>
+                                                            <td>0.69元</td>
+                                                            <td class='nowrap '>0.69元</td>
+                                                            <td class='nowrap '>0.69元</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>每股未分利润</td>
+                                                            <td>26.41元</td>
+                                                            <td>22.58元</td>
+                                                            <td>23.03元</td>
+                                                            <td class='nowrap '>20.36元</td>
+                                                            <td class='nowrap '>17.68元</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>分红类型</td>
+                                                            <td>--</td>
+                                                            <td>现金分红</td>
+                                                            <td>现金分红</td>
+                                                            <td class='nowrap '>现金分红</td>
+                                                            <td class='nowrap '>现金分红</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>分配方案</td>
+                                                            <td><a target=\_blank\ title=--
+                                                                    href=/fhpx/380/000858.html>查看</a></td>
+                                                            <td><a target=\_blank\ title=派现：31.7
+                                                                    href=/fhpx/380/000858.html>查看</a></td>
+                                                            <td><a target=\_blank\ title=派现：46.7
+                                                                    href=/fhpx/380/000858.html>查看</a></td>
+                                                            <td class='nowrap '><a target=\_blank\ title=派现：37.8
+                                                                    href=/fhpx/380/000858.html>查看</a></td>
+                                                            <td class='nowrap '><a target=\_blank\ title=派现：30.2
+                                                                    href=/fhpx/380/000858.html>查看</a></td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                                <div id='divcw2' style='display:none;'>
+                                                    <script language='javascript' type='text/javascript'>
+                                                        function fun(){ var sel=document.getElementById('sel'); window.location='/quote.aspx?stockid=380&contenttype=outline&jzrq='+sel.options[sel.selectedIndex].value;}
+                                                    </script>
+                                                    <table class='vertical_table'>
+                                                        <tr>
+                                                            <td colspan='6'>五粮液(000858)财务指标<a
+                                                                    href='/cwfxzb/380/000858.html'>>>详细</a><br/></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>截止日期</td>
+                                                            <td class='nowrap'>2025-03</td>
+                                                            <td class='nowrap'>2024-03</td>
+                                                            <td class='nowrap'>2023-03</td>
+                                                            <td class='nowrap '>2022-03</td>
+                                                            <td class='nowrap '>2021-03</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class='nowrap'>扣非每股收益</td>
+                                                            <td>3.83元</td>
+                                                            <td>3.62元</td>
+                                                            <td>3.21元</td>
+                                                            <td class='nowrap '>2.79元</td>
+                                                            <td class='nowrap '>2.40元</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>每股净资产</td>
+                                                            <td>39.09元</td>
+                                                            <td>37.86元</td>
+                                                            <td>33.44元</td>
+                                                            <td class='nowrap '>29.04元</td>
+                                                            <td class='nowrap '>25.13元</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>净利润(亿)</td>
+                                                            <td>148.60</td>
+                                                            <td>140.45</td>
+                                                            <td>125.42</td>
+                                                            <td class='nowrap '>108.23</td>
+                                                            <td class='nowrap '>93.24</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>净资产(亿)</td>
+                                                            <td>1517.63</td>
+                                                            <td>1469.85</td>
+                                                            <td>1297.94</td>
+                                                            <td class='nowrap '>1127.46</td>
+                                                            <td class='nowrap '>975.41</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>每股资本公积</td>
+                                                            <td>0.69元</td>
+                                                            <td>0.69元</td>
+                                                            <td>0.69元</td>
+                                                            <td class='nowrap '>0.69元</td>
+                                                            <td class='nowrap '>0.69元</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>每股未分利润</td>
+                                                            <td>26.41元</td>
+                                                            <td>26.65元</td>
+                                                            <td>23.59元</td>
+                                                            <td class='nowrap '>20.47元</td>
+                                                            <td class='nowrap '>17.72元</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>分红类型</td>
+                                                            <td>--</td>
+                                                            <td>--</td>
+                                                            <td>--</td>
+                                                            <td class='nowrap '>--</td>
+                                                            <td class='nowrap '>--</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>分配方案</td>
+                                                            <td><a target=\_blank\ title=--
+                                                                    href=/fhpx/380/000858.html>查看</a></td>
+                                                            <td><a target=\_blank\ title=--
+                                                                    href=/fhpx/380/000858.html>查看</a></td>
+                                                            <td><a target=\_blank\ title=--
+                                                                    href=/fhpx/380/000858.html>查看</a></td>
+                                                            <td class='nowrap '><a target=\_blank\ title=--
+                                                                    href=/fhpx/380/000858.html>查看</a></td>
+                                                            <td class='nowrap '><a target=\_blank\ title=--
+                                                                    href=/fhpx/380/000858.html>查看</a></td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                                <div id='divcw3' style='display:none;'>
+                                                    <script language='javascript' type='text/javascript'>
+                                                        function fun(){ var sel=document.getElementById('sel'); window.location='/quote.aspx?stockid=380&contenttype=outline&jzrq='+sel.options[sel.selectedIndex].value;}
+                                                    </script>
+                                                    <table class='vertical_table'>
+                                                        <tr>
+                                                            <td colspan='6'>五粮液(000858)财务指标<a
+                                                                    href='/cwfxzb/380/000858.html'>>>详细</a><br/></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>截止日期</td>
+                                                            <td class='nowrap'>2025-03</td>
+                                                            <td class='nowrap'>2024-12</td>
+                                                            <td class='nowrap'>2024-09</td>
+                                                            <td class='nowrap '>2024-06</td>
+                                                            <td class='nowrap '>2024-03</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class='nowrap'>扣非每股收益</td>
+                                                            <td>3.83元</td>
+                                                            <td>8.18元</td>
+                                                            <td>6.40元</td>
+                                                            <td class='nowrap '>4.88元</td>
+                                                            <td class='nowrap '>3.62元</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>每股净资产</td>
+                                                            <td>39.09元</td>
+                                                            <td>35.14元</td>
+                                                            <td>35.84元</td>
+                                                            <td class='nowrap '>34.54元</td>
+                                                            <td class='nowrap '>37.86元</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>净利润(亿)</td>
+                                                            <td>148.60</td>
+                                                            <td>318.53</td>
+                                                            <td>249.31</td>
+                                                            <td class='nowrap '>190.57</td>
+                                                            <td class='nowrap '>140.45</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>净资产(亿)</td>
+                                                            <td>1517.63</td>
+                                                            <td>1363.95</td>
+                                                            <td>1391.04</td>
+                                                            <td class='nowrap '>1340.49</td>
+                                                            <td class='nowrap '>1469.85</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>每股资本公积</td>
+                                                            <td>0.69元</td>
+                                                            <td>0.69元</td>
+                                                            <td>0.69元</td>
+                                                            <td class='nowrap '>0.69元</td>
+                                                            <td class='nowrap '>0.69元</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>每股未分利润</td>
+                                                            <td>26.41元</td>
+                                                            <td>22.58元</td>
+                                                            <td>24.79元</td>
+                                                            <td class='nowrap '>23.27元</td>
+                                                            <td class='nowrap '>26.65元</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>分红类型</td>
+                                                            <td>--</td>
+                                                            <td>现金分红</td>
+                                                            <td>现金分红</td>
+                                                            <td class='nowrap '>--</td>
+                                                            <td class='nowrap '>--</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>分配方案</td>
+                                                            <td><a target=\_blank\ title=--
+                                                                    href=/fhpx/380/000858.html>查看</a></td>
+                                                            <td><a target=\_blank\ title=派现：31.7
+                                                                    href=/fhpx/380/000858.html>查看</a></td>
+                                                            <td><a target=\_blank\ title=派现：25.8
+                                                                    href=/fhpx/380/000858.html>查看</a></td>
+                                                            <td class='nowrap '><a target=\_blank\ title=--
+                                                                    href=/fhpx/380/000858.html>查看</a></td>
+                                                            <td class='nowrap '><a target=\_blank\ title=--
+                                                                    href=/fhpx/380/000858.html>查看</a></td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td class='blank_w'></td>
+                                <td style='width:405px;padding:0;'><a target='_blank'
+                                        href='/cwfxzb/380/000858.html'><img class='border' title='000858财务指标图' alt='000858财务指标图' src='//quoteimg.cfi.cn/readimage.aspx?class=OutlineCwzbNew&stockid=380&stockcode=000858'/></a>
+                                </td>
+                            </tr>
+                            <tr class='blank_h'>
+                                <td colspan=3></td>
+                            </tr>
+                            <tr>
+                                <td class='border' style='width:405px;height:200px'>
+                                    <script language='javascript' type='text/javascript'>
+                                        function fun(){ var sel=document.getElementById('sel'); window.location='/quote.aspx?stockid=380&contenttype=outline&jzrq='+sel.options[sel.selectedIndex].value;}
+                                    </script>
+                                    <table class='vertical_table'>
+                                        <tr>
+                                            <td colspan='2'>五粮液(000858)股本结构<a href='/gbjg/380/000858.html'>>>详细</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>截止日期</td>
+                                            <td class='nowrap'>2025-04-28</td>
+                                        </tr>
+                                        <tr>
+                                            <td>总股本(亿股)</td>
+                                            <td>38.82</td>
+                                        </tr>
+                                        <tr>
+                                            <td>A股合计(亿股)</td>
+                                            <td>38.82</td>
+                                        </tr>
+                                        <tr>
+                                            <td>流通A股(亿股)</td>
+                                            <td>38.81</td>
+                                        </tr>
+                                        <tr>
+                                            <td class='nowrap'>限售流通A股(亿股)</td>
+                                            <td>0.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td>实际流通A股(亿股)</td>
+                                            <td>38.81</td>
+                                        </tr>
+                                        <tr>
+                                            <td>股本变动公告日期</td>
+                                            <td>--</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td class='blank_w'></td>
+                                <td style='width:405px;padding:0;'><a target='_blank'
+                                        href='/gbjg/380/000858.html'><img class='border' title='000858股本结构图' alt='000858股本结构图' src='//quoteimg.cfi.cn/readimage.aspx?class=OutlineGbjgNew&stockid=380&stockcode=000858'/></a>
+                                </td>
+                </td>
+            </tr>
+            <tr class='blank_h'>
+                <td colspan=3></td>
+            </tr>
+            <tr>
+                <td style='width:405px;padding:0;'><a target='_blank'
+                        href='/gdtj/380/000858.html'><img class='border' title='000858股东变动图' alt='000858股东变动图' src='//quoteimg.cfi.cn/readimage.aspx?class=OutlineGdbdNew&stockid=380&stockcode=000858' /></a>
+                </td>
+                <td class='blank_w'></td>
+                <td style='width:405px;padding:0;'><a target='_blank'
+                        href='/jjcc/380/000858.html'><img class='border' title='000858基金持仓图' alt='000858基金持仓图' src='//quoteimg.cfi.cn/readimage.aspx?class=OutlineJjccNew&stockid=380&stockcode=000858'/></a>
+                </td>
+            </tr>
+        </table>
+        </div>
+        </td>
+        </tr>
+        <tr>
+            <td id='gotofirst' colspan='3'>
+                <h4><a href='/quote_000858.html'>转至五粮液（000858）行情首页</a>
+                    <h4>
+            </td>
+        </tr>
+        <tr>
+            <td id='tj' colspan='3'>
+                <div id='div1'>
+                </div>
+                <div id='div2'>
+                </div>
+                <div id='div3'>
+                    <!--查询当前个股：0.00，行情涨跌：0.00，市盈率计算：15.63，最新公告：0.00，走势图显示：0.00，涨跌排行：15.62，涨跌前几名：15.62，-->
+                </div>
+            </td>
+        </tr>
+        </table>
+        <input type='hidden' id='showcomplete' value='True' /><input type='hidden' id='hid_gpdm' value='000858' /><input type='hidden' id='hid_gpjc' value='五粮液' />
+        <table id='tabfootlink' cellpadding='3'>
+            <tr>
+                <td align='middle'>
+                    中国财经信息网为您服务:&nbsp<a href='https://cfi.cn/pic/items1.htm' target='_blank'>免责条款</a>
+                    | <a href='https://cfi.cn/pic/hylg.htm' target='_blank'>欢迎来稿</a> | <a
+                        href='https://cfi.cn/pic/cooperation.htm' target='_blank'>合 作</a> | <a
+                        href='https://cfi.cn/pic/cfiad.htm' title='最具吸引力的网站，迅速让你的网站与产品人尽皆知' target='_blank'>广告服务</a> |
+                    <a href='https://cfi.cn/pic/policy-cn.htm' target='_blank'>
+                        隐私条款</a> | <a href='https://cfi.cn/pic/conus.htm' target='_blank'>联系我们</a>&nbsp;|
+                    <a href='https://cfi.cn/pic/cfijob.htm' target='_blank'>工作机会</a>
+                </td>
+            </tr>
+        </table>
+        <div id='pagefoot'>
+            中财网版权所有(C) HTTP://WWW.CFi.CN
+        </div>
+        <div id='divfoot2'>
+            中财网免费提供股票、基金、债券、外汇、理财等行情数据以及其他资料，仅供用户获取信息。
+        </div>
+    </form>
+    <div id='divjs'>
+        <script charset='gb2312' src='https://quoteimg.cfi.cn/Scripts/autoComplete.js?202208' type='text/javascript'>
+        </script>
+        <script charset='UTF-8' language='javascript' type='text/javascript' id='tablejs' src=''> </script>
+    </div>
+    <div id='divshowquote' onmouseover='overdiv=1;' onmouseout="overdiv=0;setTimeout('hideLayer()',100);"></div>
+</body>
+<script src="/Scripts/quotepage.js" type="text/javascript"></script>
+
+</html>

@@ -1,7 +1,7 @@
 package stock
 
 import (
-	"gin-scaffold/pkg/crawler/stock/futunn"
+	"gin-scaffold/pkg/crawler/stock/common"
 	"gin-scaffold/pkg/logger"
 	"time"
 )
@@ -14,7 +14,7 @@ func InitCrawler() {
 func CrawlerFutunn() {
 	go func() {
 		for {
-			futunn.ConnectHtml()
+			CallStock()
 			now := time.Now() // 获取当前时间
 			if now.Weekday() == time.Saturday || now.Weekday() == time.Sunday {
 				continue
@@ -25,9 +25,9 @@ func CrawlerFutunn() {
 			todayAt1500 := time.Date(now.Year(), now.Month(), now.Day(), 15, 10, 0, 0, now.Location()).Unix()
 			nowUnix := time.Now().Unix()
 			if (nowUnix >= todayAt0900 && nowUnix <= todayAt1130) || (nowUnix >= todayAt1300 && nowUnix <= todayAt1500) {
-				futunn.ConnectHtml()
+				CallStock()
 			} else {
-				futunn.InitStockValue()
+				common.InitStockValue()
 				logger.Logger.Info("休眠5分钟 - 非交易时间")
 				time.Sleep(5 * time.Minute)
 			}

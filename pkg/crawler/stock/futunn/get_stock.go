@@ -1,73 +1,33 @@
 package futunn
 
 import (
-	"context"
 	"encoding/json"
 	"fmt"
-	"gin-scaffold/internal/config"
-	"gin-scaffold/pkg/logger"
-	"gin-scaffold/pkg/robot"
-	"gin-scaffold/pkg/utils"
-	"gin-scaffold/pkg/windows_send"
+	"gin-scaffold/pkg/crawler/stock/common"
 	"github.com/PuerkitoBio/goquery"
-	"math"
 	"net/http"
 	"regexp"
 	"strings"
-	"time"
 )
 
-const (
-	StockTypeETF  = "etf"
-	StockTypeCNSH = "cn-sh"
-	StockTypeCNSZ = "cn-sz"
-
-	WindowsName = "stock_push"
-)
-
-var stockList = map[string]map[string]string{
-	StockTypeETF: {
-		"513120": "港股创新药ETF",
-		"513090": "香港证券ETF",
-		"513220": "中概互联ETF",
-		"159887": "美国50ETF",
-		"520550": "港股红利低波ETF",
-		"159529": "普标消费ETF",
-	},
-	StockTypeCNSH: {
-		"600872": "中炬高新",
-		"601318": "中国平安",
-	},
-	//StockTypeCNSZ: {
-	//	"000858": "五粮液",
-	//	"002213": "大为股份",
-	//	"300301": "ST长方",
-	//},
-}
-
-var stockValue = map[string]string{}
-
-var futunnRatioRegex = regexp.MustCompile(`[+-]\d+\.\d+%`)
-var futunnChangePriceRegex = regexp.MustCompile(`\d+\.\d+%`)
-
-func ConnectHtml() {
+func ConnectHtml(stockType, stockCode, stockName string) {
 	// 请求URL
-	for stockType, stockTypeSon := range stockList {
-		for stockCode, stockName := range stockTypeSon {
-			time.Sleep(10 * time.Second)
-			url := ""
-			switch stockType {
-			case StockTypeETF:
-				url = fmt.Sprintf("https://www.futunn.com/etfs/%s-SH", stockCode)
-			case StockTypeCNSH:
-				url = fmt.Sprintf("https://www.futunn.com/stock/%s-SH", stockCode)
-			case StockTypeCNSZ:
-				url = fmt.Sprintf("https://www.futunn.com/stock/%s-SZ", stockCode)
-			}
-			callFutunn(url, stockCode, stockName)
-		}
-
+	//for stockType, stockTypeSon := range common.StockList {
+	//	for stockCode, stockName := range stockTypeSon {
+	//		time.Sleep(10 * time.Second)
+	url := ""
+	switch stockType {
+	case common.StockTypeETF:
+		url = fmt.Sprintf("https://www.futunn.com/etfs/%s-SH", stockCode)
+	case common.StockTypeCNSH:
+		url = fmt.Sprintf("https://www.futunn.com/stock/%s-SH", stockCode)
+		//case common.StockTypeCNSZ:
+		//	url = fmt.Sprintf("https://www.futunn.com/stock/%s-SZ", stockCode)
 	}
+	callFutunn(url, stockCode, stockName)
+	//	}
+	//
+	//}
 	// 打印响应状态码和内容
 	//fmt.Printf("响应状态码: %d\n", resp.StatusCode)
 	//fmt.Println("响应内容:")
@@ -78,7 +38,7 @@ func callFutunn(url string, stockCode, stockName string) {
 
 	// 创建一个HTTP客户端
 	client := &http.Client{}
-	botUrl := config.Cfg.FSRobot.StockRobot
+	//botUrl := config.Cfg.FSRobot.StockRobot
 
 	// 创建请求
 	req, err := http.NewRequest("GET", url, nil)
@@ -170,38 +130,36 @@ func callFutunn(url string, stockCode, stockName string) {
 		return
 	}
 
-	ratio := state.StockInfo.ChangeRatio
-	changePrice := state.StockInfo.Change
-	currentPrice := state.StockInfo.Price
-	if ratio == "" {
-		fmt.Println("未找到涨跌幅数据")
-		return
-	}
-	if val, ok := stockValue[stockCode]; ok {
-		subValue := utils.ExtractPercentageNumber(val) - utils.ExtractPercentageNumber(ratio)
-		msg := fmt.Sprintf("[%s]%s(%s) 当前涨幅:%s  当前价:%s", ratio, stockName, stockCode, changePrice, currentPrice)
-		if subValue > 0.5 {
-			msg = fmt.Sprintf("↓[%s]%s(%s) 当前涨幅:%s  当前价:%s", ratio, stockName, stockCode, changePrice, currentPrice)
-		}
-		if subValue < -0.5 {
-			msg = fmt.Sprintf("↑[%s]%s(%s) 当前涨幅:%s  当前价:%s", ratio, stockName, stockCode, changePrice, currentPrice)
-		}
-		logger.Logger.Info(msg)
-		if math.Abs(subValue) >= 0.5 {
-			robot.SendFeishuRobotWithUrl(context.Background(), botUrl, msg, robot.MsgTypeText)
-			windows_send.SendMsgToWindows(WindowsName, msg)
-			stockValue[stockCode] = ratio
-		}
-		return
-	}
+	common.CallRobot(state.StockInfo.Price, state.StockInfo.Change, state.StockInfo.ChangeRatio, stockCode, stockName)
 
-	stockValue[stockCode] = ratio
-	msg := fmt.Sprintf("[%s]%s(%s) 当前涨幅:%s  当前价:%s", ratio, stockName, stockCode, changePrice, currentPrice)
-	robot.SendFeishuRobotWithUrl(context.Background(), botUrl, msg, robot.MsgTypeText)
-	windows_send.SendMsgToWindows(WindowsName, msg)
-	logger.Logger.Info(msg)
-}
-
-func InitStockValue() {
-	stockValue = make(map[string]string)
+	//ratio := state.StockInfo.ChangeRatio
+	//changePrice := state.StockInfo.Change
+	//currentPrice := state.StockInfo.Price
+	//if ratio == "" {
+	//	fmt.Println("未找到涨跌幅数据")
+	//	return
+	//}
+	//if val, ok := common.StockValue[stockCode]; ok {
+	//	subValue := utils.ExtractPercentageNumber(val) - utils.ExtractPercentageNumber(ratio)
+	//	msg := fmt.Sprintf("[%s]%s(%s) 当前涨幅:%s  当前价:%s", ratio, stockName, stockCode, changePrice, currentPrice)
+	//	if subValue > 0.5 {
+	//		msg = fmt.Sprintf("↓[%s]%s(%s) 当前涨幅:%s  当前价:%s", ratio, stockName, stockCode, changePrice, currentPrice)
+	//	}
+	//	if subValue < -0.5 {
+	//		msg = fmt.Sprintf("↑[%s]%s(%s) 当前涨幅:%s  当前价:%s", ratio, stockName, stockCode, changePrice, currentPrice)
+	//	}
+	//	logger.Logger.Info(msg)
+	//	if math.Abs(subValue) >= 0.5 {
+	//		robot.SendFeishuRobotWithUrl(context.Background(), botUrl, msg, robot.MsgTypeText)
+	//		windows_send.SendMsgToWindows(common.WindowsName, msg)
+	//		common.StockValue[stockCode] = ratio
+	//	}
+	//	return
+	//}
+	//
+	//common.StockValue[stockCode] = ratio
+	//msg := fmt.Sprintf("[%s]%s(%s) 当前涨幅:%s  当前价:%s", ratio, stockName, stockCode, changePrice, currentPrice)
+	//robot.SendFeishuRobotWithUrl(context.Background(), botUrl, msg, robot.MsgTypeText)
+	//windows_send.SendMsgToWindows(common.WindowsName, msg)
+	//logger.Logger.Info(msg)
 }
